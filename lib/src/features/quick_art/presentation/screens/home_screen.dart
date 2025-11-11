@@ -93,30 +93,37 @@ class HomeScreen extends ConsumerWidget {
   }
 
   Widget _buildPromptSection(BuildContext context, WidgetRef ref) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.grey[900],
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.grey[700]!),
-          ),
-          child: TextField(
-            maxLines: 4,
-            style: const TextStyle(color: Colors.white),
-            decoration: InputDecoration(
-              hintText: 'Enter your prompt about anything you want to create',
-              hintStyle: TextStyle(color: Colors.grey[500]),
-              border: InputBorder.none,
-              contentPadding: const EdgeInsets.all(16),
-            ),
-            onChanged: (value) {
-              ref.read(promptProvider.notifier).state = value;
-            },
-          ),
+    return Container(
+      padding: const EdgeInsets.all(1.5), // This padding creates the border effect
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(18),
+        gradient: const LinearGradient(
+          colors: [
+            Colors.purpleAccent,
+            Colors.blueAccent,
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
         ),
-      ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: TextField(
+          maxLines: 4,
+          style: const TextStyle(color: Colors.white),
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: const Color(0xFF1A1A1A),
+            hintText: 'Enter your prompt about anything you want to create',
+            hintStyle: TextStyle(color: Colors.grey[500]),
+            border: InputBorder.none,
+            contentPadding: const EdgeInsets.all(16),
+          ),
+          onChanged: (value) {
+            ref.read(promptProvider.notifier).state = value;
+          },
+        ),
+      ),
     );
   }
 

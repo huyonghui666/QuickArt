@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120px" height="66px" viewBox="0 0 120 66" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>home_ic_vip</title>
+    <defs>
+        <linearGradient x1="0%" y1="34.875%" x2="85.4406747%" y2="59.0258195%" id="linearGradient-1">
+            <stop stop-color="#F1C566" offset="0%"></stop>
+            <stop stop-color="#EEAC4D" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="2.3.1.0-定稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页切图" transform="translate(-360.000000, -90.000000)">
+            <g id="home_ic_vip" transform="translate(360.000000, 90.000000)">
+                <rect id="矩形" fill="url(#linearGradient-1)" x="0" y="0" width="120" height="66" rx="21"></rect>
+                <text id="PRO" font-family="Roboto-Bold, Roboto" font-size="33" font-weight="bold" letter-spacing="1" fill="#000000">
+                    <tspan x="26" y="45">PRO</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quick_art/src/features/quick_art/presentation/notifiers/app_state_notifier.dart';
 import 'package:quick_art/src/features/quick_art/presentation/widgets/art_style_selector.dart';
 import 'package:quick_art/src/features/quick_art/presentation/widgets/anime_style_selector.dart';
@@ -81,10 +82,10 @@ class HomeScreen extends ConsumerWidget {
               letterSpacing: 1.2,
             ),
           ),
-          Row(
+          const Row(
             children: [
               Icon(Icons.star, color: Colors.amber, size: 20),
-              const SizedBox(width: 4),
+              SizedBox(width: 4),
               Text(
                 '20',
                 style: TextStyle(
@@ -92,7 +93,7 @@ class HomeScreen extends ConsumerWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(width: 12),
+              SizedBox(width: 12),
               Icon(Icons.account_balance_wallet, color: Colors.amber, size: 20),
             ],
           ),

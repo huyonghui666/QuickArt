@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>home_ic_photo</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="48" height="48"></rect>
+    </defs>
+    <g id="2.3.1.0-定稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页切图" transform="translate(-132.000000, -837.000000)">
+            <g id="ic_add_photo" transform="translate(132.000000, 837.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="矩形"></g>
+                <path d="M40,9.5 C40.6887157,9.5 41.408386,9.63631546 41.9006563,10.1285857 C42.303479,10.5314085 42.5,11.1573345 42.5,12 L42.5,36 C42.5,36.9375 42.4772078,37.6514719 42.0643398,38.0643398 C41.6514719,38.4772078 40.9375,38.5 40,38.5 L8,38.5 C7.0625,38.5 6.34852814,38.4772078 5.93566017,38.0643398 C5.52279221,37.6514719 5.5,36.9375 5.5,36 L5.50057177,11.7876571 C5.50581463,10.9544399 5.55455128,10.3167691 5.93566017,9.93566017 C6.34852814,9.52279221 7.0625,9.5 8,9.5 Z" id="路径" stroke="#ECECEC" stroke-width="3" mask="url(#mask-2)"></path>
+                <path d="M14,18.375 C14.7848,18.375 15.4210526,17.745375 15.4210526,16.96875 C15.4210526,16.192125 14.7848,15.5625 14,15.5625 C13.2152,15.5625 12.5789474,16.192125 12.5789474,16.96875 C12.5789474,17.745375 13.2152,18.375 14,18.375 Z" id="路径" stroke="#ECECEC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)"></path>
+                <polyline id="路径" stroke="#ECECEC" stroke-width="3" stroke-linejoin="round" mask="url(#mask-2)" points="4.8 35.3684211 14.9052632 24.3157895 19.9578947 28.7368421 26.0210526 21 43.2 35.3684211"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

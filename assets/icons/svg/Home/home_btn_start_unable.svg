@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="756px" height="210px" viewBox="0 0 756 210" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>home_btn_start_unable</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="756" height="210"></rect>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="99.7715663%" id="linearGradient-3">
+            <stop stop-color="#000000" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.154191307" offset="51.3971023%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.3" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-4" x="18" y="24" width="720" height="162" rx="81"></rect>
+        <filter x="-4.4%" y="-17.3%" width="108.9%" height="139.5%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.202570135 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="2.3.1.0-定稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页切图" transform="translate(-90.000000, -1830.000000)">
+            <g id="home_btn_start_unable" transform="translate(90.000000, 1830.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="矩形"></g>
+                <g id="矩形" fill-rule="nonzero" mask="url(#mask-2)">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                    <use fill="#4F4F4F" xlink:href="#path-4"></use>
+                    <use fill="url(#linearGradient-3)" xlink:href="#path-4"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

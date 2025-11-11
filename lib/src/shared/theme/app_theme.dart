@@ -1,51 +1,58 @@
 import 'package:flutter/material.dart';
 
+/// 统一主题配置 - 只提供明亮主题
 class AppTheme {
   // 主题配置常量
   static const double _borderRadius = 12.0;
   static const double _buttonBorderRadius = 8.0;
   static const double _cardElevation = 1.0;
 
-  // 间距常量 - 建议添加
+  // 间距常量
   static const EdgeInsets _buttonPadding = EdgeInsets.symmetric(horizontal: 16, vertical: 12);
   static const EdgeInsets _inputPadding = EdgeInsets.symmetric(horizontal: 16, vertical: 12);
   static const EdgeInsets _cardMargin = EdgeInsets.all(8.0);
   
-  // 浅色主题
+  /// 统一明亮主题 - Material Design 3 风格
   static final ThemeData lightTheme = ThemeData(
+    // Material 3 设计
+    useMaterial3: true,
+    
+    // 颜色方案 - 使用紫色作为主色调
     colorScheme: ColorScheme.fromSeed(
       seedColor: Colors.deepPurple,
       brightness: Brightness.light,
+      primary: Colors.deepPurple,
+      secondary: Colors.purpleAccent,
+      tertiary: Colors.indigo,
     ),
-    useMaterial3: true,
 
-    // 文本主题
+    // 文本主题 - 使用系统默认字体
     textTheme: const TextTheme(
       // 显示文本（大标题）
-      displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-      displayMedium: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-      displaySmall: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, letterSpacing: 0),
+      displayMedium: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, letterSpacing: 0),
+      displaySmall: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, letterSpacing: 0),
 
       // 标题文本
-      titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-      titleMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-      titleSmall: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+      titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, letterSpacing: 0.15),
+      titleMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, letterSpacing: 0.15),
+      titleSmall: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 0.1),
 
       // 正文文本
-      bodyLarge: TextStyle(fontSize: 16),
-      bodyMedium: TextStyle(fontSize: 14),
-      bodySmall: TextStyle(fontSize: 12),
+      bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.5),
+      bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.25),
+      bodySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.4),
 
       // 标签文本
-      labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-      labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-      labelSmall: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+      labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.1),
+      labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, letterSpacing: 0.5),
+      labelSmall: TextStyle(fontSize: 10, fontWeight: FontWeight.w500, letterSpacing: 0.5),
     ),
 
-    //图标主题
+    // 图标主题
     iconTheme: const IconThemeData(
       size: 24,
-      color: Colors.grey, // 或者使用 colorScheme.onSurface
+      color: Colors.deepPurple, // 使用主色调
     ),
 
     // 卡片主题
@@ -55,16 +62,18 @@ class AppTheme {
         borderRadius: BorderRadius.circular(_borderRadius),
       ),
       margin: _cardMargin,
+      surfaceTintColor: Colors.white, // 卡片表面色调
     ),
     
-    // 按钮主题
+    // 凸起按钮主题
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(_buttonBorderRadius),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        textStyle: const TextStyle(fontWeight: FontWeight.w600),
+        textStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+        elevation: 2,
       ),
     ),
     
@@ -75,16 +84,18 @@ class AppTheme {
           borderRadius: BorderRadius.circular(_buttonBorderRadius),
         ),
         padding: _buttonPadding,
+        textStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
       ),
     ),
 
-    // OutlinedButton 主题
+    // 轮廓按钮主题
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(_buttonBorderRadius),
         ),
         padding: _buttonPadding,
+        textStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
       ),
     ),
 
@@ -92,19 +103,25 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(_borderRadius),
-        borderSide: BorderSide(color: Colors.grey.shade400),
+        borderSide: const BorderSide(color: Colors.deepPurple, width: 1),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(_borderRadius),
-        borderSide: BorderSide(color: Colors.grey.shade400),
+        borderSide: BorderSide(color: Colors.grey.shade400, width: 1),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(_borderRadius),
         borderSide: const BorderSide(color: Colors.deepPurple, width: 2),
       ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(_borderRadius),
+        borderSide: const BorderSide(color: Colors.red, width: 1),
+      ),
       contentPadding: _inputPadding,
       filled: true,
       fillColor: Colors.grey.shade50,
+      hintStyle: TextStyle(color: Colors.grey.shade600, fontSize: 14),
+      labelStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
     ),
     
     // AppBar主题
@@ -112,12 +129,22 @@ class AppTheme {
       centerTitle: true,
       elevation: 0,
       scrolledUnderElevation: 2, // 滚动时显示阴影
+      backgroundColor: Colors.deepPurple, // 使用主色调
+      foregroundColor: Colors.white, // 文字和图标颜色
+      titleTextStyle: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: Colors.white,
+      ),
+      iconTheme: IconThemeData(color: Colors.white),
     ),
     
     // 浮动操作按钮主题
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      elevation: 2,
+      elevation: 4,
       sizeConstraints: BoxConstraints.tightFor(width: 56, height: 56),
+      backgroundColor: Colors.deepPurple,
+      foregroundColor: Colors.white,
     ),
 
     // 对话框主题
@@ -125,66 +152,104 @@ class AppTheme {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(_borderRadius),
       ),
-      elevation: 4,
+      elevation: 8,
+      backgroundColor: Colors.white,
+      titleTextStyle: const TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: Colors.deepPurple,
+      ),
     ),
 
     // 底部导航栏主题
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      elevation: 2,
+      elevation: 8,
       type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.white,
+      selectedItemColor: Colors.deepPurple,
+      unselectedItemColor: Colors.grey,
+      selectedLabelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+      unselectedLabelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
     ),
 
-  );
-
-  // 深色主题 - 使用 copyWith 避免重复代码
-  static final ThemeData darkTheme = lightTheme.copyWith(
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: Colors.deepPurple,
-      brightness: Brightness.dark,
-    ),
-    
-    // 设置深色背景
-    scaffoldBackgroundColor: Colors.grey.shade900,
-    canvasColor: Colors.grey.shade900,
-    
-    // 深色主题的特殊调整
-    inputDecorationTheme: lightTheme.inputDecorationTheme.copyWith(
-      filled: true,
-      fillColor: Colors.grey.shade800,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(_borderRadius),
-        borderSide: BorderSide(color: Colors.grey.shade600),
+    // 底部表单主题
+    bottomSheetTheme: const BottomSheetThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(_borderRadius)),
       ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(_borderRadius),
-        borderSide: BorderSide(color: Colors.grey.shade600),
-      ),
+      backgroundColor: Colors.white,
+      elevation: 8,
     ),
 
-    cardTheme: lightTheme.cardTheme.copyWith(
-      color: Colors.grey.shade800, // 深色模式卡片背景
-      shadowColor: Colors.black.withOpacity(0.3),
+    // 芯片主题
+    chipTheme: ChipThemeData(
+      backgroundColor: Colors.grey.shade200,
+      selectedColor: Colors.deepPurple.withValues(alpha: 0.12),
+      labelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+      secondaryLabelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
     ),
-    
-    // 调整文本颜色以适应深色背景
-    textTheme: lightTheme.textTheme.apply(
-      bodyColor: Colors.white,
-      displayColor: Colors.white,
+
+    // 分割线主题
+    dividerTheme: const DividerThemeData(
+      color: Colors.grey,
+      thickness: 1,
+      space: 16,
     ),
-    
-    // 图标颜色调整
-    iconTheme: const IconThemeData(
-      size: 24,
-      color: Colors.white70,
+
+    // 进度指示器主题
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: Colors.deepPurple,
+      linearTrackColor: Colors.grey,
+      circularTrackColor: Colors.grey,
     ),
-    
-    // AppBar深色主题调整
-    appBarTheme: const AppBarTheme(
-      centerTitle: true,
-      elevation: 0,
-      scrolledUnderElevation: 2,
-      backgroundColor: Colors.transparent,
-      foregroundColor: Colors.white,
+
+    // 开关主题
+    switchTheme: SwitchThemeData(
+      thumbColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
+          return Colors.deepPurple;
+        }
+        return Colors.grey;
+      }),
+      trackColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
+          return Colors.deepPurple.withValues(alpha: 0.5);
+        }
+        return Colors.grey.withValues(alpha: 0.3);
+      }),
+    ),
+
+    // 复选框主题
+    checkboxTheme: CheckboxThemeData(
+      fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
+          return Colors.deepPurple;
+        }
+        return Colors.transparent;
+      }),
+      checkColor: WidgetStateProperty.all(Colors.white),
+      side: const BorderSide(color: Colors.deepPurple),
+    ),
+
+    // 单选按钮主题
+    radioTheme: RadioThemeData(
+      fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
+          return Colors.deepPurple;
+        }
+        return Colors.grey;
+      }),
+    ),
+
+    // 滑块主题
+    sliderTheme: SliderThemeData(
+      activeTrackColor: Colors.deepPurple,
+      inactiveTrackColor: Colors.grey.withValues(alpha: 0.3),
+      thumbColor: Colors.deepPurple,
+      overlayColor: Colors.deepPurple.withValues(alpha: 0.12),
+      valueIndicatorColor: Colors.deepPurple,
     ),
   );
 }

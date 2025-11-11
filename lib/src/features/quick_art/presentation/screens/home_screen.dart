@@ -7,6 +7,15 @@ import 'package:quick_art/src/features/quick_art/presentation/widgets/home/art_s
 import 'package:quick_art/src/features/quick_art/presentation/widgets/home/anime_style_selector.dart';
 import 'package:quick_art/src/features/quick_art/presentation/widgets/home/bottom_navigation.dart';
 
+final promptProvider = StateProvider<String>((ref) => '');
+
+final promptControllerProvider =
+    Provider.family.autoDispose<TextEditingController, String>((ref, prompt) {
+  final controller = TextEditingController(text: prompt);
+  ref.onDispose(controller.dispose);
+  return controller;
+});
+
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
@@ -93,6 +102,9 @@ class HomeScreen extends ConsumerWidget {
   }
 
   Widget _buildPromptSection(BuildContext context, WidgetRef ref) {
+    final prompt = ref.watch(promptProvider);
+    final controller = ref.watch(promptControllerProvider(prompt));
+
     return Container(
       padding: const EdgeInsets.all(1.5), // This padding creates the border effect
       decoration: BoxDecoration(
@@ -108,20 +120,69 @@ class HomeScreen extends ConsumerWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
-        child: TextField(
-          maxLines: 4,
-          style: const TextStyle(color: Colors.white),
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: const Color(0xFF1A1A1A),
-            hintText: 'Enter your prompt about anything you want to create',
-            hintStyle: TextStyle(color: Colors.grey[500]),
-            border: InputBorder.none,
-            contentPadding: const EdgeInsets.all(16),
-          ),
-          onChanged: (value) {
-            ref.read(promptProvider.notifier).state = value;
-          },
+        child: Stack(
+          children: [
+            TextField(
+              controller: controller,
+              maxLines: 4,
+              maxLength: 500,
+              style: const TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: const Color(0xFF1A1A1A),
+                hintText: '输入你的提示词, 可以是任何你想创造的东西',
+                hintStyle: TextStyle(color: Colors.grey[500]),
+                border: InputBorder.none,
+                contentPadding: const EdgeInsets.fromLTRB(16, 16, 16, 40),
+                counterText: '', // Hide the default counter
+              ),
+              onChanged: (value) {
+                ref.read(promptProvider.notifier).state = value;
+              },
+            ),
+            if (prompt.isNotEmpty)
+              Positioned(
+                bottom: 12,
+                left: 16,
+                child: Text(
+                  '${prompt.length}/500',
+                  style: TextStyle(color: Colors.grey[500], fontSize: 12),
+                ),
+              ),
+            if (prompt.isNotEmpty)
+              Positioned(
+                bottom: 8,
+                right: 12,
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                      'assets/icons/svg/Home/prompt_btn_back.svg',
+                      width: 24,
+                      height: 24,
+                      color: Colors.grey[600],
+                    ),
+                    const SizedBox(width: 8),
+                    SvgPicture.asset(
+                      'assets/icons/svg/Home/prompt_btn_next.svg',
+                      width: 24,
+                      height: 24,
+                      color: Colors.grey[600],
+                    ),
+                    const SizedBox(width: 8),
+                    GestureDetector(
+                      onTap: () {
+                        ref.read(promptProvider.notifier).state = '';
+                      },
+                      child: SvgPicture.asset(
+                        'assets/icons/svg/Home/prompt_btn_del.svg',
+                        width: 24,
+                        height: 24,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+          ],
         ),
       ),
     );

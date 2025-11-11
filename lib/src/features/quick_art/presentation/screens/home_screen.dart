@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quick_art/src/shared/assets/app_icons.dart';
 import 'package:quick_art/src/features/quick_art/presentation/notifiers/app_state_notifier.dart';
-import 'package:quick_art/src/features/quick_art/presentation/widgets/art_style_selector.dart';
-import 'package:quick_art/src/features/quick_art/presentation/widgets/anime_style_selector.dart';
-import 'package:quick_art/src/features/quick_art/presentation/widgets/bottom_navigation.dart';
+import 'package:quick_art/src/features/quick_art/presentation/widgets/home/art_style_selector.dart';
+import 'package:quick_art/src/features/quick_art/presentation/widgets/home/anime_style_selector.dart';
+import 'package:quick_art/src/features/quick_art/presentation/widgets/home/bottom_navigation.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});

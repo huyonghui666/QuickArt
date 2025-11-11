@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:quick_art/src/shared/assets/app_icons.dart';
 import 'package:quick_art/src/features/quick_art/presentation/notifiers/app_state_notifier.dart';
 import 'package:quick_art/src/features/quick_art/presentation/widgets/art_style_selector.dart';
 import 'package:quick_art/src/features/quick_art/presentation/widgets/anime_style_selector.dart';
@@ -63,38 +64,27 @@ class HomeScreen extends ConsumerWidget {
 
   Widget _buildHeader(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.purple.shade800, Colors.blue.shade600],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            'QUICKART',
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1.2,
-            ),
+          SvgPicture.asset(
+            AppIcons.homeTitle,
+            height: 50,
           ),
-          const Row(
+          Row(
             children: [
-              Icon(Icons.star, color: Colors.amber, size: 20),
-              SizedBox(width: 4),
-              Text(
-                '20',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                ),
+              SvgPicture.asset(
+                AppIcons.homeVip,
+                width: 20,
+                height: 20,
               ),
-              SizedBox(width: 12),
-              Icon(Icons.account_balance_wallet, color: Colors.amber, size: 20),
+              const SizedBox(width: 16),
+              SvgPicture.asset(
+                AppIcons.homeSettings,
+                width: 24,
+                height: 24,
+              ),
             ],
           ),
         ],
@@ -106,45 +96,6 @@ class HomeScreen extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Text(
-              'Input prompt',
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            const SizedBox(width: 8),
-            Icon(Icons.refresh, color: Colors.grey[400], size: 20),
-            const Spacer(),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(
-                color: Colors.purple.withValues(alpha: 0.3),
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.chat, color: Colors.purple[300], size: 16),
-                  const SizedBox(width: 4),
-                  Text(
-                    'Chat to Draw',
-                    style: TextStyle(
-                      color: Colors.purple[300],
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  Icon(Icons.arrow_forward_ios, 
-                       color: Colors.purple[300], size: 12),
-                ],
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
         Container(
           decoration: BoxDecoration(
             color: Colors.grey[900],
@@ -190,29 +141,29 @@ class HomeScreen extends ConsumerWidget {
         ),
         const SizedBox(width: 12),
         
-        // Count 按钮
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          decoration: BoxDecoration(
-            color: Colors.grey[800],
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.grey[600]!),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.grid_view, color: Colors.white70, size: 16),
-              const SizedBox(width: 8),
-              Text(
-                'Count: ${ref.watch(imageCountProvider)}',
-                style: const TextStyle(
-                  color: Colors.white70,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
-        ),
+        // // Count 按钮
+        // Container(
+        //   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        //   decoration: BoxDecoration(
+        //     color: Colors.grey[800],
+        //     borderRadius: BorderRadius.circular(12),
+        //     border: Border.all(color: Colors.grey[600]!),
+        //   ),
+        //   child: Row(
+        //     mainAxisSize: MainAxisSize.min,
+        //     children: [
+        //       Icon(Icons.grid_view, color: Colors.white70, size: 16),
+        //       const SizedBox(width: 8),
+        //       Text(
+        //         'Count: ${ref.watch(imageCountProvider)}',
+        //         style: const TextStyle(
+        //           color: Colors.white70,
+        //           fontWeight: FontWeight.w500,
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
       ],
     );
   }

@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quick_art/src/features/quick_art/presentation/screens/home_screen.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/screens/home_screen.dart';
 import 'package:quick_art/src/shared/theme/app_theme.dart';
 
 void main() {
-  runApp(
-    const ProviderScope(
-      child: QuickArtApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: QuickArtApp()));
 }
 
 class QuickArtApp extends ConsumerWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quick_art/src/features/quick_art/presentation/notifiers/art_style_notifier.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/art_style_notifier.dart';
 
 class ArtStyleSelector extends ConsumerWidget {
   const ArtStyleSelector({super.key});

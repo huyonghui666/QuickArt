@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// 提示词输入状态管理
-final promptProvider = StateProvider<String>((ref) => '');
+// // 提示词输入状态管理
+// final promptProvider = StateProvider<String>((ref) => '');
 
 // 图片数量状态管理
 final imageCountProvider = StateProvider<int>((ref) => 4);

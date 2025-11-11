@@ -1,27 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/app_state_notifier.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/prompt_provider.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/anime_style_selector.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/art_style_selector.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/bottom_navigation.dart';
 import 'package:quick_art/src/shared/assets/app_icons.dart';
-import 'package:quick_art/src/features/quick_art/presentation/notifiers/app_state_notifier.dart';
-import 'package:quick_art/src/features/quick_art/presentation/widgets/home/art_style_selector.dart';
-import 'package:quick_art/src/features/quick_art/presentation/widgets/home/anime_style_selector.dart';
-import 'package:quick_art/src/features/quick_art/presentation/widgets/home/bottom_navigation.dart';
 
-final promptProvider = StateProvider<String>((ref) => '');
-
-final promptControllerProvider =
-    Provider.family.autoDispose<TextEditingController, String>((ref, prompt) {
-  final controller = TextEditingController(text: prompt);
-  ref.onDispose(controller.dispose);
-  return controller;
-});
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final prompt = ref.watch(promptProvider);
     final imageCount = ref.watch(imageCountProvider);
     final toggleOption = ref.watch(toggleOptionProvider);
     final theme = Theme.of(context);
@@ -102,8 +94,7 @@ class HomeScreen extends ConsumerWidget {
   }
 
   Widget _buildPromptSection(BuildContext context, WidgetRef ref) {
-    final prompt = ref.watch(promptProvider);
-    final controller = ref.watch(promptControllerProvider(prompt));
+    final promptState = ref.watch(promptProvider);
 
     return Container(
       padding: const EdgeInsets.all(1.5), // This padding creates the border effect
@@ -123,7 +114,7 @@ class HomeScreen extends ConsumerWidget {
         child: Stack(
           children: [
             TextField(
-              controller: controller,
+              controller: promptState.controller,
               maxLines: 4,
               maxLength: 500,
               style: const TextStyle(color: Colors.white),
@@ -136,20 +127,17 @@ class HomeScreen extends ConsumerWidget {
                 contentPadding: const EdgeInsets.fromLTRB(16, 16, 16, 40),
                 counterText: '', // Hide the default counter
               ),
-              onChanged: (value) {
-                ref.read(promptProvider.notifier).state = value;
-              },
             ),
-            if (prompt.isNotEmpty)
+            if (promptState.text.isNotEmpty)
               Positioned(
                 bottom: 12,
                 left: 16,
                 child: Text(
-                  '${prompt.length}/500',
+                  '${promptState.wordCount}/500',
                   style: TextStyle(color: Colors.grey[500], fontSize: 12),
                 ),
               ),
-            if (prompt.isNotEmpty)
+            if (promptState.text.isNotEmpty)
               Positioned(
                 bottom: 8,
                 right: 12,
@@ -171,7 +159,7 @@ class HomeScreen extends ConsumerWidget {
                     const SizedBox(width: 8),
                     GestureDetector(
                       onTap: () {
-                        ref.read(promptProvider.notifier).state = '';
+                        ref.read(promptProvider.notifier).clear();
                       },
                       child: SvgPicture.asset(
                         'assets/icons/svg/Home/prompt_btn_del.svg',

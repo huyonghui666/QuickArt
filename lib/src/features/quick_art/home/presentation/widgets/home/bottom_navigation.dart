@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quick_art/src/features/quick_art/presentation/notifiers/navigation_notifier.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/navigation_notifier.dart';
 
 class CustomBottomNavigation extends ConsumerWidget {
   const CustomBottomNavigation({super.key});

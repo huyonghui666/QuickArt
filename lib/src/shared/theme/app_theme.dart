@@ -8,15 +8,21 @@ class AppTheme {
   static const double _cardElevation = 1.0;
 
   // 间距常量
-  static const EdgeInsets _buttonPadding = EdgeInsets.symmetric(horizontal: 16, vertical: 12);
-  static const EdgeInsets _inputPadding = EdgeInsets.symmetric(horizontal: 16, vertical: 12);
+  static const EdgeInsets _buttonPadding = EdgeInsets.symmetric(
+    horizontal: 16,
+    vertical: 12,
+  );
+  static const EdgeInsets _inputPadding = EdgeInsets.symmetric(
+    horizontal: 16,
+    vertical: 12,
+  );
   static const EdgeInsets _cardMargin = EdgeInsets.all(8.0);
-  
+
   /// 统一明亮主题 - Material Design 3 风格
   static final ThemeData lightTheme = ThemeData(
     // Material 3 设计
     useMaterial3: true,
-    
+
     // 颜色方案 - 使用紫色作为主色调
     colorScheme: ColorScheme.fromSeed(
       seedColor: Colors.deepPurple,
@@ -29,24 +35,72 @@ class AppTheme {
     // 文本主题 - 使用系统默认字体
     textTheme: const TextTheme(
       // 显示文本（大标题）
-      displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, letterSpacing: 0),
-      displayMedium: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, letterSpacing: 0),
-      displaySmall: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, letterSpacing: 0),
+      displayLarge: TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.bold,
+        letterSpacing: 0,
+      ),
+      displayMedium: TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.bold,
+        letterSpacing: 0,
+      ),
+      displaySmall: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        letterSpacing: 0,
+      ),
 
       // 标题文本
-      titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, letterSpacing: 0.15),
-      titleMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, letterSpacing: 0.15),
-      titleSmall: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 0.1),
+      titleLarge: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.15,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.15,
+      ),
+      titleSmall: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.1,
+      ),
 
       // 正文文本
-      bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.5),
-      bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.25),
-      bodySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.4),
+      bodyLarge: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.5,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.25,
+      ),
+      bodySmall: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.4,
+      ),
 
       // 标签文本
-      labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.1),
-      labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, letterSpacing: 0.5),
-      labelSmall: TextStyle(fontSize: 10, fontWeight: FontWeight.w500, letterSpacing: 0.5),
+      labelLarge: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.1,
+      ),
+      labelMedium: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.5,
+      ),
+      labelSmall: TextStyle(
+        fontSize: 10,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.5,
+      ),
     ),
 
     // 图标主题
@@ -64,7 +118,7 @@ class AppTheme {
       margin: _cardMargin,
       surfaceTintColor: Colors.white, // 卡片表面色调
     ),
-    
+
     // 凸起按钮主题
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -76,7 +130,7 @@ class AppTheme {
         elevation: 2,
       ),
     ),
-    
+
     // 文本按钮主题
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
@@ -123,7 +177,7 @@ class AppTheme {
       hintStyle: TextStyle(color: Colors.grey.shade600, fontSize: 14),
       labelStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
     ),
-    
+
     // AppBar主题
     appBarTheme: const AppBarTheme(
       centerTitle: true,
@@ -138,7 +192,7 @@ class AppTheme {
       ),
       iconTheme: IconThemeData(color: Colors.white),
     ),
-    
+
     // 浮动操作按钮主题
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       elevation: 4,
@@ -169,13 +223,18 @@ class AppTheme {
       selectedItemColor: Colors.deepPurple,
       unselectedItemColor: Colors.grey,
       selectedLabelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-      unselectedLabelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+      unselectedLabelStyle: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+      ),
     ),
 
     // 底部表单主题
     bottomSheetTheme: const BottomSheetThemeData(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(_borderRadius)),
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(_borderRadius),
+        ),
       ),
       backgroundColor: Colors.white,
       elevation: 8,
@@ -186,7 +245,10 @@ class AppTheme {
       backgroundColor: Colors.grey.shade200,
       selectedColor: Colors.deepPurple.withValues(alpha: 0.12),
       labelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-      secondaryLabelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+      secondaryLabelStyle: const TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+      ),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
     ),

@@ -34,10 +34,10 @@ class HomeScreen extends ConsumerWidget {
                   children: [
                     // 提示词输入区域
                     _buildPromptSection(context, ref),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 12),
 
-                    // 切换选项和数量选择
-                    _buildOptionsSection(context, ref),
+                    //切换选项、数量选择、历史等
+                    _buildOptionsSection(context),
                     const SizedBox(height: 24),
 
                     // 艺术风格选择
@@ -104,12 +104,12 @@ class HomeScreen extends ConsumerWidget {
               controller: promptState.controller,
               maxLines: 4,
               maxLength: 500,
-              style: const TextStyle(color: Colors.white,fontSize: 13),
+              style: const TextStyle(color: Colors.white, fontSize: 13),
               decoration: InputDecoration(
                 filled: true,
                 fillColor: const Color(0xFF1A1A1A),
                 hintText: '输入你的提示词, 可以是任何你想创造的东西',
-                hintStyle: TextStyle(color: Colors.grey[500],fontSize: 13),
+                hintStyle: TextStyle(color: Colors.grey[500], fontSize: 13),
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.fromLTRB(16, 16, 16, 40),
                 counterText: '', // Hide the default counter
@@ -161,51 +161,53 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildOptionsSection(BuildContext context, WidgetRef ref) {
+  Widget _buildOptionsSection(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        // Image Describe 按钮
-        _buildToggleButton(
-          context,
-          ref,
-          ToggleOption.imageDescribe,
-          Icons.image,
+        _buildActionItem(AppIcons.homeDescribe, '文生图'),
+        _buildActionItem(AppIcons.homePhoto, '添加照片'),
+        _buildActionItem(
+          AppIcons.homeRatio11,
+          '1:1',
+          trailingIconPath: AppIcons.homeRatioNext,
         ),
-        const SizedBox(width: 12),
-
-        // Ref Image 按钮
-        _buildToggleButton(
-          context,
-          ref,
-          ToggleOption.refImage,
-          Icons.photo_library,
-        ),
-        const SizedBox(width: 12),
-
-        // // Count 按钮
-        // Container(
-        //   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        //   decoration: BoxDecoration(
-        //     color: Colors.grey[800],
-        //     borderRadius: BorderRadius.circular(12),
-        //     border: Border.all(color: Colors.grey[600]!),
-        //   ),
-        //   child: Row(
-        //     mainAxisSize: MainAxisSize.min,
-        //     children: [
-        //       Icon(Icons.grid_view, color: Colors.white70, size: 16),
-        //       const SizedBox(width: 8),
-        //       Text(
-        //         'Count: ${ref.watch(imageCountProvider)}',
-        //         style: const TextStyle(
-        //           color: Colors.white70,
-        //           fontWeight: FontWeight.w500,
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
+        _buildActionItem(AppIcons.homeHistory, '历史'),
       ],
+    );
+  }
+
+  Widget _buildActionItem(
+    String iconPath,
+    String label, {
+    String? trailingIconPath,
+  }) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+      decoration: BoxDecoration(
+        color: const Color(0xFF2A2A2A),
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(color: const Color(0xFF4A4A4A)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SvgPicture.asset(iconPath, width: 12, height: 12),
+          const SizedBox(width: 4),
+          Text(
+            label,
+            style: const TextStyle(
+              color: Color(0xFFCECECE),
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          if (trailingIconPath != null) ...[
+            const SizedBox(width: 4),
+            SvgPicture.asset(trailingIconPath, width: 12, height: 12),
+          ],
+        ],
+      ),
     );
   }
 

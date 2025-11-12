@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ratio_ic_11</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="48" height="48"></rect>
+    </defs>
+    <g id="2.3.1.0-定稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页切图" transform="translate(-66.000000, -993.000000)">
+            <g id="ratio_ic_11" transform="translate(66.000000, 993.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="矩形"></g>
+                <rect id="1:1_tip_select" stroke="#FFFFFF" stroke-width="3" opacity="0.4" mask="url(#mask-2)" x="7.5" y="7.5" width="33" height="33" rx="6"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

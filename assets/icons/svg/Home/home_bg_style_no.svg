@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="264px" height="264px" viewBox="0 0 264 264" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>home_bg_style_no</title>
+    <g id="2.3.1.0-定稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页切图" transform="translate(-66.000000, -1138.000000)">
+            <g id="home_bg_style_no" transform="translate(66.000000, 1138.000000)">
+                <rect id="蒙版" fill-opacity="0.799386405" fill="#222222" x="0" y="0" width="264" height="264"></rect>
+                <g id="art_style_no" transform="translate(89.000000, 89.000000)" stroke="#EEEEEE" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5" stroke-width="6">
+                    <path d="M43.4210526,86.8421053 C67.4018487,86.8421053 86.8421053,67.4018487 86.8421053,43.4210526 C86.8421053,19.4402566 67.4018487,0 43.4210526,0 C19.4402566,0 0,19.4402566 0,43.4210526 C0,67.4018487 19.4402566,86.8421053 43.4210526,86.8421053 Z" id="路径"></path>
+                    <line x1="23.8815789" y1="23.8815789" x2="62.9605263" y2="62.9605263" id="路径"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

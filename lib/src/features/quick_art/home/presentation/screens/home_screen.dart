@@ -165,7 +165,7 @@ class HomeScreen extends ConsumerWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _buildActionItem(AppIcons.homeDescribe, '文生图'),
+        _buildActionItem(AppIcons.homeDescribe, '图生文'),
         _buildActionItem(AppIcons.homePhoto, '添加照片'),
         _buildActionItem(
           AppIcons.homeRatio11,

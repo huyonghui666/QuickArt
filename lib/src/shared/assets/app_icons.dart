@@ -22,4 +22,7 @@ class AppIcons {
   static const String homeHistory = '$_svgBasePath/Home/home_ic_history.svg';
   static const String homeRatioNext =
       '$_svgBasePath/Home/home_ic_ratio_next.svg';
+
+  //无风格icon
+  static const String homeBgStyleNo = '$_svgBasePath/Home/home_bg_style_no.svg';
 }

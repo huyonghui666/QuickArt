@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/art_style_notifier.dart';
+import 'package:quick_art/src/shared/assets/app_icons.dart';
 
 class ArtStyleSelector extends ConsumerWidget {
   const ArtStyleSelector({super.key});
@@ -14,7 +16,7 @@ class ArtStyleSelector extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Art Style',
+          '艺术风格',
           style: theme.textTheme.titleMedium?.copyWith(
             color: Colors.white,
             fontWeight: FontWeight.w600,
@@ -28,27 +30,28 @@ class ArtStyleSelector extends ConsumerWidget {
               final isSelected = selectedStyle == style;
               return Padding(
                 padding: const EdgeInsets.only(right: 12),
-                child: FilterChip(
-                  label: Text(style.label),
-                  selected: isSelected,
-                  onSelected: (selected) {
-                    if (selected) {
-                      ref.read(artStyleProvider.notifier).state = style;
-                    }
+                child: GestureDetector(
+                  onTap: () {
+                    ref.read(artStyleProvider.notifier).state = style;
                   },
-                  backgroundColor: Colors.grey[800],
-                  selectedColor: theme.colorScheme.primary.withValues(alpha: 0.3),
-                  checkmarkColor: theme.colorScheme.primary,
-                  labelStyle: TextStyle(
-                    color: isSelected ? theme.colorScheme.primary : Colors.white70,
-                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-                  ),
-                  side: BorderSide(
-                    color: isSelected ? theme.colorScheme.primary : Colors.grey[600]!,
-                    width: isSelected ? 2 : 1,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      _StyleCard(style: style, selected: isSelected),
+                      const SizedBox(height: 6),
+                      Text(
+                        style.label,
+                        style: TextStyle(
+                          color: isSelected
+                              ? theme.colorScheme.primary
+                              : const Color(0xFFCECECE),
+                          fontSize: 12,
+                          fontWeight: isSelected
+                              ? FontWeight.w600
+                              : FontWeight.w500,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               );
@@ -57,5 +60,93 @@ class ArtStyleSelector extends ConsumerWidget {
         ),
       ],
     );
+  }
+}
+
+class _StyleCard extends StatelessWidget {
+  const _StyleCard({required this.style, required this.selected});
+  final ArtStyle style;
+  final bool selected;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      width: 84,
+      height: 74,
+      decoration: BoxDecoration(
+        color: const Color(0xFF1E1E1E),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: selected ? theme.colorScheme.primary : const Color(0xFF4A4A4A),
+          width: selected ? 2 : 1,
+        ),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: _content(),
+    );
+  }
+
+  Widget _content() {
+    if (style == ArtStyle.noStyle) {
+      return Center(
+        // child: SvgPicture.asset(AppIcons.homeBgStyleNo, width: 24, height: 24),
+        child: SvgPicture.asset(AppIcons.homeBgStyleNo, width: 84, height: 74),
+      );
+    }
+    return Image.network(
+      _thumb(_styleSeed(style)),
+      fit: BoxFit.cover,
+      loadingBuilder: (context, child, progress) =>
+          progress == null ? child : const SizedBox.shrink(),
+      errorBuilder: (context, _, __) => const SizedBox.shrink(),
+    );
+  }
+
+  String _thumb(String seed) {
+    return 'https://picsum.photos/seed/$seed/168/148';
+  }
+}
+
+String _styleSeed(ArtStyle style) {
+  switch (style) {
+    case ArtStyle.noStyle:
+      return 'no-style';
+    case ArtStyle.cuteCartoon:
+      return 'cute-cartoon';
+    case ArtStyle.ancientStyle:
+      return 'ancient';
+    case ArtStyle.graffiti:
+      return 'graffiti';
+    case ArtStyle.popArt:
+      return 'pop-art';
+    case ArtStyle.vividRealism:
+      return 'realism';
+    case ArtStyle.color:
+      return 'colorful';
+    case ArtStyle.eighties:
+      return '80s';
+    case ArtStyle.showa:
+      return 'showa';
+    case ArtStyle.model3D:
+      return '3d-model';
+    case ArtStyle.photoPhotography:
+      return 'photo';
+    case ArtStyle.japaneseAnime:
+      return 'anime';
+    case ArtStyle.tattoo:
+      return 'tattoo';
+    case ArtStyle.retroArcade:
+      return 'arcade';
+    case ArtStyle.blackWhite:
+      return 'bw';
+    case ArtStyle.pixar:
+      return 'pixar';
+    case ArtStyle.cyberpunk:
+      return 'cyberpunk';
+    case ArtStyle.lineArt:
+      return 'line-art';
+    case ArtStyle.watercolor:
+      return 'watercolor';
   }
 }

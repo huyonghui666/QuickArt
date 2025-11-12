@@ -8,7 +8,6 @@ import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/bottom_navigation.dart';
 import 'package:quick_art/src/shared/assets/app_icons.dart';
 
-
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
@@ -25,7 +24,7 @@ class HomeScreen extends ConsumerWidget {
           children: [
             // 顶部标题栏
             _buildHeader(context),
-            
+
             // 主要内容区域
             Expanded(
               child: SingleChildScrollView(
@@ -36,19 +35,19 @@ class HomeScreen extends ConsumerWidget {
                     // 提示词输入区域
                     _buildPromptSection(context, ref),
                     const SizedBox(height: 24),
-                    
+
                     // 切换选项和数量选择
                     _buildOptionsSection(context, ref),
                     const SizedBox(height: 24),
-                    
+
                     // 艺术风格选择
                     const ArtStyleSelector(),
                     const SizedBox(height: 24),
-                    
+
                     // 动漫风格选择
                     _buildAnimeStyleSection(context),
                     const SizedBox(height: 32),
-                    
+
                     // 绘制按钮
                     _buildDrawButton(context),
                     const SizedBox(height: 20),
@@ -69,23 +68,12 @@ class HomeScreen extends ConsumerWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SvgPicture.asset(
-            AppIcons.homeTitle,
-            height: 50,
-          ),
+          SvgPicture.asset(AppIcons.homeTitle, height: 50),
           Row(
             children: [
-              SvgPicture.asset(
-                AppIcons.homeVip,
-                width: 20,
-                height: 20,
-              ),
+              SvgPicture.asset(AppIcons.homeVip, width: 20, height: 20),
               const SizedBox(width: 16),
-              SvgPicture.asset(
-                AppIcons.homeSettings,
-                width: 24,
-                height: 24,
-              ),
+              SvgPicture.asset(AppIcons.homeSettings, width: 24, height: 24),
             ],
           ),
         ],
@@ -97,14 +85,13 @@ class HomeScreen extends ConsumerWidget {
     final promptState = ref.watch(promptProvider);
 
     return Container(
-      padding: const EdgeInsets.all(1.5), // This padding creates the border effect
+      padding: const EdgeInsets.all(
+        1.5,
+      ), // This padding creates the border effect
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
         gradient: const LinearGradient(
-          colors: [
-            Colors.purpleAccent,
-            Colors.blueAccent,
-          ],
+          colors: [Colors.purpleAccent, Colors.blueAccent],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -139,32 +126,30 @@ class HomeScreen extends ConsumerWidget {
               ),
             if (promptState.text.isNotEmpty)
               Positioned(
-                bottom: 8,
-                right: 12,
+                bottom: 12,
+                right: 16,
                 child: Row(
                   children: [
                     SvgPicture.asset(
                       'assets/icons/svg/Home/prompt_btn_back.svg',
-                      width: 24,
-                      height: 24,
-                      color: Colors.grey[600],
+                      width: 20,
+                      height: 20,
                     ),
-                    const SizedBox(width: 8),
+                    const SizedBox(width: 15),
                     SvgPicture.asset(
-                      'assets/icons/svg/Home/prompt_btn_next.svg',
-                      width: 24,
-                      height: 24,
-                      color: Colors.grey[600],
+                      'assets/icons/svg/Home/prompt_btn_next_unable.svg',
+                      width: 20,
+                      height: 20,
                     ),
-                    const SizedBox(width: 8),
+                    const SizedBox(width: 15),
                     GestureDetector(
                       onTap: () {
                         ref.read(promptProvider.notifier).clear();
                       },
                       child: SvgPicture.asset(
                         'assets/icons/svg/Home/prompt_btn_del.svg',
-                        width: 24,
-                        height: 24,
+                        width: 20,
+                        height: 20,
                       ),
                     ),
                   ],
@@ -187,7 +172,7 @@ class HomeScreen extends ConsumerWidget {
           Icons.image,
         ),
         const SizedBox(width: 12),
-        
+
         // Ref Image 按钮
         _buildToggleButton(
           context,
@@ -196,7 +181,7 @@ class HomeScreen extends ConsumerWidget {
           Icons.photo_library,
         ),
         const SizedBox(width: 12),
-        
+
         // // Count 按钮
         // Container(
         //   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -232,7 +217,7 @@ class HomeScreen extends ConsumerWidget {
   ) {
     final isSelected = ref.watch(toggleOptionProvider) == option;
     final theme = Theme.of(context);
-    
+
     return GestureDetector(
       onTap: () {
         ref.read(toggleOptionProvider.notifier).state = option;
@@ -240,7 +225,9 @@ class HomeScreen extends ConsumerWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
-          color: isSelected ? theme.colorScheme.primary.withValues(alpha: 0.2) : Colors.grey[800],
+          color: isSelected
+              ? theme.colorScheme.primary.withValues(alpha: 0.2)
+              : Colors.grey[800],
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: isSelected ? theme.colorScheme.primary : Colors.grey[600]!,
@@ -272,9 +259,7 @@ class HomeScreen extends ConsumerWidget {
   Widget _buildAnimeStyleSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const AnimeStyleSelector(),
-      ],
+      children: [const AnimeStyleSelector()],
     );
   }
 
@@ -294,9 +279,9 @@ class HomeScreen extends ConsumerWidget {
         child: ElevatedButton(
           onPressed: () {
             // TODO: 实现绘制功能
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('开始绘制...')),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(const SnackBar(content: Text('开始绘制...')));
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.transparent,

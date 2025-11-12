@@ -8,7 +8,4 @@ class AppIcons {
   static const String homeTitle = '$_svgBasePath/Home/home_ic_title.svg';
   static const String homeVip = '$_svgBasePath/Home/home_ic_vip.svg';
   static const String homeSettings = '$_svgBasePath/Home/btn_home_settings.svg';
-
-
-
 }

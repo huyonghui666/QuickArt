@@ -104,12 +104,12 @@ class HomeScreen extends ConsumerWidget {
               controller: promptState.controller,
               maxLines: 4,
               maxLength: 500,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white,fontSize: 13),
               decoration: InputDecoration(
                 filled: true,
                 fillColor: const Color(0xFF1A1A1A),
                 hintText: '输入你的提示词, 可以是任何你想创造的东西',
-                hintStyle: TextStyle(color: Colors.grey[500]),
+                hintStyle: TextStyle(color: Colors.grey[500],fontSize: 13),
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.fromLTRB(16, 16, 16, 40),
                 counterText: '', // Hide the default counter
@@ -131,13 +131,13 @@ class HomeScreen extends ConsumerWidget {
                 child: Row(
                   children: [
                     SvgPicture.asset(
-                      'assets/icons/svg/Home/prompt_btn_back.svg',
+                      AppIcons.promptBack,
                       width: 20,
                       height: 20,
                     ),
                     const SizedBox(width: 15),
                     SvgPicture.asset(
-                      'assets/icons/svg/Home/prompt_btn_next_unable.svg',
+                      AppIcons.promptNextUnable,
                       width: 20,
                       height: 20,
                     ),
@@ -147,7 +147,7 @@ class HomeScreen extends ConsumerWidget {
                         ref.read(promptProvider.notifier).clear();
                       },
                       child: SvgPicture.asset(
-                        'assets/icons/svg/Home/prompt_btn_del.svg',
+                        AppIcons.promptDelete,
                         width: 20,
                         height: 20,
                       ),

@@ -93,60 +93,49 @@ class _StyleCard extends StatelessWidget {
         child: SvgPicture.asset(AppIcons.homeBgStyleNo, width: 84, height: 74),
       );
     }
-    return Image.asset('assets/images/art_styles/', fit: BoxFit.cover);
-    // return Image.network(
-    //   _thumb(_styleSeed(style)),
-    //   fit: BoxFit.cover,
-    //   loadingBuilder: (context, child, progress) =>
-    //       progress == null ? child : const SizedBox.shrink(),
-    //   errorBuilder: (context, _, __) => const SizedBox.shrink(),
-    // );
-  }
-
-  String _thumb(String seed) {
-    return 'https://picsum.photos/seed/$seed/168/148';
+    return Image.asset(_assetForStyle(style), fit: BoxFit.cover);
   }
 }
 
-String _styleSeed(ArtStyle style) {
+String _assetForStyle(ArtStyle style) {
   switch (style) {
     case ArtStyle.noStyle:
-      return 'no-style';
+      return '';
     case ArtStyle.cuteCartoon:
-      return 'cute-cartoon';
+      return 'assets/images/art_styles/cute_cartoon.webp';
     case ArtStyle.ancientStyle:
-      return 'ancient';
+      return 'assets/images/art_styles/antique.webp';
     case ArtStyle.graffiti:
-      return 'graffiti';
+      return 'assets/images/art_styles/graffiti.webp';
     case ArtStyle.popArt:
-      return 'pop-art';
+      return 'assets/images/art_styles/pop.webp';
     case ArtStyle.vividRealism:
-      return 'realism';
+      return 'assets/images/art_styles/gorgeous_realism.webp';
     case ArtStyle.color:
-      return 'colorful';
+      return 'assets/images/art_styles/color.webp';
     case ArtStyle.eighties:
-      return '80s';
+      return 'assets/images/art_styles/80s.webp';
     case ArtStyle.showa:
-      return 'showa';
+      return 'assets/images/art_styles/showa_style.webp';
     case ArtStyle.model3D:
-      return '3d-model';
+      return 'assets/images/art_styles/3d_model.webp';
     case ArtStyle.photoPhotography:
-      return 'photo';
+      return 'assets/images/art_styles/photography.webp';
     case ArtStyle.japaneseAnime:
-      return 'anime';
+      return 'assets/images/art_styles/japanese_anime.webp';
     case ArtStyle.tattoo:
-      return 'tattoo';
+      return 'assets/images/art_styles/tattoo.webp';
     case ArtStyle.retroArcade:
-      return 'arcade';
+      return 'assets/images/art_styles/retro_arcade.webp';
     case ArtStyle.blackWhite:
-      return 'bw';
+      return 'assets/images/art_styles/black_white.webp';
     case ArtStyle.pixar:
-      return 'pixar';
+      return 'assets/images/art_styles/pixar.webp';
     case ArtStyle.cyberpunk:
-      return 'cyberpunk';
+      return 'assets/images/art_styles/cyberpunk.webp';
     case ArtStyle.lineArt:
-      return 'line-art';
+      return 'assets/images/art_styles/line.webp';
     case ArtStyle.watercolor:
-      return 'watercolor';
+      return 'assets/images/art_styles/watercolor.webp';
   }
 }

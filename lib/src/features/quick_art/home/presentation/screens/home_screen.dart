@@ -5,6 +5,7 @@ import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/app
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/prompt_provider.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/anime_style_selector.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/art_style_selector.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/art_style_notifier.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/bottom_navigation.dart';
 import 'package:quick_art/src/shared/assets/app_icons.dart';
 
@@ -32,10 +33,6 @@ class HomeScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // // 艺术风格选择
-                    // const ArtStyleSelector(),
-                    // const SizedBox(height: 24),
-
                     // 动漫风格选择
                     _buildAnimeStyleSection(context),
                     const SizedBox(height: 32),
@@ -55,11 +52,12 @@ class HomeScreen extends ConsumerWidget {
   }
 
   Widget _buildTopSection(BuildContext context, WidgetRef ref) {
+    final selectedStyle = ref.watch(artStyleProvider);
     return Stack(
       children: [
         Positioned.fill(
           child: Image.asset(
-            'assets/images/bg/photography.webp',
+            selectedStyle.backgroundAsset,
             fit: BoxFit.cover,
             alignment: Alignment.topCenter,
           ),
@@ -103,7 +101,7 @@ class HomeScreen extends ConsumerWidget {
 
   Widget _buildHeader(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 1),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -146,7 +144,6 @@ class HomeScreen extends ConsumerWidget {
               style: const TextStyle(color: Colors.white, fontSize: 13),
               decoration: InputDecoration(
                 filled: true,
-                //fillColor: const Color(0xFF1A1A1A).withOpacity(0.5),
                 fillColor: const Color(0xFF1A1A1A),
                 hintText: '输入你的提示词, 可以是任何你想创造的东西',
                 hintStyle: TextStyle(color: Colors.grey[500], fontSize: 13),

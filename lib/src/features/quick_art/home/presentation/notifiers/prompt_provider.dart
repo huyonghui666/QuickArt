@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// 提示词文本域
 class PromptState {
   PromptState({required this.controller, this.text = ''});
 

@@ -93,49 +93,8 @@ class _StyleCard extends StatelessWidget {
         child: SvgPicture.asset(AppIcons.homeBgStyleNo, width: 84, height: 74),
       );
     }
-    return Image.asset(_assetForStyle(style), fit: BoxFit.cover);
+    return Image.asset(style.thumbnailAsset, fit: BoxFit.cover);
   }
 }
 
-String _assetForStyle(ArtStyle style) {
-  switch (style) {
-    case ArtStyle.noStyle:
-      return '';
-    case ArtStyle.cuteCartoon:
-      return 'assets/images/art_styles/cute_cartoon.webp';
-    case ArtStyle.ancientStyle:
-      return 'assets/images/art_styles/antique.webp';
-    case ArtStyle.graffiti:
-      return 'assets/images/art_styles/graffiti.webp';
-    case ArtStyle.popArt:
-      return 'assets/images/art_styles/pop.webp';
-    case ArtStyle.vividRealism:
-      return 'assets/images/art_styles/gorgeous_realism.webp';
-    case ArtStyle.color:
-      return 'assets/images/art_styles/color.webp';
-    case ArtStyle.eighties:
-      return 'assets/images/art_styles/80s.webp';
-    case ArtStyle.showa:
-      return 'assets/images/art_styles/showa_style.webp';
-    case ArtStyle.model3D:
-      return 'assets/images/art_styles/3d_model.webp';
-    case ArtStyle.photoPhotography:
-      return 'assets/images/art_styles/photography.webp';
-    case ArtStyle.japaneseAnime:
-      return 'assets/images/art_styles/japanese_anime.webp';
-    case ArtStyle.tattoo:
-      return 'assets/images/art_styles/tattoo.webp';
-    case ArtStyle.retroArcade:
-      return 'assets/images/art_styles/retro_arcade.webp';
-    case ArtStyle.blackWhite:
-      return 'assets/images/art_styles/black_white.webp';
-    case ArtStyle.pixar:
-      return 'assets/images/art_styles/pixar.webp';
-    case ArtStyle.cyberpunk:
-      return 'assets/images/art_styles/cyberpunk.webp';
-    case ArtStyle.lineArt:
-      return 'assets/images/art_styles/line.webp';
-    case ArtStyle.watercolor:
-      return 'assets/images/art_styles/watercolor.webp';
-  }
-}
+

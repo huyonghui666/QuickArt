@@ -211,53 +211,6 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildToggleButton(
-    BuildContext context,
-    WidgetRef ref,
-    ToggleOption option,
-    IconData icon,
-  ) {
-    final isSelected = ref.watch(toggleOptionProvider) == option;
-    final theme = Theme.of(context);
-
-    return GestureDetector(
-      onTap: () {
-        ref.read(toggleOptionProvider.notifier).state = option;
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? theme.colorScheme.primary.withValues(alpha: 0.2)
-              : Colors.grey[800],
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: isSelected ? theme.colorScheme.primary : Colors.grey[600]!,
-            width: isSelected ? 2 : 1,
-          ),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              icon,
-              color: isSelected ? theme.colorScheme.primary : Colors.white70,
-              size: 16,
-            ),
-            const SizedBox(width: 8),
-            Text(
-              option.label,
-              style: TextStyle(
-                color: isSelected ? theme.colorScheme.primary : Colors.white70,
-                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget _buildAnimeStyleSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

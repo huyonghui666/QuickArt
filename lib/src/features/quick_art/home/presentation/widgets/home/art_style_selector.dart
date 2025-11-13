@@ -90,17 +90,17 @@ class _StyleCard extends StatelessWidget {
   Widget _content() {
     if (style == ArtStyle.noStyle) {
       return Center(
-        // child: SvgPicture.asset(AppIcons.homeBgStyleNo, width: 24, height: 24),
         child: SvgPicture.asset(AppIcons.homeBgStyleNo, width: 84, height: 74),
       );
     }
-    return Image.network(
-      _thumb(_styleSeed(style)),
-      fit: BoxFit.cover,
-      loadingBuilder: (context, child, progress) =>
-          progress == null ? child : const SizedBox.shrink(),
-      errorBuilder: (context, _, __) => const SizedBox.shrink(),
-    );
+    return Image.asset('assets/images/art_styles/', fit: BoxFit.cover);
+    // return Image.network(
+    //   _thumb(_styleSeed(style)),
+    //   fit: BoxFit.cover,
+    //   loadingBuilder: (context, child, progress) =>
+    //       progress == null ? child : const SizedBox.shrink(),
+    //   errorBuilder: (context, _, __) => const SizedBox.shrink(),
+    // );
   }
 
   String _thumb(String seed) {

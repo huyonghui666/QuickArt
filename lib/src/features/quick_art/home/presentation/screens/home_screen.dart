@@ -20,10 +20,10 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
+        top: false,
         child: Column(
           children: [
-            // 顶部标题栏
-            _buildHeader(context),
+            _buildTopSection(context, ref),
 
             // 主要内容区域
             Expanded(
@@ -32,17 +32,9 @@ class HomeScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // 提示词输入区域
-                    _buildPromptSection(context, ref),
-                    const SizedBox(height: 12),
-
-                    //切换选项、数量选择、历史等
-                    _buildOptionsSection(context),
-                    const SizedBox(height: 24),
-
-                    // 艺术风格选择
-                    const ArtStyleSelector(),
-                    const SizedBox(height: 24),
+                    // // 艺术风格选择
+                    // const ArtStyleSelector(),
+                    // const SizedBox(height: 24),
 
                     // 动漫风格选择
                     _buildAnimeStyleSection(context),
@@ -59,6 +51,53 @@ class HomeScreen extends ConsumerWidget {
         ),
       ),
       bottomNavigationBar: const CustomBottomNavigation(),
+    );
+  }
+
+  Widget _buildTopSection(BuildContext context, WidgetRef ref) {
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: Image.asset(
+            'assets/images/bg/photography.webp',
+            fit: BoxFit.cover,
+            alignment: Alignment.topCenter,
+          ),
+        ),
+        Positioned.fill(
+          child: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Colors.transparent, Colors.black],
+              ),
+            ),
+          ),
+        ),
+        Column(
+          children: [
+            SizedBox(height: MediaQuery.of(context).padding.top),
+            _buildHeader(context),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 12),
+                  _buildPromptSection(context, ref),
+                  const SizedBox(height: 12),
+                  _buildOptionsSection(context),
+                  const SizedBox(height: 12),
+                  // 艺术风格选择
+                  const ArtStyleSelector(),
+                  const SizedBox(height: 12),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 
@@ -107,6 +146,7 @@ class HomeScreen extends ConsumerWidget {
               style: const TextStyle(color: Colors.white, fontSize: 13),
               decoration: InputDecoration(
                 filled: true,
+                //fillColor: const Color(0xFF1A1A1A).withOpacity(0.5),
                 fillColor: const Color(0xFF1A1A1A),
                 hintText: '输入你的提示词, 可以是任何你想创造的东西',
                 hintStyle: TextStyle(color: Colors.grey[500], fontSize: 13),

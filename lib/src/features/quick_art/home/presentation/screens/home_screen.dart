@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:quick_art/src/shared/assets/app_icons.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/prompt_provider.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/art_style_selector.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/art_style_notifier.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/bottom_navigation.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/inspiration_section.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/sliver_persistent_header_delegate.dart';
-import 'package:quick_art/src/shared/assets/app_icons.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -18,27 +18,37 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
-        top: false,
-        child: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(child: _buildTopSection(context, ref)),
-            SliverPersistentHeader(
-              delegate: InspirationTabHeaderDelegate(statusBarHeight: statusBarHeight),
-              pinned: true,
-            ),
-            const SliverPadding(
-              padding: EdgeInsets.all(20),
-              sliver: InspirationGrid(),
-            ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: _buildDrawButton(context),
+      top: false,
+      child: Stack(
+        children: [
+          CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(child: _buildTopSection(context, ref)),
+              SliverPersistentHeader(
+                delegate: InspirationTabHeaderDelegate(
+                    statusBarHeight: statusBarHeight),
+                pinned: true,
               ),
+              const SliverPadding(
+                padding: EdgeInsets.all(20),
+                sliver: InspirationGrid(),
+              ),
+              const SliverToBoxAdapter(
+                child: SizedBox(height: 76.0),
+              ),
+            ],
+          ),
+          Positioned(
+            bottom: 20,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: _buildDrawButton(context),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
+    ),
       bottomNavigationBar: const CustomBottomNavigation(),
     );
   }
@@ -242,62 +252,32 @@ class HomeScreen extends ConsumerWidget {
 
 
   Widget _buildDrawButton(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 56,
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.purple.shade600, Colors.pink.shade400],
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-          ),
-          borderRadius: BorderRadius.circular(28),
-        ),
-        child: ElevatedButton(
-          onPressed: () {
-            // TODO: 实现绘制功能
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(const SnackBar(content: Text('开始绘制...')));
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            shadowColor: Colors.transparent,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(28),
+    return GestureDetector(
+      onTap: () {
+        // TODO: 实现绘制功能
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('开始绘制...')),
+        );
+      },
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.75,
+        height: 56,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            SvgPicture.asset(
+              AppIcons.homeBtnStartUnable,
+              fit: BoxFit.cover,
             ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'DRAW',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.2,
-                ),
+            const Text(
+              '绘制',
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(width: 8),
-              Container(
-                padding: const EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  color: Colors.black26,
-                  shape: BoxShape.circle,
-                ),
-                child: const Text(
-                  '1',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

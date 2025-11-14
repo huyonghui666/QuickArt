@@ -9,6 +9,10 @@ final inspirationCategoriesProvider = Provider<List<InspirationCategoryModel>>((
         InspirationCardModel(imageUrl: 'https://picsum.photos/seed/2/400/600'),
         InspirationCardModel(imageUrl: 'https://picsum.photos/seed/3/400/600'),
         InspirationCardModel(imageUrl: 'https://picsum.photos/seed/4/400/600'),
+        InspirationCardModel(imageUrl: 'https://picsum.photos/seed/28/400/600'),
+        InspirationCardModel(imageUrl: 'https://picsum.photos/seed/29/400/600'),
+        InspirationCardModel(imageUrl: 'https://picsum.photos/seed/30/400/600'),
+        InspirationCardModel(imageUrl: 'https://picsum.photos/seed/31/400/600'),
       ],
     ),
     const InspirationCategoryModel(
@@ -80,6 +84,7 @@ final inspirationCategoriesProvider = Provider<List<InspirationCategoryModel>>((
 //分类0对应‘新’分类，其他依次
 final selectedInspirationTabIndexProvider = StateProvider<int>((ref) => 0);
 
+//目前灵感选择的卡片状态
 final currentInspirationCardsProvider = Provider<List<InspirationCardModel>>((ref) {
   final categories = ref.watch(inspirationCategoriesProvider);
   final selectedIndex = ref.watch(selectedInspirationTabIndexProvider);

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/app_state_notifier.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/prompt_provider.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/art_style_selector.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/art_style_notifier.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/bottom_navigation.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/inspiration_section.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/sliver_persistent_header_delegate.dart';
 import 'package:quick_art/src/shared/assets/app_icons.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -14,34 +14,26 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final imageCount = ref.watch(imageCountProvider);
-    final toggleOption = ref.watch(toggleOptionProvider);
-    final theme = Theme.of(context);
-
+    final statusBarHeight = MediaQuery.of(context).padding.top;
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
         top: false,
-        child: Column(
-          children: [
-            _buildTopSection(context, ref),
-
-            // 主要内容区域
-            Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // 灵感板块
-                    const InspirationSection(),
-                    const SizedBox(height: 32),
-
-                    // 绘制按钮
-                    _buildDrawButton(context),
-                    const SizedBox(height: 20),
-                  ],
-                ),
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(child: _buildTopSection(context, ref)),
+            SliverPersistentHeader(
+              delegate: InspirationTabHeaderDelegate(statusBarHeight: statusBarHeight),
+              pinned: true,
+            ),
+            const SliverPadding(
+              padding: EdgeInsets.all(20),
+              sliver: InspirationGrid(),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: _buildDrawButton(context),
               ),
             ),
           ],
@@ -101,7 +93,7 @@ class HomeScreen extends ConsumerWidget {
 
   Widget _buildHeader(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 1),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 1),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -247,6 +239,7 @@ class HomeScreen extends ConsumerWidget {
       ),
     );
   }
+
 
   Widget _buildDrawButton(BuildContext context) {
     return SizedBox(

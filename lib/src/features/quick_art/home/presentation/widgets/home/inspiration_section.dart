@@ -2,30 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/inspiration_provider.dart';
 
-class InspirationSection extends ConsumerWidget {
-  const InspirationSection({super.key});
+class InspirationTabBar extends ConsumerWidget {
+  const InspirationTabBar({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final categories = ref.watch(inspirationCategoriesProvider);
     final selectedIndex = ref.watch(selectedInspirationTabIndexProvider);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildTabBar(context, ref, categories, selectedIndex),
-        const SizedBox(height: 20),
-        _buildImageGrid(context, ref),
-      ],
-    );
-  }
-
-  Widget _buildTabBar(
-    BuildContext context,
-    WidgetRef ref,
-    List<InspirationCategoryModel> categories,
-    int selectedIndex,
-  ) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -34,7 +18,8 @@ class InspirationSection extends ConsumerWidget {
           final isSelected = index == selectedIndex;
           return GestureDetector(
             onTap: () {
-              ref.read(selectedInspirationTabIndexProvider.notifier).state = index;
+              ref.read(selectedInspirationTabIndexProvider.notifier).state =
+                  index;
             },
             child: Container(
               margin: const EdgeInsets.only(right: 16),
@@ -52,24 +37,26 @@ class InspirationSection extends ConsumerWidget {
       ),
     );
   }
+}
 
-  Widget _buildImageGrid(BuildContext context, WidgetRef ref) {
+class InspirationGrid extends ConsumerWidget {
+  const InspirationGrid({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     final cards = ref.watch(currentInspirationCardsProvider);
 
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: cards.length,
+    return SliverGrid(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 16,
         mainAxisSpacing: 16,
-        childAspectRatio: 0.75, // 调整宽高比以适应图片
+        childAspectRatio: 0.75,
       ),
-      itemBuilder: (context, index) {
+      delegate: SliverChildBuilderDelegate((context, index) {
         final card = cards[index];
         return InspirationCard(card: card);
-      },
+      }, childCount: cards.length),
     );
   }
 }
@@ -86,10 +73,7 @@ class InspirationCard extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          Image.network(
-            card.imageUrl,
-            fit: BoxFit.cover,
-          ),
+          Image.network(card.imageUrl, fit: BoxFit.cover),
           Positioned(
             bottom: 8,
             right: 8,

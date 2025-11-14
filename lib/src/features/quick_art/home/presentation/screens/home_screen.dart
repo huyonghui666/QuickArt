@@ -114,7 +114,6 @@ class HomeScreen extends ConsumerWidget {
               SvgPicture.asset(AppIcons.homeVip, width: 20, height: 20),
               const SizedBox(width: 16),
               GestureDetector(
-                // onTap: () => context.go('/setting'),
                 onTap: () => context.push('/setting'),
                 child: SvgPicture.asset(AppIcons.homeSettings, width: 24, height: 24),
               ),

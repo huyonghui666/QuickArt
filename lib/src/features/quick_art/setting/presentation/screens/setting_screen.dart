@@ -15,7 +15,6 @@ class SettingScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: SvgPicture.asset(AppIcons.settingNavBack, width: 24, height: 24),
-          // onPressed: () => context.go('/'),
           onPressed: () => context.pop(),
         ),
         title: const Text(
@@ -27,14 +26,23 @@ class SettingScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          _buildSettingItem(icon: AppIcons.settingDiscord, text: '加入 Discord'),
-          _buildSettingItem(icon: AppIcons.settingLanguage, text: '选择语言'),
-          _buildSettingItem(icon: AppIcons.settingRateUs, text: '给我们评分'),
-          _buildSettingItem(icon: AppIcons.settingPolicy, text: '隐私协议'),
-          _buildSettingItem(icon: AppIcons.settingTerms, text: '服务条款'),
-          _buildSettingItem(icon: AppIcons.settingMember, text: '会员支持中心'),
-          _buildSocialMediaItem(),
-          _buildVersionItem(),
+          Material(
+            color: const Color(0xFF1C1C1E),
+            borderRadius: BorderRadius.circular(16),
+            clipBehavior: Clip.antiAlias,
+            child: Column(
+              children: [
+                _buildSettingItem(icon: AppIcons.settingDiscord, text: '加入 Discord'),
+                _buildSettingItem(icon: AppIcons.settingLanguage, text: '选择语言'),
+                _buildSettingItem(icon: AppIcons.settingRateUs, text: '给我们评分'),
+                _buildSettingItem(icon: AppIcons.settingPolicy, text: '隐私协议'),
+                _buildSettingItem(icon: AppIcons.settingTerms, text: '服务条款'),
+                _buildSettingItem(icon: AppIcons.settingMember, text: '会员支持中心'),
+                _buildSocialMediaItem(),
+                _buildVersionItem(),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -43,10 +51,10 @@ class SettingScreen extends StatelessWidget {
   Widget _buildSettingItem({required String icon, required String text}) {
     return ListTile(
       leading: SvgPicture.asset(icon, width: 24, height: 24),
-      title: Text(text, style: const TextStyle(color: Colors.white, fontSize: 16)),
-      trailing: SvgPicture.asset(AppIcons.settingRatioNext, width: 24, height: 24),
+      title: Text(text, style: const TextStyle(color: Colors.white, fontSize: 14)),
+      trailing: SvgPicture.asset(AppIcons.settingRatioNext, width: 20, height: 20),
       onTap: () {
-        // 暂时不实现点击功能
+        //TODO 暂时不实现点击功能
       },
     );
   }
@@ -54,13 +62,28 @@ class SettingScreen extends StatelessWidget {
   Widget _buildSocialMediaItem() {
     return ListTile(
       leading: SvgPicture.asset(AppIcons.settingFollowUs, width: 24, height: 24),
-      title: const Text('社媒', style: TextStyle(color: Colors.white, fontSize: 16)),
+      title: const Text('社媒', style: TextStyle(color: Colors.white, fontSize: 14)),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          IconButton(icon: SvgPicture.asset(AppIcons.settingTT), onPressed: () {}),
-          IconButton(icon: SvgPicture.asset(AppIcons.settingFB), onPressed: () {}),
-          IconButton(icon: SvgPicture.asset(AppIcons.settingIns), onPressed: () {}),
+          IconButton(
+            icon: SvgPicture.asset(AppIcons.settingTT, width: 20, height: 20),
+            onPressed: () {},
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            constraints: const BoxConstraints(),
+          ),
+          IconButton(
+            icon: SvgPicture.asset(AppIcons.settingFB, width: 20, height: 20),
+            onPressed: () {},
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            constraints: const BoxConstraints(),
+          ),
+          IconButton(
+            icon: SvgPicture.asset(AppIcons.settingIns, width: 20, height: 20),
+            onPressed: () {},
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            constraints: const BoxConstraints(),
+          ),
         ],
       ),
     );
@@ -70,7 +93,7 @@ class SettingScreen extends StatelessWidget {
     return ListTile(
       leading: SvgPicture.asset(AppIcons.settingVersion, width: 24, height: 24),
       title: const Text('版本号:', style: TextStyle(color: Colors.white, fontSize: 16)),
-      trailing: const Text('2.3.1.1', style: TextStyle(color: Colors.grey, fontSize: 16)),
+      trailing: const Text('2.3.1.1', style: TextStyle(color: Colors.grey, fontSize: 14)),
     );
   }
 }

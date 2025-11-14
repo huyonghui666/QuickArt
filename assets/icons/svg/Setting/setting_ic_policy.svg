@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>setting_ic_policy@2x</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="60" height="60"></rect>
+    </defs>
+    <g id="设计稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="设置界面" transform="translate(-108.000000, -843.000000)">
+            <g id="编组-3" transform="translate(48.000000, 306.000000)">
+                <g id="编组-2备份" transform="translate(0.000000, 486.000000)">
+                    <g id="setting_ic_policy" transform="translate(60.000000, 51.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="矩形"></g>
+                        <g id="ic/设置/语言" mask="url(#mask-2)">
+                            <g transform="translate(8.571429, 9.488123)" id="编组">
+                                <rect id="矩形" stroke="#ECECEC" stroke-width="4.32" x="2.16" y="14.1004488" width="38.5371429" height="29.9657143" rx="8.64"></rect>
+                                <path d="M32.4018481,14.6328497 C32.6982226,13.6161853 32.8571429,12.5409373 32.8571429,11.4285714 C32.8571429,5.11674572 27.7403971,0 21.4285714,0 C15.1167457,0 10,5.11674572 10,11.4285714 C10,12.5534384 10.1625123,13.6403487 10.4653391,14.6671044" id="路径" stroke="#ECECEC" stroke-width="4.32"></path>
+                                <rect id="矩形" fill="#ECECEC" x="18.5714286" y="21.9404488" width="5.71428571" height="12.8571429" rx="2.85714286"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

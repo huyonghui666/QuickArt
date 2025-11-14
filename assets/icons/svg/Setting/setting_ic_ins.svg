@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>setting_ic_ins@2x</title>
+    <g id="设计稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="设置界面" transform="translate(-924.000000, -1329.000000)" fill-rule="nonzero">
+            <g id="编组-3" transform="translate(48.000000, 306.000000)">
+                <g id="编组-2备份-4" transform="translate(0.000000, 972.000000)">
+                    <g id="setting_ic_ins" transform="translate(876.000000, 51.000000)">
+                        <rect id="矩形" fill="#ECECEC" x="0" y="0" width="60" height="60" rx="18"></rect>
+                        <path d="M30,12 C20.3076923,12 12,19.8461538 12,30 C12,39.6923077 19.8461538,48 30,48 C39.6923077,48 48,40.1538462 48,30 C48,20.3076923 39.6923077,12 30,12 Z M30,41 C23.8399999,41 19,36.16 19,30 C19,23.84 23.84,19 30,19 C36.16,19 41,23.84 41,30 C41,36.16 36.16,41 30,41 Z" id="形状备份" fill="#252231"></path>
+                        <path d="M48.9782373,8 C46.7439246,8 44.9564744,9.77777778 44.9564744,12 C44.9564744,14.2222221 46.7439246,16 48.9782373,16 C51.21255,16 53,14.2222222 53,12 C53,9.77777766 51.2125499,8 48.9782373,8 Z" id="路径" fill="#252231"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

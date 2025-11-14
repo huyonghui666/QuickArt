@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quick_art/src/shared/assets/app_icons.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/prompt_provider.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/art_style_selector.dart';
@@ -112,7 +113,11 @@ class HomeScreen extends ConsumerWidget {
             children: [
               SvgPicture.asset(AppIcons.homeVip, width: 20, height: 20),
               const SizedBox(width: 16),
-              SvgPicture.asset(AppIcons.homeSettings, width: 24, height: 24),
+              GestureDetector(
+                // onTap: () => context.go('/setting'),
+                onTap: () => context.push('/setting'),
+                child: SvgPicture.asset(AppIcons.homeSettings, width: 24, height: 24),
+              ),
             ],
           ),
         ],

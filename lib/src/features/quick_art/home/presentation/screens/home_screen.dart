@@ -18,20 +18,20 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
-      top: false,
+        top: false,
       child: Stack(
         children: [
           CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(child: _buildTopSection(context, ref)),
-              SliverPersistentHeader(
-                delegate: InspirationTabHeaderDelegate(
-                    statusBarHeight: statusBarHeight),
-                pinned: true,
-              ),
-              const SliverPadding(
-                padding: EdgeInsets.all(20),
-                sliver: InspirationGrid(),
+          slivers: [
+            SliverToBoxAdapter(child: _buildTopSection(context, ref)),
+            SliverPersistentHeader(
+              delegate: InspirationTabHeaderDelegate(
+                  statusBarHeight: statusBarHeight),
+              pinned: true,
+            ),
+            const SliverPadding(
+              padding: EdgeInsets.all(20),
+              sliver: InspirationGrid(),
               ),
               const SliverToBoxAdapter(
                 child: SizedBox(height: 76.0),
@@ -45,10 +45,10 @@ class HomeScreen extends ConsumerWidget {
             child: Center(
               child: _buildDrawButton(context),
             ),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
-    ),
       bottomNavigationBar: const CustomBottomNavigation(),
     );
   }

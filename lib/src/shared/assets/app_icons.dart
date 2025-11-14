@@ -29,4 +29,18 @@ class AppIcons {
   //绘制按钮
   static const String homeBtnStartUnable =
       '$_svgBasePath/Home/home_btn_start_unable.svg';
+
+  //底部导航栏icon
+  static const String navQuickArt = '$_svgBasePath/Home/home_nav_quickart.svg';
+  static const String navQuickArtPress =
+      '$_svgBasePath/Home/home_nav_quickart_press.svg';
+  static const String navExplore = '$_svgBasePath/Home/home_nav_explore.svg';
+  static const String navExplorePress =
+      '$_svgBasePath/Home/home_nav_explore_press.svg';
+  static const String navTools = '$_svgBasePath/Home/home_nav_tools.svg';
+  static const String navToolsPress =
+      '$_svgBasePath/Home/home_nav_tools_press.svg';
+  static const String navStudio = '$_svgBasePath/Home/home_nav_studio.svg';
+  static const String navStudioPress =
+      '$_svgBasePath/Home/home_nav_studio_press.svg';
 }

@@ -3,9 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 enum NavigationTab {
   quickart(0, 'QUICKART'),
   explore(1, 'EXPLORE'),
-  ai(2, 'AI'),
-  aiTools(3, 'AI TOOLS'),
-  studio(4, 'STUDIO');
+  aiTools(2, 'AI TOOLS'),
+  studio(3, 'STUDIO');
 
   const NavigationTab(this.tabIndex, this.label);
   final int tabIndex;

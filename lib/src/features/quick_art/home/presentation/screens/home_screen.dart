@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/app_state_notifier.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/prompt_provider.dart';
-import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/anime_style_selector.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/art_style_selector.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/art_style_notifier.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/bottom_navigation.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/inspiration_section.dart';
 import 'package:quick_art/src/shared/assets/app_icons.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -33,8 +33,8 @@ class HomeScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // 动漫风格选择
-                    _buildAnimeStyleSection(context),
+                    // 灵感板块
+                    const InspirationSection(),
                     const SizedBox(height: 32),
 
                     // 绘制按钮
@@ -245,13 +245,6 @@ class HomeScreen extends ConsumerWidget {
           ],
         ],
       ),
-    );
-  }
-
-  Widget _buildAnimeStyleSection(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [const AnimeStyleSelector()],
     );
   }
 

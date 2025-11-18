@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:quick_art/src/core/constants/app_constants.dart';
 import 'package:quick_art/src/features/quick_art/home/domain/entities/image_generation_task.dart';
-import 'package:quick_art/src/core/utils/logger.dart';
+import 'package:quick_art/src/core/log/logger.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/io.dart';
 
 class TextToImageRemoteDataSource {
@@ -31,7 +33,6 @@ class TextToImageRemoteDataSource {
         .replace(queryParameters: {'taskId': taskId});
 
     logger.i('Connecting to WebSocket: $uri');
-
     final channel = IOWebSocketChannel.connect(uri);
 
     return channel.stream.map((message) {

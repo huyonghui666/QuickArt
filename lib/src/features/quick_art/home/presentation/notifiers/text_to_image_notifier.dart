@@ -1,9 +1,8 @@
-import 'package:quick_art/src/core/utils/logger.dart';
-import 'package:dio/dio.dart';
+import 'package:quick_art/src/core/log/logger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/src/features/quick_art/home/data/datasources/text_to_image_remote_data_source.dart';
 import 'package:quick_art/src/features/quick_art/home/data/repositories/text_to_image_repository_impl.dart';
-import 'package:quick_art/src/core/providers/dio_provider.dart';
+import 'package:quick_art/src/core/di/dio_provider.dart';
 import 'package:quick_art/src/features/quick_art/home/domain/usecases/generate_image_use_case.dart';
 
 class TextToImageState {

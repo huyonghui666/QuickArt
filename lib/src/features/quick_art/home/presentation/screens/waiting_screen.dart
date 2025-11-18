@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/text_to_image_notifier.dart';
-import 'package:quick_art/src/core/utils/logger.dart';
+import 'package:quick_art/src/core/log/logger.dart';
 import 'package:rive/rive.dart';
 
 class WaitingScreen extends ConsumerWidget {

@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/sliver_persistent_header_delegate.dart';
 import 'package:quick_art/src/shared/assets/app_icons.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/prompt_provider.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/art_style_selector.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/art_style_notifier.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/bottom_navigation.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/inspiration_section.dart';
-import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/sliver_persistent_header_delegate.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/text_to_image_notifier.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -20,32 +21,29 @@ class HomeScreen extends ConsumerWidget {
       backgroundColor: Colors.black,
       body: SafeArea(
         top: false,
-      child: Stack(
-        children: [
-          CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(child: _buildTopSection(context, ref)),
-            SliverPersistentHeader(
-              delegate: InspirationTabHeaderDelegate(
-                  statusBarHeight: statusBarHeight),
-              pinned: true,
+        child: Stack(
+          children: [
+            CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(child: _buildTopSection(context, ref)),
+                SliverPersistentHeader(
+                  delegate: InspirationTabHeaderDelegate(
+                    statusBarHeight: statusBarHeight,
+                  ),
+                  pinned: true,
+                ),
+                const SliverPadding(
+                  padding: EdgeInsets.all(20),
+                  sliver: InspirationGrid(),
+                ),
+                const SliverToBoxAdapter(child: SizedBox(height: 76.0)),
+              ],
             ),
-            const SliverPadding(
-              padding: EdgeInsets.all(20),
-              sliver: InspirationGrid(),
-              ),
-              const SliverToBoxAdapter(
-                child: SizedBox(height: 76.0),
-              ),
-            ],
-          ),
-          Positioned(
-            bottom: 20,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: _buildDrawButton(context),
-            ),
+            Positioned(
+              bottom: 20,
+              left: 0,
+              right: 0,
+              child: Center(child: _buildDrawButton(context, ref)),
             ),
           ],
         ),
@@ -115,7 +113,11 @@ class HomeScreen extends ConsumerWidget {
               const SizedBox(width: 16),
               GestureDetector(
                 onTap: () => context.push('/setting'),
-                child: SvgPicture.asset(AppIcons.homeSettings, width: 24, height: 24),
+                child: SvgPicture.asset(
+                  AppIcons.homeSettings,
+                  width: 24,
+                  height: 24,
+                ),
               ),
             ],
           ),
@@ -254,14 +256,18 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-
-  Widget _buildDrawButton(BuildContext context) {
+  Widget _buildDrawButton(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: () {
-        // TODO: 实现绘制功能
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('开始绘制...')),
-        );
+        final prompt = ref.read(promptProvider).text;
+        if (prompt.isNotEmpty) {
+          ref.read(textToImageNotifierProvider.notifier).generateImage(prompt);
+          context.push('/waiting');
+        } else {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text('请输入提示词！')));
+        }
       },
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.75,
@@ -269,10 +275,7 @@ class HomeScreen extends ConsumerWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            SvgPicture.asset(
-              AppIcons.homeBtnStartUnable,
-              fit: BoxFit.cover,
-            ),
+            SvgPicture.asset(AppIcons.homeBtnStartUnable, fit: BoxFit.cover),
             const Text(
               '绘制',
               style: TextStyle(

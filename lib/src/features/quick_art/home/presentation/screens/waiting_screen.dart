@@ -1,0 +1,62 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/text_to_image_notifier.dart';
+import 'package:quick_art/src/core/utils/logger.dart';
+import 'package:rive/rive.dart';
+
+class WaitingScreen extends ConsumerWidget {
+  const WaitingScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final taskId = ref.watch(textToImageNotifierProvider).taskId;
+    logger.i('Waiting for taskId: $taskId');
+
+    if (taskId != null) {
+      ref.listen<AsyncValue<String>>(imageUrlProvider(taskId), (previous, next) {
+        next.when(
+          data: (imageUrl) {
+            logger.i('Received imageUrl: $imageUrl, navigating to result screen');
+            context.go('/result', extra: imageUrl);
+          },
+          loading: () {
+            logger.i('imageUrlProvider is loading...');
+          },
+          error: (error, stackTrace) {
+            logger.e('Error in imageUrlProvider: $error');
+          },
+        );
+      });
+    }
+
+    return const Scaffold(
+      backgroundColor: Colors.black,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          RiveAnimation.asset(
+            'assets/rive_animation/4533-9212-wave-form.riv',
+            fit: BoxFit.cover,
+          ),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Creating...',
+                  style: TextStyle(color: Colors.white, fontSize: 24),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'The picture is being uploaded',
+                  style: TextStyle(color: Colors.white70, fontSize: 16),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

@@ -46,16 +46,25 @@ class AppIcons {
 
   //设置页面icon
   static const String settingNavBack = '$_svgBasePath/Setting/btn_nav_back.svg';
-  static const String settingDiscord = '$_svgBasePath/Setting/setting_ic_discord.svg';
-  static const String settingLanguage = '$_svgBasePath/Setting/setting_ic_language.svg';
-  static const String settingRateUs = '$_svgBasePath/Setting/setting_ic_rateus.svg';
-  static const String settingPolicy = '$_svgBasePath/Setting/setting_ic_policy.svg';
-  static const String settingTerms = '$_svgBasePath/Setting/setting_ic_terms.svg';
-  static const String settingMember = '$_svgBasePath/Setting/setting_ic_member.svg';
-  static const String settingFollowUs = '$_svgBasePath/Setting/setting_ic_followus.svg';
+  static const String settingDiscord =
+      '$_svgBasePath/Setting/setting_ic_discord.svg';
+  static const String settingLanguage =
+      '$_svgBasePath/Setting/setting_ic_language.svg';
+  static const String settingRateUs =
+      '$_svgBasePath/Setting/setting_ic_rateus.svg';
+  static const String settingPolicy =
+      '$_svgBasePath/Setting/setting_ic_policy.svg';
+  static const String settingTerms =
+      '$_svgBasePath/Setting/setting_ic_terms.svg';
+  static const String settingMember =
+      '$_svgBasePath/Setting/setting_ic_member.svg';
+  static const String settingFollowUs =
+      '$_svgBasePath/Setting/setting_ic_followus.svg';
   static const String settingTT = '$_svgBasePath/Setting/setting_ic_tt.svg';
   static const String settingFB = '$_svgBasePath/Setting/setting_ic_fb.svg';
   static const String settingIns = '$_svgBasePath/Setting/setting_ic_ins.svg';
-  static const String settingVersion = '$_svgBasePath/Setting/setting_ic_version.svg';
-  static const String settingRatioNext = '$_svgBasePath/Setting/ic_ratio_next.svg';
+  static const String settingVersion =
+      '$_svgBasePath/Setting/setting_ic_version.svg';
+  static const String settingRatioNext =
+      '$_svgBasePath/Setting/ic_ratio_next.svg';
 }

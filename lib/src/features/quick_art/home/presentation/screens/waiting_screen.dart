@@ -14,10 +14,15 @@ class WaitingScreen extends ConsumerWidget {
     logger.i('Waiting for taskId: $taskId');
 
     if (taskId != null) {
-      ref.listen<AsyncValue<String>>(imageUrlProvider(taskId), (previous, next) {
-        next.when(
-          data: (imageUrl) {
-            logger.i('Received imageUrl: $imageUrl, navigating to result screen');
+      ref.listen<AsyncValue<String>>(imageUrlProvider(taskId), (
+        previous,
+        next,
+      ) {
+          next.when(
+            data: (imageUrl) {
+            logger.i(
+              'Received imageUrl: $imageUrl, navigating to result screen',
+            );
             context.go('/result', extra: imageUrl);
           },
           loading: () {

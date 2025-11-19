@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final inspirationCategoriesProvider = Provider<List<InspirationCategoryModel>>((ref) {
+final inspirationCategoriesProvider = Provider<List<InspirationCategoryModel>>((
+  ref,
+) {
   return [
     const InspirationCategoryModel(
       label: '新',
@@ -85,28 +87,23 @@ final inspirationCategoriesProvider = Provider<List<InspirationCategoryModel>>((
 final selectedInspirationTabIndexProvider = StateProvider<int>((ref) => 0);
 
 //目前灵感选择的卡片状态
-final currentInspirationCardsProvider = Provider<List<InspirationCardModel>>((ref) {
+final currentInspirationCardsProvider = Provider<List<InspirationCardModel>>((
+  ref,
+) {
   final categories = ref.watch(inspirationCategoriesProvider);
   final selectedIndex = ref.watch(selectedInspirationTabIndexProvider);
   return categories[selectedIndex].cards;
 });
 
-
 class InspirationCardModel {
-  const InspirationCardModel({
-    required this.imageUrl,
-    this.prompt,
-  });
+  const InspirationCardModel({required this.imageUrl, this.prompt});
 
   final String imageUrl;
   final String? prompt;
 }
 
 class InspirationCategoryModel {
-  const InspirationCategoryModel({
-    required this.label,
-    required this.cards,
-  });
+  const InspirationCategoryModel({required this.label, required this.cards});
 
   final String label;
   final List<InspirationCardModel> cards;

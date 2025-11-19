@@ -1,9 +1,11 @@
-import 'package:quick_art/src/core/log/logger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quick_art/src/core/di/dio_provider.dart';
+import 'package:quick_art/src/core/log/logger.dart';
 import 'package:quick_art/src/features/quick_art/home/data/datasources/text_to_image_remote_data_source.dart';
 import 'package:quick_art/src/features/quick_art/home/data/repositories/text_to_image_repository_impl.dart';
-import 'package:quick_art/src/core/di/dio_provider.dart';
+import 'package:quick_art/src/features/quick_art/home/domain/repositories/text_to_image_repository.dart';
 import 'package:quick_art/src/features/quick_art/home/domain/usecases/generate_image_use_case.dart';
+import 'package:quick_art/src/features/quick_art/home/domain/usecases/get_image_url_stream_use_case.dart';
 
 class TextToImageState {
   final bool isLoading;
@@ -38,12 +40,32 @@ class TextToImageNotifier extends StateNotifier<TextToImageState> {
   }
 }
 
+final textToImageRemoteDataSourceProvider =
+    Provider<ITextToImageRemoteDataSource>((ref) {
+      final dio = ref.watch(dioProvider);
+      return TextToImageRemoteDataSource(dio);
+    });
+
+final textToImageRepositoryProvider = Provider<TextToImageRepository>((ref) {
+  final remoteDataSource = ref.watch(textToImageRemoteDataSourceProvider);
+  return TextToImageRepositoryImpl(remoteDataSource);
+});
+
+final generateImageUseCaseProvider = Provider<GenerateImageUseCase>((ref) {
+  final repository = ref.watch(textToImageRepositoryProvider);
+  return GenerateImageUseCase(repository);
+});
+
+final getImageUrlStreamUseCaseProvider = Provider<GetImageUrlStreamUseCase>((
+  ref,
+) {
+  final repository = ref.watch(textToImageRepositoryProvider);
+  return GetImageUrlStreamUseCase(repository);
+});
+
 final textToImageNotifierProvider =
     StateNotifierProvider<TextToImageNotifier, TextToImageState>((ref) {
-      final dio = ref.watch(dioProvider);
-      final remoteDataSource = TextToImageRemoteDataSource(dio);
-      final repository = TextToImageRepositoryImpl(remoteDataSource);
-      final useCase = GenerateImageUseCase(repository);
+      final useCase = ref.watch(generateImageUseCaseProvider);
       return TextToImageNotifier(useCase);
     });
 
@@ -51,7 +73,6 @@ final imageUrlProvider = StreamProvider.autoDispose.family<String, String>((
   ref,
   taskId,
 ) {
-  final dio = ref.watch(dioProvider);
-  final remoteDataSource = TextToImageRemoteDataSource(dio);
-  return remoteDataSource.getImageUrlStream(taskId);
+  final useCase = ref.watch(getImageUrlStreamUseCaseProvider);
+  return useCase(taskId);
 });

@@ -8,6 +8,11 @@ import 'package:rive/rive.dart';
 class WaitingScreen extends ConsumerWidget {
   const WaitingScreen({super.key});
 
+  //TODO 在 build 方法中调用 ref.listen ⚠️
+  //每次 WaitingScreen 重建时，都会创建新的监听器
+  // 旧的监听器不会自动销毁，导致内存泄漏
+  // 同一个 taskId 可能被监听多次，导致重复导航
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final taskId = ref.watch(textToImageNotifierProvider).taskId;

@@ -262,6 +262,10 @@ class HomeScreen extends ConsumerWidget {
         final prompt = ref.read(promptProvider).text;
         if (prompt.isNotEmpty) {
           ref.read(textToImageNotifierProvider.notifier).generateImage(prompt);
+          //TODO 如下跳转有问题：
+          // ❌ 盲目导航：立即跳转，不知道任务是否真正开始
+          // ❌ 缺乏错误处理：如果 generateImage 失败，用户已经跳转
+          // ❌ 用户体验不佳：可能跳转到等待页面但任务并未开始
           context.push('/waiting');
         } else {
           ScaffoldMessenger.of(

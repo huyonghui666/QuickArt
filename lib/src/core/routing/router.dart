@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/src/features/quick_art/home/presentation/screens/result_screen.dart';
+
 import 'package:quick_art/src/features/quick_art/home/presentation/screens/waiting_screen.dart';
 import 'package:quick_art/src/features/quick_art/setting/presentation/screens/language_screen.dart';
 import 'package:quick_art/src/features/quick_art/setting/presentation/screens/setting_screen.dart';
@@ -24,12 +24,6 @@ final GoRouter router = GoRouter(
       path: '/waiting',
       builder: (context, state) => const WaitingScreen(),
     ),
-    GoRoute(
-      path: '/result',
-      builder: (context, state) {
-        final imageUrl = state.extra as String;
-        return ResultScreen(imageUrl: imageUrl);
-      },
-    ),
+
   ],
 );

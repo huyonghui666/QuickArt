@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/generated_image_bottom_sheet.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/text_to_image_notifier.dart';
 import 'package:quick_art/src/core/log/logger.dart';
 import 'package:rive/rive.dart';
@@ -28,7 +29,25 @@ class WaitingScreen extends ConsumerWidget {
             logger.i(
               'Received imageUrl: $imageUrl, navigating to result screen',
             );
-            context.go('/result', extra: imageUrl);
+            //TODO 这样子写有没有问题？
+            context.pop();
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: const Color(0xFF1A1A1A),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+              ),
+              builder: (context) {
+                return SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.75,
+                  child: GeneratedImageBottomSheet(imageUrl: imageUrl),
+                );
+              },
+            );
           },
           loading: () {
             logger.i('imageUrlProvider is loading...');

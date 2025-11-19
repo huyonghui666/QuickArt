@@ -39,6 +39,7 @@ class TextToImageRemoteDataSource implements ITextToImageRemoteDataSource {
       AppConstants.webSocketBaseUrl + AppConstants.webSocketPath,
     ).replace(queryParameters: {'taskId': taskId});
 
+    //TODO Websocket暂未关闭连接
     logger.i('Connecting to WebSocket: $uri');
     final channel = WebSocketChannel.connect(uri);
 

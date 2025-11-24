@@ -61,6 +61,7 @@ dependencies:
 
   #websocket
   web_socket_channel: ^3.0.3
+  video_player: ^2.10.1
 
 dev_dependencies:
   flutter_test:
@@ -98,6 +99,7 @@ flutter:
     - assets/images/bg/
     - assets/icons/svg/Setting/
     - assets/rive_animation/
+    - assets/videos/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

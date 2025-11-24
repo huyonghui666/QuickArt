@@ -48,7 +48,7 @@ class HomeScreen extends ConsumerWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const CustomBottomNavigation(),
+      
     );
   }
 

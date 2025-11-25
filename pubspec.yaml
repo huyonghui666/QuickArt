@@ -61,6 +61,7 @@ dependencies:
 
   #websocket
   web_socket_channel: ^3.0.3
+
   video_player: ^2.10.1
 
 dev_dependencies:

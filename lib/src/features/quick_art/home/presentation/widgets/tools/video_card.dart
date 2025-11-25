@@ -12,7 +12,6 @@ final videoPlayerControllerProvider =
 
     // 初始化控制器，并在完成后开始循环播放
     controller.initialize().then((_) {
-      // if (!ref.state.hasListeners) return; // 防止在 dispose 后还操作 controller
       controller.setLooping(true);
       controller.setVolume(0.0); // 静音播放
       controller.play();
@@ -73,8 +72,8 @@ class VideoCard extends ConsumerWidget {
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    Colors.black.withOpacity(0.1),
-                    Colors.black.withOpacity(0.7),
+                    Colors.black.withValues(alpha: 0.1),
+                    Colors.black.withValues(alpha: 0.7),
                   ],
                   stops: const [0.5, 0.7, 1.0],
                 ),

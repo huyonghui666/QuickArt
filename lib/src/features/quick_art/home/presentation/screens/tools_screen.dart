@@ -26,9 +26,10 @@ class ToolsScreen extends StatelessWidget {
             const SizedBox(height: 16),
             // AI 视频卡片
             SizedBox(
-              height: 200,
+              height: 150,
               child: VideoCard(
-                videoAssetPath: 'assets/videos/aa.mp4',
+                // videoAssetPath: 'assets/videos/aa.mp4',
+                videoAssetPath: 'assets/videos/ai_video.mp4',
                 title: 'AI 视频',
                 onTap: () {
                   // TODO: 实现导航到 AI 视频页面
@@ -38,9 +39,9 @@ class ToolsScreen extends StatelessWidget {
             const SizedBox(height: 24),
             // 艺术照卡片
             SizedBox(
-              height: 200,
+              height: 150,
               child: VideoCard(
-                videoAssetPath: 'assets/videos/bb.mp4',
+                videoAssetPath: 'assets/videos/artisticPhoto_video.mp4',
                 title: '艺术照',
                 onTap: () {
                   // TODO: 实现导航到艺术照页面
@@ -50,7 +51,7 @@ class ToolsScreen extends StatelessWidget {
             const SizedBox(height: 24),
             // AI 换脸卡片
             SizedBox(
-              height: 200,
+              height: 150,
               child: ImageCard(
                 // 使用 picsum.photos 的随机图片作为占位符
                 imageUrl: 'https://picsum.photos/seed/face_swap/800/600',

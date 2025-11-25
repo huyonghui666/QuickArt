@@ -1,18 +1,15 @@
-
 import 'package:flutter/material.dart';
 
 class ImageCard extends StatelessWidget {
   final String imageUrl;
   final String title;
   final VoidCallback? onTap;
-  final String? iconPath; // 可选的左下角图标
 
   const ImageCard({
     super.key,
     required this.imageUrl,
     required this.title,
     this.onTap,
-    this.iconPath,
   });
 
   @override
@@ -25,25 +22,13 @@ class ImageCard extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             // 背景图片
-            Image.network(
+            Image.asset(
               imageUrl,
               fit: BoxFit.cover,
-              // 加载和错误时的占位符
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) return child;
-                return const Center(
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2.0,
-                    color: Colors.white,
-                  ),
-                );
-              },
               errorBuilder: (context, error, stackTrace) {
+                // 本地资源加载失败时的占位符
                 return const Center(
-                  child: Icon(
-                    Icons.error_outline,
-                    color: Colors.white70,
-                  ),
+                  child: Icon(Icons.broken_image_outlined, color: Colors.white70),
                 );
               },
             ),
@@ -88,14 +73,6 @@ class ImageCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  if (iconPath != null)
-                    // 如果有图标路径，则显示图标
-                    // 注意：这里暂时使用一个占位符图标，您需要替换成实际的 SvgPicture
-                    const Icon(
-                      Icons.face_retouching_natural, // 临时占位符
-                      color: Colors.white,
-                      size: 28,
-                    ),
                 ],
               ),
             ),

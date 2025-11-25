@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
-import 'package:quick_art/src/features/quick_art/home/presentation/widgets/tools/image_card.dart';
-import 'package:quick_art/src/features/quick_art/home/presentation/widgets/tools/video_card.dart';
+import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/image_card.dart';
+import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/video_card.dart';
 
 class ToolsScreen extends StatelessWidget {
   const ToolsScreen({super.key});
@@ -53,10 +52,8 @@ class ToolsScreen extends StatelessWidget {
             SizedBox(
               height: 150,
               child: ImageCard(
-                // 使用 picsum.photos 的随机图片作为占位符
-                imageUrl: 'https://picsum.photos/seed/face_swap/800/600',
+                imageUrl: 'assets/images/tools/AIFaceSwapping.webp',
                 title: 'AI 换脸',
-                iconPath: 'assets/icons/some_icon.svg', // 占位图标路径
                 onTap: () {
                   // TODO: 实现导航到 AI 换脸页面
                 },

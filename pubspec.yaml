@@ -98,6 +98,7 @@ flutter:
     - assets/icons/svg/Home/
     - assets/images/art_styles/
     - assets/images/bg/
+    - assets/images/tools/
     - assets/icons/svg/Setting/
     - assets/rive_animation/
     - assets/videos/

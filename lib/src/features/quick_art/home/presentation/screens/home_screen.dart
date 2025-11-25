@@ -7,7 +7,6 @@ import 'package:quick_art/src/shared/assets/app_icons.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/prompt_provider.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/art_style_selector.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/art_style_notifier.dart';
-import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/bottom_navigation.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/inspiration_section.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/text_to_image_notifier.dart';
 
@@ -48,7 +47,6 @@ class HomeScreen extends ConsumerWidget {
           ],
         ),
       ),
-      
     );
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/image_card.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/video_card.dart';
 
@@ -27,12 +28,9 @@ class ToolsScreen extends StatelessWidget {
             SizedBox(
               height: 150,
               child: VideoCard(
-                // videoAssetPath: 'assets/videos/aa.mp4',
                 videoAssetPath: 'assets/videos/ai_video.mp4',
                 title: 'AI 视频',
-                onTap: () {
-                  // TODO: 实现导航到 AI 视频页面
-                },
+                onTap: () => context.push('/tools/ai-video'),
               ),
             ),
             const SizedBox(height: 24),

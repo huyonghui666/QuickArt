@@ -5,7 +5,7 @@ import 'package:video_player/video_player.dart';
 
 
 
-// 2. 创建可复用的视频卡片 Widget
+//  创建可复用的视频卡片 Widget
 class VideoCard extends ConsumerWidget {
   final String videoAssetPath;
   final String title;

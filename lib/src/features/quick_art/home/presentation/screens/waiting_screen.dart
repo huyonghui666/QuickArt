@@ -24,8 +24,8 @@ class WaitingScreen extends ConsumerWidget {
         previous,
         next,
       ) {
-          next.when(
-            data: (imageUrl) {
+        next.when(
+          data: (imageUrl) {
             logger.i(
               'Received imageUrl: $imageUrl, navigating to result screen',
             );
@@ -64,9 +64,11 @@ class WaitingScreen extends ConsumerWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          RiveAnimation.asset(
-            'assets/rive_animation/4533-9212-wave-form.riv',
-            fit: BoxFit.cover,
+          RepaintBoundary(
+            child: RiveAnimation.asset(
+              'assets/rive_animation/4533-9212-wave-form.riv',
+              fit: BoxFit.cover,
+            ),
           ),
           Center(
             child: Column(

@@ -49,7 +49,9 @@ class HomeScreen extends ConsumerWidget {
                   family: 'home',
                   onTap: () {
                     final prompt = ref.read(promptProvider('home')).text;
-                    ref.read(textToImageNotifierProvider.notifier).generateImage(prompt);
+                    ref
+                        .read(textToImageNotifierProvider.notifier)
+                        .generateImage(prompt);
                     context.push('/waiting');
                   },
                 ),

@@ -143,7 +143,8 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                         AiVideoActionCard(
                           icon: Icons.text_fields,
                           title: '文生视频',
-                          onTap: () => context.push('/tools/ai-video/text-to-video'),
+                          onTap: () =>
+                              context.push('/tools/ai-video/text-to-video'),
                         ),
                         const AiVideoActionCard(
                           icon: Icons.movie_filter_outlined,

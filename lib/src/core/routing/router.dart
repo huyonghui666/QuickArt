@@ -79,9 +79,5 @@ final GoRouter router = GoRouter(
       path: '/tools/ai-video',
       builder: (context, state) => const AiVideoScreen(),
     ),
-    GoRoute(
-      path: '/tools/ai-video/text-to-video',
-      builder: (context, state) => const TextToVideoScreen(),
-    ),
   ],
 );

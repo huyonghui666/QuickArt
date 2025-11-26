@@ -8,7 +8,6 @@ import 'package:quick_art/src/features/quick_art/setting/presentation/screens/la
 import 'package:quick_art/src/features/quick_art/setting/presentation/screens/setting_screen.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/screens/waiting_screen.dart';
 
-
 final GoRouter router = GoRouter(
   initialLocation: '/',
   routes: [

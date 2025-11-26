@@ -17,12 +17,10 @@ class AiVideoActionCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width:
-            (MediaQuery.of(context).size.width - 32 - 24) /
-            3, // (Screen width - padding - spacing) / 3
+        width: (MediaQuery.of(context).size.width - 32 - 24) / 3, // (Screen width - padding - spacing) / 3
         padding: const EdgeInsets.symmetric(vertical: 16),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(

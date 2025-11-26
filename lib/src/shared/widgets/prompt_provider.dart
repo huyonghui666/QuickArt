@@ -10,10 +10,7 @@ class PromptState {
 
   int get wordCount => text.length;
 
-  PromptState copyWith({
-    TextEditingController? controller,
-    String? text,
-  }) {
+  PromptState copyWith({TextEditingController? controller, String? text}) {
     return PromptState(
       controller: controller ?? this.controller,
       text: text ?? this.text,
@@ -41,6 +38,7 @@ class PromptNotifier extends StateNotifier<PromptState> {
   }
 }
 
-final promptProvider = StateNotifierProvider.autoDispose<PromptNotifier, PromptState>((ref) {
-  return PromptNotifier();
-});
+final promptProvider = StateNotifierProvider.autoDispose
+    .family<PromptNotifier, PromptState, String>((ref, id) {
+      return PromptNotifier();
+    });

@@ -4,6 +4,7 @@ import 'package:quick_art/src/features/quick_art/home/presentation/screens/home_
 import 'package:quick_art/src/features/quick_art/home/presentation/screens/main_screen.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/screens/ai_video_screen.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/screens/tools_screen.dart';
+import 'package:quick_art/src/features/quick_art/tools/presentation/screens/text_to_video_screen.dart';
 import 'package:quick_art/src/features/quick_art/setting/presentation/screens/language_screen.dart';
 import 'package:quick_art/src/features/quick_art/setting/presentation/screens/setting_screen.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/screens/waiting_screen.dart';
@@ -77,6 +78,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/tools/ai-video',
       builder: (context, state) => const AiVideoScreen(),
+    ),
+    GoRoute(
+      path: '/tools/ai-video/text-to-video',
+      builder: (context, state) => const TextToVideoScreen(),
     ),
   ],
 );

@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/text_to_image_notifier.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/sliver_persistent_header_delegate.dart';
 import 'package:quick_art/src/shared/assets/app_icons.dart';
-import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/prompt_provider.dart';
+import 'package:quick_art/src/shared/widgets/prompt_provider.dart';
+import 'package:quick_art/src/shared/widgets/prompt_text_field.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/art_style_selector.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/art_style_notifier.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/inspiration_section.dart';
-import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/text_to_image_notifier.dart';
+import 'package:quick_art/src/shared/widgets/draw_button.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -42,7 +44,16 @@ class HomeScreen extends ConsumerWidget {
               bottom: 20,
               left: 0,
               right: 0,
-              child: Center(child: _buildDrawButton(context, ref)),
+              child: Center(
+                child: DrawButton(
+                  family: 'home',
+                  onTap: () {
+                    final prompt = ref.read(promptProvider('home')).text;
+                    ref.read(textToImageNotifierProvider.notifier).generateImage(prompt);
+                    context.push('/waiting');
+                  },
+                ),
+              ),
             ),
           ],
         ),
@@ -82,7 +93,7 @@ class HomeScreen extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 12),
-                  _buildPromptSection(context, ref),
+                  const PromptTextField(family: 'home'),
                   const SizedBox(height: 12),
                   _buildOptionsSection(context),
                   const SizedBox(height: 12),
@@ -120,86 +131,6 @@ class HomeScreen extends ConsumerWidget {
             ],
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildPromptSection(BuildContext context, WidgetRef ref) {
-    final promptState = ref.watch(promptProvider);
-
-    return Container(
-      padding: const EdgeInsets.all(
-        1.5,
-      ), // This padding creates the border effect
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(18),
-        gradient: const LinearGradient(
-          colors: [Colors.purpleAccent, Colors.blueAccent],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: Stack(
-          children: [
-            TextField(
-              controller: promptState.controller,
-              maxLines: 4,
-              maxLength: 500,
-              style: const TextStyle(color: Colors.white, fontSize: 13),
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: const Color(0xFF1A1A1A),
-                hintText: '输入你的提示词, 可以是任何你想创造的东西',
-                hintStyle: TextStyle(color: Colors.grey[500], fontSize: 13),
-                border: InputBorder.none,
-                contentPadding: const EdgeInsets.fromLTRB(16, 16, 16, 40),
-                counterText: '', // Hide the default counter
-              ),
-            ),
-            if (promptState.text.isNotEmpty)
-              Positioned(
-                bottom: 12,
-                left: 16,
-                child: Text(
-                  '${promptState.wordCount}/500',
-                  style: TextStyle(color: Colors.grey[500], fontSize: 12),
-                ),
-              ),
-            if (promptState.text.isNotEmpty)
-              Positioned(
-                bottom: 12,
-                right: 16,
-                child: Row(
-                  children: [
-                    SvgPicture.asset(
-                      AppIcons.promptBack,
-                      width: 20,
-                      height: 20,
-                    ),
-                    const SizedBox(width: 15),
-                    SvgPicture.asset(
-                      AppIcons.promptNextUnable,
-                      width: 20,
-                      height: 20,
-                    ),
-                    const SizedBox(width: 15),
-                    GestureDetector(
-                      onTap: () {
-                        ref.read(promptProvider.notifier).clear();
-                      },
-                      child: SvgPicture.asset(
-                        AppIcons.promptDelete,
-                        width: 20,
-                        height: 20,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-          ],
-        ),
       ),
     );
   }
@@ -250,44 +181,6 @@ class HomeScreen extends ConsumerWidget {
             SvgPicture.asset(trailingIconPath, width: 12, height: 12),
           ],
         ],
-      ),
-    );
-  }
-
-  Widget _buildDrawButton(BuildContext context, WidgetRef ref) {
-    return GestureDetector(
-      onTap: () {
-        final prompt = ref.read(promptProvider).text;
-        if (prompt.isNotEmpty) {
-          ref.read(textToImageNotifierProvider.notifier).generateImage(prompt);
-          //TODO 如下跳转有问题：
-          // ❌ 盲目导航：立即跳转，不知道任务是否真正开始
-          // ❌ 缺乏错误处理：如果 generateImage 失败，用户已经跳转
-          // ❌ 用户体验不佳：可能跳转到等待页面但任务并未开始
-          context.push('/waiting');
-        } else {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(const SnackBar(content: Text('请输入提示词！')));
-        }
-      },
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.75,
-        height: 56,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            SvgPicture.asset(AppIcons.homeBtnStartUnable, fit: BoxFit.cover),
-            const Text(
-              '绘制',
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

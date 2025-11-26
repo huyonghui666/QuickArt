@@ -6,7 +6,6 @@ import 'package:quick_art/src/features/quick_art/tools/presentation/notifilers/a
 import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/ai_video_action_card.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/video_template_grid.dart';
 
-
 class AiVideoScreen extends ConsumerStatefulWidget {
   const AiVideoScreen({super.key});
 
@@ -22,7 +21,8 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
   double _titleOpacity = 0.0;
 
   //AI 视频 (大标题)和[文生视频]的组件高度
-  static const double _contentBlockHeight = 168.0; // fontSize 32(~40) + padding 24 + cardRow(~80) + padding 24
+  static const double _contentBlockHeight =
+      168.0; // fontSize 32(~40) + padding 24 + cardRow(~80) + padding 24
 
   @override
   void initState() {
@@ -43,11 +43,13 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
 
   void _onScroll() {
     // kToolbarHeight表示 Material Design 应用栏的标准高度（56.0），appBarMinHeight：应用标题栏高度+系统状态栏高度（因为系统状态栏被允许占用了）
-    final double appBarMinHeight = kToolbarHeight + MediaQuery.of(context).padding.top;
+    final double appBarMinHeight =
+        kToolbarHeight + MediaQuery.of(context).padding.top;
     // 250是SliverAppBar的expandedHeight，也就是应用栏展开高度。scrollForAppBarCollapse：需要滚动的距离：250 - appBarMinHeight
     final double scrollForAppBarCollapse = 250.0 - appBarMinHeight;
     // titleTriggerOffset：计算标题显示的触发点高度
-    final double titleTriggerOffset = scrollForAppBarCollapse + _contentBlockHeight;
+    final double titleTriggerOffset =
+        scrollForAppBarCollapse + _contentBlockHeight;
     // 获取当前滚动位置
     final scrollOffset = _scrollController.offset;
 
@@ -120,13 +122,13 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
               ),
               expandedHeight: 250,
             ),
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'AI 视频',
                       style: TextStyle(
                         color: Colors.white,
@@ -134,25 +136,26 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AiVideoActionCard(
                           icon: Icons.text_fields,
                           title: '文生视频',
+                          onTap: () => context.push('/tools/ai-video/text-to-video'),
                         ),
-                        AiVideoActionCard(
+                        const AiVideoActionCard(
                           icon: Icons.movie_filter_outlined,
                           title: '首尾',
                         ),
-                        AiVideoActionCard(
+                        const AiVideoActionCard(
                           icon: Icons.collections_bookmark_outlined,
                           title: '多主体',
                         ),
                       ],
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                   ],
                 ),
               ),

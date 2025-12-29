@@ -71,9 +71,22 @@ final GoRouter router = GoRouter(
       path: '/setting/language',
       builder: (context, state) => const LanguageScreen(),
     ),
+
+    // GoRoute(
+    //   path: '/waiting',
+    //   builder: (context, state) {
+    //     final generationData = state.extra as Map<String, String>;
+    //     return WaitingScreen(generationData: generationData);
+    //   },
+    // ),
     GoRoute(
-      path: '/waiting',
-      builder: (context, state) => const WaitingScreen(),
+      path: '/wait/:taskType',
+      name: 'Wait',
+      builder: (context, state) {
+        final taskType = state.pathParameters['taskType']!;
+        final prompt = state.uri.queryParameters['prompt']!;
+        return WaitingScreen(taskType: taskType, prompt: prompt);
+      },
     ),
     GoRoute(
       path: '/tools/ai-video',

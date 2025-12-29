@@ -5,12 +5,13 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/text_to_image_notifier.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/sliver_persistent_header_delegate.dart';
 import 'package:quick_art/src/shared/assets/app_icons.dart';
+import 'package:quick_art/src/shared/widgets/draw_button.dart';
 import 'package:quick_art/src/shared/widgets/prompt_provider.dart';
 import 'package:quick_art/src/shared/widgets/prompt_text_field.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/art_style_selector.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/art_style_notifier.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/inspiration_section.dart';
-import 'package:quick_art/src/shared/widgets/draw_button.dart';
+// import 'package:quick_art/src/features/quick_art/home/presentation/widgets/text_to_image_state_listener.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -24,6 +25,7 @@ class HomeScreen extends ConsumerWidget {
         top: false,
         child: Stack(
           children: [
+            // const TextToImageStateListener(),
             CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(child: _buildTopSection(context, ref)),
@@ -45,14 +47,22 @@ class HomeScreen extends ConsumerWidget {
               left: 0,
               right: 0,
               child: Center(
+                //TODO 需不需要防抖
                 child: DrawButton(
                   family: 'home',
                   onTap: () {
                     final prompt = ref.read(promptProvider('home')).text;
-                    ref
-                        .read(textToImageNotifierProvider.notifier)
-                        .generateImage(prompt);
-                    context.push('/waiting');
+                    if (prompt.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Please enter a prompt')),
+                      );
+                      return;
+                    }
+                    final uri = Uri(
+                      path: '/wait/image',
+                      queryParameters: {'prompt': prompt},
+                    );
+                    context.push(uri.toString());
                   },
                 ),
               ),

@@ -8,4 +8,10 @@ class AppConstants {
   // WebSocket URL
   static const String webSocketBaseUrl = 'ws://192.168.178.214:8080';
   static const String webSocketPath = '/ws/image-generation';
+
+  //websocket超时
+  static const Duration timeout = Duration(seconds: 30);
+
+  //最大重试
+  static const int maxRetries = 3;
 }

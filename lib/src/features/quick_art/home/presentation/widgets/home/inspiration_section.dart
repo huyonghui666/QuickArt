@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/inspiration_provider.dart';
@@ -46,17 +47,18 @@ class InspirationGrid extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final cards = ref.watch(currentInspirationCardsProvider);
 
-    return SliverGrid(
+    return SliverGrid.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 16,
         mainAxisSpacing: 16,
         childAspectRatio: 0.75,
       ),
-      delegate: SliverChildBuilderDelegate((context, index) {
+      itemBuilder: (context, index) {
         final card = cards[index];
         return InspirationCard(card: card);
-      }, childCount: cards.length),
+      },
+      itemCount: cards.length,
     );
   }
 }
@@ -68,29 +70,48 @@ class InspirationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(12),
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          Image.network(card.imageUrl, fit: BoxFit.cover),
-          Positioned(
-            bottom: 8,
-            right: 8,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(
-                color: Colors.black.withValues(alpha: 0.5),
-                borderRadius: BorderRadius.circular(20),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final imageWidth = constraints.maxWidth;
+        final imageHeight = constraints.maxHeight;
+        final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              CachedNetworkImage(
+                imageUrl: card.imageUrl,
+                memCacheWidth: (imageWidth * devicePixelRatio).round(),
+                memCacheHeight: (imageHeight * devicePixelRatio).round(),
+                fit: BoxFit.cover,
+                placeholder: (context, url) =>
+                    const Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
-              child: const Text(
-                'Try',
-                style: TextStyle(color: Colors.white, fontSize: 12),
+              Positioned(
+                bottom: 8,
+                right: 8,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withValues(alpha: 0.5),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: const Text(
+                    'Try',
+                    style: TextStyle(color: Colors.white, fontSize: 12),
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

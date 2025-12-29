@@ -28,7 +28,7 @@ class ToolsScreen extends StatelessWidget {
             SizedBox(
               height: 150,
               child: VideoCard(
-                videoAssetPath: 'assets/videos/ai_video.mp4',
+                videoPath: 'assets/videos/ai_video.mp4',
                 title: 'AI 视频',
                 onTap: () => context.push('/tools/ai-video'),
               ),
@@ -38,7 +38,7 @@ class ToolsScreen extends StatelessWidget {
             SizedBox(
               height: 150,
               child: VideoCard(
-                videoAssetPath: 'assets/videos/artisticPhoto_video.mp4',
+                videoPath: 'assets/videos/artisticPhoto_video.mp4',
                 title: '艺术照',
                 onTap: () {
                   // TODO: 实现导航到艺术照页面

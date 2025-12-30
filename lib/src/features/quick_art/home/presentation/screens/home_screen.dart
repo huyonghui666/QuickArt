@@ -22,6 +22,7 @@ class HomeScreen extends ConsumerWidget {
       if (next != null) {
         showModalBottomSheet(
           context: context,
+          useRootNavigator: true, // 确保遮挡底部导航栏
           isScrollControlled: true,
           backgroundColor: const Color(0xFF1A1A1A),
           shape: const RoundedRectangleBorder(
@@ -46,7 +47,6 @@ class HomeScreen extends ConsumerWidget {
         top: false,
         child: Stack(
           children: [
-            // const TextToImageStateListener(),
             CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(child: _buildTopSection(context, ref)),

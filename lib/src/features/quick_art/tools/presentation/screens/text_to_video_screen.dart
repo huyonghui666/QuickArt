@@ -21,7 +21,7 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
   @override
   Widget build(BuildContext context) {
     ref.listen(showBottomSheetNotifierProvider, (previous, next) {
-      if (next != null) {
+      if (next != null && next.type == BottomSheetType.video) {
         showModalBottomSheet(
           context: context,
           isScrollControlled: true,
@@ -32,7 +32,7 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
           builder: (sheetContext) {
             return SizedBox(
               height: MediaQuery.of(sheetContext).size.height * 0.75,
-              child: GeneratedVideoBottomSheet(videoUrl: next),
+              child: GeneratedVideoBottomSheet(videoUrl: next.url),
             );
           },
         ).then((_) {

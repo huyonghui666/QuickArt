@@ -33,7 +33,9 @@ class WaitingScreen extends ConsumerWidget {
 
               // 再触发状态，让上一页（TextToVideoScreen）弹出底部结果栏
               // 这样避免了先弹出底部栏（成为栈顶）随后被 pop 掉的问题
-              ref.read(showBottomSheetNotifierProvider.notifier).trigger(url);
+              ref
+                  .read(showBottomSheetNotifierProvider.notifier)
+                  .trigger(url, BottomSheetType.video);
             },
             orElse: () {},
           );
@@ -53,7 +55,9 @@ class WaitingScreen extends ConsumerWidget {
 
               // 再触发状态，让上一页（TextToVideoScreen）弹出底部结果栏
               // 这样避免了先弹出底部栏（成为栈顶）随后被 pop 掉的问题
-              ref.read(showBottomSheetNotifierProvider.notifier).trigger(url);
+              ref
+                  .read(showBottomSheetNotifierProvider.notifier)
+                  .trigger(url, BottomSheetType.image);
             },
             orElse: () {},
           );

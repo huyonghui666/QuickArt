@@ -19,7 +19,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(showBottomSheetNotifierProvider, (previous, next) {
-      if (next != null) {
+      if (next != null && next.type == BottomSheetType.image) {
         showModalBottomSheet(
           context: context,
           useRootNavigator: true, // 确保遮挡底部导航栏
@@ -31,7 +31,7 @@ class HomeScreen extends ConsumerWidget {
           builder: (sheetContext) {
             return SizedBox(
               height: MediaQuery.of(sheetContext).size.height * 0.75,
-              child: GeneratedImageBottomSheet(imageUrl: next),
+              child: GeneratedImageBottomSheet(imageUrl: next.url),
             );
           },
         ).then((_) {

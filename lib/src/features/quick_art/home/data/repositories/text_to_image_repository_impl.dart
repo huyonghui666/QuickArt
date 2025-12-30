@@ -1,8 +1,6 @@
 import 'dart:async';
 
-import 'package:quick_art/src/core/exception/exception.dart';
 import 'package:quick_art/src/features/quick_art/home/data/datasources/text_to_image_remote_data_source.dart';
-import 'package:quick_art/src/features/quick_art/home/data/models/image_generation_task_model.dart';
 import 'package:quick_art/src/features/quick_art/home/domain/entities/image_generation_task.dart';
 import 'package:quick_art/src/features/quick_art/home/domain/repositories/text_to_image_repository.dart';
 

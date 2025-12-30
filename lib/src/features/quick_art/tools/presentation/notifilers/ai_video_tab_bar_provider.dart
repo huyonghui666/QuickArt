@@ -1,6 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final aiVideoTabsProvider = Provider<List<String>>((ref) {
+part 'ai_video_tab_bar_provider.g.dart';
+
+@riverpod
+List<String> aiVideoTabs(Ref ref) {
   return [
     '流行!',
     '接吻',
@@ -16,4 +20,4 @@ final aiVideoTabsProvider = Provider<List<String>>((ref) {
     '来跳舞！',
     '微构奇境',
   ];
-});
+}

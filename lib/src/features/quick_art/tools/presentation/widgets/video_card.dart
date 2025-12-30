@@ -28,22 +28,26 @@ class VideoCard extends StatelessWidget {
             RepaintBoundary(
               child: Consumer(
                 builder: (context, ref, child) {
-                  // 监听 Provider 以获取特定视频路径的控制器
-                  final controller = ref.watch(
+                  // 监听异步 Provider
+                  final asyncController = ref.watch(
                     videoPlayerControllerProvider(videoPath),
                   );
 
-                  return controller.value.isInitialized
-                      ? AspectRatio(
-                          aspectRatio: controller.value.aspectRatio,
-                          child: VideoPlayer(controller),
-                        )
-                      : const Center(
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2.0,
-                            color: Colors.white,
-                          ),
-                        );
+                  return asyncController.when(
+                    data: (controller) => AspectRatio(
+                      aspectRatio: controller.value.aspectRatio,
+                      child: VideoPlayer(controller),
+                    ),
+                    loading: () => const Center(
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                    error: (err, stack) => const Center(
+                      child: Icon(Icons.error, color: Colors.white),
+                    ),
+                  );
                 },
               ),
             ),

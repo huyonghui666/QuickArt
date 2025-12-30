@@ -22,9 +22,9 @@ class VideoGenerationNotifier extends _$VideoGenerationNotifier {
   }
 
   void _startGeneration(String prompt) {
-    final repo = ref.read(textToVideoRepositoryProvider);
-    _subscription = repo
-        .getVideoUrlStream(prompt)
+    final useCase = ref.read(textToGenerateVideoUseCaseProvider);
+    _subscription = useCase
+        .execute(prompt)
         .listen(
           (task) => state = AsyncData(task),
           onError: (e, stack) => state = AsyncError(e, stack),

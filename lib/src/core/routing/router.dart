@@ -7,7 +7,7 @@ import 'package:quick_art/src/features/quick_art/tools/presentation/screens/tool
 import 'package:quick_art/src/features/quick_art/tools/presentation/screens/text_to_video_screen.dart';
 import 'package:quick_art/src/features/quick_art/setting/presentation/screens/language_screen.dart';
 import 'package:quick_art/src/features/quick_art/setting/presentation/screens/setting_screen.dart';
-import 'package:quick_art/src/features/quick_art/home/presentation/screens/waiting_screen.dart';
+import 'package:quick_art/src/shared/widgets/waiting_screen.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/',
@@ -72,13 +72,6 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const LanguageScreen(),
     ),
 
-    // GoRoute(
-    //   path: '/waiting',
-    //   builder: (context, state) {
-    //     final generationData = state.extra as Map<String, String>;
-    //     return WaitingScreen(generationData: generationData);
-    //   },
-    // ),
     GoRoute(
       path: '/wait/:taskType',
       name: 'Wait',

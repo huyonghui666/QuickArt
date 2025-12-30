@@ -1,9 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quick_art/src/core/log/logger.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/text_to_image_notifier.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/notifilers/video_generation_provider.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/video_card.dart';
+import 'package:quick_art/src/shared/provider/show_bottom_sheet_notifier.dart';
 import 'package:rive/rive.dart';
 
 final _imageTaskInitProvider = FutureProvider.autoDispose.family<void, String>((
@@ -25,22 +28,42 @@ class WaitingScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // 根据 type 调整标题
-    final title = taskType == 'video' ? '视频生成中' : '图片生成中';
+    if (taskType == 'video') {
+      ref.listen(videoGenerationNotifierProvider(prompt), (previous, next) {
+        next.whenData((task) {
+          task.maybeWhen(
+            success: (_, url) {
+              logger.i('Video generation success: $url');
+
+              // 先执行 pop 关闭当前等待页
+              if (context.mounted) {
+                context.pop();
+              }
+
+              // 再触发状态，让上一页（TextToVideoScreen）弹出底部结果栏
+              // 这样避免了先弹出底部栏（成为栈顶）随后被 pop 掉的问题
+              ref.read(showBottomSheetNotifierProvider.notifier).trigger(url);
+            },
+            orElse: () {},
+          );
+        });
+      });
+    }
 
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text(title, style: const TextStyle(color: Colors.white)),
         backgroundColor: Colors.transparent,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: taskType == 'video' ? _buildVideoBody(ref) : _buildImageBody(ref),
+      body: taskType == 'video'
+          ? _buildVideoBody(context, ref)
+          : _buildImageBody(ref),
     );
   }
 
-  Widget _buildVideoBody(WidgetRef ref) {
+  Widget _buildVideoBody(BuildContext context, WidgetRef ref) {
     final asyncTask = ref.watch(videoGenerationNotifierProvider(prompt));
 
     return asyncTask.when(
@@ -49,8 +72,6 @@ class WaitingScreen extends ConsumerWidget {
         ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
       }),
       data: (task) => task.when(
-        submitting: (_) => _buildLoadingView(),
-        waiting: (taskId) => _buildLoadingView(),
         success: (_, url) => _buildResultView(url, isVideo: true),
         failed: (_, error) => _buildErrorView(error, () {
           ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
@@ -148,7 +169,7 @@ class WaitingScreen extends ConsumerWidget {
       return Center(
         child: AspectRatio(
           aspectRatio: 16 / 9,
-          child: VideoCard(videoPath: url, title: 'Generated Video'),
+          //child: VideoCard(videoPath: url, title: 'Generated Video'),
         ),
       );
     } else {
@@ -181,3 +202,48 @@ class ImagePreviewWidget extends StatelessWidget {
     );
   }
 }
+
+/**
+ *     final taskId = ref.watch(textToImageNotifierProvider).taskId;
+    logger.i('Waiting for taskId: $taskId');
+
+    if (taskId != null) {
+    ref.listen<AsyncValue<String>>(imageUrlProvider(taskId), (
+    previous,
+    next,
+    ) {
+    next.when(
+    data: (imageUrl) {
+    logger.i(
+    'Received imageUrl: $imageUrl, navigating to result screen',
+    );
+    //TODO 这样子写有没有问题？
+    context.pop();
+    showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: const Color(0xFF1A1A1A),
+    shape: const RoundedRectangleBorder(
+    borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(20),
+    topRight: Radius.circular(20),
+    ),
+    ),
+    builder: (context) {
+    return SizedBox(
+    height: MediaQuery.of(context).size.height * 0.75,
+    child: GeneratedImageBottomSheet(imageUrl: imageUrl),
+    );
+    },
+    );
+    },
+    loading: () {
+    logger.i('imageUrlProvider is loading...');
+    },
+    error: (error, stackTrace) {
+    logger.e('Error in imageUrlProvider: $error');
+    },
+    );
+    });
+
+ */

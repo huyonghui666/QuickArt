@@ -12,7 +12,7 @@ class VideoCard extends StatelessWidget {
   const VideoCard({
     super.key,
     required this.videoPath,
-    required this.title,
+    this.title = '',
     this.onTap,
   });
 
@@ -65,25 +65,26 @@ class VideoCard extends StatelessWidget {
             ),
 
             // 静态部分：这个标题也不会在视频播放时重建或重绘。
-            Positioned(
-              left: 16,
-              bottom: 16,
-              child: Text(
-                title,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  shadows: [
-                    Shadow(
-                      blurRadius: 8.0,
-                      color: Colors.black54,
-                      offset: Offset(0, 2),
-                    ),
-                  ],
+            if (title.isNotEmpty)
+              Positioned(
+                left: 16,
+                bottom: 16,
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 8.0,
+                        color: Colors.black54,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
           ],
         ),
       ),

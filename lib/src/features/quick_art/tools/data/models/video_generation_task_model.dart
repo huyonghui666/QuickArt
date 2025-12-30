@@ -21,10 +21,13 @@ extension VideoGenerationTaskModelX on VideoGenerationTaskModel {
   VideoGenerationTask toEntity() {
     if (error != null) {
       return VideoGenerationTask.failed(taskId: taskId, error: error!);
-    } else if (videoUrl != null) {
+    }
+    // else if (videoUrl != null) {
+    //   return VideoGenerationTask.success(taskId: taskId, videoUrl: videoUrl!);
+    // }
+    else {
       return VideoGenerationTask.success(taskId: taskId, videoUrl: videoUrl!);
-    } else {
-      return VideoGenerationTask.waiting(taskId: taskId);
+      //return VideoGenerationTask.waiting(taskId: taskId);
     }
   }
 }

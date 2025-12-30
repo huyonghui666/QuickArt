@@ -6,7 +6,7 @@ import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/tex
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/sliver_persistent_header_delegate.dart';
 import 'package:quick_art/src/shared/assets/app_icons.dart';
 import 'package:quick_art/src/shared/widgets/draw_button.dart';
-import 'package:quick_art/src/shared/widgets/prompt_provider.dart';
+import 'package:quick_art/src/shared/provider/prompt_provider.dart';
 import 'package:quick_art/src/shared/widgets/prompt_text_field.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/art_style_selector.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/art_style_notifier.dart';

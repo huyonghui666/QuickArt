@@ -5,12 +5,6 @@ part 'video_generation_task.g.dart';
 
 @freezed
 class VideoGenerationTask with _$VideoGenerationTask {
-  const factory VideoGenerationTask.submitting({required String prompt}) =
-      _Submitting;
-
-  const factory VideoGenerationTask.waiting({required String taskId}) =
-      _Waiting;
-
   const factory VideoGenerationTask.success({
     required String taskId,
     required String videoUrl,

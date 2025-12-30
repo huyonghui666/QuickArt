@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quick_art/src/shared/assets/app_icons.dart';
-import 'package:quick_art/src/shared/widgets/prompt_provider.dart';
+import 'package:quick_art/src/shared/provider/prompt_provider.dart';
 
 class DrawButton extends ConsumerWidget {
   const DrawButton({

@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/src/core/log/logger.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/image_generation_provider.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/text_to_image_notifier.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/notifilers/video_generation_provider.dart';
 import 'package:quick_art/src/shared/provider/show_bottom_sheet_notifier.dart';
 import 'package:rive/rive.dart';
 
-final _imageTaskInitProvider = FutureProvider.autoDispose.family<void, String>((
-  ref,
-  prompt,
-) {
-  return ref.read(textToImageNotifierProvider.notifier).generateImage(prompt);
-});
+// final _imageTaskInitProvider = FutureProvider.autoDispose.family<void, String>((
+//   ref,
+//   prompt,
+// ) {
+//   return ref.read(textToImageNotifierProvider.notifier).generateImage(prompt);
+// });
 
 class WaitingScreen extends ConsumerWidget {
   final String taskType;
@@ -29,6 +30,26 @@ class WaitingScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     if (taskType == 'video') {
       ref.listen(videoGenerationNotifierProvider(prompt), (previous, next) {
+        next.whenData((task) {
+          task.maybeWhen(
+            success: (_, url) {
+              logger.i('Video generation success: $url');
+
+              // 先执行 pop 关闭当前等待页
+              if (context.mounted) {
+                context.pop();
+              }
+
+              // 再触发状态，让上一页（TextToVideoScreen）弹出底部结果栏
+              // 这样避免了先弹出底部栏（成为栈顶）随后被 pop 掉的问题
+              ref.read(showBottomSheetNotifierProvider.notifier).trigger(url);
+            },
+            orElse: () {},
+          );
+        });
+      });
+    } else if (taskType == 'image') {
+      ref.listen(imageGenerationNotifierProvider(prompt), (previous, next) {
         next.whenData((task) {
           task.maybeWhen(
             success: (_, url) {
@@ -83,36 +104,56 @@ class WaitingScreen extends ConsumerWidget {
   }
 
   Widget _buildImageBody(WidgetRef ref) {
-    // 触发图片生成任务
-    ref.watch(_imageTaskInitProvider(prompt));
+    final asyncTask = ref.watch(ImageGenerationNotifierProvider(prompt));
 
-    final imageState = ref.watch(textToImageNotifierProvider);
-
-    if (imageState.isLoading) {
-      return _buildLoadingView();
-    }
-
-    if (imageState.error != null) {
-      return _buildErrorView(imageState.error!, () {
-        ref.read(textToImageNotifierProvider.notifier).generateImage(prompt);
-      });
-    }
-
-    if (imageState.taskId != null) {
-      final asyncUrl = ref.watch(imageUrlProvider(imageState.taskId!));
-      return asyncUrl.when(
-        data: (url) => _buildResultView(url, isVideo: false),
-        error: (err, stack) => _buildErrorView(err.toString(), () {
-          // Retry fetching url or restart task?
-          // Restarting task is safer
-          ref.read(textToImageNotifierProvider.notifier).generateImage(prompt);
+    return asyncTask.when(
+      loading: () => _buildLoadingView(),
+      error: (e, _) => _buildErrorView(e.toString(), () {
+        ref.read(ImageGenerationNotifierProvider(prompt).notifier).retry();
+      }),
+      data: (task) => task.when(
+        // 成功时，ref.listen 会处理页面跳转，这里继续保持 Loading 状态即可
+        // 避免构建无用的 successView
+        success: (_, __) => _buildLoadingView(),
+        //TODO 错误处理还需要优化，不一定是网络问题，可能是敏感词
+        failed: (_, error) => _buildErrorView(error, () {
+          ref.read(ImageGenerationNotifierProvider(prompt).notifier).retry();
         }),
-        loading: () => _buildLoadingView(),
-      );
-    }
-
-    return _buildLoadingView();
+      ),
+    );
   }
+
+  // Widget _buildImageBody(WidgetRef ref) {
+  //   // 触发图片生成任务
+  //   ref.watch(_imageTaskInitProvider(prompt));
+  //
+  //   final imageState = ref.watch(textToImageNotifierProvider);
+  //
+  //   if (imageState.isLoading) {
+  //     return _buildLoadingView();
+  //   }
+  //
+  //   if (imageState.error != null) {
+  //     return _buildErrorView(imageState.error!, () {
+  //       ref.read(textToImageNotifierProvider.notifier).generateImage(prompt);
+  //     });
+  //   }
+  //
+  //   if (imageState.taskId != null) {
+  //     final asyncUrl = ref.watch(imageUrlProvider(imageState.taskId!));
+  //     return asyncUrl.when(
+  //       data: (url) => _buildResultView(url, isVideo: false),
+  //       error: (err, stack) => _buildErrorView(err.toString(), () {
+  //         // Retry fetching url or restart task?
+  //         // Restarting task is safer
+  //         ref.read(textToImageNotifierProvider.notifier).generateImage(prompt);
+  //       }),
+  //       loading: () => _buildLoadingView(),
+  //     );
+  //   }
+  //
+  //   return _buildLoadingView();
+  // }
 
   Widget _buildLoadingView() {
     return const Stack(

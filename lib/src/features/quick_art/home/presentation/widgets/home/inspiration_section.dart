@@ -19,8 +19,7 @@ class InspirationTabBar extends ConsumerWidget {
           final isSelected = index == selectedIndex;
           return GestureDetector(
             onTap: () {
-              ref.read(selectedInspirationTabIndexProvider.notifier).state =
-                  index;
+              ref.read(selectedInspirationTabIndexProvider.notifier).setIndex(index);
             },
             child: Container(
               margin: const EdgeInsets.only(right: 16),

@@ -2,22 +2,43 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/text_to_image_notifier.dart';
+import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/generated_image_bottom_sheet.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/sliver_persistent_header_delegate.dart';
 import 'package:quick_art/src/shared/assets/app_icons.dart';
+import 'package:quick_art/src/shared/provider/show_bottom_sheet_notifier.dart';
 import 'package:quick_art/src/shared/widgets/draw_button.dart';
 import 'package:quick_art/src/shared/provider/prompt_provider.dart';
 import 'package:quick_art/src/shared/widgets/prompt_text_field.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/art_style_selector.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/art_style_notifier.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/inspiration_section.dart';
-// import 'package:quick_art/src/features/quick_art/home/presentation/widgets/text_to_image_state_listener.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(showBottomSheetNotifierProvider, (previous, next) {
+      if (next != null) {
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          backgroundColor: const Color(0xFF1A1A1A),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          ),
+          builder: (sheetContext) {
+            return SizedBox(
+              height: MediaQuery.of(sheetContext).size.height * 0.75,
+              child: GeneratedImageBottomSheet(imageUrl: next),
+            );
+          },
+        ).then((_) {
+          ref.read(showBottomSheetNotifierProvider.notifier).reset();
+        });
+      }
+    });
+
     final statusBarHeight = MediaQuery.of(context).padding.top;
     return Scaffold(
       backgroundColor: Colors.black,
@@ -49,15 +70,10 @@ class HomeScreen extends ConsumerWidget {
               child: Center(
                 //TODO 需不需要防抖
                 child: DrawButton(
-                  family: 'home',
+                  family: 'textToImage',
                   onTap: () {
-                    final prompt = ref.read(promptProvider('home')).text;
-                    if (prompt.isEmpty) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Please enter a prompt')),
-                      );
-                      return;
-                    }
+                    final prompt = ref.read(promptProvider('textToImage')).text;
+                    if (prompt.isEmpty) return;
                     final uri = Uri(
                       path: '/wait/image',
                       queryParameters: {'prompt': prompt},
@@ -74,7 +90,7 @@ class HomeScreen extends ConsumerWidget {
   }
 
   Widget _buildTopSection(BuildContext context, WidgetRef ref) {
-    final selectedStyle = ref.watch(artStyleProvider);
+    final selectedStyle = ref.watch(artStyleNotifierProvider);
     return Stack(
       children: [
         Positioned.fill(
@@ -105,7 +121,7 @@ class HomeScreen extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 12),
-                  const PromptTextField(family: 'home'),
+                  const PromptTextField(family: 'textToImage'),
                   const SizedBox(height: 12),
                   _buildOptionsSection(context),
                   const SizedBox(height: 12),

@@ -9,7 +9,7 @@ class ArtStyleSelector extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedStyle = ref.watch(artStyleProvider);
+    final selectedStyle = ref.watch(artStyleNotifierProvider);
     final theme = Theme.of(context);
 
     return Column(
@@ -32,7 +32,7 @@ class ArtStyleSelector extends ConsumerWidget {
                 padding: const EdgeInsets.only(right: 12),
                 child: GestureDetector(
                   onTap: () {
-                    ref.read(artStyleProvider.notifier).state = style;
+                    ref.read(artStyleNotifierProvider.notifier).setStyle(style);
                   },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,

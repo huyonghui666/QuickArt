@@ -1,8 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final inspirationCategoriesProvider = Provider<List<InspirationCategoryModel>>((
-  ref,
-) {
+part 'inspiration_provider.g.dart';
+
+@riverpod
+List<InspirationCategoryModel> inspirationCategories(Ref ref) {
   return [
     const InspirationCategoryModel(
       label: '新',
@@ -81,19 +83,28 @@ final inspirationCategoriesProvider = Provider<List<InspirationCategoryModel>>((
       ],
     ),
   ];
-});
+}
 
 //分类0对应‘新’分类，其他依次
-final selectedInspirationTabIndexProvider = StateProvider<int>((ref) => 0);
+@riverpod
+class SelectedInspirationTabIndex extends _$SelectedInspirationTabIndex {
+  @override
+  int build() {
+    return 0;
+  }
+
+  void setIndex(int index) {
+    state = index;
+  }
+}
 
 //目前灵感选择的卡片状态
-final currentInspirationCardsProvider = Provider<List<InspirationCardModel>>((
-  ref,
-) {
+@riverpod
+List<InspirationCardModel> currentInspirationCards(Ref ref) {
   final categories = ref.watch(inspirationCategoriesProvider);
   final selectedIndex = ref.watch(selectedInspirationTabIndexProvider);
   return categories[selectedIndex].cards;
-});
+}
 
 class InspirationCardModel {
   const InspirationCardModel({required this.imageUrl, this.prompt});

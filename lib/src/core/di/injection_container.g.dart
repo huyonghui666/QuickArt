@@ -23,6 +23,66 @@ final dioProvider = AutoDisposeProvider<Dio>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef DioRef = AutoDisposeProviderRef<Dio>;
+String _$textToImageRemoteDataSourceHash() =>
+    r'2d1363d546f3093493a3f885a5f21d77d10b5e35';
+
+/// See also [textToImageRemoteDataSource].
+@ProviderFor(textToImageRemoteDataSource)
+final textToImageRemoteDataSourceProvider =
+    AutoDisposeProvider<ITextToImageRemoteDataSource>.internal(
+      textToImageRemoteDataSource,
+      name: r'textToImageRemoteDataSourceProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$textToImageRemoteDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef TextToImageRemoteDataSourceRef =
+    AutoDisposeProviderRef<ITextToImageRemoteDataSource>;
+String _$textToImageRepositoryHash() =>
+    r'36872ee54b9cb250bc0ebad5c0de79a113f34fd2';
+
+/// See also [textToImageRepository].
+@ProviderFor(textToImageRepository)
+final textToImageRepositoryProvider =
+    AutoDisposeProvider<TextToImageRepository>.internal(
+      textToImageRepository,
+      name: r'textToImageRepositoryProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$textToImageRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef TextToImageRepositoryRef =
+    AutoDisposeProviderRef<TextToImageRepository>;
+String _$textToGenerateImageUseCaseHash() =>
+    r'32dc099d58dfc2a676cd3b564b556afd58d6605e';
+
+/// See also [textToGenerateImageUseCase].
+@ProviderFor(textToGenerateImageUseCase)
+final textToGenerateImageUseCaseProvider =
+    AutoDisposeProvider<TextToGenerateImageUseCase>.internal(
+      textToGenerateImageUseCase,
+      name: r'textToGenerateImageUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$textToGenerateImageUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef TextToGenerateImageUseCaseRef =
+    AutoDisposeProviderRef<TextToGenerateImageUseCase>;
 String _$textToVideoRemoteDataSourceHash() =>
     r'063c21bc56c765ab30cb6ca3a374a7fb165709ca';
 

@@ -51,7 +51,7 @@ class TextToVideoRemoteDataSource implements ITextToVideoRemoteDataSource {
           final json = jsonDecode(msg as String);
           final model = VideoGenerationTaskModel.fromJson(json);
           yield model;
-          //这里需要去修改后端代码，以便保持相同的逻辑
+
           if (model.videoUrl != null || model.error != null) {
             channel.sink.close();
             return;

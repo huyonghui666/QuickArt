@@ -1,4 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'art_style_notifier.g.dart';
 
 enum ArtStyle {
   noStyle(
@@ -108,4 +111,14 @@ enum ArtStyle {
 }
 
 // 艺术风格选择状态管理
-final artStyleProvider = StateProvider<ArtStyle>((ref) => ArtStyle.noStyle);
+@riverpod
+class ArtStyleNotifier extends _$ArtStyleNotifier {
+  @override
+  ArtStyle build() {
+    return ArtStyle.noStyle;
+  }
+
+  void setStyle(ArtStyle style) {
+    state = style;
+  }
+}

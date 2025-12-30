@@ -4,8 +4,6 @@ import 'package:video_player/video_player.dart';
 
 part 'video_player_controller_provider.g.dart';
 
-// 使用 Riverpod Generator 创建 Provider 来管理 VideoPlayerController
-// 这会自动处理 autoDispose 和 family
 @riverpod
 Future<VideoPlayerController> videoPlayerController(
   Ref ref,

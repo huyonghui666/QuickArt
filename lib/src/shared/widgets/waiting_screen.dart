@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_art/src/core/log/logger.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/text_to_image_notifier.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/notifilers/video_generation_provider.dart';
-import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/video_card.dart';
 import 'package:quick_art/src/shared/provider/show_bottom_sheet_notifier.dart';
 import 'package:rive/rive.dart';
 
@@ -72,7 +71,10 @@ class WaitingScreen extends ConsumerWidget {
         ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
       }),
       data: (task) => task.when(
-        success: (_, url) => _buildResultView(url, isVideo: true),
+        // 成功时，ref.listen 会处理页面跳转，这里继续保持 Loading 状态即可
+        // 避免构建无用的 successView
+        success: (_, __) => _buildLoadingView(),
+        //TODO 错误处理还需要优化，不一定是网络问题，可能是敏感词
         failed: (_, error) => _buildErrorView(error, () {
           ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
         }),
@@ -202,48 +204,3 @@ class ImagePreviewWidget extends StatelessWidget {
     );
   }
 }
-
-/**
- *     final taskId = ref.watch(textToImageNotifierProvider).taskId;
-    logger.i('Waiting for taskId: $taskId');
-
-    if (taskId != null) {
-    ref.listen<AsyncValue<String>>(imageUrlProvider(taskId), (
-    previous,
-    next,
-    ) {
-    next.when(
-    data: (imageUrl) {
-    logger.i(
-    'Received imageUrl: $imageUrl, navigating to result screen',
-    );
-    //TODO 这样子写有没有问题？
-    context.pop();
-    showModalBottomSheet(
-    context: context,
-    isScrollControlled: true,
-    backgroundColor: const Color(0xFF1A1A1A),
-    shape: const RoundedRectangleBorder(
-    borderRadius: BorderRadius.only(
-    topLeft: Radius.circular(20),
-    topRight: Radius.circular(20),
-    ),
-    ),
-    builder: (context) {
-    return SizedBox(
-    height: MediaQuery.of(context).size.height * 0.75,
-    child: GeneratedImageBottomSheet(imageUrl: imageUrl),
-    );
-    },
-    );
-    },
-    loading: () {
-    logger.i('imageUrlProvider is loading...');
-    },
-    error: (error, stackTrace) {
-    logger.e('Error in imageUrlProvider: $error');
-    },
-    );
-    });
-
- */

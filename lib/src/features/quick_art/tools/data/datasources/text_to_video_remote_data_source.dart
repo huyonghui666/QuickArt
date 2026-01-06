@@ -21,7 +21,8 @@ class TextToVideoRemoteDataSource implements ITextToVideoRemoteDataSource {
   Future<VideoGenerationTaskModel> submitTask(String prompt) async {
     try {
       final response = await _dio.post(
-        '${AppConstants.apiBaseUrl}/videos/generate',
+        // '${AppConstants.apiBaseUrl}/videos/generate',
+        '${AppConstants.apiBaseUrl}/videos/mock-generate',
         data: {'prompt': prompt},
       ).timeout(AppConstants.timeout);
       if (response.statusCode != 200) {

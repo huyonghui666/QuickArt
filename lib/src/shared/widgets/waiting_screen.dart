@@ -21,25 +21,23 @@ class WaitingScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if (taskType == 'video') {
-      ref.listen(videoGenerationNotifierProvider(prompt), (previous, next) {
-        next.whenData((task) {
-          task.maybeWhen(
-            success: (_, url) {
-              logger.i('Video generation success: $url');
-
-              // 先执行 pop 关闭当前等待页
-              if (context.mounted) {
-                context.pop();
-              }
-
-              // 再触发状态，让上一页（TextToVideoScreen）弹出底部结果栏
-              // 这样避免了先弹出底部栏（成为栈顶）随后被 pop 掉的问题
-              ref
-                  .read(showBottomSheetNotifierProvider.notifier)
-                  .trigger(url, BottomSheetType.video);
-            },
-            orElse: () {},
-          );
+      // 监听 WebSocket 结果变化以处理跳转
+      ref.listen(generationResultNotifierProvider, (previous, next) {
+        final asyncTask = ref.read(videoGenerationNotifierProvider(prompt));
+        asyncTask.whenData((taskModel) {
+          final taskId = taskModel.taskId;
+          final result = next[taskId];
+          if (result != null &&
+              result.event == 'success' &&
+              result.url != null) {
+            logger.i('Video generation success: ${result.url}');
+            if (context.mounted) {
+              context.pop();
+            }
+            ref
+                .read(showBottomSheetNotifierProvider.notifier)
+                .trigger(result.url!, BottomSheetType.video);
+          }
         });
       });
     } else if (taskType == 'image') {
@@ -86,15 +84,19 @@ class WaitingScreen extends ConsumerWidget {
       error: (e, _) => _buildErrorView(e.toString(), () {
         ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
       }),
-      data: (task) => task.when(
-        // 成功时，ref.listen 会处理页面跳转，这里继续保持 Loading 状态即可
-        // 避免构建无用的 successView
-        success: (_, __) => _buildLoadingView(context),
-        //TODO 错误处理还需要优化，不一定是网络问题，可能是敏感词
-        failed: (_, error) => _buildErrorView(error, () {
-          ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
-        }),
-      ),
+      data: (taskModel) {
+        // 获取 WebSocket 状态
+        final wsResults = ref.watch(generationResultNotifierProvider);
+        final result = wsResults[taskModel.taskId];
+
+        if (result != null && result.event == 'failed') {
+          return _buildErrorView(result.error ?? 'Unknown error', () {
+            ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
+          });
+        }
+
+        return _buildLoadingView(context);
+      },
     );
   }
 

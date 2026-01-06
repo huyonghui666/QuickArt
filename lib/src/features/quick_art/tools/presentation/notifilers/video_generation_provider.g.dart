@@ -7,7 +7,7 @@ part of 'video_generation_provider.dart';
 // **************************************************************************
 
 String _$videoGenerationNotifierHash() =>
-    r'76e6f5ebc5afd666dba0fa09fa182833a3c5bfb5';
+    r'3f1abe45e4939ce0ff5be7ff8de3fd5183eebf9a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,10 +31,10 @@ class _SystemHash {
 }
 
 abstract class _$VideoGenerationNotifier
-    extends BuildlessAutoDisposeNotifier<AsyncValue<VideoGenerationTask>> {
+    extends BuildlessAutoDisposeNotifier<AsyncValue<VideoGenerationTaskModel>> {
   late final String prompt;
 
-  AsyncValue<VideoGenerationTask> build(String prompt);
+  AsyncValue<VideoGenerationTaskModel> build(String prompt);
 }
 
 /// See also [VideoGenerationNotifier].
@@ -43,7 +43,7 @@ const videoGenerationNotifierProvider = VideoGenerationNotifierFamily();
 
 /// See also [VideoGenerationNotifier].
 class VideoGenerationNotifierFamily
-    extends Family<AsyncValue<VideoGenerationTask>> {
+    extends Family<AsyncValue<VideoGenerationTaskModel>> {
   /// See also [VideoGenerationNotifier].
   const VideoGenerationNotifierFamily();
 
@@ -79,7 +79,7 @@ class VideoGenerationNotifierProvider
     extends
         AutoDisposeNotifierProviderImpl<
           VideoGenerationNotifier,
-          AsyncValue<VideoGenerationTask>
+          AsyncValue<VideoGenerationTaskModel>
         > {
   /// See also [VideoGenerationNotifier].
   VideoGenerationNotifierProvider(String prompt)
@@ -109,7 +109,7 @@ class VideoGenerationNotifierProvider
   final String prompt;
 
   @override
-  AsyncValue<VideoGenerationTask> runNotifierBuild(
+  AsyncValue<VideoGenerationTaskModel> runNotifierBuild(
     covariant VideoGenerationNotifier notifier,
   ) {
     return notifier.build(prompt);
@@ -134,7 +134,7 @@ class VideoGenerationNotifierProvider
   @override
   AutoDisposeNotifierProviderElement<
     VideoGenerationNotifier,
-    AsyncValue<VideoGenerationTask>
+    AsyncValue<VideoGenerationTaskModel>
   >
   createElement() {
     return _VideoGenerationNotifierProviderElement(this);
@@ -157,7 +157,7 @@ class VideoGenerationNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin VideoGenerationNotifierRef
-    on AutoDisposeNotifierProviderRef<AsyncValue<VideoGenerationTask>> {
+    on AutoDisposeNotifierProviderRef<AsyncValue<VideoGenerationTaskModel>> {
   /// The parameter `prompt` of this provider.
   String get prompt;
 }
@@ -166,7 +166,7 @@ class _VideoGenerationNotifierProviderElement
     extends
         AutoDisposeNotifierProviderElement<
           VideoGenerationNotifier,
-          AsyncValue<VideoGenerationTask>
+          AsyncValue<VideoGenerationTaskModel>
         >
     with VideoGenerationNotifierRef {
   _VideoGenerationNotifierProviderElement(super.provider);

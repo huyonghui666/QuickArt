@@ -1,34 +1,33 @@
 import 'dart:async';
 
 import 'package:quick_art/src/core/di/injection_container.dart';
-import 'package:quick_art/src/features/quick_art/tools/domain/entities/video_generation_task.dart';
+import 'package:quick_art/src/core/websocket/websocket_provider.dart';
+import 'package:quick_art/src/features/quick_art/tools/data/models/video_generation_task_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'video_generation_provider.g.dart';
 
 @riverpod
 class VideoGenerationNotifier extends _$VideoGenerationNotifier {
-  StreamSubscription<VideoGenerationTask>? _subscription;
-
   @override
-  AsyncValue<VideoGenerationTask> build(String prompt) {
-    // 注册销毁回调，确保 subscription 被正确取消
-    ref.onDispose(() {
-      _subscription?.cancel();
-    });
-
+  AsyncValue<VideoGenerationTaskModel> build(String prompt) {
     _startGeneration(prompt);
     return const AsyncLoading();
   }
 
-  void _startGeneration(String prompt) {
-    final useCase = ref.read(textToGenerateVideoUseCaseProvider);
-    _subscription = useCase
-        .execute(prompt)
-        .listen(
-          (task) => state = AsyncData(task),
-          onError: (e, stack) => state = AsyncError(e, stack),
-        );
+  Future<void> _startGeneration(String prompt) async {
+    state = const AsyncLoading();
+    try {
+      final useCase = ref.read(textToGenerateVideoUseCaseProvider);
+      final taskModel = await useCase.execute(prompt);
+
+      // 自动订阅 WebSocket 任务状态
+      ref.read(webSocketNotifierProvider.notifier).subscribeTask(taskModel.taskId);
+
+      state = AsyncData(taskModel);
+    } catch (e, stack) {
+      state = AsyncError(e, stack);
+    }
   }
 
   void retry() {

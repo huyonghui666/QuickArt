@@ -7,11 +7,16 @@ import 'package:quick_art/src/features/quick_art/tools/presentation/screens/tool
 import 'package:quick_art/src/features/quick_art/tools/presentation/screens/text_to_video_screen.dart';
 import 'package:quick_art/src/features/quick_art/setting/presentation/screens/language_screen.dart';
 import 'package:quick_art/src/features/quick_art/setting/presentation/screens/setting_screen.dart';
+import 'package:quick_art/src/features/test/presentation/screens/test_websocket_screen.dart';
 import 'package:quick_art/src/shared/widgets/waiting_screen.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/test',
   routes: [
+    GoRoute(
+      path: '/test',
+      builder: (context, state) => const TestWebsocketScreen(),
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return MainScreen(navigationShell: navigationShell);

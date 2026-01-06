@@ -7,15 +7,18 @@ part of 'websocket_provider.dart';
 // **************************************************************************
 
 String _$generationResultNotifierHash() =>
-    r'139078e9b29ce196880c3ebf1afbb41472964a9a';
+    r'4c1ac5b2618f7c7d25e4a83b460446d6bbf98f5f';
 
 /// 全局任务结果状态管理
-/// 存储 taskId -> url 的映射
+/// 存储 taskId -> GenerationResultModel 的映射
 ///
 /// Copied from [GenerationResultNotifier].
 @ProviderFor(GenerationResultNotifier)
 final generationResultNotifierProvider =
-    NotifierProvider<GenerationResultNotifier, Map<String, String>>.internal(
+    NotifierProvider<
+      GenerationResultNotifier,
+      Map<String, GenerationResultModel>
+    >.internal(
       GenerationResultNotifier.new,
       name: r'generationResultNotifierProvider',
       debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -25,8 +28,9 @@ final generationResultNotifierProvider =
       allTransitiveDependencies: null,
     );
 
-typedef _$GenerationResultNotifier = Notifier<Map<String, String>>;
-String _$webSocketNotifierHash() => r'215d7fc665c379bd912a147e27b02c1b3b387696';
+typedef _$GenerationResultNotifier =
+    Notifier<Map<String, GenerationResultModel>>;
+String _$webSocketNotifierHash() => r'155042ddfef757a97f1214c8564bdb0d965dde63';
 
 /// WebSocket 连接管理
 /// 负责维护连接、心跳、重连以及分发消息

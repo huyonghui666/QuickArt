@@ -68,7 +68,7 @@ class HomeScreen extends ConsumerWidget {
               left: 0,
               right: 0,
               child: Center(
-                //TODO 需不需要防抖
+                //TODO 跳转到等待页面，需不需要防抖？
                 child: DrawButton(
                   family: 'textToImage',
                   onTap: () {

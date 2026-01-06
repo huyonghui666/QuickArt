@@ -6,21 +6,23 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:quick_art/src/core/websocket/model/generation_result_model.dart';
+
 part 'websocket_provider.g.dart';
 
 final _logger = Logger();
 const _pendingTasksKey = 'pending_tasks';
 
 /// 全局任务结果状态管理
-/// 存储 taskId -> url 的映射
+/// 存储 taskId -> GenerationResultModel 的映射
 @Riverpod(keepAlive: true)
 class GenerationResultNotifier extends _$GenerationResultNotifier {
   @override
-  Map<String, String> build() => {};
+  Map<String, GenerationResultModel> build() => {};
 
-  void setUrl(String taskId, String url) {
-    state = {...state, taskId: url};
-    _logger.i('Task completed: $taskId -> $url');
+  void setResult(GenerationResultModel result) {
+    state = {...state, result.taskId: result};
+    _logger.i('Task completed: ${result.taskId} -> ${result.url}');
   }
 
   void clear(String taskId) {
@@ -98,26 +100,34 @@ class WebSocketNotifier extends _$WebSocketNotifier {
 
       final event = payload['event'];
 
-      if (event == 'success') {
-        final taskId = payload['taskId'];
-        // 由于后端 DTO 使用了 @JsonAnyGetter，data 字段的内容被扁平化到了根层级
-        // 因此直接从 payload 中获取 imageUrl 或 videoUrl
-        final url = payload['imageUrl'] ?? payload['videoUrl'];
+      if (event == 'success' || event == 'failed') {
+        try {
+          // 由于后端返回的数据结构比较扁平，我们手动构建 GenerationResult
+          // 或者如果 GenerationResult.fromJson 能够处理扁平化结构，直接使用它
+          // 但考虑到我们已经在 GenerationResult 中定义了 url 字段，而 payload 中可能是 imageUrl 或 videoUrl
+          // 所以最好手动映射一下
 
-        if (taskId != null && url != null) {
-          ref.read(generationResultNotifierProvider.notifier)
-              .setUrl(taskId, url);
+          final taskId = payload['taskId'];
+          if (taskId == null) return;
 
-          // 任务完成，移除本地挂起记录
+          final type = payload['type'];
+          final error = payload['error'];
+          final url = payload['imageUrl'] ?? payload['videoUrl'];
+
+          final result = GenerationResultModel(
+            taskId: taskId,
+            event: event,
+            type: type,
+            url: url,
+            error: error,
+          );
+
+          ref.read(generationResultNotifierProvider.notifier).setResult(result);
+
+          // 任务结束（无论成功失败），移除本地挂起记录
           _removePendingTask(taskId);
-        }
-      } else if (event == 'failed') {
-        final taskId = payload['taskId'];
-        final error = payload['error'];
-        _logger.w('Task failed: $taskId, error: $error');
-        // 失败也移除任务，避免永久挂起
-        if (taskId != null) {
-          _removePendingTask(taskId);
+        } catch (e) {
+          _logger.e('Error creating GenerationResult: $e');
         }
       }
     } catch (e) {

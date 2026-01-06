@@ -41,7 +41,7 @@ class TextToImageRemoteDataSource implements ITextToImageRemoteDataSource {
   Stream<ImageGenerationTaskModel> listenTaskResult(String taskId) async* {
     int retryCount = 0;
     final uri = Uri.parse(
-      AppConstants.webSocketBaseUrl + AppConstants.webSocketPath,
+      AppConstants.webSocketBaseUrl + AppConstants.webSocketImagePath,
     ).replace(queryParameters: {'taskId': taskId});
 
     while (retryCount < AppConstants.maxRetries) {
@@ -64,60 +64,11 @@ class TextToImageRemoteDataSource implements ITextToImageRemoteDataSource {
           yield ImageGenerationTaskModel(
             taskId: taskId,
             error:
-            'WebSocket failed after ${AppConstants.maxRetries} retries: $e',
+                'WebSocket failed after ${AppConstants.maxRetries} retries: $e',
           );
         }
         await Future.delayed(Duration(seconds: 2 * retryCount)); // 指数退避
       }
     }
   }
-
-  // @override
-  // Stream<ImageGenerationTaskModel> listenTaskResult(String taskId) async* {
-  //   int retryCount = 0;
-  //   final uri = Uri.parse(
-  //     AppConstants.webSocketBaseUrl + AppConstants.webSocketPath,
-  //   ).replace(queryParameters: {'taskId': taskId});
-  //
-  //   while (retryCount < AppConstants.maxRetries) {
-  //     try {
-  //       final channel = WebSocketChannel.connect(uri);
-  //
-  //       await for (final msg in channel.stream.timeout(AppConstants.timeout)) {
-  //         final json = jsonDecode(msg as String);
-  //
-  //         // 尝试直接解析，如果字段不匹配（比如后端只返回了 imageUrl），则手动构造
-  //         // 假设后端返回格式可能不统一，这里做兼容处理
-  //         ImageGenerationTaskModel model;
-  //         if (json is Map<String, dynamic> && json.containsKey('taskId')) {
-  //           model = ImageGenerationTaskModel.fromJson(json);
-  //         } else {
-  //           // 兼容旧格式：{"imageUrl": "..."}
-  //           model = ImageGenerationTaskModel(
-  //             taskId: taskId,
-  //             imageUrl: json['imageUrl'],
-  //             error: json['error'],
-  //           );
-  //         }
-  //
-  //         yield model;
-  //
-  //         if (model.imageUrl != null || model.error != null) {
-  //           channel.sink.close();
-  //           return;
-  //         }
-  //       }
-  //     } catch (e) {
-  //       retryCount++;
-  //       if (retryCount >= AppConstants.maxRetries) {
-  //         yield ImageGenerationTaskModel(
-  //           taskId: taskId,
-  //           error:
-  //               'WebSocket failed after ${AppConstants.maxRetries} retries: $e',
-  //         );
-  //       }
-  //       await Future.delayed(Duration(seconds: 2 * retryCount)); // 指数退避
-  //     }
-  //   }
-  // }
 }

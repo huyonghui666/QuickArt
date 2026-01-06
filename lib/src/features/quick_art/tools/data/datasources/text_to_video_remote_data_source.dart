@@ -38,7 +38,8 @@ class TextToVideoRemoteDataSource implements ITextToVideoRemoteDataSource {
   Stream<VideoGenerationTaskModel> listenTaskResult(String taskId) async* {
     int retryCount = 0;
     final uri = Uri.parse(
-      '${AppConstants.webSocketBaseUrl}/ws/video-generation',
+      // '${AppConstants.webSocketBaseUrl}/ws/video-generation',
+        AppConstants.webSocketBaseUrl + AppConstants.webSocketVideoPath
     ).replace(queryParameters: {'taskId': taskId});
 
     while (retryCount < AppConstants.maxRetries) {

@@ -96,5 +96,3 @@ class _StyleCard extends StatelessWidget {
     return Image.asset(style.thumbnailAsset, fit: BoxFit.cover);
   }
 }
-
-

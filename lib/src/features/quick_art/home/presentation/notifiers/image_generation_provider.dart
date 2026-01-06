@@ -1,34 +1,36 @@
 import 'dart:async';
 
 import 'package:quick_art/src/core/di/injection_container.dart';
-import 'package:quick_art/src/features/quick_art/home/domain/entities/image_generation_task.dart';
+import 'package:quick_art/src/core/websocket/websocket_provider.dart';
+import 'package:quick_art/src/features/quick_art/home/data/models/image_generation_task_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'image_generation_provider.g.dart';
 
 @riverpod
 class ImageGenerationNotifier extends _$ImageGenerationNotifier {
-  StreamSubscription<ImageGenerationTask>? _subscription;
-
   @override
-  AsyncValue<ImageGenerationTask> build(String prompt) {
-    // 注册销毁回调，确保 subscription 被正确取消
-    ref.onDispose(() {
-      _subscription?.cancel();
-    });
-
+  AsyncValue<ImageGenerationTaskModel> build(String prompt) {
+    // 自动触发请求
     _startGeneration(prompt);
     return const AsyncLoading();
   }
 
-  void _startGeneration(String prompt) {
-    final useCase = ref.read(textToGenerateImageUseCaseProvider);
-    _subscription = useCase
-        .execute(prompt)
-        .listen(
-          (task) => state = AsyncData(task),
-      onError: (e, stack) => state = AsyncError(e, stack),
-    );
+  Future<void> _startGeneration(String prompt) async {
+    state = const AsyncLoading();
+    try {
+      final useCase = ref.read(textToGenerateImageUseCaseProvider);
+      final taskIdModel = await useCase.execute(prompt);
+
+      // 自动订阅 WebSocket 任务状态
+      ref
+          .read(webSocketNotifierProvider.notifier)
+          .subscribeTask(taskIdModel.taskId);
+
+      state = AsyncData(taskIdModel);
+    } catch (e, stack) {
+      state = AsyncError(e, stack);
+    }
   }
 
   void retry() {

@@ -7,7 +7,7 @@ part of 'image_generation_provider.dart';
 // **************************************************************************
 
 String _$imageGenerationNotifierHash() =>
-    r'830d5da40088a805447f57ad63622a719f714dfb';
+    r'ce26ac03b3c5f53d5f580f94366c1456c05d18d0';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,10 +31,10 @@ class _SystemHash {
 }
 
 abstract class _$ImageGenerationNotifier
-    extends BuildlessAutoDisposeNotifier<AsyncValue<ImageGenerationTask>> {
+    extends BuildlessAutoDisposeNotifier<AsyncValue<ImageGenerationTaskModel>> {
   late final String prompt;
 
-  AsyncValue<ImageGenerationTask> build(String prompt);
+  AsyncValue<ImageGenerationTaskModel> build(String prompt);
 }
 
 /// See also [ImageGenerationNotifier].
@@ -43,7 +43,7 @@ const imageGenerationNotifierProvider = ImageGenerationNotifierFamily();
 
 /// See also [ImageGenerationNotifier].
 class ImageGenerationNotifierFamily
-    extends Family<AsyncValue<ImageGenerationTask>> {
+    extends Family<AsyncValue<ImageGenerationTaskModel>> {
   /// See also [ImageGenerationNotifier].
   const ImageGenerationNotifierFamily();
 
@@ -79,7 +79,7 @@ class ImageGenerationNotifierProvider
     extends
         AutoDisposeNotifierProviderImpl<
           ImageGenerationNotifier,
-          AsyncValue<ImageGenerationTask>
+          AsyncValue<ImageGenerationTaskModel>
         > {
   /// See also [ImageGenerationNotifier].
   ImageGenerationNotifierProvider(String prompt)
@@ -109,7 +109,7 @@ class ImageGenerationNotifierProvider
   final String prompt;
 
   @override
-  AsyncValue<ImageGenerationTask> runNotifierBuild(
+  AsyncValue<ImageGenerationTaskModel> runNotifierBuild(
     covariant ImageGenerationNotifier notifier,
   ) {
     return notifier.build(prompt);
@@ -134,7 +134,7 @@ class ImageGenerationNotifierProvider
   @override
   AutoDisposeNotifierProviderElement<
     ImageGenerationNotifier,
-    AsyncValue<ImageGenerationTask>
+    AsyncValue<ImageGenerationTaskModel>
   >
   createElement() {
     return _ImageGenerationNotifierProviderElement(this);
@@ -157,7 +157,7 @@ class ImageGenerationNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin ImageGenerationNotifierRef
-    on AutoDisposeNotifierProviderRef<AsyncValue<ImageGenerationTask>> {
+    on AutoDisposeNotifierProviderRef<AsyncValue<ImageGenerationTaskModel>> {
   /// The parameter `prompt` of this provider.
   String get prompt;
 }
@@ -166,7 +166,7 @@ class _ImageGenerationNotifierProviderElement
     extends
         AutoDisposeNotifierProviderElement<
           ImageGenerationNotifier,
-          AsyncValue<ImageGenerationTask>
+          AsyncValue<ImageGenerationTaskModel>
         >
     with ImageGenerationNotifierRef {
   _ImageGenerationNotifierProviderElement(super.provider);

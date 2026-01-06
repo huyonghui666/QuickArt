@@ -24,8 +24,6 @@ ImageGenerationTaskModel _$ImageGenerationTaskModelFromJson(
 /// @nodoc
 mixin _$ImageGenerationTaskModel {
   String get taskId => throw _privateConstructorUsedError;
-  String? get imageUrl => throw _privateConstructorUsedError;
-  String? get error => throw _privateConstructorUsedError;
 
   /// Serializes this ImageGenerationTaskModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,7 +42,7 @@ abstract class $ImageGenerationTaskModelCopyWith<$Res> {
     $Res Function(ImageGenerationTaskModel) then,
   ) = _$ImageGenerationTaskModelCopyWithImpl<$Res, ImageGenerationTaskModel>;
   @useResult
-  $Res call({String taskId, String? imageUrl, String? error});
+  $Res call({String taskId});
 }
 
 /// @nodoc
@@ -64,25 +62,13 @@ class _$ImageGenerationTaskModelCopyWithImpl<
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? taskId = null,
-    Object? imageUrl = freezed,
-    Object? error = freezed,
-  }) {
+  $Res call({Object? taskId = null}) {
     return _then(
       _value.copyWith(
             taskId: null == taskId
                 ? _value.taskId
                 : taskId // ignore: cast_nullable_to_non_nullable
                       as String,
-            imageUrl: freezed == imageUrl
-                ? _value.imageUrl
-                : imageUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            error: freezed == error
-                ? _value.error
-                : error // ignore: cast_nullable_to_non_nullable
-                      as String?,
           )
           as $Val,
     );
@@ -98,7 +84,7 @@ abstract class _$$ImageGenerationTaskModelImplCopyWith<$Res>
   ) = __$$ImageGenerationTaskModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String taskId, String? imageUrl, String? error});
+  $Res call({String taskId});
 }
 
 /// @nodoc
@@ -118,25 +104,13 @@ class __$$ImageGenerationTaskModelImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? taskId = null,
-    Object? imageUrl = freezed,
-    Object? error = freezed,
-  }) {
+  $Res call({Object? taskId = null}) {
     return _then(
       _$ImageGenerationTaskModelImpl(
         taskId: null == taskId
             ? _value.taskId
             : taskId // ignore: cast_nullable_to_non_nullable
                   as String,
-        imageUrl: freezed == imageUrl
-            ? _value.imageUrl
-            : imageUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        error: freezed == error
-            ? _value.error
-            : error // ignore: cast_nullable_to_non_nullable
-                  as String?,
       ),
     );
   }
@@ -145,25 +119,17 @@ class __$$ImageGenerationTaskModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ImageGenerationTaskModelImpl implements _ImageGenerationTaskModel {
-  const _$ImageGenerationTaskModelImpl({
-    required this.taskId,
-    this.imageUrl,
-    this.error,
-  });
+  const _$ImageGenerationTaskModelImpl({required this.taskId});
 
   factory _$ImageGenerationTaskModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ImageGenerationTaskModelImplFromJson(json);
 
   @override
   final String taskId;
-  @override
-  final String? imageUrl;
-  @override
-  final String? error;
 
   @override
   String toString() {
-    return 'ImageGenerationTaskModel(taskId: $taskId, imageUrl: $imageUrl, error: $error)';
+    return 'ImageGenerationTaskModel(taskId: $taskId)';
   }
 
   @override
@@ -171,15 +137,12 @@ class _$ImageGenerationTaskModelImpl implements _ImageGenerationTaskModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImageGenerationTaskModelImpl &&
-            (identical(other.taskId, taskId) || other.taskId == taskId) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl) &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.taskId, taskId) || other.taskId == taskId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, taskId, imageUrl, error);
+  int get hashCode => Object.hash(runtimeType, taskId);
 
   /// Create a copy of ImageGenerationTaskModel
   /// with the given fields replaced by the non-null parameter values.
@@ -199,21 +162,14 @@ class _$ImageGenerationTaskModelImpl implements _ImageGenerationTaskModel {
 }
 
 abstract class _ImageGenerationTaskModel implements ImageGenerationTaskModel {
-  const factory _ImageGenerationTaskModel({
-    required final String taskId,
-    final String? imageUrl,
-    final String? error,
-  }) = _$ImageGenerationTaskModelImpl;
+  const factory _ImageGenerationTaskModel({required final String taskId}) =
+      _$ImageGenerationTaskModelImpl;
 
   factory _ImageGenerationTaskModel.fromJson(Map<String, dynamic> json) =
       _$ImageGenerationTaskModelImpl.fromJson;
 
   @override
   String get taskId;
-  @override
-  String? get imageUrl;
-  @override
-  String? get error;
 
   /// Create a copy of ImageGenerationTaskModel
   /// with the given fields replaced by the non-null parameter values.

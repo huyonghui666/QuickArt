@@ -1,35 +1,30 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/src/core/constants/app_constants.dart';
+import 'package:quick_art/src/shared/models/generate_task_type.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:quick_art/src/core/database/database_helper.dart';
 import 'package:quick_art/src/core/websocket/model/generation_result_model.dart';
+import 'package:quick_art/src/features/quick_art/workshop/domain/entities/workshop_task.dart';
 
 part 'websocket_provider.g.dart';
 
 final _logger = Logger();
 const _pendingTasksKey = 'pending_tasks';
 
-/// 全局任务结果状态管理
-/// 存储 taskId -> GenerationResultModel 的映射
+/// 全局任务结果事件流
+/// 用于通知 UI 任务完成（成功或失败）
+final _generationEventController =
+    StreamController<GenerationResultModel>.broadcast();
+
 @Riverpod(keepAlive: true)
-class GenerationResultNotifier extends _$GenerationResultNotifier {
-  @override
-  Map<String, GenerationResultModel> build() => {};
-
-  void setResult(GenerationResultModel result) {
-    state = {...state, result.taskId: result};
-    _logger.i('Task completed: ${result.taskId} -> ${result.url}');
-  }
-
-  void clear(String taskId) {
-    final newState = {...state};
-    newState.remove(taskId);
-    state = newState;
-  }
+Stream<GenerationResultModel> generationEvent(Ref ref) {
+  return _generationEventController.stream;
 }
 
 /// WebSocket 连接管理
@@ -41,11 +36,6 @@ class WebSocketNotifier extends _$WebSocketNotifier {
 
   @override
   WebSocketChannel? build() {
-    /**
-     * - 需要 。虽然我们在 Provider 上加了 @Riverpod(keepAlive: true) ，这意味着这个 Provider 在整个 App 生命周期内通常不会被销毁 。
-        - 但是 ，在某些极端情况下（例如手动调用 ref.invalidate(webSocketNotifierProvider) 重置状态，或者用户注销登录时手动销毁），Provider 确实会被 dispose。
-        - 如果没有这个 onDispose ，当 Provider 被销毁时，底层的 WebSocket 连接可能仍然悬挂在内存中（Leak），甚至还在尝试发心跳。
-     */
     ref.onDispose(() {
       _disconnect();
     });
@@ -89,7 +79,7 @@ class WebSocketNotifier extends _$WebSocketNotifier {
     }
   }
 
-  void _handleMessage(dynamic message) {
+  void _handleMessage(dynamic message) async {
     try {
       final payload = jsonDecode(message as String);
       _logger.d('WebSocket message received: $payload');
@@ -98,27 +88,37 @@ class WebSocketNotifier extends _$WebSocketNotifier {
 
       if (event == 'success' || event == 'failed') {
         try {
-          // 由于后端返回的数据结构比较扁平，我们手动构建 GenerationResult
-          // 或者如果 GenerationResult.fromJson 能够处理扁平化结构，直接使用它
-          // 但考虑到我们已经在 GenerationResult 中定义了 url 字段，而 payload 中可能是 imageUrl 或 videoUrl
-          // 所以最好手动映射一下
-
           final taskId = payload['taskId'];
           if (taskId == null) return;
 
           final type = payload['type'];
           final error = payload['error'];
           final url = payload['imageUrl'] ?? payload['videoUrl'];
+          final lastFrameUrl = payload['lastFrameUrl'];
 
           final result = GenerationResultModel(
             taskId: taskId,
             event: event,
             type: type,
             url: url,
+            thumbnailUrl: lastFrameUrl,
             error: error,
           );
 
-          ref.read(generationResultNotifierProvider.notifier).setResult(result);
+          // Update task in local database
+          await DatabaseHelper().updateTaskStatus(
+            taskId,
+            event == 'success'
+                ? WorkshopTaskStatus.success
+                : WorkshopTaskStatus.failed,
+            url: url,
+            thumbnailUrl: lastFrameUrl,
+            errorMessage: error,
+          );
+
+          // 发送事件通知 UI
+          _generationEventController.add(result);
+          _logger.i('Task completed event emitted: ${result.taskId}');
 
           // 任务结束（无论成功失败），移除本地挂起记录
           _removePendingTask(taskId);
@@ -143,12 +143,27 @@ class WebSocketNotifier extends _$WebSocketNotifier {
     _reconnect();
   }
 
-  Future<void> subscribeTask(String taskId) async {
+  Future<void> subscribeTask(String taskId, {required String typeName}) async {
     if (state == null) {
       await connect();
     }
     _sendSubscribe(taskId);
     await _savePendingTask(taskId); // 持久化
+
+    final type = GenerateTaskType.values.firstWhere(
+      (e) => e.name == typeName,
+      orElse: () => GenerateTaskType.image,
+    );
+
+    // Insert into local database
+    await DatabaseHelper().insertTask(
+      WorkshopTask(
+        id: taskId,
+        type: type,
+        status: WorkshopTaskStatus.processing,
+        createdAt: DateTime.now().millisecondsSinceEpoch,
+      ),
+    );
   }
 
   void _sendSubscribe(String taskId) {
@@ -228,7 +243,7 @@ class WebSocketNotifier extends _$WebSocketNotifier {
       if (pending.isNotEmpty) {
         _logger.i('Restoring ${pending.length} pending subscriptions...');
         for (var taskId in pending) {
-          subscribeTask(taskId);
+          _sendSubscribe(taskId);
         }
       }
     } catch (e) {

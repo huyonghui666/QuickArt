@@ -13,6 +13,7 @@ _$GenerationResultModelImpl _$$GenerationResultModelImplFromJson(
   event: json['event'] as String,
   type: json['type'] as String?,
   url: json['url'] as String?,
+  thumbnailUrl: json['thumbnailUrl'] as String?,
   error: json['error'] as String?,
 );
 
@@ -23,5 +24,6 @@ Map<String, dynamic> _$$GenerationResultModelImplToJson(
   'event': instance.event,
   'type': instance.type,
   'url': instance.url,
+  'thumbnailUrl': instance.thumbnailUrl,
   'error': instance.error,
 };

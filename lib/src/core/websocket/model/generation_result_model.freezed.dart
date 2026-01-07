@@ -29,6 +29,7 @@ mixin _$GenerationResultModel {
   String? get type => throw _privateConstructorUsedError; // IMAGE, VIDEO
   String? get url =>
       throw _privateConstructorUsedError; // 统一存储 imageUrl 或 videoUrl
+  String? get thumbnailUrl => throw _privateConstructorUsedError; // 视频尾帧图或其他缩略图
   String? get error => throw _privateConstructorUsedError;
 
   /// Serializes this GenerationResultModel to a JSON map.
@@ -53,6 +54,7 @@ abstract class $GenerationResultModelCopyWith<$Res> {
     String event,
     String? type,
     String? url,
+    String? thumbnailUrl,
     String? error,
   });
 }
@@ -79,6 +81,7 @@ class _$GenerationResultModelCopyWithImpl<
     Object? event = null,
     Object? type = freezed,
     Object? url = freezed,
+    Object? thumbnailUrl = freezed,
     Object? error = freezed,
   }) {
     return _then(
@@ -98,6 +101,10 @@ class _$GenerationResultModelCopyWithImpl<
             url: freezed == url
                 ? _value.url
                 : url // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            thumbnailUrl: freezed == thumbnailUrl
+                ? _value.thumbnailUrl
+                : thumbnailUrl // ignore: cast_nullable_to_non_nullable
                       as String?,
             error: freezed == error
                 ? _value.error
@@ -123,6 +130,7 @@ abstract class _$$GenerationResultModelImplCopyWith<$Res>
     String event,
     String? type,
     String? url,
+    String? thumbnailUrl,
     String? error,
   });
 }
@@ -146,6 +154,7 @@ class __$$GenerationResultModelImplCopyWithImpl<$Res>
     Object? event = null,
     Object? type = freezed,
     Object? url = freezed,
+    Object? thumbnailUrl = freezed,
     Object? error = freezed,
   }) {
     return _then(
@@ -166,6 +175,10 @@ class __$$GenerationResultModelImplCopyWithImpl<$Res>
             ? _value.url
             : url // ignore: cast_nullable_to_non_nullable
                   as String?,
+        thumbnailUrl: freezed == thumbnailUrl
+            ? _value.thumbnailUrl
+            : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+                  as String?,
         error: freezed == error
             ? _value.error
             : error // ignore: cast_nullable_to_non_nullable
@@ -183,6 +196,7 @@ class _$GenerationResultModelImpl implements _GenerationResultModel {
     required this.event,
     this.type,
     this.url,
+    this.thumbnailUrl,
     this.error,
   });
 
@@ -201,11 +215,14 @@ class _$GenerationResultModelImpl implements _GenerationResultModel {
   final String? url;
   // 统一存储 imageUrl 或 videoUrl
   @override
+  final String? thumbnailUrl;
+  // 视频尾帧图或其他缩略图
+  @override
   final String? error;
 
   @override
   String toString() {
-    return 'GenerationResultModel(taskId: $taskId, event: $event, type: $type, url: $url, error: $error)';
+    return 'GenerationResultModel(taskId: $taskId, event: $event, type: $type, url: $url, thumbnailUrl: $thumbnailUrl, error: $error)';
   }
 
   @override
@@ -217,12 +234,15 @@ class _$GenerationResultModelImpl implements _GenerationResultModel {
             (identical(other.event, event) || other.event == event) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.url, url) || other.url == url) &&
+            (identical(other.thumbnailUrl, thumbnailUrl) ||
+                other.thumbnailUrl == thumbnailUrl) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, taskId, event, type, url, error);
+  int get hashCode =>
+      Object.hash(runtimeType, taskId, event, type, url, thumbnailUrl, error);
 
   /// Create a copy of GenerationResultModel
   /// with the given fields replaced by the non-null parameter values.
@@ -248,6 +268,7 @@ abstract class _GenerationResultModel implements GenerationResultModel {
     required final String event,
     final String? type,
     final String? url,
+    final String? thumbnailUrl,
     final String? error,
   }) = _$GenerationResultModelImpl;
 
@@ -262,6 +283,8 @@ abstract class _GenerationResultModel implements GenerationResultModel {
   String? get type; // IMAGE, VIDEO
   @override
   String? get url; // 统一存储 imageUrl 或 videoUrl
+  @override
+  String? get thumbnailUrl; // 视频尾帧图或其他缩略图
   @override
   String? get error;
 

@@ -7,7 +7,7 @@ part of 'video_generation_provider.dart';
 // **************************************************************************
 
 String _$videoGenerationNotifierHash() =>
-    r'3f1abe45e4939ce0ff5be7ff8de3fd5183eebf9a';
+    r'043e5eeede82b65435640d1fba7fc51fe5f6a1d2';
 
 /// Copied from Dart SDK
 class _SystemHash {

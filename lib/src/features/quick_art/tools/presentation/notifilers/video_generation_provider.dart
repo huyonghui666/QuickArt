@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:quick_art/src/core/di/injection_container.dart';
 import 'package:quick_art/src/core/websocket/websocket_provider.dart';
 import 'package:quick_art/src/features/quick_art/tools/data/models/video_generation_task_model.dart';
+import 'package:quick_art/src/shared/models/generate_task_type.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'video_generation_provider.g.dart';
@@ -22,7 +23,12 @@ class VideoGenerationNotifier extends _$VideoGenerationNotifier {
       final taskModel = await useCase.execute(prompt);
 
       // 自动订阅 WebSocket 任务状态
-      ref.read(webSocketNotifierProvider.notifier).subscribeTask(taskModel.taskId);
+      ref
+          .read(webSocketNotifierProvider.notifier)
+          .subscribeTask(
+            taskModel.taskId,
+            typeName: GenerateTaskType.video.name,
+          );
 
       state = AsyncData(taskModel);
     } catch (e, stack) {

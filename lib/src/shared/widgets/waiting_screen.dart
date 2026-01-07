@@ -2,11 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/src/core/log/logger.dart';
+import 'package:quick_art/src/core/websocket/model/generation_result_model.dart';
 import 'package:quick_art/src/core/websocket/websocket_provider.dart';
+import 'package:quick_art/src/features/quick_art/home/data/models/image_generation_task_model.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/image_generation_provider.dart';
+import 'package:quick_art/src/features/quick_art/tools/data/models/video_generation_task_model.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/notifilers/video_generation_provider.dart';
 import 'package:quick_art/src/shared/provider/show_bottom_sheet_notifier.dart';
 import 'package:rive/rive.dart';
+
+final _waitingScreenErrorProvider = StateProvider.autoDispose<String?>(
+  (ref) => null,
+);
 
 class WaitingScreen extends ConsumerWidget {
   final String taskType;
@@ -20,48 +27,12 @@ class WaitingScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    if (taskType == 'video') {
-      // 监听 WebSocket 结果变化以处理跳转
-      ref.listen(generationResultNotifierProvider, (previous, next) {
-        final asyncTask = ref.read(videoGenerationNotifierProvider(prompt));
-        asyncTask.whenData((taskModel) {
-          final taskId = taskModel.taskId;
-          final result = next[taskId];
-          if (result != null &&
-              result.event == 'success' &&
-              result.url != null) {
-            logger.i('Video generation success: ${result.url}');
-            if (context.mounted) {
-              context.pop();
-            }
-            ref
-                .read(showBottomSheetNotifierProvider.notifier)
-                .trigger(result.url!, BottomSheetType.video);
-          }
-        });
+    // 监听 WebSocket 结果事件
+    ref.listen(generationEventProvider, (previous, next) {
+      next.whenData((event) {
+        _handleEvent(context, ref, event);
       });
-    } else if (taskType == 'image') {
-      // 监听 WebSocket 结果变化以处理跳转
-      ref.listen(generationResultNotifierProvider, (previous, next) {
-        // 我们需要从 imageGenerationNotifierProvider 获取当前的 taskId
-        final asyncTask = ref.read(imageGenerationNotifierProvider(prompt));
-        asyncTask.whenData((taskIdModel) {
-          final taskId = taskIdModel.taskId;
-          final generationResult = next[taskId];
-          if (generationResult != null &&
-              generationResult.event == 'success' &&
-              generationResult.url != null) {
-            logger.i('Image generation success: ${generationResult.url}');
-            if (context.mounted) {
-              context.pop();
-            }
-            ref
-                .read(showBottomSheetNotifierProvider.notifier)
-                .trigger(generationResult.url!, BottomSheetType.image);
-          }
-        });
-      });
-    }
+    });
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -76,51 +47,89 @@ class WaitingScreen extends ConsumerWidget {
     );
   }
 
+  void _handleEvent(
+    BuildContext context,
+    WidgetRef ref,
+    GenerationResultModel result,
+  ) {
+    // 统一处理事件，根据 taskType 获取对应的 Provider
+    if (taskType == 'video') {
+      final asyncTask = ref.read(videoGenerationNotifierProvider(prompt));
+      asyncTask.whenData((taskModel) {
+        _processEvent(context, ref, result, taskModel.taskId);
+      });
+    } else {
+      final asyncTask = ref.read(imageGenerationNotifierProvider(prompt));
+      asyncTask.whenData((taskModel) {
+        _processEvent(context, ref, result, taskModel.taskId);
+      });
+    }
+  }
+
+  void _processEvent(
+    BuildContext context,
+    WidgetRef ref,
+    GenerationResultModel result,
+    String currentTaskId,
+  ) {
+    if (currentTaskId == result.taskId) {
+      if (result.event == 'success' && result.url != null) {
+        logger.i('$taskType generation success: ${result.url}');
+        if (context.mounted) {
+          context.pop();
+        }
+        ref
+            .read(showBottomSheetNotifierProvider.notifier)
+            .trigger(
+              result.url!,
+              taskType == 'video'
+                  ? BottomSheetType.video
+                  : BottomSheetType.image,
+            );
+      } else if (result.event == 'failed') {
+        ref.read(_waitingScreenErrorProvider.notifier).state =
+            result.error ?? 'Unknown error';
+      }
+    }
+  }
+
   Widget _buildVideoBody(BuildContext context, WidgetRef ref) {
     final asyncTask = ref.watch(videoGenerationNotifierProvider(prompt));
+    final errorMessage = ref.watch(_waitingScreenErrorProvider);
 
     return asyncTask.when(
       loading: () => _buildLoadingView(context),
       error: (e, _) => _buildErrorView(e.toString(), () {
         ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
       }),
-      data: (taskModel) {
-        // 获取 WebSocket 状态
-        final wsResults = ref.watch(generationResultNotifierProvider);
-        final result = wsResults[taskModel.taskId];
-
-        if (result != null && result.event == 'failed') {
-          return _buildErrorView(result.error ?? 'Unknown error', () {
+      data: (VideoGenerationTaskModel taskModel) {
+        if (errorMessage != null) {
+          return _buildErrorView(errorMessage, () {
+            ref.read(_waitingScreenErrorProvider.notifier).state = null;
             ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
           });
         }
-
         return _buildLoadingView(context);
       },
     );
   }
 
   Widget _buildImageBody(BuildContext context, WidgetRef ref) {
-    // 1. 获取 HTTP 请求状态
     final asyncTask = ref.watch(imageGenerationNotifierProvider(prompt));
+    final errorMessage = ref.watch(_waitingScreenErrorProvider);
 
     return asyncTask.when(
       loading: () => _buildLoadingView(context),
       error: (e, _) => _buildErrorView(e.toString(), () {
         ref.read(imageGenerationNotifierProvider(prompt).notifier).retry();
       }),
-      data: (taskModel) {
-        // 2. 获取 WebSocket 状态
-        final wsResults = ref.watch(generationResultNotifierProvider);
-        final result = wsResults[taskModel.taskId];
-
-        if (result != null && result.event == 'failed') {
-          return _buildErrorView(result.error ?? 'Unknown error', () {
+      data: (ImageGenerationTaskModel taskModel) {
+        if (errorMessage != null) {
+          return _buildErrorView(errorMessage, () {
+            ref.read(_waitingScreenErrorProvider.notifier).state = null;
             ref.read(imageGenerationNotifierProvider(prompt).notifier).retry();
           });
         }
-
-        // Success (handled by listen) or Processing -> Show Loading
         return _buildLoadingView(context);
       },
     );

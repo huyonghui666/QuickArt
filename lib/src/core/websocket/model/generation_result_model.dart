@@ -16,6 +16,7 @@ class GenerationResultModel with _$GenerationResultModel {
     required String event, // success, failed, processing
     String? type, // IMAGE, VIDEO
     String? url, // 统一存储 imageUrl 或 videoUrl
+    String? thumbnailUrl, // 视频尾帧图或其他缩略图
     String? error,
   }) = _GenerationResultModel;
 

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:quick_art/src/core/di/injection_container.dart';
 import 'package:quick_art/src/core/websocket/websocket_provider.dart';
 import 'package:quick_art/src/features/quick_art/home/data/models/image_generation_task_model.dart';
+import 'package:quick_art/src/shared/models/generate_task_type.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'image_generation_provider.g.dart';
@@ -25,7 +26,10 @@ class ImageGenerationNotifier extends _$ImageGenerationNotifier {
       // 自动订阅 WebSocket 任务状态
       ref
           .read(webSocketNotifierProvider.notifier)
-          .subscribeTask(taskIdModel.taskId);
+          .subscribeTask(
+            taskIdModel.taskId,
+            typeName: GenerateTaskType.image.name,
+          );
 
       state = AsyncData(taskIdModel);
     } catch (e, stack) {

@@ -6,31 +6,24 @@ part of 'websocket_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$generationResultNotifierHash() =>
-    r'4c1ac5b2618f7c7d25e4a83b460446d6bbf98f5f';
+String _$generationEventHash() => r'47fbf1e1c7f9985fdd80e41944dfc691067bfaaf';
 
-/// 全局任务结果状态管理
-/// 存储 taskId -> GenerationResultModel 的映射
-///
-/// Copied from [GenerationResultNotifier].
-@ProviderFor(GenerationResultNotifier)
-final generationResultNotifierProvider =
-    NotifierProvider<
-      GenerationResultNotifier,
-      Map<String, GenerationResultModel>
-    >.internal(
-      GenerationResultNotifier.new,
-      name: r'generationResultNotifierProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$generationResultNotifierHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+/// See also [generationEvent].
+@ProviderFor(generationEvent)
+final generationEventProvider = StreamProvider<GenerationResultModel>.internal(
+  generationEvent,
+  name: r'generationEventProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$generationEventHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-typedef _$GenerationResultNotifier =
-    Notifier<Map<String, GenerationResultModel>>;
-String _$webSocketNotifierHash() => r'155042ddfef757a97f1214c8564bdb0d965dde63';
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GenerationEventRef = StreamProviderRef<GenerationResultModel>;
+String _$webSocketNotifierHash() => r'53d61ca4aafb6c9617efca724aa2f3e61204d906';
 
 /// WebSocket 连接管理
 /// 负责维护连接、心跳、重连以及分发消息

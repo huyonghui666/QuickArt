@@ -37,10 +37,6 @@ class GenerationResultNotifier extends _$GenerationResultNotifier {
 /// 包含任务持久化和断线重连后的自动重新订阅功能
 @Riverpod(keepAlive: true)
 class WebSocketNotifier extends _$WebSocketNotifier {
-  static const String wsUrl =
-      '${AppConstants.webSocketBaseUrl}${AppConstants.webSocketPath}'; // 支持认证的 URL
-  static const Duration reconnectDelay = Duration(seconds: 5); // 重连延迟
-
   Timer? _heartbeatTimer;
 
   @override
@@ -61,7 +57,7 @@ class WebSocketNotifier extends _$WebSocketNotifier {
 
     try {
       // 拼接完整的 WebSocket URL
-      final wsUri = Uri.parse(wsUrl);
+      final wsUri = Uri.parse(AppConstants.webSocketGeneratePath);
       _logger.i('Connecting to WebSocket: $wsUri');
 
       final channel = WebSocketChannel.connect(wsUri);

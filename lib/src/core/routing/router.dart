@@ -5,6 +5,7 @@ import 'package:quick_art/src/features/quick_art/home/presentation/screens/main_
 import 'package:quick_art/src/features/quick_art/tools/presentation/screens/ai_video_screen.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/screens/tools_screen.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/screens/text_to_video_screen.dart';
+import 'package:quick_art/src/features/quick_art/workshop/presentation/screens/workshop_screen.dart';
 import 'package:quick_art/src/features/quick_art/setting/presentation/screens/language_screen.dart';
 import 'package:quick_art/src/features/quick_art/setting/presentation/screens/setting_screen.dart';
 import 'package:quick_art/src/shared/widgets/waiting_screen.dart';
@@ -50,13 +51,8 @@ final GoRouter router = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: '/studio',
-              builder: (context, state) => const Center(
-                child: Text(
-                  'Studio Screen',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
+              path: '/workshop',
+              builder: (context, state) => const WorkshopScreen()
             ),
           ],
         ),

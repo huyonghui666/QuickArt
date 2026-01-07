@@ -6,8 +6,14 @@ import 'package:quick_art/src/shared/models/generate_task_type.dart';
 class WorkshopTaskCard extends StatelessWidget {
   final WorkshopTask task;
   final VoidCallback? onRetry;
+  final VoidCallback? onTap;
 
-  const WorkshopTaskCard({super.key, required this.task, this.onRetry});
+  const WorkshopTaskCard({
+    super.key,
+    required this.task,
+    this.onRetry,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -95,11 +101,15 @@ class WorkshopTaskCard extends StatelessWidget {
             ? task.url!
             : 'https://via.placeholder.com/300x300.png?text=Video');
 
-    return CachedNetworkImage(
-      imageUrl: imageUrl,
-      fit: BoxFit.cover,
-      placeholder: (context, url) => Container(color: const Color(0xFF2C2C2C)),
-      errorWidget: (context, url, error) => const Icon(Icons.error),
+    return GestureDetector(
+      onTap: onTap,
+      child: CachedNetworkImage(
+        imageUrl: imageUrl,
+        fit: BoxFit.cover,
+        placeholder: (context, url) =>
+            Container(color: const Color(0xFF2C2C2C)),
+        errorWidget: (context, url, error) => const Icon(Icons.error),
+      ),
     );
   }
 

@@ -4,6 +4,8 @@ import 'package:quick_art/src/features/quick_art/workshop/presentation/notifiers
 import 'package:quick_art/src/features/quick_art/workshop/presentation/widgets/pro_banner.dart';
 import 'package:quick_art/src/features/quick_art/workshop/presentation/widgets/workshop_header.dart';
 import 'package:quick_art/src/features/quick_art/workshop/presentation/widgets/workshop_task_card.dart';
+import 'package:quick_art/src/shared/models/generate_task_type.dart';
+import 'package:quick_art/src/shared/provider/show_bottom_sheet_notifier.dart';
 
 class WorkshopScreen extends ConsumerStatefulWidget {
   const WorkshopScreen({super.key});
@@ -30,10 +32,10 @@ class _WorkshopScreenState extends ConsumerState<WorkshopScreen> {
                 child: tasksAsyncValue.when(
                   data: (tasks) {
                     if (tasks.isEmpty) {
-                      return const Center(
-                        child: Text(
-                          '暂无任务',
-                          style: TextStyle(color: Colors.white54),
+                      return SizedBox.expand(
+                        child: Image.asset(
+                          'assets/images/bg/workshop_bg.webp',
+                          fit: BoxFit.cover,
                         ),
                       );
                     }
@@ -50,6 +52,20 @@ class _WorkshopScreenState extends ConsumerState<WorkshopScreen> {
                         final task = tasks[index];
                         return WorkshopTaskCard(
                           task: task,
+                          onTap: () {
+                            if (task.url != null) {
+                              ref
+                                  .read(
+                                    showBottomSheetNotifierProvider.notifier,
+                                  )
+                                  .trigger(
+                                    task.url!,
+                                    task.type == GenerateTaskType.video
+                                        ? BottomSheetType.video
+                                        : BottomSheetType.image,
+                                  );
+                            }
+                          },
                           onRetry: () {
                             // TODO: Implement retry logic
                             debugPrint('Retry task ${task.id}');

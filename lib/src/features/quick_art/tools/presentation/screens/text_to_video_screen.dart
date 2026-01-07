@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/generated_video_bottom_sheet.dart';
 import 'package:quick_art/src/shared/provider/prompt_provider.dart';
-import 'package:quick_art/src/shared/provider/show_bottom_sheet_notifier.dart';
 import 'package:quick_art/src/shared/widgets/prompt_text_field.dart';
 import 'package:quick_art/src/shared/widgets/draw_button.dart';
 
@@ -20,27 +18,6 @@ class TextToVideoScreen extends ConsumerStatefulWidget {
 class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
   @override
   Widget build(BuildContext context) {
-    ref.listen(showBottomSheetNotifierProvider, (previous, next) {
-      if (next != null && next.type == BottomSheetType.video) {
-        showModalBottomSheet(
-          context: context,
-          isScrollControlled: true,
-          backgroundColor: const Color(0xFF1A1A1A),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-          ),
-          builder: (sheetContext) {
-            return SizedBox(
-              height: MediaQuery.of(sheetContext).size.height * 0.75,
-              child: GeneratedVideoBottomSheet(videoUrl: next.url),
-            );
-          },
-        ).then((_) {
-          ref.read(showBottomSheetNotifierProvider.notifier).reset();
-        });
-      }
-    });
-
     final theme = Theme.of(context);
     return Scaffold(
       extendBodyBehindAppBar: true,

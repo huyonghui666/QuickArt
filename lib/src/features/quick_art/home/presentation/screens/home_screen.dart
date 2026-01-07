@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/generated_image_bottom_sheet.dart';
 import 'package:quick_art/src/features/quick_art/home/presentation/widgets/home/sliver_persistent_header_delegate.dart';
 import 'package:quick_art/src/shared/assets/app_icons.dart';
-import 'package:quick_art/src/shared/provider/show_bottom_sheet_notifier.dart';
 import 'package:quick_art/src/shared/widgets/draw_button.dart';
 import 'package:quick_art/src/shared/provider/prompt_provider.dart';
 import 'package:quick_art/src/shared/widgets/prompt_text_field.dart';
@@ -18,28 +16,6 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(showBottomSheetNotifierProvider, (previous, next) {
-      if (next != null && next.type == BottomSheetType.image) {
-        showModalBottomSheet(
-          context: context,
-          useRootNavigator: true, // 确保遮挡底部导航栏
-          isScrollControlled: true,
-          backgroundColor: const Color(0xFF1A1A1A),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-          ),
-          builder: (sheetContext) {
-            return SizedBox(
-              height: MediaQuery.of(sheetContext).size.height * 0.75,
-              child: GeneratedImageBottomSheet(imageUrl: next.url),
-            );
-          },
-        ).then((_) {
-          ref.read(showBottomSheetNotifierProvider.notifier).reset();
-        });
-      }
-    });
-
     final statusBarHeight = MediaQuery.of(context).padding.top;
     return Scaffold(
       backgroundColor: Colors.black,

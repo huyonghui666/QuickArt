@@ -61,8 +61,8 @@ class WorkshopTaskCard extends StatelessWidget {
         gradient: LinearGradient(
           colors: [
             const Color(0xFF2C2C2C),
-            const Color(0xFF2C2C2C).withOpacity(0.8),
-            Colors.purple.withOpacity(0.2),
+            const Color(0xFF2C2C2C).withValues(alpha: 0.8),
+            Colors.purple.withValues(alpha: 0.2),
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
@@ -95,9 +95,7 @@ class WorkshopTaskCard extends StatelessWidget {
 
     // 优先使用 thumbnailUrl (特别是视频任务)，如果为空则尝试使用 url (图片任务)
     // 如果是视频且没有缩略图，才使用占位符
-    final imageUrl =
-        task.thumbnailUrl ??
-        (task.type == GenerateTaskType.image
+    final imageUrl = task.thumbnailUrl ?? (task.type == GenerateTaskType.image
             ? task.url!
             : 'https://via.placeholder.com/300x300.png?text=Video');
 

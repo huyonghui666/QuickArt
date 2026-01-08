@@ -7,16 +7,11 @@ import 'package:quick_art/src/features/quick_art/workshop/presentation/widgets/w
 import 'package:quick_art/src/shared/models/generate_task_type.dart';
 import 'package:quick_art/src/shared/provider/show_bottom_sheet_notifier.dart';
 
-class WorkshopScreen extends ConsumerStatefulWidget {
+class WorkshopScreen extends ConsumerWidget {
   const WorkshopScreen({super.key});
 
   @override
-  ConsumerState<WorkshopScreen> createState() => _WorkshopScreenState();
-}
-
-class _WorkshopScreenState extends ConsumerState<WorkshopScreen> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
     final tasksAsyncValue = ref.watch(workshopTasksNotifierProvider);
 
     return Scaffold(
@@ -53,14 +48,10 @@ class _WorkshopScreenState extends ConsumerState<WorkshopScreen> {
                         return WorkshopTaskCard(
                           task: task,
                           onTap: () {
+                            //弹出底部弹出框
                             if (task.url != null) {
-                              ref
-                                  .read(
-                                showBottomSheetNotifierProvider.notifier,
-                              )
-                                  .trigger(
-                                task.url!,
-                                task.type == GenerateTaskType.video
+                              ref.read(showBottomSheetNotifierProvider.notifier,)
+                                  .trigger(task.url!, task.type == GenerateTaskType.video
                                     ? BottomSheetType.video
                                     : BottomSheetType.image,
                               );

@@ -25,10 +25,7 @@ class VideoGenerationNotifier extends _$VideoGenerationNotifier {
       // 自动订阅 WebSocket 任务状态
       ref
           .read(webSocketNotifierProvider.notifier)
-          .subscribeTask(
-            taskModel.taskId,
-            typeName: GenerateTaskType.video.name,
-          );
+          .subscribeTask(taskModel.taskId, type: GenerateTaskType.video);
 
       state = AsyncData(taskModel);
     } catch (e, stack) {

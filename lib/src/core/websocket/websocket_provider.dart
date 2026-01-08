@@ -143,17 +143,15 @@ class WebSocketNotifier extends _$WebSocketNotifier {
     _reconnect();
   }
 
-  Future<void> subscribeTask(String taskId, {required String typeName}) async {
+  Future<void> subscribeTask(
+    String taskId, {
+    required GenerateTaskType type,
+  }) async {
     if (state == null) {
       await connect();
     }
     _sendSubscribe(taskId);
     await _savePendingTask(taskId); // 持久化
-
-    final type = GenerateTaskType.values.firstWhere(
-      (e) => e.name == typeName,
-      orElse: () => GenerateTaskType.image,
-    );
 
     // Insert into local database
     await DatabaseHelper().insertTask(

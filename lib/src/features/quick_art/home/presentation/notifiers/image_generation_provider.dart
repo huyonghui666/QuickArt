@@ -26,10 +26,7 @@ class ImageGenerationNotifier extends _$ImageGenerationNotifier {
       // 自动订阅 WebSocket 任务状态
       ref
           .read(webSocketNotifierProvider.notifier)
-          .subscribeTask(
-            taskIdModel.taskId,
-            typeName: GenerateTaskType.image.name,
-          );
+          .subscribeTask(taskIdModel.taskId, type: GenerateTaskType.image);
 
       state = AsyncData(taskIdModel);
     } catch (e, stack) {

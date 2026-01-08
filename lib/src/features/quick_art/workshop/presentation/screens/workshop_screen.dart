@@ -41,12 +41,12 @@ class _WorkshopScreenState extends ConsumerState<WorkshopScreen> {
                     }
                     return GridView.builder(
                       gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 16,
-                            crossAxisSpacing: 16,
-                            childAspectRatio: 0.8,
-                          ),
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 16,
+                        crossAxisSpacing: 16,
+                        childAspectRatio: 0.8,
+                      ),
                       itemCount: tasks.length,
                       itemBuilder: (context, index) {
                         final task = tasks[index];
@@ -56,14 +56,14 @@ class _WorkshopScreenState extends ConsumerState<WorkshopScreen> {
                             if (task.url != null) {
                               ref
                                   .read(
-                                    showBottomSheetNotifierProvider.notifier,
-                                  )
+                                showBottomSheetNotifierProvider.notifier,
+                              )
                                   .trigger(
-                                    task.url!,
-                                    task.type == GenerateTaskType.video
-                                        ? BottomSheetType.video
-                                        : BottomSheetType.image,
-                                  );
+                                task.url!,
+                                task.type == GenerateTaskType.video
+                                    ? BottomSheetType.video
+                                    : BottomSheetType.image,
+                              );
                             }
                           },
                           onRetry: () {
@@ -75,7 +75,7 @@ class _WorkshopScreenState extends ConsumerState<WorkshopScreen> {
                     );
                   },
                   loading: () =>
-                      const Center(child: CircularProgressIndicator()),
+                  const Center(child: CircularProgressIndicator()),
                   error: (error, stack) => Center(
                     child: Text(
                       '加载失败: $error',

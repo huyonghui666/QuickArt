@@ -109,11 +109,11 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
   }
 
   Widget _buildOptionItem(
-    BuildContext context,
-    ThemeData theme, {
-    required String iconPath,
-    required String label,
-  }) {
+      BuildContext context,
+      ThemeData theme, {
+        required String iconPath,
+        required String label,
+      }) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(

@@ -156,10 +156,10 @@ class HomeScreen extends ConsumerWidget {
   }
 
   Widget _buildActionItem(
-    String iconPath,
-    String label, {
-    String? trailingIconPath,
-  }) {
+      String iconPath,
+      String label, {
+        String? trailingIconPath,
+      }) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
       decoration: BoxDecoration(

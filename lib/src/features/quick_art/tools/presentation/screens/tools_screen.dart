@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/image_card.dart';
-import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/video_card.dart';
+import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/tools_image_card.dart';
+import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/tools_video_card.dart';
 
 class ToolsScreen extends StatelessWidget {
   const ToolsScreen({super.key});

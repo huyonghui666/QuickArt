@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/video_template_card.dart';
+import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/ai_video_template_card.dart';
 
 class VideoTemplateGrid extends StatelessWidget {
   const VideoTemplateGrid({super.key});

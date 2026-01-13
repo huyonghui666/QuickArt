@@ -12,7 +12,7 @@ class VideoTemplateCard extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Image.network(
-            'https://picsum.photos/seed/video_template_$index/400/600',
+            'https://picsum.photos/seed/video_template_${index}/400/600',
             fit: BoxFit.cover,
           ),
           Container(

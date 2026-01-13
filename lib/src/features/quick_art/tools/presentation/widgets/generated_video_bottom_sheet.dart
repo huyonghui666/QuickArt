@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/video_card.dart';
+import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/tools_video_card.dart';
 
 class GeneratedVideoBottomSheet extends StatelessWidget {
   final String videoUrl;

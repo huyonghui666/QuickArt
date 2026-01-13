@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/notifilers/ai_video_tab_bar_provider.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/ai_video_action_card.dart';
-import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/video_template_grid.dart';
+import 'package:quick_art/src/features/quick_art/tools/presentation/widgets/ai_video_template_grid.dart';
 
 class AiVideoScreen extends ConsumerStatefulWidget {
   const AiVideoScreen({super.key});

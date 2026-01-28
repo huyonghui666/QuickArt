@@ -7,7 +7,7 @@ part of 'image_generation_provider.dart';
 // **************************************************************************
 
 String _$imageGenerationNotifierHash() =>
-    r'7941924052264418622ecf52b3ffe06edee962a0';
+    r'72665098ea1bc9f13ee0dec55bf626b58fee3228';
 
 /// Copied from Dart SDK
 class _SystemHash {

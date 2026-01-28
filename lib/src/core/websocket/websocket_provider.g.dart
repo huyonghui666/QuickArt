@@ -23,7 +23,7 @@ final generationEventProvider = StreamProvider<GenerationResultModel>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef GenerationEventRef = StreamProviderRef<GenerationResultModel>;
-String _$webSocketNotifierHash() => r'53d61ca4aafb6c9617efca724aa2f3e61204d906';
+String _$webSocketNotifierHash() => r'c135cd4d6e0f13b80582b6e504b31b2d5d8ecb98';
 
 /// WebSocket 连接管理
 /// 负责维护连接、心跳、重连以及分发消息

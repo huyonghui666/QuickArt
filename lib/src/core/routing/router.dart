@@ -5,6 +5,7 @@ import 'package:quick_art/src/features/quick_art/home/presentation/screens/main_
 import 'package:quick_art/src/features/quick_art/tools/presentation/screens/ai_video_screen.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/screens/tools_screen.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/screens/text_to_video_screen.dart';
+import 'package:quick_art/src/features/quick_art/tools/presentation/screens/start_end_frame_screen.dart';
 import 'package:quick_art/src/features/quick_art/workshop/presentation/screens/workshop_screen.dart';
 import 'package:quick_art/src/features/quick_art/setting/presentation/screens/language_screen.dart';
 import 'package:quick_art/src/features/quick_art/setting/presentation/screens/setting_screen.dart';
@@ -52,7 +53,7 @@ final GoRouter router = GoRouter(
           routes: [
             GoRoute(
               path: '/workshop',
-              builder: (context, state) => const WorkshopScreen()
+              builder: (context, state) => const WorkshopScreen(),
             ),
           ],
         ),
@@ -84,6 +85,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/tools/ai-video/text-to-video',
       builder: (context, state) => const TextToVideoScreen(),
+    ),
+    GoRoute(
+      path: '/tools/ai-video/start-end-frame',
+      builder: (context, state) => const StartEndFrameScreen(),
     ),
   ],
 );

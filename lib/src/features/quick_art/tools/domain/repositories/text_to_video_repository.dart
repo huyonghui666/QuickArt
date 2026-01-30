@@ -2,4 +2,10 @@ import 'package:quick_art/src/features/quick_art/tools/data/models/video_generat
 
 abstract class TextToVideoRepository {
   Future<VideoGenerationTaskModel> generateVideo(String prompt);
+
+  Future<VideoGenerationTaskModel> generateVideoFromFrames(
+    String prompt,
+    String firstFramePath,
+    String lastFramePath,
+  );
 }

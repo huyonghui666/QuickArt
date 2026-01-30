@@ -52,7 +52,7 @@ class Prompt extends _$Prompt {
     });
 
     // 返回初始状态
-    return PromptState(controller: controller);
+    return PromptState(controller: controller, text: controller.text);
   }
 
   void clear() {

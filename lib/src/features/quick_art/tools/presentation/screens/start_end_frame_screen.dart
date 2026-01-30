@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/notifilers/start_end_frame_provider.dart';
 import 'package:quick_art/src/shared/widgets/draw_button.dart';
 import 'package:quick_art/src/shared/widgets/prompt_text_field.dart';
+import 'package:quick_art/src/shared/provider/prompt_provider.dart';
 
 class StartEndFrameScreen extends ConsumerWidget {
   const StartEndFrameScreen({super.key});
@@ -132,9 +133,15 @@ class StartEndFrameScreen extends ConsumerWidget {
                           );
                           return;
                         }
-                        // Handle draw action
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('开始生成视频...')),
+
+                        final prompt = ref
+                            .read(promptProvider('start_end_frame'))
+                            .text;
+
+                        context.pushNamed(
+                          'Wait',
+                          pathParameters: {'taskType': 'start_end_frame'},
+                          queryParameters: {'prompt': prompt},
                         );
                       },
                     ),

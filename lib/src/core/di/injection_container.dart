@@ -5,6 +5,7 @@ import 'package:quick_art/src/features/quick_art/tools/data/datasources/text_to_
 import 'package:quick_art/src/features/quick_art/tools/data/repositories/text_to_video_repository_impl.dart';
 import 'package:quick_art/src/features/quick_art/tools/domain/repositories/text_to_video_repository.dart';
 import 'package:quick_art/src/features/quick_art/tools/domain/usecases/text_to_generate_video_usecase.dart';
+import 'package:quick_art/src/features/quick_art/tools/domain/usecases/start_end_frame_generate_video_usecase.dart';
 import 'package:quick_art/src/features/quick_art/home/data/datasources/text_to_image_remote_data_source.dart';
 import 'package:quick_art/src/features/quick_art/home/data/repositories/text_to_image_repository_impl.dart';
 import 'package:quick_art/src/features/quick_art/home/domain/repositories/text_to_image_repository.dart';
@@ -55,4 +56,10 @@ TextToVideoRepository textToVideoRepository(Ref ref) {
 TextToGenerateVideoUseCase textToGenerateVideoUseCase(Ref ref) {
   final repository = ref.watch(textToVideoRepositoryProvider);
   return TextToGenerateVideoUseCase(repository);
+}
+
+@riverpod
+StartEndFrameGenerateVideoUseCase startEndFrameGenerateVideoUseCase(Ref ref) {
+  final repository = ref.watch(textToVideoRepositoryProvider);
+  return StartEndFrameGenerateVideoUseCase(repository);
 }

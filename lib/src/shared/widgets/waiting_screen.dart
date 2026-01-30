@@ -8,6 +8,7 @@ import 'package:quick_art/src/features/quick_art/home/data/models/image_generati
 import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/image_generation_provider.dart';
 import 'package:quick_art/src/features/quick_art/tools/data/models/video_generation_task_model.dart';
 import 'package:quick_art/src/features/quick_art/tools/presentation/notifilers/video_generation_provider.dart';
+import 'package:quick_art/src/features/quick_art/tools/presentation/notifilers/start_end_frame_generation_provider.dart';
 import 'package:quick_art/src/shared/provider/show_bottom_sheet_notifier.dart';
 import 'package:rive/rive.dart';
 
@@ -41,7 +42,7 @@ class WaitingScreen extends ConsumerWidget {
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: taskType == 'video'
+      body: (taskType == 'video' || taskType == 'start_end_frame')
           ? _buildVideoBody(context, ref)
           : _buildImageBody(context, ref),
     );
@@ -55,6 +56,13 @@ class WaitingScreen extends ConsumerWidget {
     // 统一处理事件，根据 taskType 获取对应的 Provider
     if (taskType == 'video') {
       final asyncTask = ref.read(videoGenerationNotifierProvider(prompt));
+      asyncTask.whenData((taskModel) {
+        _processEvent(context, ref, result, taskModel.taskId);
+      });
+    } else if (taskType == 'start_end_frame') {
+      final asyncTask = ref.read(
+        startEndFrameGenerationNotifierProvider(prompt),
+      );
       asyncTask.whenData((taskModel) {
         _processEvent(context, ref, result, taskModel.taskId);
       });
@@ -82,7 +90,7 @@ class WaitingScreen extends ConsumerWidget {
             .read(showBottomSheetNotifierProvider.notifier)
             .trigger(
               result.url!,
-              taskType == 'video'
+              (taskType == 'video' || taskType == 'start_end_frame')
                   ? BottomSheetType.video
                   : BottomSheetType.image,
             );
@@ -94,19 +102,38 @@ class WaitingScreen extends ConsumerWidget {
   }
 
   Widget _buildVideoBody(BuildContext context, WidgetRef ref) {
-    final asyncTask = ref.watch(videoGenerationNotifierProvider(prompt));
+    final asyncTask = taskType == 'start_end_frame'
+        ? ref.watch(startEndFrameGenerationNotifierProvider(prompt))
+        : ref.watch(videoGenerationNotifierProvider(prompt));
+
     final errorMessage = ref.watch(_waitingScreenErrorProvider);
 
     return asyncTask.when(
       loading: () => _buildLoadingView(context),
       error: (e, _) => _buildErrorView(e.toString(), () {
-        ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
+        if (taskType == 'start_end_frame') {
+          ref
+              .read(startEndFrameGenerationNotifierProvider(prompt).notifier)
+              .retry();
+        } else {
+          ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
+        }
       }),
       data: (VideoGenerationTaskModel taskModel) {
         if (errorMessage != null) {
           return _buildErrorView(errorMessage, () {
             ref.read(_waitingScreenErrorProvider.notifier).state = null;
-            ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
+            if (taskType == 'start_end_frame') {
+              ref
+                  .read(
+                    startEndFrameGenerationNotifierProvider(prompt).notifier,
+                  )
+                  .retry();
+            } else {
+              ref
+                  .read(videoGenerationNotifierProvider(prompt).notifier)
+                  .retry();
+            }
           });
         }
         return _buildLoadingView(context);

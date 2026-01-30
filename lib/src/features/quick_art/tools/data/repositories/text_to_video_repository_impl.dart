@@ -11,4 +11,17 @@ class TextToVideoRepositoryImpl implements TextToVideoRepository {
   Future<VideoGenerationTaskModel> generateVideo(String prompt) async {
     return await _remoteDataSource.submitTask(prompt);
   }
+
+  @override
+  Future<VideoGenerationTaskModel> generateVideoFromFrames(
+    String prompt,
+    String firstFramePath,
+    String lastFramePath,
+  ) async {
+    return await _remoteDataSource.submitTaskFromFrames(
+      prompt,
+      firstFramePath,
+      lastFramePath,
+    );
+  }
 }

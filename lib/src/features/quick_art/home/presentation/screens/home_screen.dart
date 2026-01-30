@@ -50,11 +50,12 @@ class HomeScreen extends ConsumerWidget {
                   onTap: () {
                     final prompt = ref.read(promptProvider('textToImage')).text;
                     if (prompt.isEmpty) return;
-                    final uri = Uri(
-                      path: '/wait/image',
+
+                    context.pushNamed(
+                      'Wait',
+                      pathParameters: {'taskType': 'image'},
                       queryParameters: {'prompt': prompt},
                     );
-                    context.push(uri.toString());
                   },
                 ),
               ),
@@ -156,10 +157,10 @@ class HomeScreen extends ConsumerWidget {
   }
 
   Widget _buildActionItem(
-      String iconPath,
-      String label, {
-        String? trailingIconPath,
-      }) {
+    String iconPath,
+    String label, {
+    String? trailingIconPath,
+  }) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
       decoration: BoxDecoration(

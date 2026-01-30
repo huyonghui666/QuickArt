@@ -71,11 +71,12 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
                           .read(promptProvider('textToVideo'))
                           .text;
                       if (prompt.isEmpty) return;
-                      final uri = Uri(
-                        path: '/wait/video',
+
+                      context.pushNamed(
+                        'Wait',
+                        pathParameters: {'taskType': 'video'},
                         queryParameters: {'prompt': prompt},
                       );
-                      context.push(uri.toString());
                     },
                   ),
                   const SizedBox(height: 24),
@@ -109,11 +110,11 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
   }
 
   Widget _buildOptionItem(
-      BuildContext context,
-      ThemeData theme, {
-        required String iconPath,
-        required String label,
-      }) {
+    BuildContext context,
+    ThemeData theme, {
+    required String iconPath,
+    required String label,
+  }) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(

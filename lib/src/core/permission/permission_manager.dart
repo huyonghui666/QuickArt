@@ -47,38 +47,12 @@ class PermissionManager {
       return true;
     }
 
-    // If permanently denied, show dialog
+    // If permanently denied, open app settings directly
     if (result.isPermanentlyDenied) {
-      if (context.mounted) {
-        _showPermissionDialog(context, name);
-      }
+      openAppSettings();
       return false;
     }
 
     return false;
-  }
-
-  static void _showPermissionDialog(BuildContext context, String name) {
-    showDialog(
-      context: context,
-      builder:
-          (context) => AlertDialog(
-            title: Text('需要$name权限'),
-            content: Text('请在设置中开启$name权限，以便我们访问您的数据。'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('取消'),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  openAppSettings();
-                },
-                child: const Text('去设置'),
-              ),
-            ],
-          ),
-    );
   }
 }

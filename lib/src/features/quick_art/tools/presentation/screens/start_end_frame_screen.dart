@@ -9,7 +9,7 @@ import 'package:quick_art/src/features/quick_art/tools/presentation/notifilers/s
 import 'package:quick_art/src/shared/widgets/draw_button.dart';
 import 'package:quick_art/src/shared/widgets/prompt_text_field.dart';
 import 'package:quick_art/src/shared/provider/prompt_provider.dart';
-import 'package:quick_art/src/core/utils/permission_manager.dart';
+import 'package:quick_art/src/core/permission/permission_manager.dart';
 
 class StartEndFrameScreen extends ConsumerWidget {
   const StartEndFrameScreen({super.key});

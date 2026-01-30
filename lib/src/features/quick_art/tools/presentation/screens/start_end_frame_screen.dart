@@ -9,6 +9,7 @@ import 'package:quick_art/src/features/quick_art/tools/presentation/notifilers/s
 import 'package:quick_art/src/shared/widgets/draw_button.dart';
 import 'package:quick_art/src/shared/widgets/prompt_text_field.dart';
 import 'package:quick_art/src/shared/provider/prompt_provider.dart';
+import 'package:quick_art/src/core/utils/permission_manager.dart';
 
 class StartEndFrameScreen extends ConsumerWidget {
   const StartEndFrameScreen({super.key});
@@ -68,6 +69,12 @@ class StartEndFrameScreen extends ConsumerWidget {
                             title: '上传首帧图片',
                             imagePath: startEndFrameState.startFramePath,
                             onTap: () async {
+                              final hasPermission =
+                                  await PermissionManager.requestPhotosPermission(
+                                    context,
+                                  );
+                              if (!hasPermission) return;
+
                               final picker = ImagePicker();
                               final image = await picker.pickImage(
                                 source: ImageSource.gallery,
@@ -84,6 +91,12 @@ class StartEndFrameScreen extends ConsumerWidget {
                             title: '上传尾帧图片',
                             imagePath: startEndFrameState.endFramePath,
                             onTap: () async {
+                              final hasPermission =
+                                  await PermissionManager.requestPhotosPermission(
+                                    context,
+                                  );
+                              if (!hasPermission) return;
+
                               final picker = ImagePicker();
                               final image = await picker.pickImage(
                                 source: ImageSource.gallery,

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="360px" height="132px" viewBox="0 0 360 132" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>home_ic_title</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="360" height="132"></rect>
+    </defs>
+    <g id="2.3.1.0-定稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页切图" transform="translate(-36.000000, -57.000000)">
+            <g id="home_ic_title" transform="translate(36.000000, 57.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="矩形"></g>
+                <text id="QuickArt" fill-rule="nonzero" mask="url(#mask-2)" font-family="Roboto-Bold, Roboto" font-size="72" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="6" y="91">QuickArt</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

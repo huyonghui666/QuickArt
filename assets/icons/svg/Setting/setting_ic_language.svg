@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>setting_ic_language@2x</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="60" height="60"></rect>
+    </defs>
+    <g id="设计稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="设置界面" transform="translate(-108.000000, -519.000000)">
+            <g id="编组-3" transform="translate(48.000000, 306.000000)">
+                <g id="编组-2备份-5" transform="translate(0.000000, 162.000000)">
+                    <g id="setting_ic_language" transform="translate(60.000000, 51.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="矩形"></g>
+                        <g id="ic/设置/语言" mask="url(#mask-2)">
+                            <g transform="translate(4.285714, 4.285714)" id="编组">
+                                <circle id="椭圆形" stroke="#ECECEC" stroke-width="4.32" cx="25.7142857" cy="25.7142857" r="23.5542857"></circle>
+                                <path d="M17.9205506,4.64983259 C17.8223018,14.0592448 21.3416749,18.7639509 28.4786699,18.7639509 C39.1841624,18.7639509 42.9966409,21.4559399 39.2662268,29.3342634 C36.7792841,34.586479 39.2833736,36.6026673 46.7784954,35.3828281" id="路径-2" stroke="#ECECEC" stroke-width="4.32"></path>
+                                <path d="M3.20683495,27.905692 C8.8399617,23.5019151 12.9116728,24.6052662 15.4219684,31.215745 C18.9576418,40.5263993 21.3898281,31.0752455 28.2396674,33.3625722 C30.6788489,34.1770737 32.1437152,38.9808482 32.6342662,47.7738956" id="路径-3" stroke="#ECECEC" stroke-width="4.32"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

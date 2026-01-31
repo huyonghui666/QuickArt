@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>setting_ic_version@2x</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="60" height="60"></rect>
+    </defs>
+    <g id="设计稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="设置界面" transform="translate(-108.000000, -1491.000000)">
+            <g id="编组-3" transform="translate(48.000000, 306.000000)">
+                <g id="编组-2备份-6" transform="translate(0.000000, 1134.000000)">
+                    <g id="setting_ic_version" transform="translate(60.000000, 51.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="矩形"></g>
+                        <g id="ic/设置/语言" mask="url(#mask-2)">
+                            <g transform="translate(4.285714, 4.285714)" id="编组">
+                                <circle id="椭圆形" stroke="#ECECEC" stroke-width="4.32" cx="25.7142857" cy="25.7142857" r="23.5542857"></circle>
+                                <circle id="椭圆形" fill="#ECECEC" cx="25.7142857" cy="16.4285714" r="2.85714286"></circle>
+                                <rect id="矩形" fill="#ECECEC" x="22.8571429" y="23.5714286" width="5.71428571" height="13.5714286" rx="2.85714286"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

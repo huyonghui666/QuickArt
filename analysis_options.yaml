@@ -23,6 +23,24 @@ linter:
   rules:
     # avoid_print: false  # Uncomment to disable the `avoid_print` rule
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    -
+    # 风格建议
+    - prefer_const_constructors
+    - prefer_const_declarations
+    - prefer_final_locals
+    - prefer_final_fields
+    - always_use_package_imports
+    - avoid_relative_lib_imports
+    - require_trailing_commas
+
+    # 性能与错误预防
+    - avoid_empty_else
+    - avoid_print # 在生产代码中避免使用 print
+    - cancel_subscriptions
+    - close_sinks
+    - no_logic_in_create_state
+    - use_key_in_widget_constructors
+
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

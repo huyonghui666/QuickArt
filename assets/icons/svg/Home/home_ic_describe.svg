@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>home_ic_describe</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="48" height="48"></rect>
+        <path d="M0,0 L40,0 L40,16 L0,16 Z M0,32 L40,32 L40,48 L0,48 Z" id="path-3"></path>
+    </defs>
+    <g id="2.3.1.0-定稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页切图" transform="translate(-66.000000, -837.000000)">
+            <g id="编组-12" transform="translate(66.000000, 837.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="矩形"></g>
+                <g id="编组" mask="url(#mask-2)">
+                    <g transform="translate(4.000000, 0.000000)">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <g id="形状结合" stroke="none" fill="none"></g>
+                        <path d="M7.04935314,8.49993788 L7.2,8.5 L32.8,8.5 C33.2266005,8.5 33.6675234,8.63420603 33.970747,9.03692493 C34.3294221,9.5132903 34.5,10.2455149 34.5,11.25 L34.5,36.75 C34.5,37.8758981 34.465825,38.6844468 34.1016938,39.1680585 C33.8413551,39.5138209 33.3598954,39.5 32.8,39.5 L7.04935314,39.5000621 C6.55439392,39.4995411 6.13497776,39.4823879 5.89830615,39.1680585 C5.534175,38.6844468 5.5,37.8758981 5.5,36.75 L5.50074129,10.9958142 C5.5072101,10.0016325 5.56218509,9.27835234 5.89830615,8.83194155 C6.15864492,8.48617912 6.64010459,8.5 7.2,8.5 Z" id="路径" stroke="#ECECEC" stroke-width="3" fill="none" mask="url(#mask-4)"></path>
+                    </g>
+                </g>
+                <rect id="矩形" fill="#ECECEC" mask="url(#mask-2)" x="3" y="23" width="42" height="3" rx="1.5"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

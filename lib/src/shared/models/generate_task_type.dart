@@ -1,0 +1,1 @@
+enum GenerateTaskType { image, video }

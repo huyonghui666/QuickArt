@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>home_nav_tools_press</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="72" height="72"></rect>
+        <path d="M38.2838528,0 C40.0920849,0 41.5711454,1.46291431 41.5711454,3.24997616 L41.5711454,3.95050933 C41.5711454,5.73763276 40.0921472,7.20048543 38.2838528,7.20048543 L37.676,7.2 L37.6766641,25.2246148 L50.7648061,46.0054507 C52.1509162,47.4944288 53,49.4787403 53,51.6497211 C53,56.2421804 49.2004757,60 44.5553733,60 L8.44599739,60 C3.80089506,60 0,56.2421804 0,51.6497211 C0,50.5148206 0.232122875,49.4309326 0.651744434,48.4421523 C1.00529126,47.6111916 1.48610431,46.8534121 2.07130406,46.1873576 L15.2734274,25.2246148 L15.273,7.2 L14.7176426,7.20048543 C12.9094104,7.20048543 11.4304123,5.73757112 11.4304123,3.95050933 L11.4304123,3.25003774 C11.4304123,1.46291431 12.9093481,0 14.7176426,0 L38.2838528,0 Z M30.596,7.2 L22.353,7.2 L22.3536398,27.0000339 L22.352,27 L17.8319841,34.8637336 C20.1679805,34.2879112 22.3906525,34 24.5,34 C27.631068,34 31.3695733,34.6343768 35.7155159,35.9031303 L30.597,27 L30.596,7.2 Z" id="path-3"></path>
+    </defs>
+    <g id="2.3.1.0-定稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页切图" transform="translate(-296.000000, -1588.000000)">
+            <g id="home_nav_tools_press" transform="translate(296.000000, 1588.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="矩形"></g>
+                <g id="编组-8" mask="url(#mask-2)">
+                    <g transform="translate(9.000000, 6.000000)">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <use id="形状结合" stroke="none" fill="#656566" fill-rule="nonzero" xlink:href="#path-3"></use>
+                        <g id="编组-6" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" mask="url(#mask-4)">
+                            <g transform="translate(-21.000000, -30.000000)" id="椭圆形">
+                                <circle fill="#FFDA73" cx="78.5" cy="44.5" r="28.5"></circle>
+                                <circle fill="#FFE100" cx="92.5" cy="72.5" r="28.5"></circle>
+                                <circle fill="#F96870" cx="28.5" cy="28.5" r="28.5"></circle>
+                                <circle fill="#B259FF" cx="32" cy="109" r="25"></circle>
+                                <ellipse fill="#000000" opacity="0.593930199" cx="47.4784671" cy="95.2892126" rx="26" ry="6"></ellipse>
+                                <circle fill="#FFFFFF" cx="57" cy="15" r="13"></circle>
+                                <circle fill="#FFFFFF" opacity="0.555463518" cx="21.5" cy="58.5" r="11.5"></circle>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

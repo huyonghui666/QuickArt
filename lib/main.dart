@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quick_art/src/core/routing/router.dart';
-import 'package:quick_art/src/shared/localization/l10n/app_localizations.dart';
-import 'package:quick_art/src/shared/localization/notifiers/locale_provider.dart';
-import 'package:quick_art/src/shared/theme/app_theme.dart';
-import 'package:quick_art/src/core/websocket/websocket_provider.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
+import 'package:quick_art/core/localization/notifiers/locale_provider.dart';
+import 'package:quick_art/core/router/router.dart';
+import 'package:quick_art/core/theme/app_theme.dart';
+import 'package:quick_art/core/websocket/websocket_provider.dart';
 
 void main() {
   runApp(const ProviderScope(child: QuickArtApp()));

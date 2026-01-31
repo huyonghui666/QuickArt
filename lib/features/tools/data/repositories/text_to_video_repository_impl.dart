@@ -1,0 +1,31 @@
+import 'package:quick_art/features/tools/data/datasources/text_to_video_remote_data_source.dart';
+import 'package:quick_art/features/tools/domain/entities/video_generation_task.dart';
+import 'package:quick_art/features/tools/domain/repositories/text_to_video_repository.dart';
+
+class TextToVideoRepositoryImpl implements TextToVideoRepository {
+  final ITextToVideoRemoteDataSource _remoteDataSource;
+
+  TextToVideoRepositoryImpl(this._remoteDataSource);
+
+  @override
+  Future<VideoGenerationTask> generateVideo(String prompt) async {
+    final model = await _remoteDataSource.submitTask(prompt);
+    return model.toEntity();
+  }
+
+  @override
+  Future<VideoGenerationTask> generateVideoFromFrames(
+    String prompt,
+    String firstFramePath,
+    String lastFramePath, {
+    String aspectRatio = '16:9',
+  }) async {
+    final model = await _remoteDataSource.submitTaskFromFrames(
+      prompt,
+      firstFramePath,
+      lastFramePath,
+      aspectRatio: aspectRatio,
+    );
+    return model.toEntity();
+  }
+}

@@ -144,12 +144,12 @@ class __$$VideoGenerationTaskModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$VideoGenerationTaskModelImpl implements _VideoGenerationTaskModel {
+class _$VideoGenerationTaskModelImpl extends _VideoGenerationTaskModel {
   const _$VideoGenerationTaskModelImpl({
     required this.taskId,
     this.videoUrl,
     this.error,
-  });
+  }) : super._();
 
   factory _$VideoGenerationTaskModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$VideoGenerationTaskModelImplFromJson(json);
@@ -198,12 +198,13 @@ class _$VideoGenerationTaskModelImpl implements _VideoGenerationTaskModel {
   }
 }
 
-abstract class _VideoGenerationTaskModel implements VideoGenerationTaskModel {
+abstract class _VideoGenerationTaskModel extends VideoGenerationTaskModel {
   const factory _VideoGenerationTaskModel({
     required final String taskId,
     final String? videoUrl,
     final String? error,
   }) = _$VideoGenerationTaskModelImpl;
+  const _VideoGenerationTaskModel._() : super._();
 
   factory _VideoGenerationTaskModel.fromJson(Map<String, dynamic> json) =
       _$VideoGenerationTaskModelImpl.fromJson;

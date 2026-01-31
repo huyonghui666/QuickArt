@@ -1,11 +1,12 @@
-import 'package:quick_art/features/tools/data/models/video_generation_task_model.dart';
+import 'package:quick_art/features/tools/domain/entities/video_generation_task.dart';
 
 abstract class TextToVideoRepository {
-  Future<VideoGenerationTaskModel> generateVideo(String prompt);
+  Future<VideoGenerationTask> generateVideo(String prompt);
 
-  Future<VideoGenerationTaskModel> generateVideoFromFrames(
+  Future<VideoGenerationTask> generateVideoFromFrames(
     String prompt,
     String firstFramePath,
-    String lastFramePath,
-  );
+    String lastFramePath, {
+    String aspectRatio = '16:9',
+  });
 }

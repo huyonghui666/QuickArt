@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:quick_art/core/exception/exception.dart';
+import 'package:quick_art/core/error/exception.dart';
 import 'package:quick_art/core/utils/constants/app_constants.dart';
 import 'package:quick_art/features/home/data/models/image_generation_task_model.dart';
 

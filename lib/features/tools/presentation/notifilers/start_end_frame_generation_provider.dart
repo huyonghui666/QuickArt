@@ -1,48 +1,49 @@
 import 'package:quick_art/core/di/injection_container.dart';
+import 'package:quick_art/core/models/generate_task_type.dart';
+import 'package:quick_art/core/websocket/websocket_provider.dart';
 import 'package:quick_art/features/tools/domain/entities/video_generation_task.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import 'package:quick_art/features/tools/presentation/notifilers/start_end_frame_provider.dart';
 
 part 'start_end_frame_generation_provider.g.dart';
 
 @riverpod
 class StartEndFrameGenerationNotifier
     extends _$StartEndFrameGenerationNotifier {
-  String? _lastPrompt;
-  String? _lastFirstFramePath;
-  String? _lastLastFramePath;
-
   @override
-  AsyncValue<VideoGenerationTask?> build() {
-    return const AsyncValue.data(null);
+  AsyncValue<VideoGenerationTask> build(String prompt) {
+    _startGeneration(prompt);
+    return const AsyncValue.loading();
   }
 
-  Future<void> generateVideo(
-    String prompt,
-    String firstFramePath,
-    String lastFramePath,
-  ) async {
-    _lastPrompt = prompt;
-    _lastFirstFramePath = firstFramePath;
-    _lastLastFramePath = lastFramePath;
+  Future<void> _startGeneration(String prompt) async {
     state = const AsyncValue.loading();
     try {
+      final frames = ref.read(startEndFrameProvider);
+      if (frames.startFramePath == null || frames.endFramePath == null) {
+        throw Exception("Images not selected");
+      }
+
       final useCase = ref.read(startEndFrameGenerateVideoUseCaseProvider);
-      final task = await useCase.execute(prompt, firstFramePath, lastFramePath);
+      final task = await useCase.execute(
+        prompt,
+        frames.startFramePath!,
+        frames.endFramePath!,
+      );
+
+      // 自动订阅 WebSocket 任务状态
+      ref
+          .read(webSocketNotifierProvider.notifier)
+          .subscribeTask(task.taskId, type: GenerateTaskType.video);
+
       state = AsyncValue.data(task);
     } catch (e, stack) {
       state = AsyncValue.error(e, stack);
     }
   }
 
-  Future<void> retry() async {
-    if (_lastPrompt != null &&
-        _lastFirstFramePath != null &&
-        _lastLastFramePath != null) {
-      await generateVideo(
-        _lastPrompt!,
-        _lastFirstFramePath!,
-        _lastLastFramePath!,
-      );
-    }
+  void retry() {
+    ref.invalidateSelf();
   }
 }

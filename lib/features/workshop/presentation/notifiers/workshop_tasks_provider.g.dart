@@ -7,7 +7,7 @@ part of 'workshop_tasks_provider.dart';
 // **************************************************************************
 
 String _$workshopTasksNotifierHash() =>
-    r'10bfc8ba9327126b636f96d2222a0bf3bae150eb';
+    r'b8bd7b4ac060e082676397e402f3a61cc92fd1bb';
 
 /// See also [WorkshopTasksNotifier].
 @ProviderFor(WorkshopTasksNotifier)

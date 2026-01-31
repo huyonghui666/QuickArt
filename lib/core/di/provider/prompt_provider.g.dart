@@ -6,7 +6,7 @@ part of 'prompt_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$promptHash() => r'dddf875b7060388d55b67b76d61e89049ad9ca35';
+String _$promptHash() => r'e06608c2ac4b21a5d657c99b42309301220214ac';
 
 /// Copied from Dart SDK
 class _SystemHash {

@@ -163,5 +163,61 @@ final startEndFrameGenerateVideoUseCaseProvider =
 // ignore: unused_element
 typedef StartEndFrameGenerateVideoUseCaseRef =
     AutoDisposeProviderRef<StartEndFrameGenerateVideoUseCase>;
+String _$databaseHelperHash() => r'd9a91b257d3ed9a4f2d87bd829e17dc900678685';
+
+/// See also [databaseHelper].
+@ProviderFor(databaseHelper)
+final databaseHelperProvider = AutoDisposeProvider<DatabaseHelper>.internal(
+  databaseHelper,
+  name: r'databaseHelperProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$databaseHelperHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef DatabaseHelperRef = AutoDisposeProviderRef<DatabaseHelper>;
+String _$workshopRepositoryHash() =>
+    r'e55a612e4a198db9d4031b243adc01ff53f3df1e';
+
+/// See also [workshopRepository].
+@ProviderFor(workshopRepository)
+final workshopRepositoryProvider =
+    AutoDisposeProvider<WorkshopRepository>.internal(
+      workshopRepository,
+      name: r'workshopRepositoryProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$workshopRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef WorkshopRepositoryRef = AutoDisposeProviderRef<WorkshopRepository>;
+String _$getWorkshopTasksUseCaseHash() =>
+    r'079c3c56bf7b9865ddb51c6f72f60c08c13201ef';
+
+/// See also [getWorkshopTasksUseCase].
+@ProviderFor(getWorkshopTasksUseCase)
+final getWorkshopTasksUseCaseProvider =
+    AutoDisposeProvider<GetWorkshopTasksUseCase>.internal(
+      getWorkshopTasksUseCase,
+      name: r'getWorkshopTasksUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$getWorkshopTasksUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetWorkshopTasksUseCaseRef =
+    AutoDisposeProviderRef<GetWorkshopTasksUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

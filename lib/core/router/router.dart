@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/widgets/waiting_screen.dart';
 import 'package:quick_art/features/explore/routes/explore_routes.dart';

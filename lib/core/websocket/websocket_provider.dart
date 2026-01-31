@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quick_art/core/models/generation_result_model.dart';
 import 'package:quick_art/features/workshop/data/datasources/local_data_source/database_helper.dart';
 import 'package:quick_art/core/models/generate_task_type.dart';
 import 'package:quick_art/core/utils/constants/app_constants.dart';
-import 'package:quick_art/core/websocket/model/generation_result_model.dart';
 import 'package:quick_art/features/workshop/domain/entities/workshop_task.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';

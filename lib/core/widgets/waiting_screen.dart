@@ -55,14 +55,16 @@ class WaitingScreen extends ConsumerWidget {
   ) {
     // 统一处理事件，根据 taskType 获取对应的 Provider
     if (taskType == 'video') {
-      final asyncTask = ref.read(videoGenerationNotifierProvider);
+      final asyncTask = ref.read(videoGenerationNotifierProvider(prompt));
       asyncTask.whenData((task) {
         if (task != null) {
           _processEvent(context, ref, result, task.taskId);
         }
       });
     } else if (taskType == 'start_end_frame') {
-      final asyncTask = ref.read(startEndFrameGenerationNotifierProvider);
+      final asyncTask = ref.read(
+        startEndFrameGenerationNotifierProvider(prompt),
+      );
       asyncTask.whenData((task) {
         if (task != null) {
           _processEvent(context, ref, result, task.taskId);
@@ -105,8 +107,8 @@ class WaitingScreen extends ConsumerWidget {
 
   Widget _buildVideoBody(BuildContext context, WidgetRef ref) {
     final asyncTask = taskType == 'start_end_frame'
-        ? ref.watch(startEndFrameGenerationNotifierProvider)
-        : ref.watch(videoGenerationNotifierProvider);
+        ? ref.watch(startEndFrameGenerationNotifierProvider(prompt))
+        : ref.watch(videoGenerationNotifierProvider(prompt));
 
     final errorMessage = ref.watch(_waitingScreenErrorProvider);
 
@@ -114,21 +116,27 @@ class WaitingScreen extends ConsumerWidget {
       loading: () => _buildLoadingView(context),
       error: (e, _) => _buildErrorView(e.toString(), () {
         if (taskType == 'start_end_frame') {
-          ref.read(startEndFrameGenerationNotifierProvider.notifier).retry();
+          ref
+              .read(startEndFrameGenerationNotifierProvider(prompt).notifier)
+              .retry();
         } else {
-          ref.read(videoGenerationNotifierProvider.notifier).retry();
+          ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
         }
       }),
-      data: (VideoGenerationTask? task) {
+      data: (VideoGenerationTask task) {
         if (errorMessage != null) {
           return _buildErrorView(errorMessage, () {
             ref.read(_waitingScreenErrorProvider.notifier).state = null;
             if (taskType == 'start_end_frame') {
               ref
-                  .read(startEndFrameGenerationNotifierProvider.notifier)
+                  .read(
+                    startEndFrameGenerationNotifierProvider(prompt).notifier,
+                  )
                   .retry();
             } else {
-              ref.read(videoGenerationNotifierProvider.notifier).retry();
+              ref
+                  .read(videoGenerationNotifierProvider(prompt).notifier)
+                  .retry();
             }
           });
         }

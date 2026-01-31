@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/src/core/log/logger.dart';
-import 'package:quick_art/src/core/websocket/model/generation_result_model.dart';
-import 'package:quick_art/src/core/websocket/websocket_provider.dart';
-import 'package:quick_art/src/features/quick_art/home/data/models/image_generation_task_model.dart';
-import 'package:quick_art/src/features/quick_art/home/presentation/notifiers/image_generation_provider.dart';
-import 'package:quick_art/src/features/quick_art/tools/data/models/video_generation_task_model.dart';
-import 'package:quick_art/src/features/quick_art/tools/presentation/notifilers/video_generation_provider.dart';
-import 'package:quick_art/src/features/quick_art/tools/presentation/notifilers/start_end_frame_generation_provider.dart';
-import 'package:quick_art/src/shared/provider/show_bottom_sheet_notifier.dart';
+import 'package:quick_art/core/di/provider/show_bottom_sheet_notifier.dart';
+import 'package:quick_art/core/utils/log/logger.dart';
+import 'package:quick_art/core/websocket/model/generation_result_model.dart';
+import 'package:quick_art/core/websocket/websocket_provider.dart';
+import 'package:quick_art/features/home/data/models/image_generation_task_model.dart';
+import 'package:quick_art/features/home/presentation/notifiers/image_generation_provider.dart';
+import 'package:quick_art/features/tools/data/models/video_generation_task_model.dart';
+import 'package:quick_art/features/tools/presentation/notifilers/start_end_frame_generation_provider.dart';
+import 'package:quick_art/features/tools/presentation/notifilers/video_generation_provider.dart';
 import 'package:rive/rive.dart';
 
 final _waitingScreenErrorProvider = StateProvider.autoDispose<String?>(
@@ -188,7 +188,7 @@ class WaitingScreen extends ConsumerWidget {
               const SizedBox(height: 40),
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
+                  color: Colors.white.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: TextButton(

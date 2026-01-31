@@ -1,0 +1,180 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'image_generation_task_model.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
+
+ImageGenerationTaskModel _$ImageGenerationTaskModelFromJson(
+  Map<String, dynamic> json,
+) {
+  return _ImageGenerationTaskModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ImageGenerationTaskModel {
+  String get taskId => throw _privateConstructorUsedError;
+
+  /// Serializes this ImageGenerationTaskModel to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ImageGenerationTaskModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ImageGenerationTaskModelCopyWith<ImageGenerationTaskModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ImageGenerationTaskModelCopyWith<$Res> {
+  factory $ImageGenerationTaskModelCopyWith(
+    ImageGenerationTaskModel value,
+    $Res Function(ImageGenerationTaskModel) then,
+  ) = _$ImageGenerationTaskModelCopyWithImpl<$Res, ImageGenerationTaskModel>;
+  @useResult
+  $Res call({String taskId});
+}
+
+/// @nodoc
+class _$ImageGenerationTaskModelCopyWithImpl<
+  $Res,
+  $Val extends ImageGenerationTaskModel
+>
+    implements $ImageGenerationTaskModelCopyWith<$Res> {
+  _$ImageGenerationTaskModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ImageGenerationTaskModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? taskId = null}) {
+    return _then(
+      _value.copyWith(
+            taskId: null == taskId
+                ? _value.taskId
+                : taskId // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
+  }
+}
+
+/// @nodoc
+abstract class _$$ImageGenerationTaskModelImplCopyWith<$Res>
+    implements $ImageGenerationTaskModelCopyWith<$Res> {
+  factory _$$ImageGenerationTaskModelImplCopyWith(
+    _$ImageGenerationTaskModelImpl value,
+    $Res Function(_$ImageGenerationTaskModelImpl) then,
+  ) = __$$ImageGenerationTaskModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String taskId});
+}
+
+/// @nodoc
+class __$$ImageGenerationTaskModelImplCopyWithImpl<$Res>
+    extends
+        _$ImageGenerationTaskModelCopyWithImpl<
+          $Res,
+          _$ImageGenerationTaskModelImpl
+        >
+    implements _$$ImageGenerationTaskModelImplCopyWith<$Res> {
+  __$$ImageGenerationTaskModelImplCopyWithImpl(
+    _$ImageGenerationTaskModelImpl _value,
+    $Res Function(_$ImageGenerationTaskModelImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ImageGenerationTaskModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? taskId = null}) {
+    return _then(
+      _$ImageGenerationTaskModelImpl(
+        taskId: null == taskId
+            ? _value.taskId
+            : taskId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ImageGenerationTaskModelImpl implements _ImageGenerationTaskModel {
+  const _$ImageGenerationTaskModelImpl({required this.taskId});
+
+  factory _$ImageGenerationTaskModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ImageGenerationTaskModelImplFromJson(json);
+
+  @override
+  final String taskId;
+
+  @override
+  String toString() {
+    return 'ImageGenerationTaskModel(taskId: $taskId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ImageGenerationTaskModelImpl &&
+            (identical(other.taskId, taskId) || other.taskId == taskId));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, taskId);
+
+  /// Create a copy of ImageGenerationTaskModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ImageGenerationTaskModelImplCopyWith<_$ImageGenerationTaskModelImpl>
+  get copyWith =>
+      __$$ImageGenerationTaskModelImplCopyWithImpl<
+        _$ImageGenerationTaskModelImpl
+      >(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ImageGenerationTaskModelImplToJson(this);
+  }
+}
+
+abstract class _ImageGenerationTaskModel implements ImageGenerationTaskModel {
+  const factory _ImageGenerationTaskModel({required final String taskId}) =
+      _$ImageGenerationTaskModelImpl;
+
+  factory _ImageGenerationTaskModel.fromJson(Map<String, dynamic> json) =
+      _$ImageGenerationTaskModelImpl.fromJson;
+
+  @override
+  String get taskId;
+
+  /// Create a copy of ImageGenerationTaskModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ImageGenerationTaskModelImplCopyWith<_$ImageGenerationTaskModelImpl>
+  get copyWith => throw _privateConstructorUsedError;
+}

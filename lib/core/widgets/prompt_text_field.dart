@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:quick_art/src/shared/assets/app_icons.dart';
-import 'package:quick_art/src/shared/provider/prompt_provider.dart';
+import 'package:quick_art/core/di/provider/prompt_provider.dart';
+import 'package:quick_art/core/theme/app_icons.dart';
 
 class PromptTextField extends ConsumerWidget {
   const PromptTextField({super.key, required this.family});

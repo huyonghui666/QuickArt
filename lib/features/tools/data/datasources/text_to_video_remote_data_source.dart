@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:quick_art/core/error/exception.dart';
 import 'package:quick_art/core/utils/constants/app_constants.dart';
 import 'package:quick_art/features/tools/data/models/video_generation_task_model.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 abstract class ITextToVideoRemoteDataSource {
   Future<VideoGenerationTaskModel> submitTask(String prompt);
@@ -36,8 +37,26 @@ class TextToVideoRemoteDataSource implements ITextToVideoRemoteDataSource {
       }
 
       return VideoGenerationTaskModel.fromJson(response.data);
-    } catch (e) {
-      throw NetworkException(e.toString());
+    } on DioException catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+        withScope: (scope) {
+          scope.setTag('feature', 'video_generation');
+          scope.contexts['input'] = {'prompt': prompt};
+        },
+      );
+      throw NetworkException.fromDioError(e);
+    } catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+        withScope: (scope) {
+          scope.setTag('feature', 'video_generation');
+          scope.contexts['input'] = {'prompt': prompt};
+        },
+      );
+      throw UnknownException(e.toString());
     }
   }
 
@@ -69,8 +88,60 @@ class TextToVideoRemoteDataSource implements ITextToVideoRemoteDataSource {
       }
 
       return VideoGenerationTaskModel.fromJson(response.data);
-    } catch (e) {
-      throw NetworkException(e.toString());
+    } on DioException catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+        withScope: (scope) {
+          scope.setTag('feature', 'video_generation_frames');
+          scope.contexts['input'] = {
+            'prompt': prompt,
+            'first_frame': firstFramePath,
+            'last_frame': lastFramePath,
+          };
+        },
+      );
+      throw NetworkException.fromDioError(e);
+    } catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+        withScope: (scope) {
+          scope.setTag('feature', 'video_generation_frames');
+          scope.contexts['input'] = {
+            'prompt': prompt,
+            'first_frame': firstFramePath,
+            'last_frame': lastFramePath,
+          };
+        },
+      );
+      throw UnknownException(e.toString());
     }
   }
 }
+    // try {
+    //   final formData = FormData.fromMap({
+    //     'prompt': prompt,
+    //     'firstFrame': await MultipartFile.fromFile(firstFramePath),
+    //     'lastFrame': await MultipartFile.fromFile(lastFramePath),
+    //     'aspectRatio': aspectRatio,
+    //   });
+    //
+    //   final response = await _dio
+    //       .post(
+    //         '${AppConstants.apiBaseUrl}/videos/mock-generate-from-frames',
+    //         // '${AppConstants.apiBaseUrl}/videos/generate-from-frames',
+    //         data: formData,
+    //       )
+    //       .timeout(AppConstants.timeout);
+    //
+    //   if (response.statusCode != 200) {
+    //     throw NetworkException('Submit failed: ${response.data}');
+    //   }
+    //
+    //   return VideoGenerationTaskModel.fromJson(response.data);
+    // } catch (e) {
+    //   throw NetworkException(e.toString());
+    // }
+//   }
+// }

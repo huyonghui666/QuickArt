@@ -23,6 +23,21 @@ jobs:
         with:
           flutter-version: '3.35.7'  # 你的 Flutter 版本
           channel: 'stable'
+          cache: true  # 自动缓存 Flutter pub cache 和工具
+
+      - name: Cache Android SDK & NDK
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.android
+            ~/.gradle
+            ~/android-sdk
+          key: ${{ runner.os }}-android-sdk-${{ hashFiles('android/build.gradle', 'android/app/build.gradle') }}
+          restore-keys: ${{ runner.os }}-android-sdk-
+
+      - name: Accept Android Licenses
+        run: |
+          yes "y" | flutter doctor --android-licenses || true
 
       - name: Install dependencies
         run: flutter pub get

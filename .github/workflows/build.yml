@@ -1,0 +1,49 @@
+name: Flutter Build & Release
+
+on:
+  push:
+    branches: [ master, release/* ]  # main 或 release 分支触发生产构建
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.9.2'  # 你的 Flutter 版本
+          channel: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build APK (Production) #构建生产环境变量
+        run: |
+          flutter build apk --release \
+            --dart-define=SENTRY_DSN=${{ secrets.SENTRY_DSN_PROD }} \
+            --dart-define=FLAVOR=production
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+      # 可选：自动发布到 Google Play（需配置 secrets）
+      # - name: Deploy to Google Play
+      #   uses: r0adkll/upload-google-play@v1
+      #   with:
+      #     serviceAccountJson: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+      #     packageName: your.app.package
+      #     releaseFiles: build/app/outputs/bundle/release/app-release.aab
+      #     track: production

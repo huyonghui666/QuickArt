@@ -6,9 +6,11 @@ import 'package:quick_art/features/home/routes/home_routes.dart';
 import 'package:quick_art/features/setting/routes/setting_routes.dart';
 import 'package:quick_art/features/tools/routes/tools_routes.dart';
 import 'package:quick_art/features/workshop/routes/workshop_routes.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/',
+  observers: [SentryNavigatorObserver()],
   routes: [
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
@@ -27,7 +29,7 @@ final GoRouter router = GoRouter(
     ),
     // 其他独立于主导航的页面
     ...settingRoutes,
-    
+
     GoRoute(
       path: '/wait/:taskType',
       name: 'Wait',

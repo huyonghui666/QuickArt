@@ -2,6 +2,8 @@ import 'package:path/path.dart';
 import 'package:quick_art/features/workshop/domain/entities/workshop_task.dart';
 import 'package:sqflite/sqflite.dart';
 
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper._internal();
   static Database? _database;
@@ -12,8 +14,20 @@ class DatabaseHelper {
 
   Future<Database> get database async {
     if (_database != null) return _database!;
-    _database = await _initDatabase();
-    return _database!;
+    try {
+      _database = await _initDatabase();
+      return _database!;
+    } catch (e, stackTrace) {
+       await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+        withScope: (scope) {
+          scope.setTag('feature', 'database');
+          scope.level = SentryLevel.fatal;
+        },
+      );
+      rethrow;
+    }
   }
 
   Future<Database> _initDatabase() async {

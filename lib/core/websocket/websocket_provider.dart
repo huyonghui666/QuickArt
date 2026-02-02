@@ -153,14 +153,21 @@ class WebSocketNotifier extends _$WebSocketNotifier {
     await _savePendingTask(taskId); // 持久化
 
     // Insert into local database
-    await DatabaseHelper().insertTask(
-      WorkshopTask(
-        id: taskId,
-        type: type,
-        status: WorkshopTaskStatus.processing,
-        createdAt: DateTime.now().millisecondsSinceEpoch,
-      ),
+    final task = WorkshopTask(
+      id: taskId,
+      type: type,
+      status: WorkshopTaskStatus.processing,
+      createdAt: DateTime.now().millisecondsSinceEpoch,
     );
+    await DatabaseHelper().insertTask(task);
+
+    // Emit 'processing' event so UI updates immediately
+    _generationEventController.add(GenerationResultModel(
+      taskId: taskId,
+      event: 'processing',
+      type: type.name, // Convert enum to string if model expects string, checking model definition...
+      // Model defines type as String?
+    ));
   }
 
   void _sendSubscribe(String taskId) {

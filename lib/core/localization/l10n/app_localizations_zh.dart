@@ -187,4 +187,118 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get common_error_prefix => '错误: ';
+
+  @override
+  String get tools_title => 'AI 工具';
+
+  @override
+  String get tools_ai_video => 'AI 视频';
+
+  @override
+  String get tools_artistic_photo => '艺术照';
+
+  @override
+  String get tools_ai_face_swap => 'AI 换脸';
+
+  @override
+  String get tools_text_to_video => '文生视频';
+
+  @override
+  String get tools_start_end_frame => '首尾帧';
+
+  @override
+  String get tools_multi_subject => '多主体';
+
+  @override
+  String get tools_upload_start_frame => '上传首帧图片';
+
+  @override
+  String get tools_upload_end_frame => '上传尾帧图片';
+
+  @override
+  String get tools_prompt_title => '提示';
+
+  @override
+  String get tools_upload_both_frames_error => '请上传首尾帧图片';
+
+  @override
+  String get tools_random => '随机';
+
+  @override
+  String get tools_ratio_1_1 => '1:1';
+
+  @override
+  String get tools_social_hint => '可以艾特我们官方社媒 @quickartai';
+
+  @override
+  String get tools_save => '保存';
+
+  @override
+  String get tools_tiktok => 'TikTok';
+
+  @override
+  String get tools_instagram => 'Instagram';
+
+  @override
+  String get tools_facebook => 'Facebook';
+
+  @override
+  String get tools_new_badge => 'NEW';
+
+  @override
+  String get tools_tab_popular => '流行!';
+
+  @override
+  String get tools_tab_kiss => '接吻';
+
+  @override
+  String get tools_tab_hug => '拥抱';
+
+  @override
+  String get tools_tab_ai_effects => 'AI特效';
+
+  @override
+  String get tools_tab_style_transfer => '风格转换';
+
+  @override
+  String get tools_tab_rich_life => '我的富豪人生';
+
+  @override
+  String get tools_tab_cross_dimension => '跨次元恋爱';
+
+  @override
+  String get tools_tab_animal_effects => '动物特效';
+
+  @override
+  String get tools_tab_romantic_day => '浪漫日';
+
+  @override
+  String get tools_tab_movie_life => '电影人生';
+
+  @override
+  String get tools_tab_cross_dressing => '变装';
+
+  @override
+  String get tools_tab_dance => '来跳舞！';
+
+  @override
+  String get tools_tab_micro_world => '微构奇境';
+
+  @override
+  String get tools_template_kiss_pro => '法式热吻Pro';
+
+  @override
+  String get tools_template_cat => '变出猫猫';
+
+  @override
+  String get tools_template_heartbeat_404 => '心跳404';
+
+  @override
+  String get tools_template_skull_universe => '骷髅宇宙';
+
+  @override
+  String get tools_template_koi => '锦鲤良缘';
+
+  @override
+  String get tools_template_redemption_rain => '救赎的雨';
 }

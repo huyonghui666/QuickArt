@@ -457,6 +457,234 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error: '**
   String get common_error_prefix;
+
+  /// Title for Tools screen
+  ///
+  /// In en, this message translates to:
+  /// **'AI Tools'**
+  String get tools_title;
+
+  /// Title for AI Video feature
+  ///
+  /// In en, this message translates to:
+  /// **'AI Video'**
+  String get tools_ai_video;
+
+  /// Title for Artistic Photo feature
+  ///
+  /// In en, this message translates to:
+  /// **'Artistic Photo'**
+  String get tools_artistic_photo;
+
+  /// Title for AI Face Swap feature
+  ///
+  /// In en, this message translates to:
+  /// **'AI Face Swap'**
+  String get tools_ai_face_swap;
+
+  /// Title for Text to Video feature
+  ///
+  /// In en, this message translates to:
+  /// **'Text to Video'**
+  String get tools_text_to_video;
+
+  /// Title for Start & End Frame feature
+  ///
+  /// In en, this message translates to:
+  /// **'Start & End Frame'**
+  String get tools_start_end_frame;
+
+  /// Title for Multi-Subject feature
+  ///
+  /// In en, this message translates to:
+  /// **'Multi-Subject'**
+  String get tools_multi_subject;
+
+  /// Label for start frame upload
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Start Frame'**
+  String get tools_upload_start_frame;
+
+  /// Label for end frame upload
+  ///
+  /// In en, this message translates to:
+  /// **'Upload End Frame'**
+  String get tools_upload_end_frame;
+
+  /// Title for prompt section
+  ///
+  /// In en, this message translates to:
+  /// **'Prompt'**
+  String get tools_prompt_title;
+
+  /// Error message when frames are missing
+  ///
+  /// In en, this message translates to:
+  /// **'Please upload both start and end frames'**
+  String get tools_upload_both_frames_error;
+
+  /// Label for random option
+  ///
+  /// In en, this message translates to:
+  /// **'Random'**
+  String get tools_random;
+
+  /// Label for 1:1 ratio
+  ///
+  /// In en, this message translates to:
+  /// **'1:1'**
+  String get tools_ratio_1_1;
+
+  /// Hint text for social sharing in tools
+  ///
+  /// In en, this message translates to:
+  /// **'Tag our official social media @quickartai'**
+  String get tools_social_hint;
+
+  /// Label for Save button
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get tools_save;
+
+  /// Label for TikTok button
+  ///
+  /// In en, this message translates to:
+  /// **'TikTok'**
+  String get tools_tiktok;
+
+  /// Label for Instagram button
+  ///
+  /// In en, this message translates to:
+  /// **'Instagram'**
+  String get tools_instagram;
+
+  /// Label for Facebook button
+  ///
+  /// In en, this message translates to:
+  /// **'Facebook'**
+  String get tools_facebook;
+
+  /// Badge text for new items
+  ///
+  /// In en, this message translates to:
+  /// **'NEW'**
+  String get tools_new_badge;
+
+  /// Tab: Popular
+  ///
+  /// In en, this message translates to:
+  /// **'Popular!'**
+  String get tools_tab_popular;
+
+  /// Tab: Kiss
+  ///
+  /// In en, this message translates to:
+  /// **'Kiss'**
+  String get tools_tab_kiss;
+
+  /// Tab: Hug
+  ///
+  /// In en, this message translates to:
+  /// **'Hug'**
+  String get tools_tab_hug;
+
+  /// Tab: AI Effects
+  ///
+  /// In en, this message translates to:
+  /// **'AI Effects'**
+  String get tools_tab_ai_effects;
+
+  /// Tab: Style Transfer
+  ///
+  /// In en, this message translates to:
+  /// **'Style Transfer'**
+  String get tools_tab_style_transfer;
+
+  /// Tab: My Rich Life
+  ///
+  /// In en, this message translates to:
+  /// **'My Rich Life'**
+  String get tools_tab_rich_life;
+
+  /// Tab: Cross-Dimension Love
+  ///
+  /// In en, this message translates to:
+  /// **'Cross-Dimension Love'**
+  String get tools_tab_cross_dimension;
+
+  /// Tab: Animal Effects
+  ///
+  /// In en, this message translates to:
+  /// **'Animal Effects'**
+  String get tools_tab_animal_effects;
+
+  /// Tab: Romantic Day
+  ///
+  /// In en, this message translates to:
+  /// **'Romantic Day'**
+  String get tools_tab_romantic_day;
+
+  /// Tab: Movie Life
+  ///
+  /// In en, this message translates to:
+  /// **'Movie Life'**
+  String get tools_tab_movie_life;
+
+  /// Tab: Cross-Dressing
+  ///
+  /// In en, this message translates to:
+  /// **'Cross-Dressing'**
+  String get tools_tab_cross_dressing;
+
+  /// Tab: Let's Dance!
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s Dance!'**
+  String get tools_tab_dance;
+
+  /// Tab: Micro World
+  ///
+  /// In en, this message translates to:
+  /// **'Micro World'**
+  String get tools_tab_micro_world;
+
+  /// Template: French Kiss Pro
+  ///
+  /// In en, this message translates to:
+  /// **'French Kiss Pro'**
+  String get tools_template_kiss_pro;
+
+  /// Template: Turn into Cat
+  ///
+  /// In en, this message translates to:
+  /// **'Turn into Cat'**
+  String get tools_template_cat;
+
+  /// Template: Heartbeat 404
+  ///
+  /// In en, this message translates to:
+  /// **'Heartbeat 404'**
+  String get tools_template_heartbeat_404;
+
+  /// Template: Skull Universe
+  ///
+  /// In en, this message translates to:
+  /// **'Skull Universe'**
+  String get tools_template_skull_universe;
+
+  /// Template: Koi Fortune
+  ///
+  /// In en, this message translates to:
+  /// **'Koi Fortune'**
+  String get tools_template_koi;
+
+  /// Template: Redemption Rain
+  ///
+  /// In en, this message translates to:
+  /// **'Redemption Rain'**
+  String get tools_template_redemption_rain;
 }
 
 class _AppLocalizationsDelegate

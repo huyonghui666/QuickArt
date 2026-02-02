@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/provider/prompt_provider.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/core/widgets/prompt_text_field.dart';
@@ -19,6 +20,7 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -54,7 +56,7 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
                 children: [
                   const SizedBox(height: 24),
                   Text(
-                    '文生视频',
+                    l10n.tools_text_to_video,
                     style: theme.textTheme.displaySmall?.copyWith(
                       color: Colors.white,
                     ),
@@ -62,7 +64,7 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
                   const SizedBox(height: 24),
                   const PromptTextField(family: 'textToVideo'),
                   const SizedBox(height: 24),
-                  _buildOptions(context, theme),
+                  _buildOptions(context, theme, l10n),
                   const Spacer(),
                   DrawButton(
                     family: 'textToVideo',
@@ -89,14 +91,18 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
     );
   }
 
-  Widget _buildOptions(BuildContext context, ThemeData theme) {
+  Widget _buildOptions(
+    BuildContext context,
+    ThemeData theme,
+    AppLocalizations l10n,
+  ) {
     return Row(
       children: [
         _buildOptionItem(
           context,
           theme,
           iconPath: 'assets/icons/svg/Home/home_nav_explore_press.svg',
-          label: '随机',
+          label: l10n.tools_random,
         ),
         const SizedBox(width: 16),
         _buildOptionItem(

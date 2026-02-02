@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/permission/permission_manager.dart';
 import 'package:quick_art/core/provider/prompt_provider.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
@@ -18,6 +19,7 @@ class StartEndFrameScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final startEndFrameState = ref.watch(startEndFrameProvider);
     final notifier = ref.read(startEndFrameProvider.notifier);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -50,9 +52,9 @@ class StartEndFrameScreen extends ConsumerWidget {
                     ),
 
                     // Title
-                    const Text(
-                      '首尾帧',
-                      style: TextStyle(
+                    Text(
+                      l10n.tools_start_end_frame,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
@@ -66,7 +68,7 @@ class StartEndFrameScreen extends ConsumerWidget {
                       children: [
                         Expanded(
                           child: _ImageUploadCard(
-                            title: '上传首帧图片',
+                            title: l10n.tools_upload_start_frame,
                             imagePath: startEndFrameState.startFramePath,
                             onTap: () async {
                               final hasPermission =
@@ -142,7 +144,11 @@ class StartEndFrameScreen extends ConsumerWidget {
                         if (startEndFrameState.startFramePath == null ||
                             startEndFrameState.endFramePath == null) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('请上传首尾帧图片')),
+                            SnackBar(
+                              content: Text(
+                                l10n.tools_upload_both_frames_error,
+                              ),
+                            ),
                           );
                           return;
                         }

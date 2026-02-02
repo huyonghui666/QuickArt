@@ -188,4 +188,119 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get common_error_prefix => 'Error: ';
+
+  @override
+  String get tools_title => 'AI Tools';
+
+  @override
+  String get tools_ai_video => 'AI Video';
+
+  @override
+  String get tools_artistic_photo => 'Artistic Photo';
+
+  @override
+  String get tools_ai_face_swap => 'AI Face Swap';
+
+  @override
+  String get tools_text_to_video => 'Text to Video';
+
+  @override
+  String get tools_start_end_frame => 'Start & End Frame';
+
+  @override
+  String get tools_multi_subject => 'Multi-Subject';
+
+  @override
+  String get tools_upload_start_frame => 'Upload Start Frame';
+
+  @override
+  String get tools_upload_end_frame => 'Upload End Frame';
+
+  @override
+  String get tools_prompt_title => 'Prompt';
+
+  @override
+  String get tools_upload_both_frames_error =>
+      'Please upload both start and end frames';
+
+  @override
+  String get tools_random => 'Random';
+
+  @override
+  String get tools_ratio_1_1 => '1:1';
+
+  @override
+  String get tools_social_hint => 'Tag our official social media @quickartai';
+
+  @override
+  String get tools_save => 'Save';
+
+  @override
+  String get tools_tiktok => 'TikTok';
+
+  @override
+  String get tools_instagram => 'Instagram';
+
+  @override
+  String get tools_facebook => 'Facebook';
+
+  @override
+  String get tools_new_badge => 'NEW';
+
+  @override
+  String get tools_tab_popular => 'Popular!';
+
+  @override
+  String get tools_tab_kiss => 'Kiss';
+
+  @override
+  String get tools_tab_hug => 'Hug';
+
+  @override
+  String get tools_tab_ai_effects => 'AI Effects';
+
+  @override
+  String get tools_tab_style_transfer => 'Style Transfer';
+
+  @override
+  String get tools_tab_rich_life => 'My Rich Life';
+
+  @override
+  String get tools_tab_cross_dimension => 'Cross-Dimension Love';
+
+  @override
+  String get tools_tab_animal_effects => 'Animal Effects';
+
+  @override
+  String get tools_tab_romantic_day => 'Romantic Day';
+
+  @override
+  String get tools_tab_movie_life => 'Movie Life';
+
+  @override
+  String get tools_tab_cross_dressing => 'Cross-Dressing';
+
+  @override
+  String get tools_tab_dance => 'Let\'s Dance!';
+
+  @override
+  String get tools_tab_micro_world => 'Micro World';
+
+  @override
+  String get tools_template_kiss_pro => 'French Kiss Pro';
+
+  @override
+  String get tools_template_cat => 'Turn into Cat';
+
+  @override
+  String get tools_template_heartbeat_404 => 'Heartbeat 404';
+
+  @override
+  String get tools_template_skull_universe => 'Skull Universe';
+
+  @override
+  String get tools_template_koi => 'Koi Fortune';
+
+  @override
+  String get tools_template_redemption_rain => 'Redemption Rain';
 }

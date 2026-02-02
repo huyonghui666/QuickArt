@@ -28,7 +28,7 @@ class InspirationTabBar extends ConsumerWidget {
             child: Container(
               margin: const EdgeInsets.only(right: 16),
               child: Text(
-                category.label,
+                category.type.getLabel(AppLocalizations.of(context)!),
                 style: TextStyle(
                   color: isSelected ? Colors.white : Colors.grey[600],
                   fontSize: 16,

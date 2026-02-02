@@ -145,14 +145,23 @@ class HomeScreen extends ConsumerWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _buildActionItem(AppIcons.homeDescribe, AppLocalizations.of(context)!.home_describe),
-        _buildActionItem(AppIcons.homePhoto, AppLocalizations.of(context)!.home_add_photo),
+        _buildActionItem(
+          AppIcons.homeDescribe,
+          AppLocalizations.of(context)!.home_describe,
+        ),
+        _buildActionItem(
+          AppIcons.homePhoto,
+          AppLocalizations.of(context)!.home_add_photo,
+        ),
         _buildActionItem(
           AppIcons.homeRatio11,
           '1:1',
           trailingIconPath: AppIcons.homeRatioNext,
         ),
-        _buildActionItem(AppIcons.homeHistory, AppLocalizations.of(context)!.home_history),
+        _buildActionItem(
+          AppIcons.homeHistory,
+          AppLocalizations.of(context)!.home_history,
+        ),
       ],
     );
   }

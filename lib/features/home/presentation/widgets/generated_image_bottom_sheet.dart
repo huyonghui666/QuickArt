@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 
 class GeneratedImageBottomSheet extends StatelessWidget {
   final String imageUrl;
@@ -8,6 +9,7 @@ class GeneratedImageBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -17,25 +19,34 @@ class GeneratedImageBottomSheet extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             child: AspectRatio(
               aspectRatio: 1,
-              child: Image.network(
-                imageUrl,
-                fit: BoxFit.cover,
-              ),
+              child: Image.network(imageUrl, fit: BoxFit.cover),
             ),
           ),
           const SizedBox(height: 42),
-          const Text(
-            '可以艾特我们官方社媒 @quickartai',
-            style: TextStyle(color: Colors.white70),
+          Text(
+            l10n.share_social_hint,
+            style: const TextStyle(color: Colors.white70),
           ),
           const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildSocialButton('assets/icons/svg/Home/home_ic_history.svg', '保存'),
-              _buildSocialButton('assets/icons/svg/Setting/setting_ic_tt.svg', 'TikTok'),
-              _buildSocialButton('assets/icons/svg/Setting/setting_ic_ins.svg', 'Instagram'),
-              _buildSocialButton('assets/icons/svg/Setting/setting_ic_fb.svg', 'Facebook'),
+              _buildSocialButton(
+                'assets/icons/svg/Home/home_ic_history.svg',
+                l10n.share_save,
+              ),
+              _buildSocialButton(
+                'assets/icons/svg/Setting/setting_ic_tt.svg',
+                l10n.share_tiktok,
+              ),
+              _buildSocialButton(
+                'assets/icons/svg/Setting/setting_ic_ins.svg',
+                l10n.share_instagram,
+              ),
+              _buildSocialButton(
+                'assets/icons/svg/Setting/setting_ic_fb.svg',
+                l10n.share_facebook,
+              ),
             ],
           ),
         ],

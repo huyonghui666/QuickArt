@@ -35,6 +35,24 @@
   },
 
 
+  "nav_quickart": "QUICKART",
+  "@nav_quickart": {
+    "description": "Label for QUICKART tab"
+  },
+  "nav_explore": "Explore",
+  "@nav_explore": {
+    "description": "Label for Explore tab"
+  },
+  "nav_tools": "Tools",
+  "@nav_tools": {
+    "description": "Label for Tools tab"
+  },
+  "nav_studio": "Studio",
+  "@nav_studio": {
+    "description": "Label for Studio tab"
+  },
+
+
   "home_describe": "Describe",
   "@home_describe": {
     "description": "Label for the text-to-image feature button on the home screen"
@@ -50,5 +68,75 @@
   "inspiration_try": "Try",
   "@inspiration_try": {
     "description": "Button label to try a specific inspiration style"
-  }
+  },
+  "inspiration_new": "New",
+  "@inspiration_new": { "description": "Inspiration: New" },
+  "inspiration_manga": "Manga",
+  "@inspiration_manga": { "description": "Inspiration: Manga" },
+  "inspiration_photography": "Photography",
+  "@inspiration_photography": { "description": "Inspiration: Photography" },
+  "inspiration_watercolor": "Watercolor",
+  "@inspiration_watercolor": { "description": "Inspiration: Watercolor" },
+  "inspiration_funny": "Funny",
+  "@inspiration_funny": { "description": "Inspiration: Funny" },
+  "inspiration_tattoo": "Tattoo",
+  "@inspiration_tattoo": { "description": "Inspiration: Tattoo" },
+  "inspiration_cyberpunk": "Cyberpunk",
+  "@inspiration_cyberpunk": { "description": "Inspiration: Cyberpunk" },
+  "inspiration_surrealism": "Surrealism",
+  "@inspiration_surrealism": { "description": "Inspiration: Surrealism" },
+  "inspiration_christmas": "Christmas",
+  "@inspiration_christmas": { "description": "Inspiration: Christmas" },
+  "home_art_style": "Art Style",
+  "@home_art_style": {
+    "description": "Label for Art Style section"
+  },
+  "style_no_style": "No Style",
+  "@style_no_style": { "description": "Art Style: No Style" },
+  "style_cute_cartoon": "Cute Cartoon",
+  "@style_cute_cartoon": { "description": "Art Style: Cute Cartoon" },
+  "style_ancient_style": "Ancient Style",
+  "@style_ancient_style": { "description": "Art Style: Ancient Style" },
+  "style_graffiti": "Graffiti",
+  "@style_graffiti": { "description": "Art Style: Graffiti" },
+  "style_pop_art": "Pop Art",
+  "@style_pop_art": { "description": "Art Style: Pop Art" },
+  "style_vivid_realism": "Vivid Realism",
+  "@style_vivid_realism": { "description": "Art Style: Vivid Realism" },
+  "style_color": "Color",
+  "@style_color": { "description": "Art Style: Color" },
+  "style_eighties": "80s",
+  "@style_eighties": { "description": "Art Style: 80s" },
+  "style_showa": "Showa",
+  "@style_showa": { "description": "Art Style: Showa" },
+  "style_model_3d": "3D Model",
+  "@style_model_3d": { "description": "Art Style: 3D Model" },
+  "style_photography": "Photography",
+  "@style_photography": { "description": "Art Style: Photography" },
+  "style_japanese_anime": "Japanese Anime",
+  "@style_japanese_anime": { "description": "Art Style: Japanese Anime" },
+  "style_tattoo": "Tattoo",
+  "@style_tattoo": { "description": "Art Style: Tattoo" },
+  "style_retro_arcade": "Retro Arcade",
+  "@style_retro_arcade": { "description": "Art Style: Retro Arcade" },
+  "style_black_white": "Black & White",
+  "@style_black_white": { "description": "Art Style: Black & White" },
+  "style_pixar": "Pixar",
+  "@style_pixar": { "description": "Art Style: Pixar" },
+  "style_cyberpunk": "Cyberpunk",
+  "@style_cyberpunk": { "description": "Art Style: Cyberpunk" },
+  "style_line_art": "Line Art",
+  "@style_line_art": { "description": "Art Style: Line Art" },
+  "style_watercolor": "Watercolor",
+  "@style_watercolor": { "description": "Art Style: Watercolor" },
+  "share_social_hint": "Tag our official social media @quickartai",
+  "@share_social_hint": { "description": "Hint text for social sharing" },
+  "share_save": "Save",
+  "@share_save": { "description": "Label for Save button" },
+  "share_tiktok": "TikTok",
+  "@share_tiktok": { "description": "Label for TikTok button" },
+  "share_instagram": "Instagram",
+  "@share_instagram": { "description": "Label for Instagram button" },
+  "share_facebook": "Facebook",
+  "@share_facebook": { "description": "Label for Facebook button" }
 }

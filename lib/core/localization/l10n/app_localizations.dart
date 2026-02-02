@@ -152,6 +152,30 @@ abstract class AppLocalizations {
   /// **'Version:'**
   String get setting_version;
 
+  /// Label for QUICKART tab
+  ///
+  /// In en, this message translates to:
+  /// **'QUICKART'**
+  String get nav_quickart;
+
+  /// Label for Explore tab
+  ///
+  /// In en, this message translates to:
+  /// **'Explore'**
+  String get nav_explore;
+
+  /// Label for Tools tab
+  ///
+  /// In en, this message translates to:
+  /// **'Tools'**
+  String get nav_tools;
+
+  /// Label for Studio tab
+  ///
+  /// In en, this message translates to:
+  /// **'Studio'**
+  String get nav_studio;
+
   /// Label for the text-to-image feature button on the home screen
   ///
   /// In en, this message translates to:
@@ -175,6 +199,210 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Try'**
   String get inspiration_try;
+
+  /// Inspiration: New
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get inspiration_new;
+
+  /// Inspiration: Manga
+  ///
+  /// In en, this message translates to:
+  /// **'Manga'**
+  String get inspiration_manga;
+
+  /// Inspiration: Photography
+  ///
+  /// In en, this message translates to:
+  /// **'Photography'**
+  String get inspiration_photography;
+
+  /// Inspiration: Watercolor
+  ///
+  /// In en, this message translates to:
+  /// **'Watercolor'**
+  String get inspiration_watercolor;
+
+  /// Inspiration: Funny
+  ///
+  /// In en, this message translates to:
+  /// **'Funny'**
+  String get inspiration_funny;
+
+  /// Inspiration: Tattoo
+  ///
+  /// In en, this message translates to:
+  /// **'Tattoo'**
+  String get inspiration_tattoo;
+
+  /// Inspiration: Cyberpunk
+  ///
+  /// In en, this message translates to:
+  /// **'Cyberpunk'**
+  String get inspiration_cyberpunk;
+
+  /// Inspiration: Surrealism
+  ///
+  /// In en, this message translates to:
+  /// **'Surrealism'**
+  String get inspiration_surrealism;
+
+  /// Inspiration: Christmas
+  ///
+  /// In en, this message translates to:
+  /// **'Christmas'**
+  String get inspiration_christmas;
+
+  /// Label for Art Style section
+  ///
+  /// In en, this message translates to:
+  /// **'Art Style'**
+  String get home_art_style;
+
+  /// Art Style: No Style
+  ///
+  /// In en, this message translates to:
+  /// **'No Style'**
+  String get style_no_style;
+
+  /// Art Style: Cute Cartoon
+  ///
+  /// In en, this message translates to:
+  /// **'Cute Cartoon'**
+  String get style_cute_cartoon;
+
+  /// Art Style: Ancient Style
+  ///
+  /// In en, this message translates to:
+  /// **'Ancient Style'**
+  String get style_ancient_style;
+
+  /// Art Style: Graffiti
+  ///
+  /// In en, this message translates to:
+  /// **'Graffiti'**
+  String get style_graffiti;
+
+  /// Art Style: Pop Art
+  ///
+  /// In en, this message translates to:
+  /// **'Pop Art'**
+  String get style_pop_art;
+
+  /// Art Style: Vivid Realism
+  ///
+  /// In en, this message translates to:
+  /// **'Vivid Realism'**
+  String get style_vivid_realism;
+
+  /// Art Style: Color
+  ///
+  /// In en, this message translates to:
+  /// **'Color'**
+  String get style_color;
+
+  /// Art Style: 80s
+  ///
+  /// In en, this message translates to:
+  /// **'80s'**
+  String get style_eighties;
+
+  /// Art Style: Showa
+  ///
+  /// In en, this message translates to:
+  /// **'Showa'**
+  String get style_showa;
+
+  /// Art Style: 3D Model
+  ///
+  /// In en, this message translates to:
+  /// **'3D Model'**
+  String get style_model_3d;
+
+  /// Art Style: Photography
+  ///
+  /// In en, this message translates to:
+  /// **'Photography'**
+  String get style_photography;
+
+  /// Art Style: Japanese Anime
+  ///
+  /// In en, this message translates to:
+  /// **'Japanese Anime'**
+  String get style_japanese_anime;
+
+  /// Art Style: Tattoo
+  ///
+  /// In en, this message translates to:
+  /// **'Tattoo'**
+  String get style_tattoo;
+
+  /// Art Style: Retro Arcade
+  ///
+  /// In en, this message translates to:
+  /// **'Retro Arcade'**
+  String get style_retro_arcade;
+
+  /// Art Style: Black & White
+  ///
+  /// In en, this message translates to:
+  /// **'Black & White'**
+  String get style_black_white;
+
+  /// Art Style: Pixar
+  ///
+  /// In en, this message translates to:
+  /// **'Pixar'**
+  String get style_pixar;
+
+  /// Art Style: Cyberpunk
+  ///
+  /// In en, this message translates to:
+  /// **'Cyberpunk'**
+  String get style_cyberpunk;
+
+  /// Art Style: Line Art
+  ///
+  /// In en, this message translates to:
+  /// **'Line Art'**
+  String get style_line_art;
+
+  /// Art Style: Watercolor
+  ///
+  /// In en, this message translates to:
+  /// **'Watercolor'**
+  String get style_watercolor;
+
+  /// Hint text for social sharing
+  ///
+  /// In en, this message translates to:
+  /// **'Tag our official social media @quickartai'**
+  String get share_social_hint;
+
+  /// Label for Save button
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get share_save;
+
+  /// Label for TikTok button
+  ///
+  /// In en, this message translates to:
+  /// **'TikTok'**
+  String get share_tiktok;
+
+  /// Label for Instagram button
+  ///
+  /// In en, this message translates to:
+  /// **'Instagram'**
+  String get share_instagram;
+
+  /// Label for Facebook button
+  ///
+  /// In en, this message translates to:
+  /// **'Facebook'**
+  String get share_facebook;
 }
 
 class _AppLocalizationsDelegate

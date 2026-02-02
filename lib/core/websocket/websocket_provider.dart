@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/core/models/generation_result_model.dart';
+import 'package:quick_art/core/provider/generation_event_provider.dart';
 import 'package:quick_art/features/workshop/data/datasources/local_data_source/database_helper.dart';
 import 'package:quick_art/core/models/generate_task_type.dart';
 import 'package:quick_art/core/utils/constants/app_constants.dart';
@@ -15,16 +16,6 @@ part 'websocket_provider.g.dart';
 
 final _logger = Logger();
 const _pendingTasksKey = 'pending_tasks';
-
-/// 全局任务结果事件流
-/// 用于通知 UI 任务完成（成功或失败）
-final _generationEventController =
-    StreamController<GenerationResultModel>.broadcast();
-
-@Riverpod(keepAlive: true)
-Stream<GenerationResultModel> generationEvent(Ref ref) {
-  return _generationEventController.stream;
-}
 
 /// WebSocket 连接管理
 /// 负责维护连接、心跳、重连以及分发消息
@@ -116,7 +107,7 @@ class WebSocketNotifier extends _$WebSocketNotifier {
           );
 
           // 发送事件通知 UI
-          _generationEventController.add(result);
+          ref.read(generationEventControllerProvider).add(result);
           _logger.i('Task completed event emitted: ${result.taskId}');
 
           // 任务结束（无论成功失败），移除本地挂起记录
@@ -162,12 +153,17 @@ class WebSocketNotifier extends _$WebSocketNotifier {
     await DatabaseHelper().insertTask(task);
 
     // Emit 'processing' event so UI updates immediately
-    _generationEventController.add(GenerationResultModel(
-      taskId: taskId,
-      event: 'processing',
-      type: type.name, // Convert enum to string if model expects string, checking model definition...
-      // Model defines type as String?
-    ));
+    ref
+        .read(generationEventControllerProvider)
+        .add(
+          GenerationResultModel(
+            taskId: taskId,
+            event: 'processing',
+            type: type
+                .name, // Convert enum to string if model expects string, checking model definition...
+            // Model defines type as String?
+          ),
+        );
   }
 
   void _sendSubscribe(String taskId) {

@@ -6,24 +6,7 @@ part of 'websocket_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$generationEventHash() => r'47fbf1e1c7f9985fdd80e41944dfc691067bfaaf';
-
-/// See also [generationEvent].
-@ProviderFor(generationEvent)
-final generationEventProvider = StreamProvider<GenerationResultModel>.internal(
-  generationEvent,
-  name: r'generationEventProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$generationEventHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef GenerationEventRef = StreamProviderRef<GenerationResultModel>;
-String _$webSocketNotifierHash() => r'c135cd4d6e0f13b80582b6e504b31b2d5d8ecb98';
+String _$webSocketNotifierHash() => r'7e67e3a59f26a5b8b52414f7fcc222c7fd1dd6f7';
 
 /// WebSocket 连接管理
 /// 负责维护连接、心跳、重连以及分发消息

@@ -152,7 +152,8 @@ class WebSocketNotifier extends _$WebSocketNotifier {
     await DatabaseHelper().insertTask(task);
 
     // Emit 'processing' event so UI updates immediately
-    ref.read(generationEventControllerProvider)
+    ref
+        .read(generationEventControllerProvider)
         .add(
           GenerationResultModel(
             taskId: taskId,

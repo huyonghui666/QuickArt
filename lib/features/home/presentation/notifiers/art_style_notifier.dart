@@ -81,10 +81,7 @@ enum ArtStyle {
     backgroundAsset: 'assets/images/bg/watercolor.webp',
   );
 
-  const ArtStyle({
-    required this.thumbnailAsset,
-    required this.backgroundAsset,
-  });
+  const ArtStyle({required this.thumbnailAsset, required this.backgroundAsset});
 
   final String thumbnailAsset;
   final String backgroundAsset;

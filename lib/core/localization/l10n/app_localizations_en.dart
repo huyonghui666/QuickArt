@@ -303,4 +303,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tools_template_redemption_rain => 'Redemption Rain';
+
+  @override
+  String get tools_start_end_frame_default_prompt =>
+      'The first photo slowly fades into the second photo.';
 }

@@ -685,6 +685,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Redemption Rain'**
   String get tools_template_redemption_rain;
+
+  /// Default prompt for start-end frame task
+  ///
+  /// In en, this message translates to:
+  /// **'The first photo slowly fades into the second photo.'**
+  String get tools_start_end_frame_default_prompt;
 }
 
 class _AppLocalizationsDelegate

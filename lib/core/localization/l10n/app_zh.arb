@@ -106,5 +106,6 @@
   "tools_template_heartbeat_404": "心跳404",
   "tools_template_skull_universe": "骷髅宇宙",
   "tools_template_koi": "锦鲤良缘",
-  "tools_template_redemption_rain": "救赎的雨"
+  "tools_template_redemption_rain": "救赎的雨",
+  "tools_start_end_frame_default_prompt": "第一张照片慢慢羽化成第二张照片。"
 }

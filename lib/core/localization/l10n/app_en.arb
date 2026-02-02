@@ -237,5 +237,7 @@
   "tools_template_koi": "Koi Fortune",
   "@tools_template_koi": { "description": "Template: Koi Fortune" },
   "tools_template_redemption_rain": "Redemption Rain",
-  "@tools_template_redemption_rain": { "description": "Template: Redemption Rain" }
+  "@tools_template_redemption_rain": { "description": "Template: Redemption Rain" },
+  "tools_start_end_frame_default_prompt": "The first photo slowly fades into the second photo.",
+  "@tools_start_end_frame_default_prompt": { "description": "Default prompt for start-end frame task" }
 }

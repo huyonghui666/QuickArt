@@ -12,11 +12,29 @@ import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/core/widgets/prompt_text_field.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/start_end_frame_provider.dart';
 
-class StartEndFrameScreen extends ConsumerWidget {
+class StartEndFrameScreen extends ConsumerStatefulWidget {
   const StartEndFrameScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<StartEndFrameScreen> createState() =>
+      _StartEndFrameScreenState();
+}
+
+class _StartEndFrameScreenState extends ConsumerState<StartEndFrameScreen> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final l10n = AppLocalizations.of(context)!;
+    final promptController = ref
+        .read(promptProvider('start_end_frame'))
+        .controller;
+    if (promptController.text.isEmpty) {
+      promptController.text = l10n.tools_start_end_frame_default_prompt;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final startEndFrameState = ref.watch(startEndFrameProvider);
     final notifier = ref.read(startEndFrameProvider.notifier);
     final l10n = AppLocalizations.of(context)!;
@@ -115,9 +133,9 @@ class StartEndFrameScreen extends ConsumerWidget {
                     const SizedBox(height: 32),
 
                     // Prompt Section
-                    const Text(
-                      '提示',
-                      style: TextStyle(
+                    Text(
+                      l10n.tools_prompt_title,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,

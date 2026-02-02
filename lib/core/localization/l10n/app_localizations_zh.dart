@@ -301,4 +301,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get tools_template_redemption_rain => '救赎的雨';
+
+  @override
+  String get tools_start_end_frame_default_prompt => '第一张照片慢慢羽化成第二张照片。';
 }

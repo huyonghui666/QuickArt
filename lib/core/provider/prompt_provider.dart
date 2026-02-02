@@ -28,9 +28,6 @@ class Prompt extends _$Prompt {
   PromptState build(String id) {
     // 初始化 Controller
     final controller = TextEditingController();
-    if (id == 'start_end_frame') {
-      controller.text = '第一张照片慢慢羽化成第二张照片。';
-    }
 
     // 监听文本变化并更新状态
     // 注意：不要直接在 listener 中使用 state.controller，因为 state 可能会被替换

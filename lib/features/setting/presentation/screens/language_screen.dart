@@ -87,8 +87,7 @@ class _LanguageScreenState extends ConsumerState<LanguageScreen> {
                     final localeCode = _languageMap[value];
                     if (localeCode != null &&
                         localeCode != selectedLocale.languageCode) {
-                      // 1. 立即更新全局状态会触发全量重建，导致卡顿
-                      // 2. 这里使用 Future.microtask 或者简单的延迟，
+                      // 立即更新全局状态会触发全量重建，导致卡顿
                       // 让 Radio 的点击动画（波纹）先跑完一帧，再触发重建
                       _debounceTimer?.cancel();
                       _debounceTimer = Timer(

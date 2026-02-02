@@ -691,6 +691,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The first photo slowly fades into the second photo.'**
   String get tools_start_end_frame_default_prompt;
+
+  /// Title for Workshop screen
+  ///
+  /// In en, this message translates to:
+  /// **'Workshop'**
+  String get workshop_title;
+
+  /// Error message when tasks fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load: {error}'**
+  String workshop_load_failed(Object error);
+
+  /// Badge text for PRO features
+  ///
+  /// In en, this message translates to:
+  /// **'PRO'**
+  String get pro_badge;
+
+  /// Description for Pro banner
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock more unique effects'**
+  String get pro_banner_description;
+
+  /// Button label for Pro banner
+  ///
+  /// In en, this message translates to:
+  /// **'Get'**
+  String get pro_banner_action;
+
+  /// Status text for processing tasks
+  ///
+  /// In en, this message translates to:
+  /// **'Drawing in progress, please wait'**
+  String get workshop_task_processing;
+
+  /// Status text for failed tasks
+  ///
+  /// In en, this message translates to:
+  /// **'Generation failed, please retry!'**
+  String get workshop_task_failed;
+
+  /// Label for retry button in workshop
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get workshop_retry;
 }
 
 class _AppLocalizationsDelegate

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/models/generate_task_type.dart';
 import 'package:quick_art/features/workshop/domain/entities/workshop_task.dart';
 
@@ -26,7 +27,7 @@ class WorkshopTaskCard extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          _buildContent(),
+          _buildContent(context),
           if (task.status == WorkshopTaskStatus.success)
             Positioned(
               left: 10,
@@ -44,18 +45,19 @@ class WorkshopTaskCard extends StatelessWidget {
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     switch (task.status) {
       case WorkshopTaskStatus.processing:
-        return _buildProcessingState();
+        return _buildProcessingState(context);
       case WorkshopTaskStatus.success:
         return _buildSuccessState();
       case WorkshopTaskStatus.failed:
-        return _buildFailedState();
+        return _buildFailedState(context);
     }
   }
 
-  Widget _buildProcessingState() {
+  Widget _buildProcessingState(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -68,10 +70,10 @@ class WorkshopTaskCard extends StatelessWidget {
           end: Alignment.bottomCenter,
         ),
       ),
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             width: 40,
             height: 40,
             child: CircularProgressIndicator(
@@ -79,11 +81,11 @@ class WorkshopTaskCard extends StatelessWidget {
               valueColor: AlwaysStoppedAnimation<Color>(Colors.orange),
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
-            '绘图过程中，请耐心等待',
+            l10n.workshop_task_processing,
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white54, fontSize: 12),
+            style: const TextStyle(color: Colors.white54, fontSize: 12),
           ),
         ],
       ),
@@ -113,12 +115,13 @@ class WorkshopTaskCard extends StatelessWidget {
     );
   }
 
-  Widget _buildFailedState() {
+  Widget _buildFailedState(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          task.errorMessage ?? '生成失败，请重试！',
+          task.errorMessage ?? l10n.workshop_task_failed,
           textAlign: TextAlign.center,
           style: const TextStyle(color: Colors.white54, fontSize: 12),
         ),
@@ -133,7 +136,7 @@ class WorkshopTaskCard extends StatelessWidget {
             ),
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           ),
-          child: const Text('重试'),
+          child: Text(l10n.workshop_retry),
         ),
       ],
     );

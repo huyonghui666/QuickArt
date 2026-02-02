@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/models/generate_task_type.dart';
 import 'package:quick_art/core/provider/show_bottom_sheet_notifier.dart';
 import 'package:quick_art/features/workshop/presentation/notifiers/workshop_tasks_provider.dart';
@@ -11,8 +12,9 @@ class WorkshopScreen extends ConsumerWidget {
   const WorkshopScreen({super.key});
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final tasksAsyncValue = ref.watch(workshopTasksNotifierProvider);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -36,12 +38,12 @@ class WorkshopScreen extends ConsumerWidget {
                     }
                     return GridView.builder(
                       gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 16,
-                        crossAxisSpacing: 16,
-                        childAspectRatio: 0.8,
-                      ),
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 16,
+                            crossAxisSpacing: 16,
+                            childAspectRatio: 0.8,
+                          ),
                       itemCount: tasks.length,
                       itemBuilder: (context, index) {
                         final task = tasks[index];
@@ -50,11 +52,16 @@ class WorkshopScreen extends ConsumerWidget {
                           onTap: () {
                             //弹出底部弹出框
                             if (task.url != null) {
-                              ref.read(showBottomSheetNotifierProvider.notifier,)
-                                  .trigger(task.url!, task.type == GenerateTaskType.video
-                                    ? BottomSheetType.video
-                                    : BottomSheetType.image,
-                              );
+                              ref
+                                  .read(
+                                    showBottomSheetNotifierProvider.notifier,
+                                  )
+                                  .trigger(
+                                    task.url!,
+                                    task.type == GenerateTaskType.video
+                                        ? BottomSheetType.video
+                                        : BottomSheetType.image,
+                                  );
                             }
                           },
                           onRetry: () {
@@ -66,10 +73,10 @@ class WorkshopScreen extends ConsumerWidget {
                     );
                   },
                   loading: () =>
-                  const Center(child: CircularProgressIndicator()),
+                      const Center(child: CircularProgressIndicator()),
                   error: (error, stack) => Center(
                     child: Text(
-                      '加载失败: $error',
+                      l10n.workshop_load_failed(error),
                       style: const TextStyle(color: Colors.red),
                     ),
                   ),

@@ -239,5 +239,29 @@
   "tools_template_redemption_rain": "Redemption Rain",
   "@tools_template_redemption_rain": { "description": "Template: Redemption Rain" },
   "tools_start_end_frame_default_prompt": "The first photo slowly fades into the second photo.",
-  "@tools_start_end_frame_default_prompt": { "description": "Default prompt for start-end frame task" }
+  "@tools_start_end_frame_default_prompt": { "description": "Default prompt for start-end frame task" },
+  "workshop_title": "Workshop",
+  "@workshop_title": { "description": "Title for Workshop screen" },
+  "workshop_load_failed": "Failed to load: {error}",
+  "@workshop_load_failed": {
+    "description": "Error message when tasks fail to load",
+    "placeholders": {
+      "error": {
+        "type": "Object",
+        "example": "Network error"
+      }
+    }
+  },
+  "pro_badge": "PRO",
+  "@pro_badge": { "description": "Badge text for PRO features" },
+  "pro_banner_description": "Unlock more unique effects",
+  "@pro_banner_description": { "description": "Description for Pro banner" },
+  "pro_banner_action": "Get",
+  "@pro_banner_action": { "description": "Button label for Pro banner" },
+  "workshop_task_processing": "Drawing in progress, please wait",
+  "@workshop_task_processing": { "description": "Status text for processing tasks" },
+  "workshop_task_failed": "Generation failed, please retry!",
+  "@workshop_task_failed": { "description": "Status text for failed tasks" },
+  "workshop_retry": "Retry",
+  "@workshop_retry": { "description": "Label for retry button in workshop" }
 }

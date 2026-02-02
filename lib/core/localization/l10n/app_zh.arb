@@ -107,5 +107,15 @@
   "tools_template_skull_universe": "骷髅宇宙",
   "tools_template_koi": "锦鲤良缘",
   "tools_template_redemption_rain": "救赎的雨",
-  "tools_start_end_frame_default_prompt": "第一张照片慢慢羽化成第二张照片。"
+  "tools_start_end_frame_default_prompt": "第一张照片慢慢羽化成第二张照片。",
+
+
+  "workshop_title": "工作室",
+  "workshop_load_failed": "加载失败: {error}",
+  "pro_badge": "PRO",
+  "pro_banner_description": "解锁更多独特效果",
+  "pro_banner_action": "获取",
+  "workshop_task_processing": "绘图过程中，请耐心等待",
+  "workshop_task_failed": "生成失败，请重试！",
+  "workshop_retry": "重试"
 }

@@ -304,4 +304,30 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get tools_start_end_frame_default_prompt => '第一张照片慢慢羽化成第二张照片。';
+
+  @override
+  String get workshop_title => '工作室';
+
+  @override
+  String workshop_load_failed(Object error) {
+    return '加载失败: $error';
+  }
+
+  @override
+  String get pro_badge => 'PRO';
+
+  @override
+  String get pro_banner_description => '解锁更多独特效果';
+
+  @override
+  String get pro_banner_action => '获取';
+
+  @override
+  String get workshop_task_processing => '绘图过程中，请耐心等待';
+
+  @override
+  String get workshop_task_failed => '生成失败，请重试！';
+
+  @override
+  String get workshop_retry => '重试';
 }

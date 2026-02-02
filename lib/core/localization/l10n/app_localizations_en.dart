@@ -307,4 +307,30 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get tools_start_end_frame_default_prompt =>
       'The first photo slowly fades into the second photo.';
+
+  @override
+  String get workshop_title => 'Workshop';
+
+  @override
+  String workshop_load_failed(Object error) {
+    return 'Failed to load: $error';
+  }
+
+  @override
+  String get pro_badge => 'PRO';
+
+  @override
+  String get pro_banner_description => 'Unlock more unique effects';
+
+  @override
+  String get pro_banner_action => 'Get';
+
+  @override
+  String get workshop_task_processing => 'Drawing in progress, please wait';
+
+  @override
+  String get workshop_task_failed => 'Generation failed, please retry!';
+
+  @override
+  String get workshop_retry => 'Retry';
 }

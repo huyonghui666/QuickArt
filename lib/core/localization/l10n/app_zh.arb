@@ -1,5 +1,18 @@
 {
   "@@locale": "zh",
+  "setting": "设置",
+  "setting_discord": "加入 Discord",
   "language": "语言",
-  "setting": "设置"
+  "setting_rate_us": "给我们评分",
+  "setting_privacy_policy": "隐私协议",
+  "setting_terms_of_service": "服务条款",
+  "setting_member_center": "会员支持中心",
+  "setting_social_media": "社媒",
+  "setting_version": "版本号:",
+
+  
+  "home_describe": "图生文",
+  "home_add_photo": "添加照片",
+  "home_history": "历史",
+  "inspiration_try": "尝试"
 }

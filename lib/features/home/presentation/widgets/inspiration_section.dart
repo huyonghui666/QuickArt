@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/features/home/presentation/notifiers/inspiration_provider.dart';
 
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
+
 class InspirationTabBar extends ConsumerWidget {
   const InspirationTabBar({super.key});
 
@@ -103,9 +105,9 @@ class InspirationCard extends StatelessWidget {
                     color: Colors.black.withValues(alpha: 0.5),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: const Text(
-                    'Try',
-                    style: TextStyle(color: Colors.white, fontSize: 12),
+                  child: Text(
+                    AppLocalizations.of(context)!.inspiration_try,
+                    style: const TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ),
               ),

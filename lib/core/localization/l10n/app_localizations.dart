@@ -98,17 +98,83 @@ abstract class AppLocalizations {
     Locale('zh'),
   ];
 
+  /// Label for the settings screen or button
+  ///
+  /// In en, this message translates to:
+  /// **'Setting'**
+  String get setting;
+
+  /// Label for Join Discord button
+  ///
+  /// In en, this message translates to:
+  /// **'Join Discord'**
+  String get setting_discord;
+
   /// No description provided for @language.
   ///
   /// In en, this message translates to:
   /// **'Language'**
   String get language;
 
-  /// No description provided for @setting.
+  /// Label for Rate Us button
   ///
   /// In en, this message translates to:
-  /// **'Setting'**
-  String get setting;
+  /// **'Rate Us'**
+  String get setting_rate_us;
+
+  /// Label for Privacy Policy button
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get setting_privacy_policy;
+
+  /// Label for Terms of Service button
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get setting_terms_of_service;
+
+  /// Label for Member Center button
+  ///
+  /// In en, this message translates to:
+  /// **'Member Center'**
+  String get setting_member_center;
+
+  /// Label for Social Media section
+  ///
+  /// In en, this message translates to:
+  /// **'Social Media'**
+  String get setting_social_media;
+
+  /// Label for Version
+  ///
+  /// In en, this message translates to:
+  /// **'Version:'**
+  String get setting_version;
+
+  /// Label for the text-to-image feature button on the home screen
+  ///
+  /// In en, this message translates to:
+  /// **'Describe'**
+  String get home_describe;
+
+  /// Label for the image-to-image feature button on the home screen
+  ///
+  /// In en, this message translates to:
+  /// **'Add Photo'**
+  String get home_add_photo;
+
+  /// Label for the history button on the home screen
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get home_history;
+
+  /// Button label to try a specific inspiration style
+  ///
+  /// In en, this message translates to:
+  /// **'Try'**
+  String get inspiration_try;
 }
 
 class _AppLocalizationsDelegate

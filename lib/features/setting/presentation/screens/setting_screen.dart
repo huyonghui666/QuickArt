@@ -18,12 +18,20 @@ class SettingScreen extends ConsumerWidget {
         backgroundColor: Colors.black,
         elevation: 0,
         leading: IconButton(
-          icon: SvgPicture.asset(AppIcons.settingNavBack, width: 24, height: 24),
+          icon: SvgPicture.asset(
+            AppIcons.settingNavBack,
+            width: 24,
+            height: 24,
+          ),
           onPressed: () => context.pop(),
         ),
         title: Text(
           l10n.setting, // This will be 'Language' or '语言'
-          style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
       ),
@@ -36,14 +44,33 @@ class SettingScreen extends ConsumerWidget {
             clipBehavior: Clip.antiAlias,
             child: Column(
               children: [
-                _buildSettingItem(icon: AppIcons.settingDiscord, text: '加入 Discord'),
-                _buildSettingItem(icon: AppIcons.settingLanguage, text: l10n.language, onTap: () => context.push('/setting/language')),
-                _buildSettingItem(icon: AppIcons.settingRateUs, text: '给我们评分'),
-                _buildSettingItem(icon: AppIcons.settingPolicy, text: '隐私协议'),
-                _buildSettingItem(icon: AppIcons.settingTerms, text: '服务条款'),
-                _buildSettingItem(icon: AppIcons.settingMember, text: '会员支持中心'),
-                _buildSocialMediaItem(),
-                _buildVersionItem(),
+                _buildSettingItem(
+                  icon: AppIcons.settingDiscord,
+                  text: l10n.setting_discord,
+                ),
+                _buildSettingItem(
+                  icon: AppIcons.settingLanguage,
+                  text: l10n.language,
+                  onTap: () => context.push('/setting/language'),
+                ),
+                _buildSettingItem(
+                  icon: AppIcons.settingRateUs,
+                  text: l10n.setting_rate_us,
+                ),
+                _buildSettingItem(
+                  icon: AppIcons.settingPolicy,
+                  text: l10n.setting_privacy_policy,
+                ),
+                _buildSettingItem(
+                  icon: AppIcons.settingTerms,
+                  text: l10n.setting_terms_of_service,
+                ),
+                _buildSettingItem(
+                  icon: AppIcons.settingMember,
+                  text: l10n.setting_member_center,
+                ),
+                _buildSocialMediaItem(l10n),
+                _buildVersionItem(l10n),
               ],
             ),
           ),
@@ -52,19 +79,37 @@ class SettingScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildSettingItem({required String icon, required String text, VoidCallback? onTap}) {
+  Widget _buildSettingItem({
+    required String icon,
+    required String text,
+    VoidCallback? onTap,
+  }) {
     return ListTile(
       leading: SvgPicture.asset(icon, width: 24, height: 24),
-      title: Text(text, style: const TextStyle(color: Colors.white, fontSize: 14)),
-      trailing: SvgPicture.asset(AppIcons.settingRatioNext, width: 20, height: 20),
+      title: Text(
+        text,
+        style: const TextStyle(color: Colors.white, fontSize: 14),
+      ),
+      trailing: SvgPicture.asset(
+        AppIcons.settingRatioNext,
+        width: 20,
+        height: 20,
+      ),
       onTap: onTap,
     );
   }
 
-  Widget _buildSocialMediaItem() {
+  Widget _buildSocialMediaItem(AppLocalizations l10n) {
     return ListTile(
-      leading: SvgPicture.asset(AppIcons.settingFollowUs, width: 24, height: 24),
-      title: const Text('社媒', style: TextStyle(color: Colors.white, fontSize: 14)),
+      leading: SvgPicture.asset(
+        AppIcons.settingFollowUs,
+        width: 24,
+        height: 24,
+      ),
+      title: Text(
+        l10n.setting_social_media,
+        style: const TextStyle(color: Colors.white, fontSize: 14),
+      ),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -91,11 +136,17 @@ class SettingScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildVersionItem() {
+  Widget _buildVersionItem(AppLocalizations l10n) {
     return ListTile(
       leading: SvgPicture.asset(AppIcons.settingVersion, width: 24, height: 24),
-      title: const Text('版本号:', style: TextStyle(color: Colors.white, fontSize: 16)),
-      trailing: const Text('2.3.1.1', style: TextStyle(color: Colors.grey, fontSize: 14)),
+      title: Text(
+        l10n.setting_version,
+        style: const TextStyle(color: Colors.white, fontSize: 16),
+      ),
+      trailing: const Text(
+        '2.3.1.1',
+        style: TextStyle(color: Colors.grey, fontSize: 14),
+      ),
     );
   }
 }

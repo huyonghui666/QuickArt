@@ -1,5 +1,54 @@
 {
   "@@locale": "en",
+  "setting": "Setting",
+  "@setting": {
+    "description": "Label for the settings screen or button"
+  },
+  "setting_discord": "Join Discord",
+  "@setting_discord": {
+    "description": "Label for Join Discord button"
+  },
   "language": "Language",
-  "setting": "Setting"
+  "setting_rate_us": "Rate Us",
+  "@setting_rate_us": {
+    "description": "Label for Rate Us button"
+  },
+  "setting_privacy_policy": "Privacy Policy",
+  "@setting_privacy_policy": {
+    "description": "Label for Privacy Policy button"
+  },
+  "setting_terms_of_service": "Terms of Service",
+  "@setting_terms_of_service": {
+    "description": "Label for Terms of Service button"
+  },
+  "setting_member_center": "Member Center",
+  "@setting_member_center": {
+    "description": "Label for Member Center button"
+  },
+  "setting_social_media": "Social Media",
+  "@setting_social_media": {
+    "description": "Label for Social Media section"
+  },
+  "setting_version": "Version:",
+  "@setting_version": {
+    "description": "Label for Version"
+  },
+
+
+  "home_describe": "Describe",
+  "@home_describe": {
+    "description": "Label for the text-to-image feature button on the home screen"
+  },
+  "home_add_photo": "Add Photo",
+  "@home_add_photo": {
+    "description": "Label for the image-to-image feature button on the home screen"
+  },
+  "home_history": "History",
+  "@home_history": {
+    "description": "Label for the history button on the home screen"
+  },
+  "inspiration_try": "Try",
+  "@inspiration_try": {
+    "description": "Button label to try a specific inspiration style"
+  }
 }

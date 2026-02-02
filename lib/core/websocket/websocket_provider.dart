@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/core/models/generation_result_model.dart';
 import 'package:quick_art/core/provider/generation_event_provider.dart';
 import 'package:quick_art/features/workshop/data/datasources/local_data_source/database_helper.dart';
@@ -153,15 +152,12 @@ class WebSocketNotifier extends _$WebSocketNotifier {
     await DatabaseHelper().insertTask(task);
 
     // Emit 'processing' event so UI updates immediately
-    ref
-        .read(generationEventControllerProvider)
+    ref.read(generationEventControllerProvider)
         .add(
           GenerationResultModel(
             taskId: taskId,
             event: 'processing',
-            type: type
-                .name, // Convert enum to string if model expects string, checking model definition...
-            // Model defines type as String?
+            type: type.name,
           ),
         );
   }

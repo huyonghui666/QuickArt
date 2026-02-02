@@ -129,6 +129,8 @@
   "@style_line_art": { "description": "Art Style: Line Art" },
   "style_watercolor": "Watercolor",
   "@style_watercolor": { "description": "Art Style: Watercolor" },
+
+
   "share_social_hint": "Tag our official social media @quickartai",
   "@share_social_hint": { "description": "Hint text for social sharing" },
   "share_save": "Save",
@@ -138,5 +140,25 @@
   "share_instagram": "Instagram",
   "@share_instagram": { "description": "Label for Instagram button" },
   "share_facebook": "Facebook",
-  "@share_facebook": { "description": "Label for Facebook button" }
+  "@share_facebook": { "description": "Label for Facebook button" },
+
+
+  "common_enter_prompt": "Please enter prompt!",
+  "@common_enter_prompt": { "description": "Error message when prompt is empty" },
+  "common_draw": "Draw",
+  "@common_draw": { "description": "Label for draw button" },
+  "common_prompt_hint": "Enter your prompt, it can be anything you want to create",
+  "@common_prompt_hint": { "description": "Hint text for prompt input" },
+  "common_unknown_error": "Unknown error",
+  "@common_unknown_error": { "description": "Generic error message" },
+  "waiting_creating": "Creating...",
+  "@waiting_creating": { "description": "Status text on waiting screen" },
+  "waiting_generating_hint": "The masterpiece is being generated",
+  "@waiting_generating_hint": { "description": "Hint text on waiting screen" },
+  "waiting_run_in_background": "Run in Background",
+  "@waiting_run_in_background": { "description": "Button label to run task in background" },
+  "common_retry": "Retry",
+  "@common_retry": { "description": "Label for retry button" },
+  "common_error_prefix": "Error: ",
+  "@common_error_prefix": { "description": "Prefix for error messages" }
 }

@@ -403,6 +403,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Facebook'**
   String get share_facebook;
+
+  /// Error message when prompt is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter prompt!'**
+  String get common_enter_prompt;
+
+  /// Label for draw button
+  ///
+  /// In en, this message translates to:
+  /// **'Draw'**
+  String get common_draw;
+
+  /// Hint text for prompt input
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your prompt, it can be anything you want to create'**
+  String get common_prompt_hint;
+
+  /// Generic error message
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown error'**
+  String get common_unknown_error;
+
+  /// Status text on waiting screen
+  ///
+  /// In en, this message translates to:
+  /// **'Creating...'**
+  String get waiting_creating;
+
+  /// Hint text on waiting screen
+  ///
+  /// In en, this message translates to:
+  /// **'The masterpiece is being generated'**
+  String get waiting_generating_hint;
+
+  /// Button label to run task in background
+  ///
+  /// In en, this message translates to:
+  /// **'Run in Background'**
+  String get waiting_run_in_background;
+
+  /// Label for retry button
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get common_retry;
+
+  /// Prefix for error messages
+  ///
+  /// In en, this message translates to:
+  /// **'Error: '**
+  String get common_error_prefix;
 }
 
 class _AppLocalizationsDelegate

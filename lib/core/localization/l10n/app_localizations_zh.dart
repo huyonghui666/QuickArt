@@ -160,4 +160,31 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get share_facebook => 'Facebook';
+
+  @override
+  String get common_enter_prompt => '请输入提示词！';
+
+  @override
+  String get common_draw => '绘制';
+
+  @override
+  String get common_prompt_hint => '输入你的提示词, 可以是任何你想创造的东西';
+
+  @override
+  String get common_unknown_error => '未知错误';
+
+  @override
+  String get waiting_creating => '正在创作...';
+
+  @override
+  String get waiting_generating_hint => '杰作正在生成中';
+
+  @override
+  String get waiting_run_in_background => '后台运行';
+
+  @override
+  String get common_retry => '重试';
+
+  @override
+  String get common_error_prefix => '错误: ';
 }

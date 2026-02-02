@@ -50,9 +50,22 @@
   "style_cyberpunk": "赛博朋克",
   "style_line_art": "线条",
   "style_watercolor": "水彩",
+
+
   "share_social_hint": "可以艾特我们官方社媒 @quickartai",
   "share_save": "保存",
   "share_tiktok": "TikTok",
   "share_instagram": "Instagram",
-  "share_facebook": "Facebook"
+  "share_facebook": "Facebook",
+
+
+  "common_enter_prompt": "请输入提示词！",
+  "common_draw": "绘制",
+  "common_prompt_hint": "输入你的提示词, 可以是任何你想创造的东西",
+  "common_unknown_error": "未知错误",
+  "waiting_creating": "正在创作...",
+  "waiting_generating_hint": "杰作正在生成中",
+  "waiting_run_in_background": "后台运行",
+  "common_retry": "重试",
+  "common_error_prefix": "错误: "
 }

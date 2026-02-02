@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/models/generation_result_model.dart';
 import 'package:quick_art/core/provider/show_bottom_sheet_notifier.dart';
 import 'package:quick_art/core/utils/log/logger.dart';
@@ -57,19 +58,15 @@ class WaitingScreen extends ConsumerWidget {
     if (taskType == 'video') {
       final asyncTask = ref.read(videoGenerationNotifierProvider(prompt));
       asyncTask.whenData((task) {
-        if (task != null) {
-          _processEvent(context, ref, result, task.taskId);
-        }
-      });
+        _processEvent(context, ref, result, task.taskId);
+            });
     } else if (taskType == 'start_end_frame') {
       final asyncTask = ref.read(
         startEndFrameGenerationNotifierProvider(prompt),
       );
       asyncTask.whenData((task) {
-        if (task != null) {
-          _processEvent(context, ref, result, task.taskId);
-        }
-      });
+        _processEvent(context, ref, result, task.taskId);
+            });
     } else {
       final asyncTask = ref.read(imageGenerationNotifierProvider(prompt));
       asyncTask.whenData((taskModel) {
@@ -114,7 +111,7 @@ class WaitingScreen extends ConsumerWidget {
 
     return asyncTask.when(
       loading: () => _buildLoadingView(context),
-      error: (e, _) => _buildErrorView(e.toString(), () {
+      error: (e, _) => _buildErrorView(context, e.toString(), () {
         if (taskType == 'start_end_frame') {
           ref
               .read(startEndFrameGenerationNotifierProvider(prompt).notifier)
@@ -125,7 +122,7 @@ class WaitingScreen extends ConsumerWidget {
       }),
       data: (VideoGenerationTask task) {
         if (errorMessage != null) {
-          return _buildErrorView(errorMessage, () {
+          return _buildErrorView(context, errorMessage, () {
             ref.read(_waitingScreenErrorProvider.notifier).state = null;
             if (taskType == 'start_end_frame') {
               ref
@@ -151,12 +148,12 @@ class WaitingScreen extends ConsumerWidget {
 
     return asyncTask.when(
       loading: () => _buildLoadingView(context),
-      error: (e, _) => _buildErrorView(e.toString(), () {
+      error: (e, _) => _buildErrorView(context, e.toString(), () {
         ref.read(imageGenerationNotifierProvider(prompt).notifier).retry();
       }),
       data: (ImageGenerationTaskModel taskModel) {
         if (errorMessage != null) {
-          return _buildErrorView(errorMessage, () {
+          return _buildErrorView(context,errorMessage, () {
             ref.read(_waitingScreenErrorProvider.notifier).state = null;
             ref.read(imageGenerationNotifierProvider(prompt).notifier).retry();
           });
@@ -167,6 +164,7 @@ class WaitingScreen extends ConsumerWidget {
   }
 
   Widget _buildLoadingView(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -180,14 +178,14 @@ class WaitingScreen extends ConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Creating...',
-                style: TextStyle(color: Colors.white, fontSize: 24),
+              Text(
+                l10n.waiting_creating,
+                style: const TextStyle(color: Colors.white, fontSize: 24),
               ),
               const SizedBox(height: 10),
-              const Text(
-                'The masterpiece is being generated',
-                style: TextStyle(color: Colors.white70, fontSize: 16),
+              Text(
+                l10n.waiting_generating_hint,
+                style: const TextStyle(color: Colors.white70, fontSize: 16),
               ),
               const SizedBox(height: 40),
               Container(
@@ -210,9 +208,9 @@ class WaitingScreen extends ConsumerWidget {
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  child: const Text(
-                    'Run in Background',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  child: Text(
+                    l10n.waiting_run_in_background,
+                    style: const TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ),
               ),
@@ -223,7 +221,12 @@ class WaitingScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildErrorView(String error, VoidCallback onRetry) {
+  Widget _buildErrorView(
+    BuildContext context,
+    String error,
+    VoidCallback onRetry,
+  ) {
+    final l10n = AppLocalizations.of(context)!;
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -233,13 +236,13 @@ class WaitingScreen extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Text(
-              'Error: $error',
+              '${l10n.common_error_prefix}$error',
               style: const TextStyle(color: Colors.white),
               textAlign: TextAlign.center,
             ),
           ),
           const SizedBox(height: 24),
-          ElevatedButton(onPressed: onRetry, child: const Text('Retry')),
+          ElevatedButton(onPressed: onRetry, child: Text(l10n.common_retry)),
         ],
       ),
     );

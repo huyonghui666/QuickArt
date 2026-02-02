@@ -160,4 +160,32 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get share_facebook => 'Facebook';
+
+  @override
+  String get common_enter_prompt => 'Please enter prompt!';
+
+  @override
+  String get common_draw => 'Draw';
+
+  @override
+  String get common_prompt_hint =>
+      'Enter your prompt, it can be anything you want to create';
+
+  @override
+  String get common_unknown_error => 'Unknown error';
+
+  @override
+  String get waiting_creating => 'Creating...';
+
+  @override
+  String get waiting_generating_hint => 'The masterpiece is being generated';
+
+  @override
+  String get waiting_run_in_background => 'Run in Background';
+
+  @override
+  String get common_retry => 'Retry';
+
+  @override
+  String get common_error_prefix => 'Error: ';
 }

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quick_art/core/provider/prompt_provider.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 
 class PromptTextField extends ConsumerWidget {
   const PromptTextField({super.key, required this.family});
@@ -12,6 +13,7 @@ class PromptTextField extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final promptState = ref.watch(promptProvider(family));
+    final l10n = AppLocalizations.of(context)!;
 
     return Container(
       padding: const EdgeInsets.all(
@@ -37,7 +39,7 @@ class PromptTextField extends ConsumerWidget {
               decoration: InputDecoration(
                 filled: true,
                 fillColor: const Color(0xFF1A1A1A),
-                hintText: '输入你的提示词, 可以是任何你想创造的东西',
+                hintText: l10n.common_prompt_hint,
                 hintStyle: TextStyle(color: Colors.grey[500], fontSize: 13),
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.fromLTRB(16, 16, 16, 40),

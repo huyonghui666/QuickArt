@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 
 class ProBanner extends StatelessWidget {
   const ProBanner({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       padding: const EdgeInsets.all(20.0),
@@ -38,15 +40,17 @@ class ProBanner extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 6,
+                      vertical: 2,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.orange,
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const Text(
-                      'PRO',
-                      style: TextStyle(
+                    child: Text(
+                      l10n.pro_badge,
+                      style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
@@ -56,12 +60,9 @@ class ProBanner extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 4),
-              const Text(
-                '解锁更多独特效果',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.white70,
-                ),
+              Text(
+                l10n.pro_banner_description,
+                style: const TextStyle(fontSize: 14, color: Colors.white70),
               ),
             ],
           ),
@@ -75,7 +76,7 @@ class ProBanner extends StatelessWidget {
               ),
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
             ),
-            child: const Text('获取'),
+            child: Text(l10n.pro_banner_action),
           ),
         ],
       ),

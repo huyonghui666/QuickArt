@@ -5,19 +5,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/permission/permission_manager.dart';
 import 'package:quick_art/core/provider/prompt_provider.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/core/widgets/prompt_text_field.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/start_end_frame_provider.dart';
 
-class StartEndFrameScreen extends ConsumerWidget {
+class StartEndFrameScreen extends ConsumerStatefulWidget {
   const StartEndFrameScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<StartEndFrameScreen> createState() =>
+      _StartEndFrameScreenState();
+}
+
+class _StartEndFrameScreenState extends ConsumerState<StartEndFrameScreen> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final l10n = AppLocalizations.of(context)!;
+    final promptController = ref
+        .read(promptProvider('start_end_frame'))
+        .controller;
+    if (promptController.text.isEmpty) {
+      promptController.text = l10n.tools_start_end_frame_default_prompt;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final startEndFrameState = ref.watch(startEndFrameProvider);
     final notifier = ref.read(startEndFrameProvider.notifier);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -50,9 +70,9 @@ class StartEndFrameScreen extends ConsumerWidget {
                     ),
 
                     // Title
-                    const Text(
-                      '首尾帧',
-                      style: TextStyle(
+                    Text(
+                      l10n.tools_start_end_frame,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
@@ -66,7 +86,7 @@ class StartEndFrameScreen extends ConsumerWidget {
                       children: [
                         Expanded(
                           child: _ImageUploadCard(
-                            title: '上传首帧图片',
+                            title: l10n.tools_upload_start_frame,
                             imagePath: startEndFrameState.startFramePath,
                             onTap: () async {
                               final hasPermission =
@@ -88,7 +108,8 @@ class StartEndFrameScreen extends ConsumerWidget {
                         const SizedBox(width: 16),
                         Expanded(
                           child: _ImageUploadCard(
-                            title: '上传尾帧图片',
+                            title: l10n.tools_upload_end_frame,
+                            // title: '上传尾帧图片',
                             imagePath: startEndFrameState.endFramePath,
                             onTap: () async {
                               final hasPermission =
@@ -113,9 +134,9 @@ class StartEndFrameScreen extends ConsumerWidget {
                     const SizedBox(height: 32),
 
                     // Prompt Section
-                    const Text(
-                      '提示',
-                      style: TextStyle(
+                    Text(
+                      l10n.tools_prompt_title,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -142,7 +163,11 @@ class StartEndFrameScreen extends ConsumerWidget {
                         if (startEndFrameState.startFramePath == null ||
                             startEndFrameState.endFramePath == null) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('请上传首尾帧图片')),
+                            SnackBar(
+                              content: Text(
+                                l10n.tools_upload_both_frames_error,
+                              ),
+                            ),
                           );
                           return;
                         }

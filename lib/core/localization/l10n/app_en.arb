@@ -1,5 +1,267 @@
 {
   "@@locale": "en",
+  "setting": "Setting",
+  "@setting": {
+    "description": "Label for the settings screen or button"
+  },
+  "setting_discord": "Join Discord",
+  "@setting_discord": {
+    "description": "Label for Join Discord button"
+  },
   "language": "Language",
-  "setting": "Setting"
+  "setting_rate_us": "Rate Us",
+  "@setting_rate_us": {
+    "description": "Label for Rate Us button"
+  },
+  "setting_privacy_policy": "Privacy Policy",
+  "@setting_privacy_policy": {
+    "description": "Label for Privacy Policy button"
+  },
+  "setting_terms_of_service": "Terms of Service",
+  "@setting_terms_of_service": {
+    "description": "Label for Terms of Service button"
+  },
+  "setting_member_center": "Member Center",
+  "@setting_member_center": {
+    "description": "Label for Member Center button"
+  },
+  "setting_social_media": "Social Media",
+  "@setting_social_media": {
+    "description": "Label for Social Media section"
+  },
+  "setting_version": "Version:",
+  "@setting_version": {
+    "description": "Label for Version"
+  },
+
+
+  "nav_quickart": "QUICKART",
+  "@nav_quickart": {
+    "description": "Label for QUICKART tab"
+  },
+  "nav_explore": "Explore",
+  "@nav_explore": {
+    "description": "Label for Explore tab"
+  },
+  "nav_tools": "Tools",
+  "@nav_tools": {
+    "description": "Label for Tools tab"
+  },
+  "nav_studio": "Studio",
+  "@nav_studio": {
+    "description": "Label for Studio tab"
+  },
+
+
+  "home_describe": "Describe",
+  "@home_describe": {
+    "description": "Label for the text-to-image feature button on the home screen"
+  },
+  "home_add_photo": "Add Photo",
+  "@home_add_photo": {
+    "description": "Label for the image-to-image feature button on the home screen"
+  },
+  "home_history": "History",
+  "@home_history": {
+    "description": "Label for the history button on the home screen"
+  },
+  "inspiration_try": "Try",
+  "@inspiration_try": {
+    "description": "Button label to try a specific inspiration style"
+  },
+  "inspiration_new": "New",
+  "@inspiration_new": { "description": "Inspiration: New" },
+  "inspiration_manga": "Manga",
+  "@inspiration_manga": { "description": "Inspiration: Manga" },
+  "inspiration_photography": "Photography",
+  "@inspiration_photography": { "description": "Inspiration: Photography" },
+  "inspiration_watercolor": "Watercolor",
+  "@inspiration_watercolor": { "description": "Inspiration: Watercolor" },
+  "inspiration_funny": "Funny",
+  "@inspiration_funny": { "description": "Inspiration: Funny" },
+  "inspiration_tattoo": "Tattoo",
+  "@inspiration_tattoo": { "description": "Inspiration: Tattoo" },
+  "inspiration_cyberpunk": "Cyberpunk",
+  "@inspiration_cyberpunk": { "description": "Inspiration: Cyberpunk" },
+  "inspiration_surrealism": "Surrealism",
+  "@inspiration_surrealism": { "description": "Inspiration: Surrealism" },
+  "inspiration_christmas": "Christmas",
+  "@inspiration_christmas": { "description": "Inspiration: Christmas" },
+  "home_art_style": "Art Style",
+  "@home_art_style": {
+    "description": "Label for Art Style section"
+  },
+  "style_no_style": "No Style",
+  "@style_no_style": { "description": "Art Style: No Style" },
+  "style_cute_cartoon": "Cute Cartoon",
+  "@style_cute_cartoon": { "description": "Art Style: Cute Cartoon" },
+  "style_ancient_style": "Ancient Style",
+  "@style_ancient_style": { "description": "Art Style: Ancient Style" },
+  "style_graffiti": "Graffiti",
+  "@style_graffiti": { "description": "Art Style: Graffiti" },
+  "style_pop_art": "Pop Art",
+  "@style_pop_art": { "description": "Art Style: Pop Art" },
+  "style_vivid_realism": "Vivid Realism",
+  "@style_vivid_realism": { "description": "Art Style: Vivid Realism" },
+  "style_color": "Color",
+  "@style_color": { "description": "Art Style: Color" },
+  "style_eighties": "80s",
+  "@style_eighties": { "description": "Art Style: 80s" },
+  "style_showa": "Showa",
+  "@style_showa": { "description": "Art Style: Showa" },
+  "style_model_3d": "3D Model",
+  "@style_model_3d": { "description": "Art Style: 3D Model" },
+  "style_photography": "Photography",
+  "@style_photography": { "description": "Art Style: Photography" },
+  "style_japanese_anime": "Japanese Anime",
+  "@style_japanese_anime": { "description": "Art Style: Japanese Anime" },
+  "style_tattoo": "Tattoo",
+  "@style_tattoo": { "description": "Art Style: Tattoo" },
+  "style_retro_arcade": "Retro Arcade",
+  "@style_retro_arcade": { "description": "Art Style: Retro Arcade" },
+  "style_black_white": "Black & White",
+  "@style_black_white": { "description": "Art Style: Black & White" },
+  "style_pixar": "Pixar",
+  "@style_pixar": { "description": "Art Style: Pixar" },
+  "style_cyberpunk": "Cyberpunk",
+  "@style_cyberpunk": { "description": "Art Style: Cyberpunk" },
+  "style_line_art": "Line Art",
+  "@style_line_art": { "description": "Art Style: Line Art" },
+  "style_watercolor": "Watercolor",
+  "@style_watercolor": { "description": "Art Style: Watercolor" },
+
+
+  "share_social_hint": "Tag our official social media @quickartai",
+  "@share_social_hint": { "description": "Hint text for social sharing" },
+  "share_save": "Save",
+  "@share_save": { "description": "Label for Save button" },
+  "share_tiktok": "TikTok",
+  "@share_tiktok": { "description": "Label for TikTok button" },
+  "share_instagram": "Instagram",
+  "@share_instagram": { "description": "Label for Instagram button" },
+  "share_facebook": "Facebook",
+  "@share_facebook": { "description": "Label for Facebook button" },
+
+
+  "common_enter_prompt": "Please enter prompt!",
+  "@common_enter_prompt": { "description": "Error message when prompt is empty" },
+  "common_draw": "Draw",
+  "@common_draw": { "description": "Label for draw button" },
+  "common_prompt_hint": "Enter your prompt, it can be anything you want to create",
+  "@common_prompt_hint": { "description": "Hint text for prompt input" },
+  "common_unknown_error": "Unknown error",
+  "@common_unknown_error": { "description": "Generic error message" },
+  "waiting_creating": "Creating...",
+  "@waiting_creating": { "description": "Status text on waiting screen" },
+  "waiting_generating_hint": "The masterpiece is being generated",
+  "@waiting_generating_hint": { "description": "Hint text on waiting screen" },
+  "waiting_run_in_background": "Run in Background",
+  "@waiting_run_in_background": { "description": "Button label to run task in background" },
+  "common_retry": "Retry",
+  "@common_retry": { "description": "Label for retry button" },
+  "common_error_prefix": "Error: ",
+  "@common_error_prefix": { "description": "Prefix for error messages" },
+
+  "tools_title": "AI Tools",
+  "@tools_title": { "description": "Title for Tools screen" },
+  "tools_ai_video": "AI Video",
+  "@tools_ai_video": { "description": "Title for AI Video feature" },
+  "tools_artistic_photo": "Artistic Photo",
+  "@tools_artistic_photo": { "description": "Title for Artistic Photo feature" },
+  "tools_ai_face_swap": "AI Face Swap",
+  "@tools_ai_face_swap": { "description": "Title for AI Face Swap feature" },
+  "tools_text_to_video": "Text to Video",
+  "@tools_text_to_video": { "description": "Title for Text to Video feature" },
+  "tools_start_end_frame": "Start & End Frame",
+  "@tools_start_end_frame": { "description": "Title for Start & End Frame feature" },
+  "tools_multi_subject": "Multi-Subject",
+  "@tools_multi_subject": { "description": "Title for Multi-Subject feature" },
+  "tools_upload_start_frame": "Upload Start Frame",
+  "@tools_upload_start_frame": { "description": "Label for start frame upload" },
+  "tools_upload_end_frame": "Upload End Frame",
+  "@tools_upload_end_frame": { "description": "Label for end frame upload" },
+  "tools_prompt_title": "Prompt",
+  "@tools_prompt_title": { "description": "Title for prompt section" },
+  "tools_upload_both_frames_error": "Please upload both start and end frames",
+  "@tools_upload_both_frames_error": { "description": "Error message when frames are missing" },
+  "tools_random": "Random",
+  "@tools_random": { "description": "Label for random option" },
+  "tools_ratio_1_1": "1:1",
+  "@tools_ratio_1_1": { "description": "Label for 1:1 ratio" },
+  "tools_social_hint": "Tag our official social media @quickartai",
+  "@tools_social_hint": { "description": "Hint text for social sharing in tools" },
+  "tools_save": "Save",
+  "@tools_save": { "description": "Label for Save button" },
+  "tools_tiktok": "TikTok",
+  "@tools_tiktok": { "description": "Label for TikTok button" },
+  "tools_instagram": "Instagram",
+  "@tools_instagram": { "description": "Label for Instagram button" },
+  "tools_facebook": "Facebook",
+  "@tools_facebook": { "description": "Label for Facebook button" },
+  "tools_new_badge": "NEW",
+  "@tools_new_badge": { "description": "Badge text for new items" },
+  "tools_tab_popular": "Popular!",
+  "@tools_tab_popular": { "description": "Tab: Popular" },
+  "tools_tab_kiss": "Kiss",
+  "@tools_tab_kiss": { "description": "Tab: Kiss" },
+  "tools_tab_hug": "Hug",
+  "@tools_tab_hug": { "description": "Tab: Hug" },
+  "tools_tab_ai_effects": "AI Effects",
+  "@tools_tab_ai_effects": { "description": "Tab: AI Effects" },
+  "tools_tab_style_transfer": "Style Transfer",
+  "@tools_tab_style_transfer": { "description": "Tab: Style Transfer" },
+  "tools_tab_rich_life": "My Rich Life",
+  "@tools_tab_rich_life": { "description": "Tab: My Rich Life" },
+  "tools_tab_cross_dimension": "Cross-Dimension Love",
+  "@tools_tab_cross_dimension": { "description": "Tab: Cross-Dimension Love" },
+  "tools_tab_animal_effects": "Animal Effects",
+  "@tools_tab_animal_effects": { "description": "Tab: Animal Effects" },
+  "tools_tab_romantic_day": "Romantic Day",
+  "@tools_tab_romantic_day": { "description": "Tab: Romantic Day" },
+  "tools_tab_movie_life": "Movie Life",
+  "@tools_tab_movie_life": { "description": "Tab: Movie Life" },
+  "tools_tab_cross_dressing": "Cross-Dressing",
+  "@tools_tab_cross_dressing": { "description": "Tab: Cross-Dressing" },
+  "tools_tab_dance": "Let's Dance!",
+  "@tools_tab_dance": { "description": "Tab: Let's Dance!" },
+  "tools_tab_micro_world": "Micro World",
+  "@tools_tab_micro_world": { "description": "Tab: Micro World" },
+  "tools_template_kiss_pro": "French Kiss Pro",
+  "@tools_template_kiss_pro": { "description": "Template: French Kiss Pro" },
+  "tools_template_cat": "Turn into Cat",
+  "@tools_template_cat": { "description": "Template: Turn into Cat" },
+  "tools_template_heartbeat_404": "Heartbeat 404",
+  "@tools_template_heartbeat_404": { "description": "Template: Heartbeat 404" },
+  "tools_template_skull_universe": "Skull Universe",
+  "@tools_template_skull_universe": { "description": "Template: Skull Universe" },
+  "tools_template_koi": "Koi Fortune",
+  "@tools_template_koi": { "description": "Template: Koi Fortune" },
+  "tools_template_redemption_rain": "Redemption Rain",
+  "@tools_template_redemption_rain": { "description": "Template: Redemption Rain" },
+  "tools_start_end_frame_default_prompt": "The first photo slowly fades into the second photo.",
+  "@tools_start_end_frame_default_prompt": { "description": "Default prompt for start-end frame task" },
+  "workshop_title": "Workshop",
+  "@workshop_title": { "description": "Title for Workshop screen" },
+  "workshop_load_failed": "Failed to load: {error}",
+  "@workshop_load_failed": {
+    "description": "Error message when tasks fail to load",
+    "placeholders": {
+      "error": {
+        "type": "Object",
+        "example": "Network error"
+      }
+    }
+  },
+  "pro_badge": "PRO",
+  "@pro_badge": { "description": "Badge text for PRO features" },
+  "pro_banner_description": "Unlock more unique effects",
+  "@pro_banner_description": { "description": "Description for Pro banner" },
+  "pro_banner_action": "Get",
+  "@pro_banner_action": { "description": "Button label for Pro banner" },
+  "workshop_task_processing": "Drawing in progress, please wait",
+  "@workshop_task_processing": { "description": "Status text for processing tasks" },
+  "workshop_task_failed": "Generation failed, please retry!",
+  "@workshop_task_failed": { "description": "Status text for failed tasks" },
+  "workshop_retry": "Retry",
+  "@workshop_retry": { "description": "Label for retry button in workshop" }
 }

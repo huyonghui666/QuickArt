@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/ai_video_tab_bar_provider.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_action_card.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_template_grid.dart';
@@ -67,6 +68,7 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
   @override
   Widget build(BuildContext context) {
     final tabs = ref.watch(aiVideoTabsProvider);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -113,7 +115,7 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                 ),
                 centerTitle: true,
                 title: Text(
-                  'AI 视频',
+                  l10n.tools_ai_video,
                   style: TextStyle(
                     color: Colors.white.withValues(alpha: _titleOpacity),
                     fontWeight: FontWeight.bold,
@@ -128,9 +130,9 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'AI 视频',
-                      style: TextStyle(
+                    Text(
+                      l10n.tools_ai_video,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
@@ -142,19 +144,19 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                       children: [
                         AiVideoActionCard(
                           icon: Icons.text_fields,
-                          title: '文生视频',
+                          title: l10n.tools_text_to_video,
                           onTap: () =>
                               context.push('/tools/ai-video/text-to-video'),
                         ),
                         AiVideoActionCard(
                           icon: Icons.movie_filter_outlined,
-                          title: '首尾帧',
+                          title: l10n.tools_start_end_frame,
                           onTap: () =>
                               context.push('/tools/ai-video/start-end-frame'),
                         ),
-                        const AiVideoActionCard(
+                        AiVideoActionCard(
                           icon: Icons.collections_bookmark_outlined,
-                          title: '多主体',
+                          title: l10n.tools_multi_subject,
                         ),
                       ],
                     ),
@@ -171,7 +173,9 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                   indicatorColor: Colors.white,
                   labelColor: Colors.white,
                   unselectedLabelColor: Colors.grey[400],
-                  tabs: tabs.map((String name) => Tab(text: name)).toList(),
+                  tabs: tabs
+                      .map((String key) => Tab(text: _getTabTitle(key, l10n)))
+                      .toList(),
                 ),
               ),
               pinned: true,
@@ -180,12 +184,45 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
         },
         body: TabBarView(
           controller: _tabController,
-          children: tabs.map((String name) {
+          children: tabs.map((String key) {
             return const VideoTemplateGrid();
           }).toList(),
         ),
       ),
     );
+  }
+
+  String _getTabTitle(String key, AppLocalizations l10n) {
+    switch (key) {
+      case 'popular':
+        return l10n.tools_tab_popular;
+      case 'kiss':
+        return l10n.tools_tab_kiss;
+      case 'hug':
+        return l10n.tools_tab_hug;
+      case 'ai_effects':
+        return l10n.tools_tab_ai_effects;
+      case 'style_transfer':
+        return l10n.tools_tab_style_transfer;
+      case 'rich_life':
+        return l10n.tools_tab_rich_life;
+      case 'cross_dimension':
+        return l10n.tools_tab_cross_dimension;
+      case 'animal_effects':
+        return l10n.tools_tab_animal_effects;
+      case 'romantic_day':
+        return l10n.tools_tab_romantic_day;
+      case 'movie_life':
+        return l10n.tools_tab_movie_life;
+      case 'cross_dressing':
+        return l10n.tools_tab_cross_dressing;
+      case 'dance':
+        return l10n.tools_tab_dance;
+      case 'micro_world':
+        return l10n.tools_tab_micro_world;
+      default:
+        return key;
+    }
   }
 }
 

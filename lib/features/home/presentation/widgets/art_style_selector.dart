@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/home/presentation/notifiers/art_style_notifier.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
 
@@ -11,12 +12,13 @@ class ArtStyleSelector extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedStyle = ref.watch(artStyleNotifierProvider);
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '艺术风格',
+          l10n.home_art_style,
           style: theme.textTheme.titleMedium?.copyWith(
             color: Colors.white,
             fontWeight: FontWeight.w600,
@@ -40,7 +42,7 @@ class ArtStyleSelector extends ConsumerWidget {
                       _StyleCard(style: style, selected: isSelected),
                       const SizedBox(height: 6),
                       Text(
-                        style.label,
+                        style.getLabel(l10n),
                         style: TextStyle(
                           color: isSelected
                               ? theme.colorScheme.primary

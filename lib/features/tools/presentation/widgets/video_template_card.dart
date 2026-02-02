@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 
 class VideoTemplateCard extends StatelessWidget {
   final int index;
@@ -6,6 +7,7 @@ class VideoTemplateCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return ClipRRect(
       borderRadius: BorderRadius.circular(12.0),
       child: Stack(
@@ -30,7 +32,7 @@ class VideoTemplateCard extends StatelessWidget {
             bottom: 8,
             right: 8,
             child: Text(
-              _getTemplateName(index),
+              _getTemplateName(index, l10n),
               style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -50,9 +52,9 @@ class VideoTemplateCard extends StatelessWidget {
                   color: Theme.of(context).colorScheme.primary,
                   borderRadius: BorderRadius.circular(4),
                 ),
-                child: const Text(
-                  'NEW',
-                  style: TextStyle(
+                child: Text(
+                  l10n.tools_new_badge,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
@@ -66,8 +68,15 @@ class VideoTemplateCard extends StatelessWidget {
   }
 
   // Helper to get varied names for templates
-  String _getTemplateName(int index) {
-    final names = ['法式热吻Pro', '变出猫猫', '心跳404', '骷髅宇宙', '锦鲤良缘', '救赎的雨'];
+  String _getTemplateName(int index, AppLocalizations l10n) {
+    final names = [
+      l10n.tools_template_kiss_pro,
+      l10n.tools_template_cat,
+      l10n.tools_template_heartbeat_404,
+      l10n.tools_template_skull_universe,
+      l10n.tools_template_koi,
+      l10n.tools_template_redemption_rain,
+    ];
     return names[index % names.length];
   }
 }

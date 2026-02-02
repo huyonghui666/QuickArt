@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/tools/presentation/widgets/tools_image_card.dart';
 import 'package:quick_art/features/tools/presentation/widgets/tools_video_card.dart';
 
@@ -8,12 +9,16 @@ class ToolsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text(
-          'AI 工具',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        title: Text(
+          l10n.tools_title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         backgroundColor: Colors.black,
         elevation: 0,
@@ -29,7 +34,7 @@ class ToolsScreen extends StatelessWidget {
               height: 150,
               child: VideoCard(
                 videoPath: 'assets/videos/ai_video.mp4',
-                title: 'AI 视频',
+                title: l10n.tools_ai_video,
                 onTap: () => context.push('/tools/ai-video'),
               ),
             ),
@@ -39,7 +44,7 @@ class ToolsScreen extends StatelessWidget {
               height: 150,
               child: VideoCard(
                 videoPath: 'assets/videos/artisticPhoto_video.mp4',
-                title: '艺术照',
+                title: l10n.tools_artistic_photo,
                 onTap: () {
                   // TODO: 实现导航到艺术照页面
                 },
@@ -51,7 +56,7 @@ class ToolsScreen extends StatelessWidget {
               height: 150,
               child: ImageCard(
                 imageUrl: 'assets/images/tools/AIFaceSwapping.webp',
-                title: 'AI 换脸',
+                title: l10n.tools_ai_face_swap,
                 onTap: () {
                   // TODO: 实现导航到 AI 换脸页面
                 },

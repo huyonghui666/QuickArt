@@ -3,13 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quick_art/core/provider/prompt_provider.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 
 class DrawButton extends ConsumerWidget {
-  const DrawButton({
-    super.key,
-    required this.family,
-    required this.onTap,
-  });
+  const DrawButton({super.key, required this.family, required this.onTap});
 
   final String family;
   final VoidCallback onTap;
@@ -17,15 +14,16 @@ class DrawButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final prompt = ref.watch(promptProvider(family)).text;
+    final l10n = AppLocalizations.of(context)!;
 
     return GestureDetector(
       onTap: () {
         if (prompt.isNotEmpty) {
           onTap();
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('请输入提示词！')),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(l10n.common_enter_prompt)));
         }
       },
       child: SizedBox(
@@ -35,9 +33,9 @@ class DrawButton extends ConsumerWidget {
           alignment: Alignment.center,
           children: [
             SvgPicture.asset(AppIcons.homeBtnStartUnable, fit: BoxFit.cover),
-            const Text(
-              '绘制',
-              style: TextStyle(
+            Text(
+              l10n.common_draw,
+              style: const TextStyle(
                 color: Colors.grey,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,

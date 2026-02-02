@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/tools/presentation/widgets/tools_video_card.dart';
 
 class GeneratedVideoBottomSheet extends StatelessWidget {
@@ -9,6 +10,7 @@ class GeneratedVideoBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -24,9 +26,9 @@ class GeneratedVideoBottomSheet extends StatelessWidget {
           ),
           const SizedBox(height: 42),
           // 提示文本
-          const Text(
-            '可以艾特我们官方社媒 @quickartai',
-            style: TextStyle(color: Colors.white70),
+          Text(
+            l10n.tools_social_hint,
+            style: const TextStyle(color: Colors.white70),
           ),
           const Spacer(),
           // 社交分享按钮
@@ -35,19 +37,19 @@ class GeneratedVideoBottomSheet extends StatelessWidget {
             children: [
               _buildSocialButton(
                 'assets/icons/svg/Home/home_ic_history.svg',
-                '保存',
+                l10n.tools_save,
               ),
               _buildSocialButton(
                 'assets/icons/svg/Setting/setting_ic_tt.svg',
-                'TikTok',
+                l10n.tools_tiktok,
               ),
               _buildSocialButton(
                 'assets/icons/svg/Setting/setting_ic_ins.svg',
-                'Instagram',
+                l10n.tools_instagram,
               ),
               _buildSocialButton(
                 'assets/icons/svg/Setting/setting_ic_fb.svg',
-                'Facebook',
+                l10n.tools_facebook,
               ),
             ],
           ),

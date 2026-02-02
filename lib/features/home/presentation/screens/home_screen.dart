@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/provider/prompt_provider.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/core/widgets/prompt_text_field.dart';
@@ -144,14 +145,23 @@ class HomeScreen extends ConsumerWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _buildActionItem(AppIcons.homeDescribe, '图生文'),
-        _buildActionItem(AppIcons.homePhoto, '添加照片'),
+        _buildActionItem(
+          AppIcons.homeDescribe,
+          AppLocalizations.of(context)!.home_describe,
+        ),
+        _buildActionItem(
+          AppIcons.homePhoto,
+          AppLocalizations.of(context)!.home_add_photo,
+        ),
         _buildActionItem(
           AppIcons.homeRatio11,
           '1:1',
           trailingIconPath: AppIcons.homeRatioNext,
         ),
-        _buildActionItem(AppIcons.homeHistory, '历史'),
+        _buildActionItem(
+          AppIcons.homeHistory,
+          AppLocalizations.of(context)!.home_history,
+        ),
       ],
     );
   }

@@ -108,7 +108,8 @@ class _StartEndFrameScreenState extends ConsumerState<StartEndFrameScreen> {
                         const SizedBox(width: 16),
                         Expanded(
                           child: _ImageUploadCard(
-                            title: '上传尾帧图片',
+                            title: l10n.tools_upload_end_frame,
+                            // title: '上传尾帧图片',
                             imagePath: startEndFrameState.endFramePath,
                             onTap: () async {
                               final hasPermission =

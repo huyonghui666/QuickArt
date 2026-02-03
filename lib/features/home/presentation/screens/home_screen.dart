@@ -11,6 +11,7 @@ import 'package:quick_art/features/home/presentation/notifiers/inspiration_provi
 import 'package:quick_art/features/home/presentation/widgets/art_style_selector.dart';
 import 'package:quick_art/features/home/presentation/widgets/inspiration_section.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
+import 'package:quick_art/features/home/presentation/widgets/inspiration_tab_header_delegate.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -54,7 +55,7 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
               return [
                 SliverToBoxAdapter(child: _buildTopSection(context, ref)),
                 SliverPersistentHeader(
-                  delegate: _InspirationTabHeaderDelegate(
+                  delegate: InspirationTabHeaderDelegate(
                     controller: _tabController,
                     categories: categories,
                     statusBarHeight: statusBarHeight,
@@ -76,7 +77,7 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
                         20,
                         100,
                       ), // Bottom padding for DrawButton
-                      sliver: _InspirationGrid(cards: category.cards),
+                      sliver: InspirationGrid(cards: category.cards),
                     ),
                   ],
                 );
@@ -240,83 +241,6 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
           ],
         ],
       ),
-    );
-  }
-}
-
-class _InspirationTabHeaderDelegate extends SliverPersistentHeaderDelegate {
-  const _InspirationTabHeaderDelegate({
-    required this.controller,
-    required this.categories,
-    required this.statusBarHeight,
-  });
-
-  final TabController controller;
-  final List<InspirationCategoryModel> categories;
-  final double statusBarHeight;
-
-  @override
-  Widget build(
-    BuildContext context,
-    double shrinkOffset,
-    bool overlapsContent,
-  ) {
-    return Container(
-      color: Colors.black,
-      padding: EdgeInsets.only(top: statusBarHeight),
-      alignment: Alignment.centerLeft,
-      child: TabBar(
-        controller: controller,
-        isScrollable: true,
-        tabAlignment: TabAlignment.start,
-        dividerColor: Colors.transparent,
-        indicatorColor: Colors.transparent,
-        labelColor: Colors.white,
-        unselectedLabelColor: Colors.grey[600],
-        labelStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        unselectedLabelStyle: const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.normal,
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 10), // Adjust padding
-        tabs: categories.map((e) => Tab(text: e.type.getLabel(AppLocalizations.of(context)!)),).toList(),
-      ),
-    );
-  }
-
-  @override
-  double get maxExtent => 48.0 + statusBarHeight;
-
-  @override
-  double get minExtent => 48.0 + statusBarHeight;
-
-  @override
-  bool shouldRebuild(_InspirationTabHeaderDelegate oldDelegate) {
-    return controller != oldDelegate.controller ||
-        categories != oldDelegate.categories ||
-        statusBarHeight != oldDelegate.statusBarHeight;
-  }
-}
-
-class _InspirationGrid extends StatelessWidget {
-  const _InspirationGrid({required this.cards});
-
-  final List<InspirationCardModel> cards;
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverGrid.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
-        childAspectRatio: 0.75,
-      ),
-      itemBuilder: (context, index) {
-        final card = cards[index];
-        return InspirationCard(card: card);
-      },
-      itemCount: cards.length,
     );
   }
 }

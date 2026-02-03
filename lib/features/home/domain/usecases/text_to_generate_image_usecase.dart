@@ -8,6 +8,6 @@ class TextToGenerateImageUseCase {
   TextToGenerateImageUseCase(this._textToImageRepository);
 
   Future<ImageGenerationTaskModel> execute(String prompt) {
-    return _textToImageRepository.generateImage(prompt);
+    return _textToImageRepository.submitTask(prompt);
   }
 }

@@ -35,9 +35,6 @@ class ImageGenerationNotifier extends _$ImageGenerationNotifier {
   }
 
   void retry() {
-    // 优雅重试：直接让 Provider 失效，触发重新构建 (re-build)，
-    // 这样会自动调用 build(prompt) 并重新开始 _startGeneration。
-    // 由于 prompt 是 Family 参数，它会自动被保留使用。
     ref.invalidateSelf();
   }
 }

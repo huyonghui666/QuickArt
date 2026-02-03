@@ -6,7 +6,7 @@ import 'package:quick_art/core/models/generation_result_model.dart';
 import 'package:quick_art/core/provider/generation_event_provider.dart';
 import 'package:quick_art/core/provider/show_bottom_sheet_notifier.dart';
 import 'package:quick_art/core/utils/log/logger.dart';
-import 'package:quick_art/features/home/data/models/image_generation_task_model.dart';
+import 'package:quick_art/features/home/domain/entities/image_generation_task.dart';
 import 'package:quick_art/features/home/presentation/notifiers/image_generation_provider.dart';
 import 'package:quick_art/features/tools/domain/entities/video_generation_task.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/start_end_frame_generation_provider.dart';
@@ -151,7 +151,7 @@ class WaitingScreen extends ConsumerWidget {
       error: (e, _) => _buildErrorView(context, e.toString(), () {
         ref.read(imageGenerationNotifierProvider(prompt).notifier).retry();
       }),
-      data: (ImageGenerationTaskModel taskModel) {
+      data: (ImageGenerationTask taskModel) {
         if (errorMessage != null) {
           return _buildErrorView(context,errorMessage, () {
             ref.read(_waitingScreenErrorProvider.notifier).state = null;

@@ -112,27 +112,6 @@ List<InspirationCategoryModel> inspirationCategories(Ref ref) {
   ];
 }
 
-//分类0对应‘新’分类，其他依次
-@riverpod
-class SelectedInspirationTabIndex extends _$SelectedInspirationTabIndex {
-  @override
-  int build() {
-    return 0;
-  }
-
-  void setIndex(int index) {
-    state = index;
-  }
-}
-
-//目前灵感选择的卡片状态
-@riverpod
-List<InspirationCardModel> currentInspirationCards(Ref ref) {
-  final categories = ref.watch(inspirationCategoriesProvider);
-  final selectedIndex = ref.watch(selectedInspirationTabIndexProvider);
-  return categories[selectedIndex].cards;
-}
-
 class InspirationCardModel {
   const InspirationCardModel({required this.imageUrl, this.prompt});
 

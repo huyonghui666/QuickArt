@@ -7,62 +7,103 @@ import 'package:quick_art/core/provider/prompt_provider.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/core/widgets/prompt_text_field.dart';
 import 'package:quick_art/features/home/presentation/notifiers/art_style_notifier.dart';
+import 'package:quick_art/features/home/presentation/notifiers/inspiration_provider.dart';
 import 'package:quick_art/features/home/presentation/widgets/art_style_selector.dart';
 import 'package:quick_art/features/home/presentation/widgets/inspiration_section.dart';
-import 'package:quick_art/features/home/presentation/widgets/sliver_persistent_header_delegate.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HomeScreen> createState() => _HomeScreenTestState();
+}
+
+class _HomeScreenTestState extends ConsumerState<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  late final TabController _tabController;
+  late final ScrollController _outerScrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    final categories = ref.read(inspirationCategoriesProvider);
+    _tabController = TabController(length: categories.length, vsync: this);
+    _outerScrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    _outerScrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final categories = ref.watch(inspirationCategoriesProvider);
     final statusBarHeight = MediaQuery.of(context).padding.top;
+
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SafeArea(
-        top: false,
-        child: Stack(
-          children: [
-            CustomScrollView(
-              slivers: [
+      body: Stack(
+        children: [
+          NestedScrollView(
+            controller: _outerScrollController,
+            headerSliverBuilder: (context, innerBoxIsScrolled) {
+              return [
                 SliverToBoxAdapter(child: _buildTopSection(context, ref)),
                 SliverPersistentHeader(
-                  delegate: InspirationTabHeaderDelegate(
+                  delegate: _InspirationTabHeaderDelegate(
+                    controller: _tabController,
+                    categories: categories,
                     statusBarHeight: statusBarHeight,
                   ),
                   pinned: true,
                 ),
-                const SliverPadding(
-                  padding: EdgeInsets.all(20),
-                  sliver: InspirationGrid(),
-                ),
-                const SliverToBoxAdapter(child: SizedBox(height: 76.0)),
-              ],
+              ];
+            },
+            body: TabBarView(
+              controller: _tabController,
+              children: categories.map((category) {
+                return CustomScrollView(
+                  key: PageStorageKey(category.type.name),
+                  slivers: [
+                    SliverPadding(
+                      padding: const EdgeInsets.fromLTRB(
+                        20,
+                        20,
+                        20,
+                        100,
+                      ), // Bottom padding for DrawButton
+                      sliver: _InspirationGrid(cards: category.cards),
+                    ),
+                  ],
+                );
+              }).toList(),
             ),
-            Positioned(
-              bottom: 20,
-              left: 0,
-              right: 0,
-              child: Center(
-                //TODO 跳转到等待页面，需不需要防抖？
-                child: DrawButton(
-                  family: 'textToImage',
-                  onTap: () {
-                    final prompt = ref.read(promptProvider('textToImage')).text;
-                    if (prompt.isEmpty) return;
+          ),
+          Positioned(
+            bottom: 20,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: DrawButton(
+                family: 'textToImage',
+                onTap: () {
+                  final prompt = ref.read(promptProvider('textToImage')).text;
+                  if (prompt.isEmpty) return;
 
-                    context.pushNamed(
-                      'Wait',
-                      pathParameters: {'taskType': 'image'},
-                      queryParameters: {'prompt': prompt},
-                    );
-                  },
-                ),
+                  context.pushNamed(
+                    'Wait',
+                    pathParameters: {'taskType': 'image'},
+                    queryParameters: {'prompt': prompt},
+                  );
+                },
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -107,9 +148,7 @@ class HomeScreen extends ConsumerWidget {
                   const SizedBox(height: 12),
                   _buildOptionsSection(context),
                   const SizedBox(height: 12),
-                  // 艺术风格选择
                   const ArtStyleSelector(),
-                  const SizedBox(height: 12),
                 ],
               ),
             ),
@@ -201,6 +240,83 @@ class HomeScreen extends ConsumerWidget {
           ],
         ],
       ),
+    );
+  }
+}
+
+class _InspirationTabHeaderDelegate extends SliverPersistentHeaderDelegate {
+  const _InspirationTabHeaderDelegate({
+    required this.controller,
+    required this.categories,
+    required this.statusBarHeight,
+  });
+
+  final TabController controller;
+  final List<InspirationCategoryModel> categories;
+  final double statusBarHeight;
+
+  @override
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    return Container(
+      color: Colors.black,
+      padding: EdgeInsets.only(top: statusBarHeight),
+      alignment: Alignment.centerLeft,
+      child: TabBar(
+        controller: controller,
+        isScrollable: true,
+        tabAlignment: TabAlignment.start,
+        dividerColor: Colors.transparent,
+        indicatorColor: Colors.transparent,
+        labelColor: Colors.white,
+        unselectedLabelColor: Colors.grey[600],
+        labelStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        unselectedLabelStyle: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.normal,
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 10), // Adjust padding
+        tabs: categories.map((e) => Tab(text: e.type.getLabel(AppLocalizations.of(context)!)),).toList(),
+      ),
+    );
+  }
+
+  @override
+  double get maxExtent => 48.0 + statusBarHeight;
+
+  @override
+  double get minExtent => 48.0 + statusBarHeight;
+
+  @override
+  bool shouldRebuild(_InspirationTabHeaderDelegate oldDelegate) {
+    return controller != oldDelegate.controller ||
+        categories != oldDelegate.categories ||
+        statusBarHeight != oldDelegate.statusBarHeight;
+  }
+}
+
+class _InspirationGrid extends StatelessWidget {
+  const _InspirationGrid({required this.cards});
+
+  final List<InspirationCardModel> cards;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverGrid.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 16,
+        mainAxisSpacing: 16,
+        childAspectRatio: 0.75,
+      ),
+      itemBuilder: (context, index) {
+        final card = cards[index];
+        return InspirationCard(card: card);
+      },
+      itemCount: cards.length,
     );
   }
 }

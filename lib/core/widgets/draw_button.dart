@@ -32,7 +32,7 @@ class DrawButton extends ConsumerWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            SvgPicture.asset(AppIcons.homeBtnStartUnable, fit: BoxFit.cover),
+            SvgPicture.asset(AppIcons.homeBtnStart, fit: BoxFit.cover),
             Text(
               l10n.common_draw,
               style: const TextStyle(

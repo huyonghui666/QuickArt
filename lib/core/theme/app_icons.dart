@@ -27,6 +27,8 @@ class AppIcons {
   static const String homeBgStyleNo = '$_svgBasePath/Home/home_bg_style_no.svg';
 
   //绘制按钮
+  static const String homeBtnStart =
+      '$_svgBasePath/Home/home_btn_start.svg';
   static const String homeBtnStartUnable =
       '$_svgBasePath/Home/home_btn_start_unable.svg';
 

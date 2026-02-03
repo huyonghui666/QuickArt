@@ -32,11 +32,16 @@ class DrawButton extends ConsumerWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            SvgPicture.asset(AppIcons.homeBtnStart, fit: BoxFit.cover),
+            SvgPicture.asset(
+              prompt.isNotEmpty
+                  ? AppIcons.homeBtnStart
+                  : AppIcons.homeBtnStartUnable,
+              fit: BoxFit.cover,
+            ),
             Text(
               l10n.common_draw,
-              style: const TextStyle(
-                color: Colors.grey,
+              style: TextStyle(
+                color: prompt.isNotEmpty ? Colors.white : Colors.grey,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),

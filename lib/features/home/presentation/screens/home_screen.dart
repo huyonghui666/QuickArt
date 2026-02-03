@@ -68,14 +68,18 @@ class HomeScreen extends ConsumerWidget {
   }
 
   Widget _buildTopSection(BuildContext context, WidgetRef ref) {
-    final selectedStyle = ref.watch(artStyleNotifierProvider);
     return Stack(
       children: [
         Positioned.fill(
-          child: Image.asset(
-            selectedStyle.backgroundAsset,
-            fit: BoxFit.cover,
-            alignment: Alignment.topCenter,
+          child: Consumer(
+            builder: (context, ref, child) {
+              final selectedStyle = ref.watch(artStyleNotifierProvider);
+              return Image.asset(
+                selectedStyle.backgroundAsset,
+                fit: BoxFit.cover,
+                alignment: Alignment.topCenter,
+              );
+            },
           ),
         ),
         Positioned.fill(

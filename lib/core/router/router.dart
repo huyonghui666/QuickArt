@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/widgets/waiting_screen.dart';
 import 'package:quick_art/features/explore/routes/explore_routes.dart';
-import 'package:quick_art/features/home/presentation/screens/main_screen.dart';
+import 'package:quick_art/features/main/presentation/screens/main_screen.dart';
 import 'package:quick_art/features/home/routes/home_routes.dart';
 import 'package:quick_art/features/setting/routes/setting_routes.dart';
 import 'package:quick_art/features/tools/routes/tools_routes.dart';

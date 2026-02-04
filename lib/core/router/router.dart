@@ -14,7 +14,7 @@ final GoRouter router = GoRouter(
   routes: [
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
-        return MainScreen(navigationShell: navigationShell);
+        return BottomNavigationScreen(navigationShell: navigationShell);
       },
       branches: [
         // 第一个 branch: QuickArt
@@ -27,7 +27,7 @@ final GoRouter router = GoRouter(
         StatefulShellBranch(routes: workshopRoutes),
       ],
     ),
-    // 其他独立于主导航的页面
+    // 其他独立于底部导航栏导航的页面
     ...settingRoutes,
 
     GoRoute(

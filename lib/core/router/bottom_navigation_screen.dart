@@ -6,13 +6,19 @@ import 'package:quick_art/core/router/bottom_navigation.dart';
 import 'package:quick_art/core/widgets/generated_image_bottom_sheet.dart';
 import 'package:quick_art/core/widgets/generated_video_bottom_sheet.dart';
 
-class MainScreen extends ConsumerWidget {
+class BottomNavigationScreen extends ConsumerStatefulWidget {
   final StatefulNavigationShell navigationShell;
 
-  const MainScreen({super.key, required this.navigationShell});
+  const BottomNavigationScreen({super.key, required this.navigationShell});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<BottomNavigationScreen> createState() =>
+      _BottomNavigationScreenState();
+}
+
+class _BottomNavigationScreenState extends ConsumerState<BottomNavigationScreen> {
+  @override
+  Widget build(BuildContext context) {
     ref.listen(showBottomSheetNotifierProvider, (previous, next) {
       if (next != null) {
         showModalBottomSheet(
@@ -38,9 +44,9 @@ class MainScreen extends ConsumerWidget {
     });
 
     return Scaffold(
-      body: navigationShell,
+      body: widget.navigationShell,
       bottomNavigationBar: CustomBottomNavigation(
-        navigationShell: navigationShell,
+        navigationShell: widget.navigationShell,
       ),
     );
   }

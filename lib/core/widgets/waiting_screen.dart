@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quick_art/core/widgets/loading_animation.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/models/generation_result_model.dart';
 import 'package:quick_art/core/provider/generation_event_provider.dart';
@@ -11,7 +12,6 @@ import 'package:quick_art/features/home/presentation/notifiers/image_generation_
 import 'package:quick_art/features/tools/domain/entities/video_generation_task.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/start_end_frame_generation_provider.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/video_generation_provider.dart';
-import 'package:rive/rive.dart';
 
 final _waitingScreenErrorProvider = StateProvider.autoDispose<String?>(
   (ref) => null,
@@ -59,14 +59,14 @@ class WaitingScreen extends ConsumerWidget {
       final asyncTask = ref.read(videoGenerationNotifierProvider(prompt));
       asyncTask.whenData((task) {
         _processEvent(context, ref, result, task.taskId);
-            });
+      });
     } else if (taskType == 'start_end_frame') {
       final asyncTask = ref.read(
         startEndFrameGenerationNotifierProvider(prompt),
       );
       asyncTask.whenData((task) {
         _processEvent(context, ref, result, task.taskId);
-            });
+      });
     } else {
       final asyncTask = ref.read(imageGenerationNotifierProvider(prompt));
       asyncTask.whenData((taskModel) {
@@ -87,8 +87,11 @@ class WaitingScreen extends ConsumerWidget {
         if (context.mounted) {
           context.pop();
         }
-        ref.read(showBottomSheetNotifierProvider.notifier)
-            .trigger(result.url!, (taskType == 'video' || taskType == 'start_end_frame')
+        ref
+            .read(showBottomSheetNotifierProvider.notifier)
+            .trigger(
+              result.url!,
+              (taskType == 'video' || taskType == 'start_end_frame')
                   ? BottomSheetType.video
                   : BottomSheetType.image,
             );
@@ -110,7 +113,8 @@ class WaitingScreen extends ConsumerWidget {
       loading: () => _buildLoadingView(context),
       error: (e, _) => _buildErrorView(context, e.toString(), () {
         if (taskType == 'start_end_frame') {
-          ref.read(startEndFrameGenerationNotifierProvider(prompt).notifier)
+          ref
+              .read(startEndFrameGenerationNotifierProvider(prompt).notifier)
               .retry();
         } else {
           ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
@@ -121,10 +125,14 @@ class WaitingScreen extends ConsumerWidget {
           return _buildErrorView(context, errorMessage, () {
             ref.read(_waitingScreenErrorProvider.notifier).state = null;
             if (taskType == 'start_end_frame') {
-              ref.read(startEndFrameGenerationNotifierProvider(prompt).notifier,)
+              ref
+                  .read(
+                    startEndFrameGenerationNotifierProvider(prompt).notifier,
+                  )
                   .retry();
             } else {
-              ref.read(videoGenerationNotifierProvider(prompt).notifier)
+              ref
+                  .read(videoGenerationNotifierProvider(prompt).notifier)
                   .retry();
             }
           });
@@ -145,7 +153,7 @@ class WaitingScreen extends ConsumerWidget {
       }),
       data: (ImageGenerationTask taskModel) {
         if (errorMessage != null) {
-          return _buildErrorView(context,errorMessage, () {
+          return _buildErrorView(context, errorMessage, () {
             ref.read(_waitingScreenErrorProvider.notifier).state = null;
             ref.read(imageGenerationNotifierProvider(prompt).notifier).retry();
           });
@@ -160,12 +168,7 @@ class WaitingScreen extends ConsumerWidget {
     return Stack(
       fit: StackFit.expand,
       children: [
-        const RepaintBoundary(
-          child: RiveAnimation.asset(
-            'assets/rive_animation/4533-9212-wave-form.riv',
-            fit: BoxFit.cover,
-          ),
-        ),
+        const RepaintBoundary(child: ParticleAnimation()),
         Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

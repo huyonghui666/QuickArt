@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 
 class GeneratedImageBottomSheet extends StatelessWidget {
@@ -10,19 +11,33 @@ class GeneratedImageBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: Image.network(imageUrl, fit: BoxFit.cover),
+    return RepaintBoundary(
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: CachedNetworkImage(
+                  imageUrl: imageUrl,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => Container(
+                    color: Colors.grey[900],
+                    child: const Center(
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
+                  ),
+                  errorWidget: (context, url, error) => Container(
+                    color: Colors.grey[900],
+                    child: const Icon(Icons.error, color: Colors.white),
+                  ),
+                ),
+              ),
             ),
-          ),
-          const SizedBox(height: 42),
+            const SizedBox(height: 42),
           Text(
             l10n.share_social_hint,
             style: const TextStyle(color: Colors.white70),
@@ -50,6 +65,7 @@ class GeneratedImageBottomSheet extends StatelessWidget {
             ],
           ),
         ],
+        ),
       ),
     );
   }

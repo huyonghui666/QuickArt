@@ -87,14 +87,17 @@ class WaitingScreen extends ConsumerWidget {
         if (context.mounted) {
           context.pop();
         }
-        ref
-            .read(showBottomSheetNotifierProvider.notifier)
-            .trigger(
-              result.url!,
-              (taskType == 'video' || taskType == 'start_end_frame')
-                  ? BottomSheetType.video
-                  : BottomSheetType.image,
-            );
+        // 延迟触发底部弹窗，避免与路由退出动画冲突导致卡顿
+        Future.delayed(const Duration(milliseconds: 300), () {
+          ref
+              .read(showBottomSheetNotifierProvider.notifier)
+              .trigger(
+                result.url!,
+                (taskType == 'video' || taskType == 'start_end_frame')
+                    ? BottomSheetType.video
+                    : BottomSheetType.image,
+              );
+        });
       } else if (result.event == 'failed') {
         ref.read(_waitingScreenErrorProvider.notifier).state =
             result.error ?? 'Unknown error';

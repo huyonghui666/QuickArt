@@ -16,8 +16,8 @@ class NetworkException extends AppException {
 
   factory NetworkException.fromDioError(DioException error) {
     String message = error.message ?? 'Unknown network error';
-    String? code = error.response?.statusCode?.toString();
-    dynamic details = error.response?.data;
+    final String? code = error.response?.statusCode?.toString();
+    final dynamic details = error.response?.data;
 
     switch (error.type) {
       case DioExceptionType.connectionTimeout:

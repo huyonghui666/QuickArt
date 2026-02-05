@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/widgets/waiting_screen.dart';
 import 'package:quick_art/features/explore/routes/explore_routes.dart';
-import 'package:quick_art/features/home/presentation/screens/main_screen.dart';
+import 'package:quick_art/core/router/bottom_navigation_screen.dart';
 import 'package:quick_art/features/home/routes/home_routes.dart';
 import 'package:quick_art/features/setting/routes/setting_routes.dart';
 import 'package:quick_art/features/tools/routes/tools_routes.dart';
@@ -14,7 +14,7 @@ final GoRouter router = GoRouter(
   routes: [
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
-        return MainScreen(navigationShell: navigationShell);
+        return BottomNavigationScreen(navigationShell: navigationShell);
       },
       branches: [
         // 第一个 branch: QuickArt
@@ -27,7 +27,7 @@ final GoRouter router = GoRouter(
         StatefulShellBranch(routes: workshopRoutes),
       ],
     ),
-    // 其他独立于主导航的页面
+    // 其他独立于底部导航栏导航的页面
     ...settingRoutes,
 
     GoRoute(

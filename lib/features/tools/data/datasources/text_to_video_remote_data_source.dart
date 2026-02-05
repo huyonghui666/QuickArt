@@ -119,29 +119,3 @@ class TextToVideoRemoteDataSource implements ITextToVideoRemoteDataSource {
     }
   }
 }
-    // try {
-    //   final formData = FormData.fromMap({
-    //     'prompt': prompt,
-    //     'firstFrame': await MultipartFile.fromFile(firstFramePath),
-    //     'lastFrame': await MultipartFile.fromFile(lastFramePath),
-    //     'aspectRatio': aspectRatio,
-    //   });
-    //
-    //   final response = await _dio
-    //       .post(
-    //         '${AppConstants.apiBaseUrl}/videos/mock-generate-from-frames',
-    //         // '${AppConstants.apiBaseUrl}/videos/generate-from-frames',
-    //         data: formData,
-    //       )
-    //       .timeout(AppConstants.timeout);
-    //
-    //   if (response.statusCode != 200) {
-    //     throw NetworkException('Submit failed: ${response.data}');
-    //   }
-    //
-    //   return VideoGenerationTaskModel.fromJson(response.data);
-    // } catch (e) {
-    //   throw NetworkException(e.toString());
-    // }
-//   }
-// }

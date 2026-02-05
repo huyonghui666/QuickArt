@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -35,54 +33,82 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
           onPressed: () => context.pop(),
         ),
       ),
-      body: Stack(
+      backgroundColor: Colors.black,
+      body: Column(
         children: [
-          // Background Image with Blur
-          Positioned.fill(
-            child: ImageFiltered(
-              imageFilter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-              child: Image.asset(
-                'assets/images/bg/no_style.webp',
-                fit: BoxFit.cover,
+          // Top Section with Background
+          Stack(
+            children: [
+              Positioned.fill(
+                child: RepaintBoundary(
+                  child: Image.asset(
+                    'assets/images/bg/blurred-image.webp',
+                    fit: BoxFit.cover,
+                  ),
+                  // ImageFiltered(
+                  //   imageFilter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                  //   child: Image.asset(
+                  //     'assets/images/bg/no_style.webp',
+                  //     fit: BoxFit.cover,
+                  //   ),
+                  // ),
+                ),
               ),
-            ),
+              SafeArea(
+                bottom: false,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const SizedBox(height: 24),
+                      Text(
+                        l10n.tools_text_to_video,
+                        style: theme.textTheme.displaySmall?.copyWith(
+                          color: Colors.white,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      const PromptTextField(family: 'textToVideo'),
+                      const SizedBox(height: 24),
+                      _buildOptions(context, theme, l10n),
+                      const SizedBox(height: 24),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-          // Content
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 24),
-                  Text(
-                    l10n.tools_text_to_video,
-                    style: theme.textTheme.displaySmall?.copyWith(
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  const PromptTextField(family: 'textToVideo'),
-                  const SizedBox(height: 24),
-                  _buildOptions(context, theme, l10n),
-                  const Spacer(),
-                  DrawButton(
-                    family: 'textToVideo',
-                    onTap: () {
-                      final prompt = ref
-                          .read(promptProvider('textToVideo'))
-                          .text;
-                      if (prompt.isEmpty) return;
+          // Bottom Section
+          Expanded(
+            child: SafeArea(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
+                  children: [
+                    const Spacer(),
+                    DrawButton(
+                      family: 'textToVideo',
+                      onTap: () {
+                        final prompt = ref
+                            .read(promptProvider('textToVideo'))
+                            .text;
+                        if (prompt.isEmpty) return;
 
-                      context.pushNamed(
-                        'Wait',
-                        pathParameters: {'taskType': 'video'},
-                        queryParameters: {'prompt': prompt},
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 24),
-                ],
+                        context.pushNamed(
+                          'Wait',
+                          pathParameters: {'taskType': 'video'},
+                          queryParameters: {'prompt': prompt},
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 24),
+                  ],
+                ),
               ),
             ),
           ),
@@ -122,24 +148,24 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
     required String label,
   }) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
         color: Colors.black.withValues(alpha: 0.3),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8),
         border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
       ),
       child: Row(
         children: [
           SvgPicture.asset(
             iconPath,
-            width: 24,
-            height: 24,
+            width: 16,
+            height: 16,
             color: Colors.white,
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 6),
           Text(
             label,
-            style: theme.textTheme.bodyMedium?.copyWith(color: Colors.white),
+            style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
           ),
         ],
       ),

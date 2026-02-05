@@ -7,75 +7,121 @@ import 'package:quick_art/core/provider/prompt_provider.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/core/widgets/prompt_text_field.dart';
 import 'package:quick_art/features/home/presentation/notifiers/art_style_notifier.dart';
+import 'package:quick_art/features/home/presentation/notifiers/inspiration_provider.dart';
 import 'package:quick_art/features/home/presentation/widgets/art_style_selector.dart';
 import 'package:quick_art/features/home/presentation/widgets/inspiration_section.dart';
-import 'package:quick_art/features/home/presentation/widgets/sliver_persistent_header_delegate.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
+import 'package:quick_art/features/home/presentation/widgets/inspiration_tab_header_delegate.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HomeScreen> createState() => _HomeScreenTestState();
+}
+
+class _HomeScreenTestState extends ConsumerState<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  late final TabController _tabController;
+  late final ScrollController _outerScrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    final categories = ref.read(inspirationCategoriesProvider);
+    _tabController = TabController(length: categories.length, vsync: this);
+    _outerScrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    _outerScrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final categories = ref.watch(inspirationCategoriesProvider);
     final statusBarHeight = MediaQuery.of(context).padding.top;
+
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SafeArea(
-        top: false,
-        child: Stack(
-          children: [
-            CustomScrollView(
-              slivers: [
+      body: Stack(
+        children: [
+          NestedScrollView(
+            controller: _outerScrollController,
+            headerSliverBuilder: (context, innerBoxIsScrolled) {
+              return [
                 SliverToBoxAdapter(child: _buildTopSection(context, ref)),
                 SliverPersistentHeader(
                   delegate: InspirationTabHeaderDelegate(
+                    controller: _tabController,
+                    categories: categories,
                     statusBarHeight: statusBarHeight,
                   ),
                   pinned: true,
                 ),
-                const SliverPadding(
-                  padding: EdgeInsets.all(20),
-                  sliver: InspirationGrid(),
-                ),
-                const SliverToBoxAdapter(child: SizedBox(height: 76.0)),
-              ],
+              ];
+            },
+            body: TabBarView(
+              controller: _tabController,
+              children: categories.map((category) {
+                return CustomScrollView(
+                  key: PageStorageKey(category.type.name),
+                  slivers: [
+                    SliverPadding(
+                      padding: const EdgeInsets.fromLTRB(
+                        20,
+                        20,
+                        20,
+                        100,
+                      ), // Bottom padding for DrawButton
+                      sliver: InspirationGrid(cards: category.cards),
+                    ),
+                  ],
+                );
+              }).toList(),
             ),
-            Positioned(
-              bottom: 20,
-              left: 0,
-              right: 0,
-              child: Center(
-                //TODO 跳转到等待页面，需不需要防抖？
-                child: DrawButton(
-                  family: 'textToImage',
-                  onTap: () {
-                    final prompt = ref.read(promptProvider('textToImage')).text;
-                    if (prompt.isEmpty) return;
+          ),
+          Positioned(
+            bottom: 20,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: DrawButton(
+                family: 'textToImage',
+                onTap: () {
+                  final prompt = ref.read(promptProvider('textToImage')).text;
+                  if (prompt.isEmpty) return;
 
-                    context.pushNamed(
-                      'Wait',
-                      pathParameters: {'taskType': 'image'},
-                      queryParameters: {'prompt': prompt},
-                    );
-                  },
-                ),
+                  context.pushNamed(
+                    'Wait',
+                    pathParameters: {'taskType': 'image'},
+                    queryParameters: {'prompt': prompt},
+                  );
+                },
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildTopSection(BuildContext context, WidgetRef ref) {
-    final selectedStyle = ref.watch(artStyleNotifierProvider);
     return Stack(
       children: [
         Positioned.fill(
-          child: Image.asset(
-            selectedStyle.backgroundAsset,
-            fit: BoxFit.cover,
-            alignment: Alignment.topCenter,
+          child: Consumer(
+            builder: (context, ref, child) {
+              final selectedStyle = ref.watch(artStyleNotifierProvider);
+              return Image.asset(
+                selectedStyle.backgroundAsset,
+                fit: BoxFit.cover,
+                alignment: Alignment.topCenter,
+              );
+            },
           ),
         ),
         Positioned.fill(
@@ -103,9 +149,7 @@ class HomeScreen extends ConsumerWidget {
                   const SizedBox(height: 12),
                   _buildOptionsSection(context),
                   const SizedBox(height: 12),
-                  // 艺术风格选择
                   const ArtStyleSelector(),
-                  const SizedBox(height: 12),
                 ],
               ),
             ),

@@ -1,6 +1,7 @@
 class EnvConfig {
   const EnvConfig._();
 
+  //---------------------sentry配置-----------------------------
   static const String flavor = String.fromEnvironment(
     'FLAVOR',
     defaultValue: 'development',
@@ -31,4 +32,7 @@ class EnvConfig {
         return 1.0; // 开发环境 100%
     }
   }
+
+
+
 }

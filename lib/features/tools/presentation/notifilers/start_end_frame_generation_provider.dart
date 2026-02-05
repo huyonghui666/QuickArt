@@ -9,8 +9,7 @@ import 'package:quick_art/features/tools/presentation/notifilers/start_end_frame
 part 'start_end_frame_generation_provider.g.dart';
 
 @riverpod
-class StartEndFrameGenerationNotifier
-    extends _$StartEndFrameGenerationNotifier {
+class StartEndFrameGenerationNotifier extends _$StartEndFrameGenerationNotifier {
   @override
   AsyncValue<VideoGenerationTask> build(String prompt) {
     _startGeneration(prompt);

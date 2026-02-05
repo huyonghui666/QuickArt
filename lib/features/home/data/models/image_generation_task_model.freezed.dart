@@ -118,8 +118,8 @@ class __$$ImageGenerationTaskModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ImageGenerationTaskModelImpl implements _ImageGenerationTaskModel {
-  const _$ImageGenerationTaskModelImpl({required this.taskId});
+class _$ImageGenerationTaskModelImpl extends _ImageGenerationTaskModel {
+  const _$ImageGenerationTaskModelImpl({required this.taskId}) : super._();
 
   factory _$ImageGenerationTaskModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ImageGenerationTaskModelImplFromJson(json);
@@ -161,9 +161,10 @@ class _$ImageGenerationTaskModelImpl implements _ImageGenerationTaskModel {
   }
 }
 
-abstract class _ImageGenerationTaskModel implements ImageGenerationTaskModel {
+abstract class _ImageGenerationTaskModel extends ImageGenerationTaskModel {
   const factory _ImageGenerationTaskModel({required final String taskId}) =
       _$ImageGenerationTaskModelImpl;
+  const _ImageGenerationTaskModel._() : super._();
 
   factory _ImageGenerationTaskModel.fromJson(Map<String, dynamic> json) =
       _$ImageGenerationTaskModelImpl.fromJson;

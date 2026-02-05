@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quick_art/core/widgets/loading_animation.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/models/generation_result_model.dart';
 import 'package:quick_art/core/provider/generation_event_provider.dart';
 import 'package:quick_art/core/provider/show_bottom_sheet_notifier.dart';
 import 'package:quick_art/core/utils/log/logger.dart';
-import 'package:quick_art/features/home/data/models/image_generation_task_model.dart';
+import 'package:quick_art/features/home/domain/entities/image_generation_task.dart';
 import 'package:quick_art/features/home/presentation/notifiers/image_generation_provider.dart';
 import 'package:quick_art/features/tools/domain/entities/video_generation_task.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/start_end_frame_generation_provider.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/video_generation_provider.dart';
-import 'package:rive/rive.dart';
 
 final _waitingScreenErrorProvider = StateProvider.autoDispose<String?>(
   (ref) => null,
@@ -59,14 +59,14 @@ class WaitingScreen extends ConsumerWidget {
       final asyncTask = ref.read(videoGenerationNotifierProvider(prompt));
       asyncTask.whenData((task) {
         _processEvent(context, ref, result, task.taskId);
-            });
+      });
     } else if (taskType == 'start_end_frame') {
       final asyncTask = ref.read(
         startEndFrameGenerationNotifierProvider(prompt),
       );
       asyncTask.whenData((task) {
         _processEvent(context, ref, result, task.taskId);
-            });
+      });
     } else {
       final asyncTask = ref.read(imageGenerationNotifierProvider(prompt));
       asyncTask.whenData((taskModel) {
@@ -87,14 +87,17 @@ class WaitingScreen extends ConsumerWidget {
         if (context.mounted) {
           context.pop();
         }
-        ref
-            .read(showBottomSheetNotifierProvider.notifier)
-            .trigger(
-              result.url!,
-              (taskType == 'video' || taskType == 'start_end_frame')
-                  ? BottomSheetType.video
-                  : BottomSheetType.image,
-            );
+        // 延迟触发底部弹窗，避免与路由退出动画冲突导致卡顿
+        Future.delayed(const Duration(milliseconds: 300), () {
+          ref
+              .read(showBottomSheetNotifierProvider.notifier)
+              .trigger(
+                result.url!,
+                (taskType == 'video' || taskType == 'start_end_frame')
+                    ? BottomSheetType.video
+                    : BottomSheetType.image,
+              );
+        });
       } else if (result.event == 'failed') {
         ref.read(_waitingScreenErrorProvider.notifier).state =
             result.error ?? 'Unknown error';
@@ -151,9 +154,9 @@ class WaitingScreen extends ConsumerWidget {
       error: (e, _) => _buildErrorView(context, e.toString(), () {
         ref.read(imageGenerationNotifierProvider(prompt).notifier).retry();
       }),
-      data: (ImageGenerationTaskModel taskModel) {
+      data: (ImageGenerationTask taskModel) {
         if (errorMessage != null) {
-          return _buildErrorView(context,errorMessage, () {
+          return _buildErrorView(context, errorMessage, () {
             ref.read(_waitingScreenErrorProvider.notifier).state = null;
             ref.read(imageGenerationNotifierProvider(prompt).notifier).retry();
           });
@@ -168,12 +171,7 @@ class WaitingScreen extends ConsumerWidget {
     return Stack(
       fit: StackFit.expand,
       children: [
-        const RepaintBoundary(
-          child: RiveAnimation.asset(
-            'assets/rive_animation/4533-9212-wave-form.riv',
-            fit: BoxFit.cover,
-          ),
-        ),
+        const RepaintBoundary(child: ParticleAnimation()),
         Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

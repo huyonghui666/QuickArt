@@ -2,17 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/provider/show_bottom_sheet_notifier.dart';
-import 'package:quick_art/features/home/presentation/widgets/bottom_navigation.dart';
-import 'package:quick_art/features/home/presentation/widgets/generated_image_bottom_sheet.dart';
-import 'package:quick_art/features/tools/presentation/widgets/generated_video_bottom_sheet.dart';
+import 'package:quick_art/core/router/bottom_navigation.dart';
+import 'package:quick_art/core/widgets/generated_image_bottom_sheet.dart';
+import 'package:quick_art/core/widgets/generated_video_bottom_sheet.dart';
 
-class MainScreen extends ConsumerWidget {
+class BottomNavigationScreen extends ConsumerStatefulWidget {
   final StatefulNavigationShell navigationShell;
 
-  const MainScreen({super.key, required this.navigationShell});
+  const BottomNavigationScreen({super.key, required this.navigationShell});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<BottomNavigationScreen> createState() =>
+      _BottomNavigationScreenState();
+}
+
+class _BottomNavigationScreenState extends ConsumerState<BottomNavigationScreen> {
+  @override
+  Widget build(BuildContext context) {
     ref.listen(showBottomSheetNotifierProvider, (previous, next) {
       if (next != null) {
         showModalBottomSheet(
@@ -38,9 +44,9 @@ class MainScreen extends ConsumerWidget {
     });
 
     return Scaffold(
-      body: navigationShell,
+      body: widget.navigationShell,
       bottomNavigationBar: CustomBottomNavigation(
-        navigationShell: navigationShell,
+        navigationShell: widget.navigationShell,
       ),
     );
   }

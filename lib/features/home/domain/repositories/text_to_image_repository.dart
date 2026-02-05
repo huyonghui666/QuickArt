@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:quick_art/features/home/data/models/image_generation_task_model.dart';
+import 'package:quick_art/features/home/domain/entities/image_generation_task.dart';
 
 abstract class TextToImageRepository {
-  Future<ImageGenerationTaskModel> generateImage(String prompt);
+  Future<ImageGenerationTask> submitTask(String prompt);
 }

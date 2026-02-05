@@ -87,11 +87,8 @@ class WaitingScreen extends ConsumerWidget {
         if (context.mounted) {
           context.pop();
         }
-        ref
-            .read(showBottomSheetNotifierProvider.notifier)
-            .trigger(
-              result.url!,
-              (taskType == 'video' || taskType == 'start_end_frame')
+        ref.read(showBottomSheetNotifierProvider.notifier)
+            .trigger(result.url!, (taskType == 'video' || taskType == 'start_end_frame')
                   ? BottomSheetType.video
                   : BottomSheetType.image,
             );
@@ -113,8 +110,7 @@ class WaitingScreen extends ConsumerWidget {
       loading: () => _buildLoadingView(context),
       error: (e, _) => _buildErrorView(context, e.toString(), () {
         if (taskType == 'start_end_frame') {
-          ref
-              .read(startEndFrameGenerationNotifierProvider(prompt).notifier)
+          ref.read(startEndFrameGenerationNotifierProvider(prompt).notifier)
               .retry();
         } else {
           ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
@@ -125,14 +121,10 @@ class WaitingScreen extends ConsumerWidget {
           return _buildErrorView(context, errorMessage, () {
             ref.read(_waitingScreenErrorProvider.notifier).state = null;
             if (taskType == 'start_end_frame') {
-              ref
-                  .read(
-                    startEndFrameGenerationNotifierProvider(prompt).notifier,
-                  )
+              ref.read(startEndFrameGenerationNotifierProvider(prompt).notifier,)
                   .retry();
             } else {
-              ref
-                  .read(videoGenerationNotifierProvider(prompt).notifier)
+              ref.read(videoGenerationNotifierProvider(prompt).notifier)
                   .retry();
             }
           });

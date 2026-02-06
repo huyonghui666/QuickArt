@@ -1,8 +1,6 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:quick_art/core/di/injection_container.dart';
 import 'package:quick_art/features/home/domain/entities/image_template_page.dart';
-import 'package:quick_art/features/home/domain/entities/image_template.dart';
 
 part 'template_notifier.g.dart';
 

@@ -1,10 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/home/presentation/notifiers/template_notifier.dart';
-import 'package:quick_art/features/home/presentation/screens/template_detail_screen.dart';
+import 'package:quick_art/features/home/presentation/widgets/template_detail_showModalBottomSheet.dart';
 
 class TemplateCategoryGrid extends ConsumerWidget {
   final String category;
@@ -65,7 +64,7 @@ class TemplateCategoryGrid extends ConsumerWidget {
                   clipBehavior: Clip.hardEdge,
                   builder: (context) => FractionallySizedBox(
                     heightFactor: 0.75,
-                    child: TemplateDetailScreen(template: template),
+                    child: TemplateDetailShowModalBottomSheet(template: template),
                   ),
                 );
               },
@@ -93,12 +92,12 @@ class TemplateCategoryGrid extends ConsumerWidget {
                           color: const Color(0x33FFFFFF), // 半透明白色背景
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
-                            color: Colors.white.withOpacity(0.2),
+                            color: Colors.white.withValues(alpha: 0.2),
                             width: 0.5,
                           ),
                         ),
                         child: Text(
-                          AppLocalizations.of(context)!.try_it ?? '尝试',
+                          AppLocalizations.of(context)!.try_it,
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 12,

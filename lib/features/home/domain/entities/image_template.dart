@@ -1,3 +1,4 @@
+/// 图片模板包的一个图片信息模型
 class ImageTemplate {
   final String id;
   final Map<String, String> name;

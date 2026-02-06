@@ -4,6 +4,7 @@ import 'package:quick_art/features/home/domain/entities/image_template.dart';
 part 'image_template_model.freezed.dart';
 part 'image_template_model.g.dart';
 
+/// 图片模板包的一个图片信息模型
 @freezed
 class ImageTemplateModel with _$ImageTemplateModel {
   const ImageTemplateModel._();

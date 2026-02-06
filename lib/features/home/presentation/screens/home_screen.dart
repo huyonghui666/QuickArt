@@ -68,20 +68,15 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
             body: TabBarView(
               controller: _tabController,
               children: categories.map((category) {
+                ///在每个 Tab 页内部监听滚动事件
                 return NotificationListener<ScrollNotification>(
                   onNotification: (notification) {
-                    if (notification is ScrollEndNotification &&
-                        notification.metrics.extentAfter < 500) {
-                      final backendCategory =
-                          category == InspirationCategoryType.newest
+                    /// 当距离底部不足 500 像素时，触发 loadMore()
+                    if (notification is ScrollEndNotification && notification.metrics.extentAfter < 500) {
+                      final backendCategory = category == InspirationCategoryType.newest
                           ? null
                           : category.name;
-                      ref
-                          .read(
-                            templatesProvider(
-                              category: backendCategory,
-                            ).notifier,
-                          )
+                      ref.read(templatesProvider(category: backendCategory,).notifier)
                           .loadMore();
                     }
                     return false;

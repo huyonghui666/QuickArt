@@ -7,7 +7,7 @@ part of 'inspiration_provider.dart';
 // **************************************************************************
 
 String _$inspirationCategoriesHash() =>
-    r'eed3c2615b8f31c902dd44afff197f65ce4f0ece';
+    r'78f4149a870a9f25de90bcf17b74fb6355b1beaa';
 
 /// See also [inspirationCategories].
 @ProviderFor(inspirationCategories)

@@ -72,7 +72,8 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
                   onNotification: (notification) {
                     if (notification is ScrollEndNotification &&
                         notification.metrics.extentAfter < 500) {
-                      final backendCategory = category.type.name == 'newest'
+                      final backendCategory =
+                          category.type == InspirationCategoryType.newest
                           ? null
                           : category.type.name;
                       ref

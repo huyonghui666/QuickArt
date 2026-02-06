@@ -220,12 +220,12 @@ final getWorkshopTasksUseCaseProvider =
 typedef GetWorkshopTasksUseCaseRef =
     AutoDisposeProviderRef<GetWorkshopTasksUseCase>;
 String _$templateRemoteDataSourceHash() =>
-    r'9289e7d05cbded454c667e2d62376d8b81e90633';
+    r'7499ad9f691e09bf18a697c2e7493419eacd2766';
 
 /// See also [templateRemoteDataSource].
 @ProviderFor(templateRemoteDataSource)
 final templateRemoteDataSourceProvider =
-    AutoDisposeProvider<TemplateRemoteDataSource>.internal(
+    AutoDisposeProvider<ITemplateRemoteDataSource>.internal(
       templateRemoteDataSource,
       name: r'templateRemoteDataSourceProvider',
       debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -238,7 +238,7 @@ final templateRemoteDataSourceProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef TemplateRemoteDataSourceRef =
-    AutoDisposeProviderRef<TemplateRemoteDataSource>;
+    AutoDisposeProviderRef<ITemplateRemoteDataSource>;
 String _$templateRepositoryHash() =>
     r'b75c1cec8d6045014d32da9d7d8ee32e5ef5b549';
 

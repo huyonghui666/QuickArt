@@ -92,7 +92,7 @@ GetWorkshopTasksUseCase getWorkshopTasksUseCase(Ref ref) {
 
 //------------------------------图片模板------------------------------------------
 @riverpod
-TemplateRemoteDataSource templateRemoteDataSource(Ref ref) {
+ITemplateRemoteDataSource templateRemoteDataSource(Ref ref) {
   return TemplateRemoteDataSource(ref.watch(dioProvider));
 }
 

@@ -1,4 +1,4 @@
-import 'package:quick_art/features/home/domain/entities/image_template.dart';
+import 'package:quick_art/features/home/domain/entities/image_template_page.dart';
 import 'package:quick_art/features/home/domain/repositories/template_repository.dart';
 
 class GetTemplatesUseCase {
@@ -6,7 +6,7 @@ class GetTemplatesUseCase {
 
   GetTemplatesUseCase(this._repository);
 
-  Future<List<ImageTemplate>> call({
+  Future<ImageTemplatePage> call({
     String? category,
     int page = 0,
     int size = 20,

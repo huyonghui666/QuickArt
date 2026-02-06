@@ -6,7 +6,7 @@ part of 'template_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$templatesHash() => r'307ad4af4567cad8de65a5f338e0bf0107f5a170';
+String _$templatesHash() => r'c1acb06d03cf29f5d466ede5318be641e26eee51';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,10 +30,10 @@ class _SystemHash {
 }
 
 abstract class _$Templates
-    extends BuildlessAutoDisposeAsyncNotifier<List<ImageTemplate>> {
+    extends BuildlessAutoDisposeAsyncNotifier<ImageTemplatePage> {
   late final String? category;
 
-  FutureOr<List<ImageTemplate>> build({String? category});
+  FutureOr<ImageTemplatePage> build({String? category});
 }
 
 /// See also [Templates].
@@ -41,7 +41,7 @@ abstract class _$Templates
 const templatesProvider = TemplatesFamily();
 
 /// See also [Templates].
-class TemplatesFamily extends Family<AsyncValue<List<ImageTemplate>>> {
+class TemplatesFamily extends Family<AsyncValue<ImageTemplatePage>> {
   /// See also [Templates].
   const TemplatesFamily();
 
@@ -72,8 +72,7 @@ class TemplatesFamily extends Family<AsyncValue<List<ImageTemplate>>> {
 
 /// See also [Templates].
 class TemplatesProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<Templates, List<ImageTemplate>> {
+    extends AutoDisposeAsyncNotifierProviderImpl<Templates, ImageTemplatePage> {
   /// See also [Templates].
   TemplatesProvider({String? category})
     : this._internal(
@@ -101,7 +100,7 @@ class TemplatesProvider
   final String? category;
 
   @override
-  FutureOr<List<ImageTemplate>> runNotifierBuild(covariant Templates notifier) {
+  FutureOr<ImageTemplatePage> runNotifierBuild(covariant Templates notifier) {
     return notifier.build(category: category);
   }
 
@@ -122,7 +121,7 @@ class TemplatesProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<Templates, List<ImageTemplate>>
+  AutoDisposeAsyncNotifierProviderElement<Templates, ImageTemplatePage>
   createElement() {
     return _TemplatesProviderElement(this);
   }
@@ -143,14 +142,14 @@ class TemplatesProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin TemplatesRef on AutoDisposeAsyncNotifierProviderRef<List<ImageTemplate>> {
+mixin TemplatesRef on AutoDisposeAsyncNotifierProviderRef<ImageTemplatePage> {
   /// The parameter `category` of this provider.
   String? get category;
 }
 
 class _TemplatesProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<Templates, List<ImageTemplate>>
+        AutoDisposeAsyncNotifierProviderElement<Templates, ImageTemplatePage>
     with TemplatesRef {
   _TemplatesProviderElement(super.provider);
 

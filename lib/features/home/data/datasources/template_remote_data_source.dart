@@ -1,15 +1,24 @@
 import 'package:dio/dio.dart';
 import 'package:quick_art/core/error/exception.dart';
 import 'package:quick_art/core/utils/constants/app_constants.dart';
-import 'package:quick_art/features/home/data/models/image_template_model.dart';
+import 'package:quick_art/features/home/data/models/image_template_page_model.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-class TemplateRemoteDataSource {
+abstract class ITemplateRemoteDataSource {
+  Future<ImageTemplatePageModel> getTemplates({
+    String? category,
+    int page = 0,
+    int size = 20,
+  });
+}
+
+class TemplateRemoteDataSource implements ITemplateRemoteDataSource {
   final Dio _dio;
 
   TemplateRemoteDataSource(this._dio);
 
-  Future<List<ImageTemplateModel>> getTemplates({
+  @override
+  Future<ImageTemplatePageModel> getTemplates({
     String? category,
     int page = 0,
     int size = 20,
@@ -33,9 +42,10 @@ class TemplateRemoteDataSource {
       }
 
       final data = response.data;
-      final List<dynamic> content = data['content'];
-
-      return content.map((e) => ImageTemplateModel.fromJson(e)).toList();
+      if (data['content'] == null) {
+        throw DataException('No content');
+      }
+      return ImageTemplatePageModel.fromJson(data);
     } on DioException catch (e, stackTrace) {
       // 记录错误到 Sentry
       await Sentry.captureException(

@@ -16,29 +16,29 @@ class TemplateDetailScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Container(
-      decoration: const BoxDecoration(
+    return RepaintBoundary(
+      child: Container(
         color: Colors.black,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      clipBehavior: Clip.hardEdge,
-      child: Stack(
-        children: [
-          // Fullscreen Image
-          Positioned.fill(
-            child: InteractiveViewer(
-              child: CachedNetworkImage(
-                imageUrl: template.imageUrl,
-                fit: BoxFit.cover,
-                placeholder: (_, __) =>
-                    const Center(child: CircularProgressIndicator()),
-                errorWidget: (_, __, ___) =>
-                    const Icon(Icons.error, color: Colors.white),
+        child: Stack(
+          children: [
+            // Fullscreen Image
+            Positioned.fill(
+              child: InteractiveViewer(
+                child: CachedNetworkImage(
+                  imageUrl: template.imageUrl,
+                  fit: BoxFit.cover,
+                  memCacheWidth: (MediaQuery.of(context).size.width *
+                          MediaQuery.of(context).devicePixelRatio)
+                      .toInt(),
+                  placeholder: (_, __) =>
+                      const Center(child: CircularProgressIndicator()),
+                  errorWidget: (_, __, ___) =>
+                      const Icon(Icons.error, color: Colors.white),
+                ),
               ),
             ),
-          ),
 
-          // Bottom Content
+            // Bottom Content
           Positioned(
             bottom: 0,
             left: 0,
@@ -103,8 +103,7 @@ class TemplateDetailScreen extends ConsumerWidget {
                           template.description?['en'] ??
                           template.description?.values.first ??
                           '';
-                      ref
-                          .read(promptProvider('textToImage').notifier)
+                      ref.read(promptProvider('textToImage').notifier)
                           .updateText(prompt);
                       context.pop();
                     },
@@ -142,6 +141,7 @@ class TemplateDetailScreen extends ConsumerWidget {
           ),
         ],
       ),
+      )
     );
   }
 }

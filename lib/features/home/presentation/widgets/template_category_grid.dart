@@ -56,7 +56,13 @@ class TemplateCategoryGrid extends ConsumerWidget {
                 showModalBottomSheet(
                   context: context,
                   isScrollControlled: true,
-                  backgroundColor: Colors.transparent,
+                  backgroundColor: Colors.black,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20),
+                    ),
+                  ),
+                  clipBehavior: Clip.hardEdge,
                   builder: (context) => FractionallySizedBox(
                     heightFactor: 0.75,
                     child: TemplateDetailScreen(template: template),

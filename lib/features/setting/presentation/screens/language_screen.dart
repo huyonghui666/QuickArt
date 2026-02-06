@@ -91,7 +91,8 @@ class _LanguageScreenState extends ConsumerState<LanguageScreen> {
                       // 让 Radio 的点击动画（波纹）先跑完一帧，再触发重建
                       _debounceTimer?.cancel();
                       _debounceTimer = Timer(
-                        const Duration(milliseconds: 150), () {
+                        const Duration(milliseconds: 150),
+                        () {
                           if (mounted) {
                             ref.read(localeProvider.notifier).state = Locale(
                               localeCode,

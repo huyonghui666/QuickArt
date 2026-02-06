@@ -87,6 +87,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get inspiration_christmas => '圣诞';
 
   @override
+  String get try_it => '尝试';
+
+  @override
+  String get try_prompt => '尝试提示';
+
+  @override
   String get home_art_style => '艺术风格';
 
   @override

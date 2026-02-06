@@ -55,4 +55,8 @@ class Prompt extends _$Prompt {
   void clear() {
     state.controller.clear();
   }
+
+  void updateText(String text) {
+    state.controller.text = text;
+  }
 }

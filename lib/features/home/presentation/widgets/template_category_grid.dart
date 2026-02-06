@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/home/presentation/notifiers/template_notifier.dart';
+import 'package:quick_art/features/home/presentation/screens/template_detail_screen.dart';
 
 class TemplateCategoryGrid extends ConsumerWidget {
   final String category;
@@ -51,7 +53,15 @@ class TemplateCategoryGrid extends ConsumerWidget {
             final template = templates[index];
             return GestureDetector(
               onTap: () {
-                // context.push('/tools/text-to-image?templateId=${template.id}');
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  builder: (context) => FractionallySizedBox(
+                    heightFactor: 0.75,
+                    child: TemplateDetailScreen(template: template),
+                  ),
+                );
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
@@ -66,35 +76,28 @@ class TemplateCategoryGrid extends ConsumerWidget {
                       errorWidget: (_, __, ___) => const Icon(Icons.error),
                     ),
                     Positioned(
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
+                      bottom: 12,
+                      right: 12,
                       child: Container(
-                        padding: const EdgeInsets.all(8),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 6,
+                        ),
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter,
-                            colors: [
-                              Colors.black.withOpacity(0.8),
-                              Colors.transparent,
-                            ],
+                          color: const Color(0x33FFFFFF), // 半透明白色背景
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: Colors.white.withOpacity(0.2),
+                            width: 0.5,
                           ),
                         ),
                         child: Text(
-                          template.name[Localizations.localeOf(
-                                context,
-                              ).languageCode] ??
-                              template.name['en'] ??
-                              template.name.values.first ??
-                              '',
+                          AppLocalizations.of(context)!.try_it ?? '尝试',
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 12,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w600,
                           ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ),

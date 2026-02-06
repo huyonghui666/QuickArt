@@ -72,11 +72,13 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
                 return NotificationListener<ScrollNotification>(
                   onNotification: (notification) {
                     /// 当距离底部不足 500 像素时，触发 loadMore()
-                    if (notification is ScrollEndNotification && notification.metrics.extentAfter < 500) {
+                    if (notification is ScrollEndNotification &&
+                        notification.metrics.extentAfter < 500) {
+                      ///由于InspirationCategoryType的newest不能更改为new，所以这么获取后端category为new的数据
                       final backendCategory = category == InspirationCategoryType.newest
-                          ? null
+                          ? 'new'
                           : category.name;
-                      ref.read(templatesProvider(category: backendCategory,).notifier)
+                      ref.read(templatesProvider(category: backendCategory,).notifier,)
                           .loadMore();
                     }
                     return false;

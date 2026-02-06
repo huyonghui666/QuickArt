@@ -12,8 +12,8 @@ class TemplateCategoryGrid extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // If category is "newest", pass null to backend
-    final backendCategory = category == 'newest' ? null : category;
+    // If category is "newest", pass 'new' to backend
+    final backendCategory = category == 'newest' ? 'new' : category;
 
     final templatesAsync = ref.watch(
       templatesProvider(category: backendCategory),
@@ -64,7 +64,9 @@ class TemplateCategoryGrid extends ConsumerWidget {
                   clipBehavior: Clip.hardEdge,
                   builder: (context) => FractionallySizedBox(
                     heightFactor: 0.75,
-                    child: TemplateDetailShowModalBottomSheet(template: template),
+                    child: TemplateDetailShowModalBottomSheet(
+                      template: template,
+                    ),
                   ),
                 );
               },

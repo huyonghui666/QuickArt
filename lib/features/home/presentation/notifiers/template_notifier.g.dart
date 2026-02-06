@@ -6,7 +6,7 @@ part of 'template_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$templatesHash() => r'c1acb06d03cf29f5d466ede5318be641e26eee51';
+String _$templatesHash() => r'7d291a941463568df86e0421be7f2d06ae49365b';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,10 +30,10 @@ class _SystemHash {
 }
 
 abstract class _$Templates
-    extends BuildlessAutoDisposeAsyncNotifier<ImageTemplatePage> {
+    extends BuildlessAutoDisposeNotifier<AsyncValue<ImageTemplatePage>> {
   late final String? category;
 
-  FutureOr<ImageTemplatePage> build({String? category});
+  AsyncValue<ImageTemplatePage> build({String? category});
 }
 
 /// See also [Templates].
@@ -72,7 +72,11 @@ class TemplatesFamily extends Family<AsyncValue<ImageTemplatePage>> {
 
 /// See also [Templates].
 class TemplatesProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<Templates, ImageTemplatePage> {
+    extends
+        AutoDisposeNotifierProviderImpl<
+          Templates,
+          AsyncValue<ImageTemplatePage>
+        > {
   /// See also [Templates].
   TemplatesProvider({String? category})
     : this._internal(
@@ -100,7 +104,7 @@ class TemplatesProvider
   final String? category;
 
   @override
-  FutureOr<ImageTemplatePage> runNotifierBuild(covariant Templates notifier) {
+  AsyncValue<ImageTemplatePage> runNotifierBuild(covariant Templates notifier) {
     return notifier.build(category: category);
   }
 
@@ -121,7 +125,7 @@ class TemplatesProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<Templates, ImageTemplatePage>
+  AutoDisposeNotifierProviderElement<Templates, AsyncValue<ImageTemplatePage>>
   createElement() {
     return _TemplatesProviderElement(this);
   }
@@ -142,14 +146,18 @@ class TemplatesProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin TemplatesRef on AutoDisposeAsyncNotifierProviderRef<ImageTemplatePage> {
+mixin TemplatesRef
+    on AutoDisposeNotifierProviderRef<AsyncValue<ImageTemplatePage>> {
   /// The parameter `category` of this provider.
   String? get category;
 }
 
 class _TemplatesProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<Templates, ImageTemplatePage>
+        AutoDisposeNotifierProviderElement<
+          Templates,
+          AsyncValue<ImageTemplatePage>
+        >
     with TemplatesRef {
   _TemplatesProviderElement(super.provider);
 

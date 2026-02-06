@@ -73,9 +73,9 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
                     if (notification is ScrollEndNotification &&
                         notification.metrics.extentAfter < 500) {
                       final backendCategory =
-                          category.type == InspirationCategoryType.newest
+                          category == InspirationCategoryType.newest
                           ? null
-                          : category.type.name;
+                          : category.name;
                       ref
                           .read(
                             templatesProvider(
@@ -87,7 +87,7 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
                     return false;
                   },
                   child: CustomScrollView(
-                    key: PageStorageKey(category.type.name),
+                    key: PageStorageKey(category.name),
                     slivers: [
                       SliverPadding(
                         padding: const EdgeInsets.fromLTRB(
@@ -96,9 +96,7 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
                           20,
                           100,
                         ), // Bottom padding for DrawButton
-                        sliver: TemplateCategoryGrid(
-                          category: category.type.name,
-                        ),
+                        sliver: TemplateCategoryGrid(category: category.name),
                       ),
                     ],
                   ),

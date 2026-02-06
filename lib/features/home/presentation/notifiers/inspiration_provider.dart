@@ -31,57 +31,6 @@ enum InspirationCategoryType {
 }
 
 @riverpod
-List<InspirationCategoryModel> inspirationCategories(Ref ref) {
-  return [
-    const InspirationCategoryModel(
-      type: InspirationCategoryType.newest,
-      cards: [],
-    ),
-    const InspirationCategoryModel(
-      type: InspirationCategoryType.manga,
-      cards: [],
-    ),
-    const InspirationCategoryModel(
-      type: InspirationCategoryType.photography,
-      cards: [],
-    ),
-    const InspirationCategoryModel(
-      type: InspirationCategoryType.watercolor,
-      cards: [],
-    ),
-    const InspirationCategoryModel(
-      type: InspirationCategoryType.funny,
-      cards: [],
-    ),
-    const InspirationCategoryModel(
-      type: InspirationCategoryType.tattoo,
-      cards: [],
-    ),
-    const InspirationCategoryModel(
-      type: InspirationCategoryType.cyberpunk,
-      cards: [],
-    ),
-    const InspirationCategoryModel(
-      type: InspirationCategoryType.surrealism,
-      cards: [],
-    ),
-    const InspirationCategoryModel(
-      type: InspirationCategoryType.christmas,
-      cards: [],
-    ),
-  ];
-}
-
-class InspirationCardModel {
-  const InspirationCardModel({required this.imageUrl, this.prompt});
-
-  final String imageUrl;
-  final String? prompt;
-}
-
-class InspirationCategoryModel {
-  const InspirationCategoryModel({required this.type, required this.cards});
-
-  final InspirationCategoryType type;
-  final List<InspirationCardModel> cards;
+List<InspirationCategoryType> inspirationCategories(Ref ref) {
+  return InspirationCategoryType.values;
 }

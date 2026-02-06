@@ -12,9 +12,16 @@ class Templates extends _$Templates {
   static const int _pageSize = 20;
 
   @override
-  FutureOr<ImageTemplatePage> build({String? category}) async {
+  AsyncValue<ImageTemplatePage> build({String? category}) {
     _isLoadingMore = false;
-    return _fetchTemplates(page: 0);
+    _fetchTemplates(page: 0)
+        .then((value) {
+          state = AsyncData(value);
+        })
+        .catchError((error, stackTrace) {
+          state = AsyncError(error, stackTrace);
+        });
+    return const AsyncLoading();
   }
 
   Future<ImageTemplatePage> _fetchTemplates({required int page}) async {
@@ -55,6 +62,11 @@ class Templates extends _$Templates {
 
   Future<void> refresh() async {
     state = const AsyncLoading();
-    state = await AsyncValue.guard(() => _fetchTemplates(page: 0));
+    try {
+      final result = await _fetchTemplates(page: 0);
+      state = AsyncData(result);
+    } catch (e, stack) {
+      state = AsyncError(e, stack);
+    }
   }
 }

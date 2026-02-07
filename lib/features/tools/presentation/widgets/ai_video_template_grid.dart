@@ -46,7 +46,7 @@ class _VideoTemplateGridState extends ConsumerState<VideoTemplateGrid> {
               crossAxisCount: 2,
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
-              childAspectRatio: 9 / 16,
+              childAspectRatio: 3 / 4,
             ),
             itemCount: page.items.length + (page.hasMore ? 1 : 0),
             itemBuilder: (context, index) {
@@ -68,6 +68,7 @@ class _VideoTemplateGridState extends ConsumerState<VideoTemplateGrid> {
                 index: index,
                 videoUrl: template.videoUrl,
                 coverUrl: template.coverUrl,
+                name: _getTemplateName(context, template.name),
               );
             },
           ),
@@ -76,5 +77,11 @@ class _VideoTemplateGridState extends ConsumerState<VideoTemplateGrid> {
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (err, stack) => Center(child: Text('Error: $err')),
     );
+  }
+
+  String _getTemplateName(BuildContext context, Map<String, String> nameMap) {
+    final locale = Localizations.localeOf(context).languageCode;
+    // 优先匹配当前语言，如果没找到则尝试匹配 'en'，最后取第一个值
+    return nameMap[locale] ?? nameMap['en'] ?? nameMap.values.firstOrNull ?? '';
   }
 }

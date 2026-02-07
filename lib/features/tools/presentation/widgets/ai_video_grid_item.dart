@@ -11,12 +11,14 @@ class AiVideoGridItem extends ConsumerStatefulWidget {
   final String videoUrl;
   final String? coverUrl;
   final int index;
+  final String? name;
 
   const AiVideoGridItem({
     super.key,
     required this.videoUrl,
     this.coverUrl,
     required this.index,
+    this.name,
   });
 
   @override
@@ -69,7 +71,7 @@ class _AiVideoGridItemState extends ConsumerState<AiVideoGridItem> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    
+
     // 使用 VisibilityDetector 检测当前 Item 是否在屏幕内
     return VisibilityDetector(
       // 必须确保全局唯一，建议加上 index
@@ -89,7 +91,8 @@ class _AiVideoGridItemState extends ConsumerState<AiVideoGridItem> {
                     fit: BoxFit.cover,
                     // 内存优化：限制图片解码大小
                     memCacheWidth: 300,
-                    placeholder: (context, url) => Container(color: Colors.grey[900]),
+                    placeholder: (context, url) =>
+                        Container(color: Colors.grey[900]),
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error, color: Colors.white),
                     fadeInDuration: const Duration(milliseconds: 200),
@@ -103,7 +106,7 @@ class _AiVideoGridItemState extends ConsumerState<AiVideoGridItem> {
             if (_shouldPlay)
               _VideoPlayerLayer(videoUrl: widget.videoUrl, index: widget.index),
 
-             // Gradient Overlay
+            // Gradient Overlay
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -124,52 +127,20 @@ class _AiVideoGridItemState extends ConsumerState<AiVideoGridItem> {
               bottom: 8,
               right: 8,
               child: Text(
-                 _getTemplateName(widget.index, l10n),
+                widget.name ?? '',
                 style: const TextStyle(
-                  color: Colors.white, 
+                  color: Colors.white,
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
-                 maxLines: 2,
-                 overflow: TextOverflow.ellipsis,
-              ),
-            ),
-             if (widget.index % 5 == 0) // Add a 'NEW' badge to some items for variety
-            Positioned(
-              top: 8,
-              right: 8,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Text(
-                  l10n.tools_new_badge,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
           ],
         ),
       ),
     );
-  }
-   // Helper to get varied names for templates
-  String _getTemplateName(int index, AppLocalizations l10n) {
-    final names = [
-      l10n.tools_template_kiss_pro,
-      l10n.tools_template_cat,
-      l10n.tools_template_heartbeat_404,
-      l10n.tools_template_skull_universe,
-      l10n.tools_template_koi,
-      l10n.tools_template_redemption_rain,
-    ];
-    return names[index % names.length];
   }
 }
 

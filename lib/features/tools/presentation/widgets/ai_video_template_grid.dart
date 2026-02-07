@@ -40,43 +40,36 @@ class _VideoTemplateGridState extends ConsumerState<VideoTemplateGrid> {
             return false;
           },
           // 下拉刷新
-          child: RefreshIndicator(
-            onRefresh: () => ref
-                .read(
-                  videoTemplatesProvider(category: widget.category).notifier,
-                )
-                .refresh(),
-            child: GridView.builder(
-              padding: const EdgeInsets.all(16.0),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 12,
-                mainAxisSpacing: 12,
-                childAspectRatio: 9 / 16,
-              ),
-              itemCount: page.items.length + (page.hasMore ? 1 : 0),
-              itemBuilder: (context, index) {
-                // 如果渲染到最后一个 item 且还有更多数据，显示加载指示器并触发加载更多
-                if (index == page.items.length) {
-                  Future.microtask(
-                    () => ref
-                        .read(
-                          videoTemplatesProvider(
-                            category: widget.category,
-                          ).notifier,
-                        )
-                        .loadMore(),
-                  );
-                  return const Center(child: CircularProgressIndicator());
-                }
-                final template = page.items[index];
-                return AiVideoGridItem(
-                  index: index,
-                  videoUrl: template.videoUrl,
-                  coverUrl: template.coverUrl,
-                );
-              },
+          child: GridView.builder(
+            padding: const EdgeInsets.all(16.0),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              childAspectRatio: 9 / 16,
             ),
+            itemCount: page.items.length + (page.hasMore ? 1 : 0),
+            itemBuilder: (context, index) {
+              // 如果渲染到最后一个 item 且还有更多数据，显示加载指示器并触发加载更多
+              if (index == page.items.length) {
+                Future.microtask(
+                  () => ref
+                      .read(
+                        videoTemplatesProvider(
+                          category: widget.category,
+                        ).notifier,
+                      )
+                      .loadMore(),
+                );
+                return const Center(child: CircularProgressIndicator());
+              }
+              final template = page.items[index];
+              return AiVideoGridItem(
+                index: index,
+                videoUrl: template.videoUrl,
+                coverUrl: template.coverUrl,
+              );
+            },
           ),
         );
       },

@@ -95,7 +95,9 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
     final tabs = ref.watch(aiVideoTabsProvider);
     final l10n = AppLocalizations.of(context)!;
     // 获取当前 Tab 对应的视频模板数据，用于头部展示
-    final headerTemplatesAsync = ref.watch(videoTemplatesProvider(category: _currentTabKey),);
+    final headerTemplatesAsync = ref.watch(
+      videoTemplatesProvider(category: _currentTabKey),
+    );
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -157,8 +159,55 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                             Colors.black.withValues(alpha: 0.6),
                             Colors.black,
                           ],
-                          stops: const [0.0, 0.4, 0.7],
+                          stops: const [0.0, 0.4, 1.0],
                         ),
+                      ),
+                    ),
+                    // 内容区域：标题 + 功能卡片
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top:
+                            MediaQuery.of(context).padding.top + kToolbarHeight,
+                        left: 16,
+                        right: 16,
+                        bottom: 16,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            l10n.tools_ai_video,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              AiVideoActionCard(
+                                icon: Icons.text_fields,
+                                title: l10n.tools_text_to_video,
+                                onTap: () => context.push(
+                                  '/tools/ai-video/text-to-video',
+                                ),
+                              ),
+                              AiVideoActionCard(
+                                icon: Icons.movie_filter_outlined,
+                                title: l10n.tools_start_end_frame,
+                                onTap: () => context.push(
+                                  '/tools/ai-video/start-end-frame',
+                                ),
+                              ),
+                              AiVideoActionCard(
+                                icon: Icons.collections_bookmark_outlined,
+                                title: l10n.tools_multi_subject,
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -172,54 +221,15 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                   ),
                 ),
               ),
-              expandedHeight: 250,
-            ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      l10n.tools_ai_video,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        AiVideoActionCard(
-                          icon: Icons.text_fields,
-                          title: l10n.tools_text_to_video,
-                          onTap: () =>
-                              context.push('/tools/ai-video/text-to-video'),
-                        ),
-                        AiVideoActionCard(
-                          icon: Icons.movie_filter_outlined,
-                          title: l10n.tools_start_end_frame,
-                          onTap: () =>
-                              context.push('/tools/ai-video/start-end-frame'),
-                        ),
-                        AiVideoActionCard(
-                          icon: Icons.collections_bookmark_outlined,
-                          title: l10n.tools_multi_subject,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
-                  ],
-                ),
-              ),
+              expandedHeight: 380,
             ),
             SliverPersistentHeader(
               delegate: _SliverTabBarDelegate(
                 TabBar(
                   controller: _tabController,
                   isScrollable: true,
+                  tabAlignment: TabAlignment.start,
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   indicatorColor: Colors.white,
                   labelColor: Colors.white,
                   unselectedLabelColor: Colors.grey[400],

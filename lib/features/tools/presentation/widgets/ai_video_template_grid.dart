@@ -69,6 +69,7 @@ class _VideoTemplateGridState extends ConsumerState<VideoTemplateGrid> {
                 videoUrl: template.videoUrl,
                 coverUrl: template.coverUrl,
                 name: _getTemplateName(context, template.name),
+                template: template,
               );
             },
           ),

@@ -277,5 +277,65 @@ final getTemplatesUseCaseProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef GetTemplatesUseCaseRef = AutoDisposeProviderRef<GetTemplatesUseCase>;
+String _$videoTemplateRemoteDataSourceHash() =>
+    r'33f93f9d3abbf502811c220b16b7706c00595b30';
+
+/// See also [videoTemplateRemoteDataSource].
+@ProviderFor(videoTemplateRemoteDataSource)
+final videoTemplateRemoteDataSourceProvider =
+    AutoDisposeProvider<IVideoTemplateRemoteDataSource>.internal(
+      videoTemplateRemoteDataSource,
+      name: r'videoTemplateRemoteDataSourceProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$videoTemplateRemoteDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef VideoTemplateRemoteDataSourceRef =
+    AutoDisposeProviderRef<IVideoTemplateRemoteDataSource>;
+String _$videoTemplateRepositoryHash() =>
+    r'3fbad67d0ead30a3699d5a550b3f3370a82d02cb';
+
+/// See also [videoTemplateRepository].
+@ProviderFor(videoTemplateRepository)
+final videoTemplateRepositoryProvider =
+    AutoDisposeProvider<VideoTemplateRepository>.internal(
+      videoTemplateRepository,
+      name: r'videoTemplateRepositoryProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$videoTemplateRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef VideoTemplateRepositoryRef =
+    AutoDisposeProviderRef<VideoTemplateRepository>;
+String _$getVideoTemplatesUseCaseHash() =>
+    r'c87de6ef7b5560eb7e676bd92eb2a2795ac6aa9b';
+
+/// See also [getVideoTemplatesUseCase].
+@ProviderFor(getVideoTemplatesUseCase)
+final getVideoTemplatesUseCaseProvider =
+    AutoDisposeProvider<GetVideoTemplatesUseCase>.internal(
+      getVideoTemplatesUseCase,
+      name: r'getVideoTemplatesUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$getVideoTemplatesUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetVideoTemplatesUseCaseRef =
+    AutoDisposeProviderRef<GetVideoTemplatesUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

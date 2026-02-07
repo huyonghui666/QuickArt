@@ -1,31 +1,87 @@
 import 'package:flutter/material.dart';
-import 'package:quick_art/features/tools/data/mock_video_data.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quick_art/features/tools/presentation/notifiers/video_template_notifier.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_grid_item.dart';
 
-class VideoTemplateGrid extends StatelessWidget {
-  final List<VideoData> videos;
+class VideoTemplateGrid extends ConsumerStatefulWidget {
+  /// 分类 Key
+  final String category;
 
-  const VideoTemplateGrid({super.key, required this.videos});
+  const VideoTemplateGrid({super.key, required this.category});
 
   @override
+  ConsumerState<VideoTemplateGrid> createState() => _VideoTemplateGridState();
+}
+
+class _VideoTemplateGridState extends ConsumerState<VideoTemplateGrid> {
+  @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      padding: const EdgeInsets.all(16.0),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 12,
-        mainAxisSpacing: 12,
-        childAspectRatio: 9 / 16, // Aspect ratio for a portrait card
-      ),
-      itemCount: videos.length, 
-      itemBuilder: (context, index) {
-        final video = videos[index];
-        return AiVideoGridItem(
-          index: index,
-          videoUrl: video.url,
-          coverUrl: video.coverUrl,
+    // 监听视频模板数据状态
+    final templatesAsync = ref.watch(
+      videoTemplatesProvider(category: widget.category),
+    );
+
+    return templatesAsync.when(
+      data: (page) {
+        if (page.items.isEmpty) {
+          return const Center(child: Text('No templates found'));
+        }
+        // 使用 NotificationListener 监听滚动到底部事件，触发加载更多
+        return NotificationListener<ScrollNotification>(
+          onNotification: (ScrollNotification scrollInfo) {
+            if (scrollInfo.metrics.pixels >=
+                scrollInfo.metrics.maxScrollExtent - 200) {
+              ref
+                  .read(
+                    videoTemplatesProvider(category: widget.category).notifier,
+                  )
+                  .loadMore();
+            }
+            return false;
+          },
+          // 下拉刷新
+          child: RefreshIndicator(
+            onRefresh: () => ref
+                .read(
+                  videoTemplatesProvider(category: widget.category).notifier,
+                )
+                .refresh(),
+            child: GridView.builder(
+              padding: const EdgeInsets.all(16.0),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 12,
+                childAspectRatio: 9 / 16,
+              ),
+              itemCount: page.items.length + (page.hasMore ? 1 : 0),
+              itemBuilder: (context, index) {
+                // 如果渲染到最后一个 item 且还有更多数据，显示加载指示器并触发加载更多
+                if (index == page.items.length) {
+                  Future.microtask(
+                    () => ref
+                        .read(
+                          videoTemplatesProvider(
+                            category: widget.category,
+                          ).notifier,
+                        )
+                        .loadMore(),
+                  );
+                  return const Center(child: CircularProgressIndicator());
+                }
+                final template = page.items[index];
+                return AiVideoGridItem(
+                  index: index,
+                  videoUrl: template.videoUrl,
+                  coverUrl: template.coverUrl,
+                );
+              },
+            ),
+          ),
         );
       },
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (err, stack) => Center(child: Text('Error: $err')),
     );
   }
 }

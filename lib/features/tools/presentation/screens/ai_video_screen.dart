@@ -5,9 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/ai_video_tab_bar_provider.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_action_card.dart';
-import 'package:quick_art/features/tools/data/mock_video_data.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_header_player.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_template_grid.dart';
+import 'package:quick_art/features/tools/presentation/notifiers/video_template_notifier.dart';
 
 class AiVideoScreen extends ConsumerStatefulWidget {
   const AiVideoScreen({super.key});
@@ -94,6 +94,8 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
   Widget build(BuildContext context) {
     final tabs = ref.watch(aiVideoTabsProvider);
     final l10n = AppLocalizations.of(context)!;
+    // 获取当前 Tab 对应的视频模板数据，用于头部展示
+    final headerTemplatesAsync = ref.watch(videoTemplatesProvider(category: _currentTabKey),);
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -117,16 +119,34 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                 background: Stack(
                   fit: StackFit.expand,
                   children: [
-                    //TODO 这里将else中的占位改为纯黑或者视频的第一帧图片或者去掉
-                    if (_currentTabKey.isNotEmpty && mockVideoData[_currentTabKey] != null &&
-                        mockVideoData[_currentTabKey]!.isNotEmpty)
-                      AiVideoHeaderPlayer(videoUrl: mockVideoData[_currentTabKey]!.first.url)
-                    else
-                      Image.network(
+                    //TODO 这是兜底图片应该使用覆盖图
+                    // 头部背景视频/图片展示
+                    headerTemplatesAsync.when(
+                      data: (page) {
+                        // 如果有数据，展示列表中的第一个视频作为头部背景
+                        if (page.items.isNotEmpty) {
+                          return AiVideoHeaderPlayer(
+                            videoUrl: page.items.first.videoUrl,
+                          );
+                        }
+                        // 兜底图片
+                        return Image.network(
+                          'https://picsum.photos/seed/ai_video_bg/800/1200',
+                          fit: BoxFit.cover,
+                          alignment: Alignment.topCenter,
+                        );
+                      },
+                      loading: () => Image.network(
                         'https://picsum.photos/seed/ai_video_bg/800/1200',
                         fit: BoxFit.cover,
                         alignment: Alignment.topCenter,
                       ),
+                      error: (_, __) => Image.network(
+                        'https://picsum.photos/seed/ai_video_bg/800/1200',
+                        fit: BoxFit.cover,
+                        alignment: Alignment.topCenter,
+                      ),
+                    ),
                     Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
@@ -215,8 +235,7 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
         body: TabBarView(
           controller: _tabController,
           children: tabs.map((String key) {
-            final videos = mockVideoData[key] ?? [];
-            return VideoTemplateGrid(videos: videos);
+            return VideoTemplateGrid(category: key);
           }).toList(),
         ),
       ),

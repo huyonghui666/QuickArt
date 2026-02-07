@@ -17,6 +17,10 @@ import 'package:quick_art/features/workshop/data/repositories/workshop_repositor
 import 'package:quick_art/features/workshop/domain/repositories/workshop_repository.dart';
 import 'package:quick_art/features/workshop/domain/usecases/get_workshop_tasks_usecase.dart';
 import 'package:quick_art/features/home/domain/usecases/get_templates_usecase.dart';
+import 'package:quick_art/features/tools/data/datasources/video_template_remote_data_source.dart';
+import 'package:quick_art/features/tools/data/repositories/video_template_repository_impl.dart';
+import 'package:quick_art/features/tools/domain/repositories/video_template_repository.dart';
+import 'package:quick_art/features/tools/domain/usecases/get_video_templates_usecase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'injection_container.g.dart';
@@ -104,4 +108,23 @@ TemplateRepository templateRepository(Ref ref) {
 @riverpod
 GetTemplatesUseCase getTemplatesUseCase(Ref ref) {
   return GetTemplatesUseCase(ref.watch(templateRepositoryProvider));
+}
+
+//------------------------------视频模板------------------------------------------
+@riverpod
+IVideoTemplateRemoteDataSource videoTemplateRemoteDataSource(Ref ref) {
+  final dio = ref.watch(dioProvider);
+  return VideoTemplateRemoteDataSource(dio);
+}
+
+@riverpod
+VideoTemplateRepository videoTemplateRepository(Ref ref) {
+  final remoteDataSource = ref.watch(videoTemplateRemoteDataSourceProvider);
+  return VideoTemplateRepositoryImpl(remoteDataSource);
+}
+
+@riverpod
+GetVideoTemplatesUseCase getVideoTemplatesUseCase(Ref ref) {
+  final repository = ref.watch(videoTemplateRepositoryProvider);
+  return GetVideoTemplatesUseCase(repository);
 }

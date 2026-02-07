@@ -6,7 +6,7 @@ part 'ai_video_tab_bar_provider.g.dart';
 @riverpod
 List<String> aiVideoTabs(Ref ref) {
   return [
-    'popular',
+    'Hug',
     'kiss',
     'hug',
     'ai_effects',

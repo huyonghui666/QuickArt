@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/ai_video_tab_bar_provider.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_action_card.dart';
+import 'package:quick_art/features/tools/data/mock_video_data.dart';
+import 'package:quick_art/features/tools/presentation/widgets/ai_video_header_player.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_template_grid.dart';
 
 class AiVideoScreen extends ConsumerStatefulWidget {
@@ -20,6 +22,7 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
   late final ScrollController _scrollController;
   //标题透明度
   double _titleOpacity = 0.0;
+  String _currentTabKey = '';
 
   //AI 视频 (大标题)和[文生视频]的组件高度
   static const double _contentBlockHeight =
@@ -29,17 +32,39 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
   void initState() {
     super.initState();
     final tabs = ref.read(aiVideoTabsProvider);
+    if (tabs.isNotEmpty) {
+      _currentTabKey = tabs.first;
+    }
     _tabController = TabController(length: tabs.length, vsync: this);
+    _tabController.addListener(_onTabChanged);
     _scrollController = ScrollController();
     _scrollController.addListener(_onScroll);
   }
 
   @override
   void dispose() {
+    _tabController.removeListener(_onTabChanged);
     _tabController.dispose();
     _scrollController.removeListener(_onScroll);
     _scrollController.dispose();
     super.dispose();
+  }
+
+  void _onTabChanged() {
+    if (_tabController.indexIsChanging) {
+      // Wait for animation to finish or update immediately?
+      // Usually better to update when index changes to feel responsive
+    }
+    // Update current tab key based on index
+    final tabs = ref.read(aiVideoTabsProvider);
+    if (_tabController.index < tabs.length) {
+      final newKey = tabs[_tabController.index];
+      if (newKey != _currentTabKey) {
+        setState(() {
+          _currentTabKey = newKey;
+        });
+      }
+    }
   }
 
   void _onScroll() {
@@ -92,11 +117,16 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                 background: Stack(
                   fit: StackFit.expand,
                   children: [
-                    Image.network(
-                      'https://picsum.photos/seed/ai_video_bg/800/1200',
-                      fit: BoxFit.cover,
-                      alignment: Alignment.topCenter,
-                    ),
+                    //TODO 这里将else中的占位改为纯黑或者视频的第一帧图片或者去掉
+                    if (_currentTabKey.isNotEmpty && mockVideoData[_currentTabKey] != null &&
+                        mockVideoData[_currentTabKey]!.isNotEmpty)
+                      AiVideoHeaderPlayer(videoUrl: mockVideoData[_currentTabKey]!.first.url)
+                    else
+                      Image.network(
+                        'https://picsum.photos/seed/ai_video_bg/800/1200',
+                        fit: BoxFit.cover,
+                        alignment: Alignment.topCenter,
+                      ),
                     Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
@@ -185,7 +215,8 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
         body: TabBarView(
           controller: _tabController,
           children: tabs.map((String key) {
-            return const VideoTemplateGrid();
+            final videos = mockVideoData[key] ?? [];
+            return VideoTemplateGrid(videos: videos);
           }).toList(),
         ),
       ),

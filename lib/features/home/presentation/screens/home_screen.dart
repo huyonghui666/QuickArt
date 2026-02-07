@@ -75,10 +75,16 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
                     if (notification is ScrollEndNotification &&
                         notification.metrics.extentAfter < 500) {
                       ///由于InspirationCategoryType的newest不能更改为new，所以这么获取后端category为new的数据
-                      final backendCategory = category == InspirationCategoryType.newest
+                      final backendCategory =
+                          category == InspirationCategoryType.newest
                           ? 'new'
                           : category.name;
-                      ref.read(templatesProvider(category: backendCategory,).notifier,)
+                      ref
+                          .read(
+                            templatesProvider(
+                              category: backendCategory,
+                            ).notifier,
+                          )
                           .loadMore();
                     }
                     return false;

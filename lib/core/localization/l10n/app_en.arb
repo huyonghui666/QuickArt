@@ -87,6 +87,10 @@
   "@inspiration_surrealism": { "description": "Inspiration: Surrealism" },
   "inspiration_christmas": "Christmas",
   "@inspiration_christmas": { "description": "Inspiration: Christmas" },
+  "try_it": "Try",
+  "@try_it": { "description": "Button label to try a template" },
+  "try_prompt": "Try Prompt",
+  "@try_prompt": { "description": "Button label to try prompt" },
   "home_art_style": "Art Style",
   "@home_art_style": {
     "description": "Label for Art Style section"

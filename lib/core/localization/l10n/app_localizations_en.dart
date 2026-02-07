@@ -87,6 +87,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get inspiration_christmas => 'Christmas';
 
   @override
+  String get try_it => 'Try';
+
+  @override
+  String get try_prompt => 'Try Prompt';
+
+  @override
   String get home_art_style => 'Art Style';
 
   @override

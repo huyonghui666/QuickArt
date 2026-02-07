@@ -254,6 +254,18 @@ abstract class AppLocalizations {
   /// **'Christmas'**
   String get inspiration_christmas;
 
+  /// Button label to try a template
+  ///
+  /// In en, this message translates to:
+  /// **'Try'**
+  String get try_it;
+
+  /// Button label to try prompt
+  ///
+  /// In en, this message translates to:
+  /// **'Try Prompt'**
+  String get try_prompt;
+
   /// Label for Art Style section
   ///
   /// In en, this message translates to:

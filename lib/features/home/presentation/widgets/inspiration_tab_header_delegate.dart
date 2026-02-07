@@ -10,15 +10,15 @@ class InspirationTabHeaderDelegate extends SliverPersistentHeaderDelegate {
   });
 
   final TabController controller;
-  final List<InspirationCategoryModel> categories;
+  final List<InspirationCategoryType> categories;
   final double statusBarHeight;
 
   @override
   Widget build(
-      BuildContext context,
-      double shrinkOffset,
-      bool overlapsContent,
-      ) {
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
     return Container(
       color: Colors.black,
       padding: EdgeInsets.only(top: statusBarHeight),
@@ -37,7 +37,9 @@ class InspirationTabHeaderDelegate extends SliverPersistentHeaderDelegate {
           fontWeight: FontWeight.normal,
         ),
         padding: const EdgeInsets.symmetric(horizontal: 10), // Adjust padding
-        tabs: categories.map((e) => Tab(text: e.type.getLabel(AppLocalizations.of(context)!)),).toList(),
+        tabs: categories
+            .map((e) => Tab(text: e.getLabel(AppLocalizations.of(context)!)))
+            .toList(),
       ),
     );
   }

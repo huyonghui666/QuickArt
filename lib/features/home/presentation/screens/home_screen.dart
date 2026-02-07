@@ -9,9 +9,10 @@ import 'package:quick_art/core/widgets/prompt_text_field.dart';
 import 'package:quick_art/features/home/presentation/notifiers/art_style_notifier.dart';
 import 'package:quick_art/features/home/presentation/notifiers/inspiration_provider.dart';
 import 'package:quick_art/features/home/presentation/widgets/art_style_selector.dart';
-import 'package:quick_art/features/home/presentation/widgets/inspiration_section.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
 import 'package:quick_art/features/home/presentation/widgets/inspiration_tab_header_delegate.dart';
+import 'package:quick_art/features/home/presentation/widgets/template_category_grid.dart';
+import 'package:quick_art/features/home/presentation/notifiers/template_notifier.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -67,19 +68,35 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
             body: TabBarView(
               controller: _tabController,
               children: categories.map((category) {
-                return CustomScrollView(
-                  key: PageStorageKey(category.type.name),
-                  slivers: [
-                    SliverPadding(
-                      padding: const EdgeInsets.fromLTRB(
-                        20,
-                        20,
-                        20,
-                        100,
-                      ), // Bottom padding for DrawButton
-                      sliver: InspirationGrid(cards: category.cards),
-                    ),
-                  ],
+                ///在每个 Tab 页内部监听滚动事件
+                return NotificationListener<ScrollNotification>(
+                  onNotification: (notification) {
+                    /// 当距离底部不足 500 像素时，触发 loadMore()
+                    if (notification is ScrollEndNotification &&
+                        notification.metrics.extentAfter < 500) {
+                      ///由于InspirationCategoryType的newest不能更改为new，所以这么获取后端category为new的数据
+                      final backendCategory = category == InspirationCategoryType.newest
+                          ? 'new'
+                          : category.name;
+                      ref.read(templatesProvider(category: backendCategory,).notifier,)
+                          .loadMore();
+                    }
+                    return false;
+                  },
+                  child: CustomScrollView(
+                    key: PageStorageKey(category.name),
+                    slivers: [
+                      SliverPadding(
+                        padding: const EdgeInsets.fromLTRB(
+                          20,
+                          20,
+                          20,
+                          100,
+                        ), // Bottom padding for DrawButton
+                        sliver: TemplateCategoryGrid(category: category.name),
+                      ),
+                    ],
+                  ),
                 );
               }).toList(),
             ),

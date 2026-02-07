@@ -9,6 +9,7 @@
 9. 路由管理：GoRouter（用于管理应用路由）。
 10.对于本地图片assets文件夹中可以直接使用Image.asset，图片存储在服务器上，通过 URL获取,使用CachedNetworkImage
 10. 错误处理使用sentry监控
+11. 请携带注释
 
 
 

@@ -219,5 +219,63 @@ final getWorkshopTasksUseCaseProvider =
 // ignore: unused_element
 typedef GetWorkshopTasksUseCaseRef =
     AutoDisposeProviderRef<GetWorkshopTasksUseCase>;
+String _$templateRemoteDataSourceHash() =>
+    r'7499ad9f691e09bf18a697c2e7493419eacd2766';
+
+/// See also [templateRemoteDataSource].
+@ProviderFor(templateRemoteDataSource)
+final templateRemoteDataSourceProvider =
+    AutoDisposeProvider<ITemplateRemoteDataSource>.internal(
+      templateRemoteDataSource,
+      name: r'templateRemoteDataSourceProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$templateRemoteDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef TemplateRemoteDataSourceRef =
+    AutoDisposeProviderRef<ITemplateRemoteDataSource>;
+String _$templateRepositoryHash() =>
+    r'b75c1cec8d6045014d32da9d7d8ee32e5ef5b549';
+
+/// See also [templateRepository].
+@ProviderFor(templateRepository)
+final templateRepositoryProvider =
+    AutoDisposeProvider<TemplateRepository>.internal(
+      templateRepository,
+      name: r'templateRepositoryProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$templateRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef TemplateRepositoryRef = AutoDisposeProviderRef<TemplateRepository>;
+String _$getTemplatesUseCaseHash() =>
+    r'ef04dfdb077b93f6ec17d5566aaa98d75abc0885';
+
+/// See also [getTemplatesUseCase].
+@ProviderFor(getTemplatesUseCase)
+final getTemplatesUseCaseProvider =
+    AutoDisposeProvider<GetTemplatesUseCase>.internal(
+      getTemplatesUseCase,
+      name: r'getTemplatesUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$getTemplatesUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetTemplatesUseCaseRef = AutoDisposeProviderRef<GetTemplatesUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

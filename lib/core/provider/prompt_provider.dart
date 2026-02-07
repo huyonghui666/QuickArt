@@ -20,8 +20,6 @@ class PromptState {
   }
 }
 
-// 使用 @riverpod 注解生成 Provider
-// 类名 Prompt 会生成 promptProvider
 @riverpod
 class Prompt extends _$Prompt {
   @override
@@ -30,8 +28,6 @@ class Prompt extends _$Prompt {
     final controller = TextEditingController();
 
     // 监听文本变化并更新状态
-    // 注意：不要直接在 listener 中使用 state.controller，因为 state 可能会被替换
-    // 使用闭包捕获的 controller 实例是安全的
     void listener() {
       // 只有当文本真正变化时才更新状态，避免循环触发
       // 注意：这里我们比较的是 controller.text 和 state.text
@@ -54,5 +50,9 @@ class Prompt extends _$Prompt {
 
   void clear() {
     state.controller.clear();
+  }
+
+  void updateText(String text) {
+    state.controller.text = text;
   }
 }

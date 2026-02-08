@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quick_art/core/config/config_provider.dart';
+import 'package:quick_art/core/di/config_provider.dart';
 import 'package:quick_art/core/error/setup_error_handling.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/localization/notifiers/locale_provider.dart';

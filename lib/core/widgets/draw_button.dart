@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:quick_art/core/provider/prompt_provider.dart';
+import 'package:quick_art/core/providers/prompt_provider.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 

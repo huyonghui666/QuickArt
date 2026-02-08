@@ -90,7 +90,7 @@ Future<void> setupErrorHandling() async {
   // Sentry.configureScope((scope) async {
   //   // 动态加用户/设备信息
   //   scope.setUser(SentryUser(
-  //     id: 'user_id_here',  // 从你的 auth provider 取
+  //     id: 'user_id_here',  // 从你的 auth  取
   //     email: 'user@example.com',
   //     ipAddress: '{{auto}}',  // 自动取 IP
   //   ));

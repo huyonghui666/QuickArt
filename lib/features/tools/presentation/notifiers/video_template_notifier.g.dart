@@ -165,7 +165,7 @@ class VideoTemplatesProvider
 // ignore: unused_element
 mixin VideoTemplatesRef
     on AutoDisposeAsyncNotifierProviderRef<VideoTemplatePage> {
-  /// The parameter `category` of this provider.
+  /// The parameter `category` of this .
   String? get category;
 }
 

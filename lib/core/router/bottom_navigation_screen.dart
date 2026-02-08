@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/core/provider/show_bottom_sheet_notifier.dart';
+import 'package:quick_art/core/providers/show_bottom_sheet_notifier.dart';
 import 'package:quick_art/core/router/bottom_navigation.dart';
 import 'package:quick_art/core/widgets/generated_image_bottom_sheet.dart';
 import 'package:quick_art/core/widgets/generated_video_bottom_sheet.dart';

@@ -177,7 +177,7 @@ class VideoTemplateGenerationNotifierProvider
 // ignore: unused_element
 mixin VideoTemplateGenerationNotifierRef
     on AutoDisposeNotifierProviderRef<AsyncValue<VideoGenerationTask>> {
-  /// The parameter `prompt` of this provider.
+  /// The parameter `prompt` of this .
   String get prompt;
 }
 

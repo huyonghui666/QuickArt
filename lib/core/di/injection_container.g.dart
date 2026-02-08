@@ -163,6 +163,26 @@ final startEndFrameGenerateVideoUseCaseProvider =
 // ignore: unused_element
 typedef StartEndFrameGenerateVideoUseCaseRef =
     AutoDisposeProviderRef<StartEndFrameGenerateVideoUseCase>;
+String _$generateVideoFromImageUseCaseHash() =>
+    r'5049fb5e154c3c8209369fcd7ac187cd0f3164ae';
+
+/// See also [generateVideoFromImageUseCase].
+@ProviderFor(generateVideoFromImageUseCase)
+final generateVideoFromImageUseCaseProvider =
+    AutoDisposeProvider<GenerateVideoFromImageUseCase>.internal(
+      generateVideoFromImageUseCase,
+      name: r'generateVideoFromImageUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$generateVideoFromImageUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GenerateVideoFromImageUseCaseRef =
+    AutoDisposeProviderRef<GenerateVideoFromImageUseCase>;
 String _$databaseHelperHash() => r'd9a91b257d3ed9a4f2d87bd829e17dc900678685';
 
 /// See also [databaseHelper].

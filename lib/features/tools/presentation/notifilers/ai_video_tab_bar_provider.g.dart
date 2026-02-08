@@ -6,7 +6,7 @@ part of 'ai_video_tab_bar_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$aiVideoTabsHash() => r'c47efe22f8d2a33d18035d0822a2879cb0fc6b23';
+String _$aiVideoTabsHash() => r'bc693727eb93343cd5bddea2501192011b3700ec';
 
 /// See also [aiVideoTabs].
 @ProviderFor(aiVideoTabs)

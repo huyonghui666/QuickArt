@@ -10,6 +10,7 @@ import 'package:quick_art/core/theme/app_icons.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/features/tools/domain/entities/video_template.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
+import 'package:quick_art/features/tools/presentation/notifiers/video_template_generation_provider.dart';
 
 /// 视频模板详情页
 class VideoTemplateDetailScreen extends ConsumerStatefulWidget {
@@ -110,9 +111,21 @@ class _VideoTemplateDetailScreenState
             child: DrawButton(
               family: 'video_template_detail',
               onTap: () {
-                // TODO: 实现绘制逻辑
+                if (_selectedImage != null &&
+                    widget.template.description != null) {
+                  // 设置生成参数
+                  ref
+                      .read(videoTemplateInputProvider.notifier)
+                      .setInput(
+                        _selectedImage!.path,
+                        widget.template.description!,
+                      );
+                  // 导航到等待页面
+                  context.push(
+                    '/wait/template_video?prompt=${Uri.encodeComponent(widget.template.description!)}',
+                  );
+                }
               },
-              // 只有选择了图片才启用
               isEnabled: _selectedImage != null,
             ),
           ),

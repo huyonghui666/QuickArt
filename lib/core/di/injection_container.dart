@@ -10,6 +10,7 @@ import 'package:quick_art/features/home/domain/usecases/text_to_generate_image_u
 import 'package:quick_art/features/tools/data/datasources/text_to_video_remote_data_source.dart';
 import 'package:quick_art/features/tools/data/repositories/text_to_video_repository_impl.dart';
 import 'package:quick_art/features/tools/domain/repositories/text_to_video_repository.dart';
+import 'package:quick_art/features/tools/domain/usecases/generate_video_from_image_usecase.dart';
 import 'package:quick_art/features/tools/domain/usecases/start_end_frame_generate_video_usecase.dart';
 import 'package:quick_art/features/tools/domain/usecases/text_to_generate_video_usecase.dart';
 import 'package:quick_art/features/workshop/data/datasources/local_data_source/database_helper.dart';
@@ -74,6 +75,12 @@ TextToGenerateVideoUseCase textToGenerateVideoUseCase(Ref ref) {
 StartEndFrameGenerateVideoUseCase startEndFrameGenerateVideoUseCase(Ref ref) {
   final repository = ref.watch(textToVideoRepositoryProvider);
   return StartEndFrameGenerateVideoUseCase(repository);
+}
+
+@riverpod
+GenerateVideoFromImageUseCase generateVideoFromImageUseCase(Ref ref) {
+  final repository = ref.watch(textToVideoRepositoryProvider);
+  return GenerateVideoFromImageUseCase(repository);
 }
 
 //-----------------------------------Workshop-------------------------------------------------

@@ -12,6 +12,7 @@ import 'package:quick_art/features/home/presentation/notifiers/image_generation_
 import 'package:quick_art/features/tools/domain/entities/video_generation_task.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/start_end_frame_generation_provider.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/video_generation_provider.dart';
+import 'package:quick_art/features/tools/presentation/notifiers/video_template_generation_provider.dart';
 
 final _waitingScreenErrorProvider = StateProvider.autoDispose<String?>(
   (ref) => null,
@@ -43,7 +44,10 @@ class WaitingScreen extends ConsumerWidget {
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: (taskType == 'video' || taskType == 'start_end_frame')
+      body:
+          (taskType == 'video' ||
+              taskType == 'start_end_frame' ||
+              taskType == 'template_video')
           ? _buildVideoBody(context, ref)
           : _buildImageBody(context, ref),
     );
@@ -63,6 +67,13 @@ class WaitingScreen extends ConsumerWidget {
     } else if (taskType == 'start_end_frame') {
       final asyncTask = ref.read(
         startEndFrameGenerationNotifierProvider(prompt),
+      );
+      asyncTask.whenData((task) {
+        _processEvent(context, ref, result, task.taskId);
+      });
+    } else if (taskType == 'template_video') {
+      final asyncTask = ref.read(
+        videoTemplateGenerationNotifierProvider(prompt),
       );
       asyncTask.whenData((task) {
         _processEvent(context, ref, result, task.taskId);
@@ -93,7 +104,9 @@ class WaitingScreen extends ConsumerWidget {
               .read(showBottomSheetNotifierProvider.notifier)
               .trigger(
                 result.url!,
-                (taskType == 'video' || taskType == 'start_end_frame')
+                (taskType == 'video' ||
+                        taskType == 'start_end_frame' ||
+                        taskType == 'template_video')
                     ? BottomSheetType.video
                     : BottomSheetType.image,
               );
@@ -108,7 +121,9 @@ class WaitingScreen extends ConsumerWidget {
   Widget _buildVideoBody(BuildContext context, WidgetRef ref) {
     final asyncTask = taskType == 'start_end_frame'
         ? ref.watch(startEndFrameGenerationNotifierProvider(prompt))
-        : ref.watch(videoGenerationNotifierProvider(prompt));
+        : (taskType == 'template_video'
+              ? ref.watch(videoTemplateGenerationNotifierProvider(prompt))
+              : ref.watch(videoGenerationNotifierProvider(prompt)));
 
     final errorMessage = ref.watch(_waitingScreenErrorProvider);
 
@@ -118,6 +133,10 @@ class WaitingScreen extends ConsumerWidget {
         if (taskType == 'start_end_frame') {
           ref
               .read(startEndFrameGenerationNotifierProvider(prompt).notifier)
+              .retry();
+        } else if (taskType == 'template_video') {
+          ref
+              .read(videoTemplateGenerationNotifierProvider(prompt).notifier)
               .retry();
         } else {
           ref.read(videoGenerationNotifierProvider(prompt).notifier).retry();
@@ -131,6 +150,12 @@ class WaitingScreen extends ConsumerWidget {
               ref
                   .read(
                     startEndFrameGenerationNotifierProvider(prompt).notifier,
+                  )
+                  .retry();
+            } else if (taskType == 'template_video') {
+              ref
+                  .read(
+                    videoTemplateGenerationNotifierProvider(prompt).notifier,
                   )
                   .retry();
             } else {

@@ -3,14 +3,14 @@ class AppConstants {
   AppConstants._();
 
   // API URL
-  static const String apiBaseUrl = 'http://192.168.21.214:8080/api/v1';
+  static const String apiBaseUrl = 'http://192.168.62.214:8080/api/v1';
 
   // WebSocket URL
-  static const String webSocketBaseUrl = 'ws://192.168.21.214:8080';
+  static const String webSocketBaseUrl = 'ws://192.168.62.214:8080';
   static const String webSocketPath = '/ws/generation';
 
   //生图、生视频websocket
-  static const String webSocketGeneratePath = 'ws://192.168.21.214:8080/ws/generation';
+  static const String webSocketGeneratePath = 'ws://192.168.62.214:8080/ws/generation';
 
   //http请求超时
   static const Duration timeout = Duration(seconds: 30);

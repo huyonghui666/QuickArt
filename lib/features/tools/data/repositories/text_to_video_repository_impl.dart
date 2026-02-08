@@ -28,4 +28,18 @@ class TextToVideoRepositoryImpl implements TextToVideoRepository {
     );
     return model.toEntity();
   }
+
+  @override
+  Future<VideoGenerationTask> generateVideoFromImage(
+    String prompt,
+    String imagePath, {
+    String aspectRatio = '16:9',
+  }) async {
+    final model = await _remoteDataSource.submitTaskFromImage(
+      prompt,
+      imagePath,
+      aspectRatio: aspectRatio,
+    );
+    return model.toEntity();
+  }
 }

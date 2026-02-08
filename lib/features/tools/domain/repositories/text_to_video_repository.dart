@@ -9,4 +9,10 @@ abstract class TextToVideoRepository {
     String lastFramePath, {
     String aspectRatio = '16:9',
   });
+
+  Future<VideoGenerationTask> generateVideoFromImage(
+    String prompt,
+    String imagePath, {
+    String aspectRatio = '16:9',
+  });
 }

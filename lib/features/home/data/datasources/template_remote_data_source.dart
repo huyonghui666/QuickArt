@@ -3,6 +3,7 @@ import 'package:quick_art/core/error/exception.dart';
 import 'package:quick_art/features/home/data/models/image_template_page_model.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+///图片模板包数据
 abstract class ITemplateRemoteDataSource {
   Future<ImageTemplatePageModel> getTemplates({
     String? category,

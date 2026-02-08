@@ -141,7 +141,7 @@ class VideoPlayerControllerProvider
 // ignore: unused_element
 mixin VideoPlayerControllerRef
     on AutoDisposeFutureProviderRef<VideoPlayerController> {
-  /// The parameter `videoPath` of this .
+  /// The parameter `videoPath` of this provider.
   String get videoPath;
 }
 

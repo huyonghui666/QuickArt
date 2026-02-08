@@ -141,7 +141,7 @@ class PromptProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin PromptRef on AutoDisposeNotifierProviderRef<PromptState> {
-  /// The parameter `id` of this .
+  /// The parameter `id` of this provider.
   String get id;
 }
 

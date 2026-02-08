@@ -5,8 +5,7 @@ import 'package:quick_art/core/error/exception.dart';
 import 'package:quick_art/features/tools/data/models/video_generation_task_model.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-//TODO 修改文件名为生成视频任务远程数据源
-abstract class ITextToVideoRemoteDataSource {
+abstract class IGenerateVideoRemoteDataSource {
   Future<VideoGenerationTaskModel> submitTask(String prompt);
 
   Future<VideoGenerationTaskModel> submitTaskFromFrames(
@@ -23,10 +22,11 @@ abstract class ITextToVideoRemoteDataSource {
   });
 }
 
-class TextToVideoRemoteDataSource implements ITextToVideoRemoteDataSource {
+
+class GenerateVideoRemoteDataSource implements IGenerateVideoRemoteDataSource {
   final Dio _dio;
 
-  TextToVideoRemoteDataSource(this._dio);
+  GenerateVideoRemoteDataSource(this._dio);
 
   @override
   Future<VideoGenerationTaskModel> submitTask(String prompt) async {
@@ -64,6 +64,7 @@ class TextToVideoRemoteDataSource implements ITextToVideoRemoteDataSource {
     }
   }
 
+  ///图生视频-基于首尾帧
   @override
   Future<VideoGenerationTaskModel> submitTaskFromFrames(
     String prompt,
@@ -122,6 +123,7 @@ class TextToVideoRemoteDataSource implements ITextToVideoRemoteDataSource {
     }
   }
 
+  ///图生视频-基于首帧
   @override
   Future<VideoGenerationTaskModel> submitTaskFromImage(
     String prompt,

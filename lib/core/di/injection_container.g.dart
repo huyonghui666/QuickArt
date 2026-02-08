@@ -6,7 +6,7 @@ part of 'injection_container.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dioHash() => r'a03da399b44b3740dc4fcfc6716203041d66ff01';
+String _$dioHash() => r'12c3f9ea7b0a2c11d6239a75a4352a954eb063f4';
 
 /// See also [dio].
 @ProviderFor(dio)
@@ -84,12 +84,12 @@ final textToGenerateImageUseCaseProvider =
 typedef TextToGenerateImageUseCaseRef =
     AutoDisposeProviderRef<TextToGenerateImageUseCase>;
 String _$textToVideoRemoteDataSourceHash() =>
-    r'063c21bc56c765ab30cb6ca3a374a7fb165709ca';
+    r'5d6430e3a4f341644ca1d8e48df4ed64ee6a70c4';
 
 /// See also [textToVideoRemoteDataSource].
 @ProviderFor(textToVideoRemoteDataSource)
 final textToVideoRemoteDataSourceProvider =
-    AutoDisposeProvider<ITextToVideoRemoteDataSource>.internal(
+    AutoDisposeProvider<IGenerateVideoRemoteDataSource>.internal(
       textToVideoRemoteDataSource,
       name: r'textToVideoRemoteDataSourceProvider',
       debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -102,9 +102,9 @@ final textToVideoRemoteDataSourceProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef TextToVideoRemoteDataSourceRef =
-    AutoDisposeProviderRef<ITextToVideoRemoteDataSource>;
+    AutoDisposeProviderRef<IGenerateVideoRemoteDataSource>;
 String _$textToVideoRepositoryHash() =>
-    r'2c8d71b2b3f02b4c8fc1bbaab9630bebf2af4500';
+    r'6f2344fa516b3a4da8aaab8bcf6f18c283673f54';
 
 /// See also [textToVideoRepository].
 @ProviderFor(textToVideoRepository)

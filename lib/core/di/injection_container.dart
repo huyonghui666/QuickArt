@@ -7,7 +7,7 @@ import 'package:quick_art/features/home/data/repositories/text_to_image_reposito
 import 'package:quick_art/features/home/domain/repositories/template_repository.dart';
 import 'package:quick_art/features/home/domain/repositories/text_to_image_repository.dart';
 import 'package:quick_art/features/home/domain/usecases/text_to_generate_image_usecase.dart';
-import 'package:quick_art/features/tools/data/datasources/text_to_video_remote_data_source.dart';
+import 'package:quick_art/features/tools/data/datasources/generate_video_remote_data_source.dart';
 import 'package:quick_art/features/tools/data/repositories/text_to_video_repository_impl.dart';
 import 'package:quick_art/features/tools/domain/repositories/text_to_video_repository.dart';
 import 'package:quick_art/features/tools/domain/usecases/generate_video_from_image_usecase.dart';
@@ -70,15 +70,15 @@ TextToGenerateImageUseCase textToGenerateImageUseCase(Ref ref) {
 
 //-----------------------------------文生视频-------------------------------------------------
 @riverpod
-ITextToVideoRemoteDataSource textToVideoRemoteDataSource(Ref ref) {
+IGenerateVideoRemoteDataSource textToVideoRemoteDataSource(Ref ref) {
   final dio = ref.watch(dioProvider);
-  return TextToVideoRemoteDataSource(dio);
+  return GenerateVideoRemoteDataSource(dio);
 }
 
 @riverpod
 TextToVideoRepository textToVideoRepository(Ref ref) {
   final remoteDataSource = ref.watch(textToVideoRemoteDataSourceProvider);
-  return TextToVideoRepositoryImpl(remoteDataSource);
+  return GenerateVideoRepositoryImpl(remoteDataSource);
 }
 
 @riverpod

@@ -148,7 +148,7 @@ class TemplatesProvider
 // ignore: unused_element
 mixin TemplatesRef
     on AutoDisposeNotifierProviderRef<AsyncValue<ImageTemplatePage>> {
-  /// The parameter `category` of this .
+  /// The parameter `category` of this provider.
   String? get category;
 }
 

@@ -1,11 +1,11 @@
-import 'package:quick_art/features/tools/data/datasources/text_to_video_remote_data_source.dart';
+import 'package:quick_art/features/tools/data/datasources/generate_video_remote_data_source.dart';
 import 'package:quick_art/features/tools/domain/entities/video_generation_task.dart';
 import 'package:quick_art/features/tools/domain/repositories/text_to_video_repository.dart';
 
-class TextToVideoRepositoryImpl implements TextToVideoRepository {
-  final ITextToVideoRemoteDataSource _remoteDataSource;
+class GenerateVideoRepositoryImpl implements TextToVideoRepository {
+  final IGenerateVideoRemoteDataSource _remoteDataSource;
 
-  TextToVideoRepositoryImpl(this._remoteDataSource);
+  GenerateVideoRepositoryImpl(this._remoteDataSource);
 
   @override
   Future<VideoGenerationTask> generateVideo(String prompt) async {

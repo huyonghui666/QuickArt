@@ -158,7 +158,7 @@ class ImageGenerationNotifierProvider
 // ignore: unused_element
 mixin ImageGenerationNotifierRef
     on AutoDisposeNotifierProviderRef<AsyncValue<ImageGenerationTask>> {
-  /// The parameter `prompt` of this .
+  /// The parameter `prompt` of this provider.
   String get prompt;
 }
 

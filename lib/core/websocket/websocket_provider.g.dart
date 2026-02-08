@@ -6,7 +6,7 @@ part of 'websocket_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$webSocketNotifierHash() => r'7e67e3a59f26a5b8b52414f7fcc222c7fd1dd6f7';
+String _$webSocketNotifierHash() => r'82a439a5044c52d043b350468c306c9b5e9c1b19';
 
 /// WebSocket 连接管理
 /// 负责维护连接、心跳、重连以及分发消息

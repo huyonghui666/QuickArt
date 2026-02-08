@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/core/providers/generation_event_provider.dart';
-import 'package:quick_art/core/providers/show_bottom_sheet_notifier.dart';
+import 'package:quick_art/core/di/generation_event_provider.dart';
+import 'package:quick_art/core/di/show_bottom_sheet_notifier.dart';
 import 'package:quick_art/core/widgets/loading_animation.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/models/generation_result_model.dart';

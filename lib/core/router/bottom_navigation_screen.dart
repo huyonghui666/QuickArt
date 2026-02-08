@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/core/providers/show_bottom_sheet_notifier.dart';
+import 'package:quick_art/core/di/show_bottom_sheet_notifier.dart';
 import 'package:quick_art/core/router/bottom_navigation.dart';
 import 'package:quick_art/core/widgets/generated_image_bottom_sheet.dart';
 import 'package:quick_art/core/widgets/generated_video_bottom_sheet.dart';
@@ -16,7 +16,8 @@ class BottomNavigationScreen extends ConsumerStatefulWidget {
       _BottomNavigationScreenState();
 }
 
-class _BottomNavigationScreenState extends ConsumerState<BottomNavigationScreen> {
+class _BottomNavigationScreenState
+    extends ConsumerState<BottomNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     ref.listen(showBottomSheetNotifierProvider, (previous, next) {

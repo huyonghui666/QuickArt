@@ -85,21 +85,4 @@ Future<void> setupErrorHandling() async {
       ),
     );
   };
-
-  // 4. 全局上下文（可选，但企业级必加）
-  // Sentry.configureScope((scope) async {
-  //   // 动态加用户/设备信息
-  //   scope.setUser(SentryUser(
-  //     id: 'user_id_here',  // 从你的 auth  取
-  //     email: 'user@example.com',
-  //     ipAddress: '{{auto}}',  // 自动取 IP
-  //   ));
-  //
-  //   // 加面包屑示例（在页面跳转时加）
-  //   // scope.addBreadcrumb(Breadcrumb(
-  //   //   message: 'Navigated to /tools/ai-video',
-  //   //   category: 'navigation',
-  //   //   level: SentryLevel.info,
-  //   // ));
-  // });
 }

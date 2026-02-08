@@ -68,7 +68,7 @@ TextToGenerateImageUseCase textToGenerateImageUseCase(Ref ref) {
   return TextToGenerateImageUseCase(repository);
 }
 
-//-----------------------------------文生视频-------------------------------------------------
+//-----------------------------------生视频-------------------------------------------------
 @riverpod
 IGenerateVideoRemoteDataSource textToVideoRemoteDataSource(Ref ref) {
   final dio = ref.watch(dioProvider);

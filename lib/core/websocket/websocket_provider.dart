@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:quick_art/core/models/generation_result_model.dart';
 import 'package:quick_art/core/providers/generation_event_provider.dart';
 import 'package:quick_art/features/workshop/data/datasources/local_data_source/database_helper.dart';
+import 'package:quick_art/core/config/config_provider.dart';
 import 'package:quick_art/core/models/generate_task_type.dart';
-import 'package:quick_art/core/utils/constants/app_constants.dart';
 import 'package:quick_art/features/workshop/domain/entities/workshop_task.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -35,8 +35,9 @@ class WebSocketNotifier extends _$WebSocketNotifier {
     if (state != null) return; // 已连接
 
     try {
-      // 拼接完整的 WebSocket URL
-      final wsUri = Uri.parse(AppConstants.webSocketGeneratePath);
+      // 获取 WebSocket URL
+      final wsUrl = ref.read(appConfigProvider).webSocketUrl;
+      final wsUri = Uri.parse(wsUrl);
       _logger.i('Connecting to WebSocket: $wsUri');
 
       final channel = WebSocketChannel.connect(wsUri);

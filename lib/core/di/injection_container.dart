@@ -23,13 +23,30 @@ import 'package:quick_art/features/tools/data/repositories/video_template_reposi
 import 'package:quick_art/features/tools/domain/repositories/video_template_repository.dart';
 import 'package:quick_art/features/tools/domain/usecases/get_video_templates_usecase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:quick_art/core/config/config_provider.dart';
 
 part 'injection_container.g.dart';
+
 
 //------------------------dio-----------------------------------------
 @riverpod
 Dio dio(Ref ref) {
-  return Dio();
+  final baseUrl = ref.watch(apiBaseUrlProvider);
+  final config = ref.watch(appConfigProvider);
+  
+  final options = BaseOptions(
+    baseUrl: baseUrl,
+    connectTimeout: config.connectionTimeout,
+    receiveTimeout: config.connectionTimeout,
+  );
+  
+  final dio = Dio(options);
+  
+  if (config.logNetworkRequests) {
+    dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
+  }
+  
+  return dio;
 }
 
 //----------------------------文生图-------------------------------------

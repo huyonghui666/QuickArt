@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:quick_art/core/error/exception.dart';
-import 'package:quick_art/core/utils/constants/app_constants.dart';
 import 'package:quick_art/features/tools/data/models/video_generation_task_model.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -32,13 +31,11 @@ class TextToVideoRemoteDataSource implements ITextToVideoRemoteDataSource {
   @override
   Future<VideoGenerationTaskModel> submitTask(String prompt) async {
     try {
-      final response = await _dio
-          .post(
-            // '${AppConstants.apiBaseUrl}/videos/generate',
-            '${AppConstants.apiBaseUrl}/videos/mock-generate',
-            data: {'prompt': prompt},
-          )
-          .timeout(AppConstants.timeout);
+      final response = await _dio.post(
+        // '/videos/generate',
+        '/videos/mock-generate',
+        data: {'prompt': prompt},
+      );
       if (response.statusCode != 200) {
         throw NetworkException('Submit failed: ${response.data}');
       }
@@ -84,11 +81,10 @@ class TextToVideoRemoteDataSource implements ITextToVideoRemoteDataSource {
 
       final response = await _dio
           .post(
-            '${AppConstants.apiBaseUrl}/videos/mock-generate-from-frames',
+            '/videos/mock-generate-from-frames',
             // '${AppConstants.apiBaseUrl}/videos/generate-from-frames',
             data: formData,
-          )
-          .timeout(AppConstants.timeout);
+          );
 
       if (response.statusCode != 200) {
         throw NetworkException('Submit failed: ${response.data}');
@@ -142,10 +138,9 @@ class TextToVideoRemoteDataSource implements ITextToVideoRemoteDataSource {
       final response = await _dio
           .post(
             // '${AppConstants.apiBaseUrl}/videos/generate-from-image',
-            '${AppConstants.apiBaseUrl}/videos/mock-generate-from-image',
+            '/videos/mock-generate-from-image',
             data: formData,
-          )
-          .timeout(AppConstants.timeout);
+          );
 
       if (response.statusCode != 200) {
         throw NetworkException('Submit failed: ${response.data}');

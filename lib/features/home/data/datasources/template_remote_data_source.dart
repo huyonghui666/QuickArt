@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:quick_art/core/error/exception.dart';
-import 'package:quick_art/core/utils/constants/app_constants.dart';
 import 'package:quick_art/features/home/data/models/image_template_page_model.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -30,12 +29,11 @@ class TemplateRemoteDataSource implements ITemplateRemoteDataSource {
         if (category != null) 'category': category,
       };
 
-      final response = await _dio
-          .get(
-            '${AppConstants.apiBaseUrl}/templates',
-            queryParameters: queryParameters,
-          )
-          .timeout(AppConstants.timeout);
+      final response = await _dio.get(
+        '/templates',
+        queryParameters: queryParameters,
+      );
+      // .timeout(AppConstants.timeout);
 
       if (response.statusCode != 200) {
         throw NetworkException('Get templates failed: ${response.data}');

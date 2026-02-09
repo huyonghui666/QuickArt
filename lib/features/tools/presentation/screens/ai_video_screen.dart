@@ -5,7 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/ai_video_tab_bar_provider.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_action_card.dart';
+import 'package:quick_art/features/tools/presentation/widgets/ai_video_header_player.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_template_grid.dart';
+import 'package:quick_art/features/tools/presentation/notifiers/video_template_notifier.dart';
 
 class AiVideoScreen extends ConsumerStatefulWidget {
   const AiVideoScreen({super.key});
@@ -20,6 +22,7 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
   late final ScrollController _scrollController;
   //标题透明度
   double _titleOpacity = 0.0;
+  String _currentTabKey = '';
 
   //AI 视频 (大标题)和[文生视频]的组件高度
   static const double _contentBlockHeight =
@@ -29,17 +32,39 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
   void initState() {
     super.initState();
     final tabs = ref.read(aiVideoTabsProvider);
+    if (tabs.isNotEmpty) {
+      _currentTabKey = tabs.first;
+    }
     _tabController = TabController(length: tabs.length, vsync: this);
+    _tabController.addListener(_onTabChanged);
     _scrollController = ScrollController();
     _scrollController.addListener(_onScroll);
   }
 
   @override
   void dispose() {
+    _tabController.removeListener(_onTabChanged);
     _tabController.dispose();
     _scrollController.removeListener(_onScroll);
     _scrollController.dispose();
     super.dispose();
+  }
+
+  void _onTabChanged() {
+    if (_tabController.indexIsChanging) {
+      // Wait for animation to finish or update immediately?
+      // Usually better to update when index changes to feel responsive
+    }
+    // Update current tab key based on index
+    final tabs = ref.read(aiVideoTabsProvider);
+    if (_tabController.index < tabs.length) {
+      final newKey = tabs[_tabController.index];
+      if (newKey != _currentTabKey) {
+        setState(() {
+          _currentTabKey = newKey;
+        });
+      }
+    }
   }
 
   void _onScroll() {
@@ -69,6 +94,10 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
   Widget build(BuildContext context) {
     final tabs = ref.watch(aiVideoTabsProvider);
     final l10n = AppLocalizations.of(context)!;
+    // 获取当前 Tab 对应的视频模板数据，用于头部展示
+    final headerTemplatesAsync = ref.watch(
+      videoTemplatesProvider(category: _currentTabKey),
+    );
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -92,10 +121,33 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                 background: Stack(
                   fit: StackFit.expand,
                   children: [
-                    Image.network(
-                      'https://picsum.photos/seed/ai_video_bg/800/1200',
-                      fit: BoxFit.cover,
-                      alignment: Alignment.topCenter,
+                    //TODO 这是兜底图片应该使用覆盖图
+                    // 头部背景视频/图片展示
+                    headerTemplatesAsync.when(
+                      data: (page) {
+                        // 如果有数据，展示列表中的第一个视频作为头部背景
+                        if (page.items.isNotEmpty) {
+                          return AiVideoHeaderPlayer(
+                            videoUrl: page.items.first.videoUrl,
+                          );
+                        }
+                        // 兜底图片
+                        return Image.network(
+                          'https://picsum.photos/seed/ai_video_bg/800/1200',
+                          fit: BoxFit.cover,
+                          alignment: Alignment.topCenter,
+                        );
+                      },
+                      loading: () => Image.network(
+                        'https://picsum.photos/seed/ai_video_bg/800/1200',
+                        fit: BoxFit.cover,
+                        alignment: Alignment.topCenter,
+                      ),
+                      error: (_, __) => Image.network(
+                        'https://picsum.photos/seed/ai_video_bg/800/1200',
+                        fit: BoxFit.cover,
+                        alignment: Alignment.topCenter,
+                      ),
                     ),
                     Container(
                       decoration: BoxDecoration(
@@ -107,8 +159,55 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                             Colors.black.withValues(alpha: 0.6),
                             Colors.black,
                           ],
-                          stops: const [0.0, 0.4, 0.7],
+                          stops: const [0.0, 0.4, 1.0],
                         ),
+                      ),
+                    ),
+                    // 内容区域：标题 + 功能卡片
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top:
+                            MediaQuery.of(context).padding.top + kToolbarHeight,
+                        left: 16,
+                        right: 16,
+                        bottom: 16,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            l10n.tools_ai_video,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              AiVideoActionCard(
+                                icon: Icons.text_fields,
+                                title: l10n.tools_text_to_video,
+                                onTap: () => context.push(
+                                  '/tools/ai-video/text-to-video',
+                                ),
+                              ),
+                              AiVideoActionCard(
+                                icon: Icons.movie_filter_outlined,
+                                title: l10n.tools_start_end_frame,
+                                onTap: () => context.push(
+                                  '/tools/ai-video/start-end-frame',
+                                ),
+                              ),
+                              AiVideoActionCard(
+                                icon: Icons.collections_bookmark_outlined,
+                                title: l10n.tools_multi_subject,
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -122,54 +221,15 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                   ),
                 ),
               ),
-              expandedHeight: 250,
-            ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      l10n.tools_ai_video,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        AiVideoActionCard(
-                          icon: Icons.text_fields,
-                          title: l10n.tools_text_to_video,
-                          onTap: () =>
-                              context.push('/tools/ai-video/text-to-video'),
-                        ),
-                        AiVideoActionCard(
-                          icon: Icons.movie_filter_outlined,
-                          title: l10n.tools_start_end_frame,
-                          onTap: () =>
-                              context.push('/tools/ai-video/start-end-frame'),
-                        ),
-                        AiVideoActionCard(
-                          icon: Icons.collections_bookmark_outlined,
-                          title: l10n.tools_multi_subject,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
-                  ],
-                ),
-              ),
+              expandedHeight: 380,
             ),
             SliverPersistentHeader(
               delegate: _SliverTabBarDelegate(
                 TabBar(
                   controller: _tabController,
                   isScrollable: true,
+                  tabAlignment: TabAlignment.start,
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   indicatorColor: Colors.white,
                   labelColor: Colors.white,
                   unselectedLabelColor: Colors.grey[400],
@@ -185,7 +245,7 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
         body: TabBarView(
           controller: _tabController,
           children: tabs.map((String key) {
-            return const VideoTemplateGrid();
+            return VideoTemplateGrid(category: key);
           }).toList(),
         ),
       ),

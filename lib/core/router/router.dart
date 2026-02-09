@@ -10,7 +10,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/',
-  observers: [SentryNavigatorObserver()],
+  observers: [SentryNavigatorObserver()],  //sentry监听路由
   routes: [
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {

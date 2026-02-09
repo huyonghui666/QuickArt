@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:quick_art/core/error/exception.dart';
-import 'package:quick_art/core/utils/constants/app_constants.dart';
 import 'package:quick_art/features/home/data/models/image_generation_task_model.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -18,16 +17,11 @@ class TextToImageRemoteDataSource implements ITextToImageRemoteDataSource {
   @override
   Future<ImageGenerationTaskModel> submitTask(String prompt) async {
     try {
-      final response = await _dio
-          .post(
-            '${AppConstants.apiBaseUrl}/images/mock-generate',
-            data: {'prompt': prompt},
-          )
-          // .post(
-          //   '${AppConstants.apiBaseUrl}/images/generate',
-          //   data: {'prompt': prompt},
-          // )
-          .timeout(AppConstants.timeout);
+      final response = await _dio.post(
+        // '/images/generate',
+        '/images/mock-generate',
+        data: {'prompt': prompt},
+      );
 
       if (response.statusCode != 200) {
         throw NetworkException('Submit failed: ${response.data}');

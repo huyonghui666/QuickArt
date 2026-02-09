@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/permission/permission_manager.dart';
-import 'package:quick_art/core/provider/prompt_provider.dart';
+import 'package:quick_art/core/di/prompt_provider.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/core/widgets/prompt_text_field.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/start_end_frame_provider.dart';

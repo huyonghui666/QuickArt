@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
-import 'package:quick_art/core/provider/prompt_provider.dart';
+import 'package:quick_art/core/di/prompt_provider.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/core/widgets/prompt_text_field.dart';
 import 'package:quick_art/features/home/presentation/notifiers/art_style_notifier.dart';
@@ -75,10 +75,16 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
                     if (notification is ScrollEndNotification &&
                         notification.metrics.extentAfter < 500) {
                       ///由于InspirationCategoryType的newest不能更改为new，所以这么获取后端category为new的数据
-                      final backendCategory = category == InspirationCategoryType.newest
+                      final backendCategory =
+                          category == InspirationCategoryType.newest
                           ? 'new'
                           : category.name;
-                      ref.read(templatesProvider(category: backendCategory,).notifier,)
+                      ref
+                          .read(
+                            templatesProvider(
+                              category: backendCategory,
+                            ).notifier,
+                          )
                           .loadMore();
                     }
                     return false;

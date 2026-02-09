@@ -39,7 +39,7 @@ Future<void> setupErrorHandling() async {
           return Scaffold(
             appBar: AppBar(title: const Text('出错了')),
             body: Center(
-              child: Padding(
+              child: SingleChildScrollView(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -56,9 +56,7 @@ Future<void> setupErrorHandling() async {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      details.exceptionAsString().length > 200
-                          ? '${details.exceptionAsString().substring(0, 200)}...'
-                          : details.exceptionAsString(),
+                      details.exceptionAsString(),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 32),
@@ -67,9 +65,6 @@ Future<void> setupErrorHandling() async {
                         // 尝试返回或重载
                         if (Navigator.canPop(context)) {
                           Navigator.pop(context);
-                        } else {
-                          // 或重载 App
-                          // Navigator.pushReplacementNamed(context, '/');
                         }
                       },
                       child: const Text('返回上一页'),
@@ -79,7 +74,7 @@ Future<void> setupErrorHandling() async {
                       onPressed: () {
                         //TODO 可加反馈按钮，跳转客服或邮件
                       },
-                      child: const Text('反馈问题'),
+                      child: const Text('可以艾特我们官方社媒 @quickartai'),
                     ),
                   ],
                 ),
@@ -90,21 +85,4 @@ Future<void> setupErrorHandling() async {
       ),
     );
   };
-
-  // 4. 全局上下文（可选，但企业级必加）
-  // Sentry.configureScope((scope) async {
-  //   // 动态加用户/设备信息
-  //   scope.setUser(SentryUser(
-  //     id: 'user_id_here',  // 从你的 auth provider 取
-  //     email: 'user@example.com',
-  //     ipAddress: '{{auto}}',  // 自动取 IP
-  //   ));
-  //
-  //   // 加面包屑示例（在页面跳转时加）
-  //   // scope.addBreadcrumb(Breadcrumb(
-  //   //   message: 'Navigated to /tools/ai-video',
-  //   //   category: 'navigation',
-  //   //   level: SentryLevel.info,
-  //   // ));
-  // });
 }

@@ -6,7 +6,7 @@ import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 // 创建可复用的视频卡片 Widget
-class VideoCard extends ConsumerWidget {
+class VideoCard extends ConsumerStatefulWidget {
   final String videoPath;
   final String title;
   final VoidCallback? onTap;
@@ -19,27 +19,40 @@ class VideoCard extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<VideoCard> createState() => _VideoCardState();
+}
+
+class _VideoCardState extends ConsumerState<VideoCard> {
+  @override
+  Widget build(BuildContext context) {
     // 实时获取当前路径 (GoRouter 监听机制)
     // GoRouterState.of(context) 会在路由变化时重建 widget
-    final currentLocation = GoRouterState.of(context).uri.toString();
+    String currentLocation = '';
+    try {
+      currentLocation = GoRouterState.of(context).uri.toString();
+    } catch (e) {
+      // 兼容在非 GoRouter 上下文中使用（如 BottomSheet）
+      currentLocation = '';
+    }
 
     return GestureDetector(
-      onTap: onTap,
+      onTap: widget.onTap,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16.0),
         child: Stack(
           fit: StackFit.expand,
           children: [
             VisibilityDetector(
-              key: ValueKey(videoPath),
+              key: ValueKey(widget.videoPath),
               onVisibilityChanged: (VisibilityInfo info) {
+                if (!mounted) return; // 防止组件销毁后调用 ref
+
                 final isVisible = info.visibleFraction > 0.5;
                 // 只在 Tools 根页面（'/tools'）播放视频
                 final isToolsRoot = currentLocation == '/tools';
 
                 final controller = ref
-                    .read(videoPlayerControllerProvider(videoPath))
+                    .read(videoPlayerControllerProvider(widget.videoPath))
                     .valueOrNull;
 
                 if (controller != null) {
@@ -54,7 +67,7 @@ class VideoCard extends ConsumerWidget {
                 builder: (context, ref, child) {
                   // 监听异步 Provider 状态
                   final asyncController = ref.watch(
-                    videoPlayerControllerProvider(videoPath),
+                    videoPlayerControllerProvider(widget.videoPath),
                   );
 
                   return asyncController.when(
@@ -91,12 +104,12 @@ class VideoCard extends ConsumerWidget {
               ),
             ),
 
-            if (title.isNotEmpty)
+            if (widget.title.isNotEmpty)
               Positioned(
                 left: 16,
                 bottom: 16,
                 child: Text(
-                  title,
+                  widget.title,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 24,

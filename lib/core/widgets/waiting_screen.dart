@@ -12,7 +12,7 @@ import 'package:quick_art/features/home/presentation/notifiers/image_generation_
 import 'package:quick_art/features/tools/domain/entities/video_generation_task.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/start_end_frame_generation_provider.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/video_generation_provider.dart';
-import 'package:quick_art/features/tools/presentation/notifiers/video_template_generation_provider.dart';
+import 'package:quick_art/features/tools/presentation/notifilers/video_template_generation_provider.dart';
 
 final _waitingScreenErrorProvider = StateProvider.autoDispose<String?>(
   (ref) => null,

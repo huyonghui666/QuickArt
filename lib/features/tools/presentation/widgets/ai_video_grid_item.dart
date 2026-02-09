@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/tools/domain/entities/video_template.dart';
-import 'package:quick_art/features/tools/presentation/notifiers/video_player_controller_provider.dart';
+import 'package:quick_art/features/tools/presentation/notifilers/video_player_controller_provider.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 

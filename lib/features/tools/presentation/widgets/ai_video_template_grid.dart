@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quick_art/features/tools/presentation/notifiers/video_template_notifier.dart';
+import 'package:quick_art/features/tools/presentation/notifilers/video_template_notifier.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_grid_item.dart';
 
 class VideoTemplateGrid extends ConsumerStatefulWidget {

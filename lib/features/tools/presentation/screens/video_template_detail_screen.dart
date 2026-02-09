@@ -10,7 +10,7 @@ import 'package:quick_art/core/theme/app_icons.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/features/tools/domain/entities/video_template.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
-import 'package:quick_art/features/tools/presentation/notifiers/video_template_generation_provider.dart';
+import 'package:quick_art/features/tools/presentation/notifilers/video_template_generation_provider.dart';
 
 /// 视频模板详情页
 class VideoTemplateDetailScreen extends ConsumerStatefulWidget {

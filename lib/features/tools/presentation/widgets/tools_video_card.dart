@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/features/tools/presentation/notifilers/video_player_controller_provider.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
+import 'package:quick_art/features/tools/presentation/notifilers/video_player_controller_provider.dart';
 
 // 创建可复用的视频卡片 Widget
 class VideoCard extends ConsumerStatefulWidget {
@@ -52,7 +52,9 @@ class _VideoCardState extends ConsumerState<VideoCard> {
                 final isToolsRoot = currentLocation == '/tools';
 
                 final controller = ref
-                    .read(videoPlayerControllerProvider(widget.videoPath))
+                    .read(
+                      videoControllerProvider(VideoParams(widget.videoPath, 0)),
+                    )
                     .valueOrNull;
 
                 if (controller != null) {
@@ -67,7 +69,7 @@ class _VideoCardState extends ConsumerState<VideoCard> {
                 builder: (context, ref, child) {
                   // 监听异步 Provider 状态
                   final asyncController = ref.watch(
-                    videoPlayerControllerProvider(widget.videoPath),
+                    videoControllerProvider(VideoParams(widget.videoPath, 0)),
                   );
 
                   return asyncController.when(

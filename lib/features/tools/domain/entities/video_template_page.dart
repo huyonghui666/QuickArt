@@ -16,7 +16,7 @@ class VideoTemplatePage with _$VideoTemplatePage {
     /// 总页数
     required int totalPages,
 
-    /// 是否有更多数据
+    /// 是否有下一页数据
     required bool hasMore,
   }) = _VideoTemplatePage;
 }

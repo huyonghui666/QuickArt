@@ -29,4 +29,7 @@ abstract class AppConfig {
 
   /// 网络连接超时时间
   Duration get connectionTimeout;
+
+  /// 应用版本号
+  String get version;
 }

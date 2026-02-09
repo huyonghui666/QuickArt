@@ -99,6 +99,7 @@ class TemplateDetailShowModalBottomSheet extends ConsumerWidget {
                             template.description?['en'] ??
                             template.description?.values.first ??
                             '';
+                        //使用模板提示词更新提示词文本域文本
                         ref.read(promptProvider('textToImage').notifier)
                             .updateText(prompt);
                         context.pop();

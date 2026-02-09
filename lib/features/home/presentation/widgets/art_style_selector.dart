@@ -5,12 +5,11 @@ import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/home/presentation/notifiers/art_style_notifier.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
 
-class ArtStyleSelector extends ConsumerWidget {
+class ArtStyleSelector extends StatelessWidget {
   const ArtStyleSelector({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final selectedStyle = ref.watch(artStyleNotifierProvider);
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
 
@@ -27,37 +26,44 @@ class ArtStyleSelector extends ConsumerWidget {
         const SizedBox(height: 12),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: ArtStyle.values.map((style) {
-              final isSelected = selectedStyle == style;
-              return Padding(
-                padding: const EdgeInsets.only(right: 12),
-                child: GestureDetector(
-                  onTap: () {
-                    ref.read(artStyleNotifierProvider.notifier).setStyle(style);
-                  },
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      _StyleCard(style: style, selected: isSelected),
-                      const SizedBox(height: 6),
-                      Text(
-                        style.getLabel(l10n),
-                        style: TextStyle(
-                          color: isSelected
-                              ? theme.colorScheme.primary
-                              : const Color(0xFFCECECE),
-                          fontSize: 12,
-                          fontWeight: isSelected
-                              ? FontWeight.w600
-                              : FontWeight.w500,
-                        ),
+          child: Consumer(
+            builder: (context, ref, _) {
+              final selectedStyle = ref.watch(artStyleNotifierProvider);
+              return Row(
+                children: ArtStyle.values.map((style) {
+                  final isSelected = selectedStyle == style;
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 12),
+                    child: GestureDetector(
+                      onTap: () {
+                        ref
+                            .read(artStyleNotifierProvider.notifier)
+                            .setStyle(style);
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          _StyleCard(style: style, selected: isSelected),
+                          const SizedBox(height: 6),
+                          Text(
+                            style.getLabel(l10n),
+                            style: TextStyle(
+                              color: isSelected
+                                  ? theme.colorScheme.primary
+                                  : const Color(0xFFCECECE),
+                              fontSize: 12,
+                              fontWeight: isSelected
+                                  ? FontWeight.w600
+                                  : FontWeight.w500,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
+                    ),
+                  );
+                }).toList(),
               );
-            }).toList(),
+            },
           ),
         ),
       ],

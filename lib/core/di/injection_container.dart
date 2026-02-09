@@ -23,7 +23,7 @@ import 'package:quick_art/features/tools/data/repositories/video_template_reposi
 import 'package:quick_art/features/tools/domain/repositories/video_template_repository.dart';
 import 'package:quick_art/features/tools/domain/usecases/get_video_templates_usecase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:quick_art/core/di/config_provider.dart';
+import 'package:quick_art/core/di/config/config_provider.dart';
 
 part 'injection_container.g.dart';
 

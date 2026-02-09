@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:quick_art/core/models/generation_result_model.dart';
 import 'package:quick_art/core/di/generation_event_provider.dart';
 import 'package:quick_art/features/workshop/data/datasources/local_data_source/database_helper.dart';
-import 'package:quick_art/core/di/config_provider.dart';
+import 'package:quick_art/core/di/config/config_provider.dart';
 import 'package:quick_art/core/models/generate_task_type.dart';
 import 'package:quick_art/features/workshop/domain/entities/workshop_task.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

@@ -10,12 +10,14 @@ class VideoCard extends ConsumerStatefulWidget {
   final String videoPath;
   final String title;
   final VoidCallback? onTap;
+  final bool checkRouteMatch;
 
   const VideoCard({
     super.key,
     required this.videoPath,
     this.title = '',
     this.onTap,
+    this.checkRouteMatch = true,
   });
 
   @override
@@ -35,6 +37,20 @@ class _VideoCardState extends ConsumerState<VideoCard> {
       currentLocation = '';
     }
 
+    // 监听视频控制器状态，一旦加载完成且允许自动播放，则立即播放
+    // 这对于 BottomSheet 等场景很重要，因为 VisibilityDetector 可能在数据加载前就触发了
+    ref.listen(videoControllerProvider(VideoParams(widget.videoPath, 0)), (
+      previous,
+      next,
+    ) {
+      final controller = next.valueOrNull;
+      if (controller != null &&
+          !widget.checkRouteMatch &&
+          !controller.value.isPlaying) {
+        controller.play();
+      }
+    });
+
     return GestureDetector(
       onTap: widget.onTap,
       child: ClipRRect(
@@ -51,6 +67,9 @@ class _VideoCardState extends ConsumerState<VideoCard> {
                 // 只在 Tools 根页面（'/tools'）播放视频
                 final isToolsRoot = currentLocation == '/tools';
 
+                final shouldPlay =
+                    isVisible && (!widget.checkRouteMatch || isToolsRoot);
+
                 final controller = ref
                     .read(
                       videoControllerProvider(VideoParams(widget.videoPath, 0)),
@@ -58,7 +77,7 @@ class _VideoCardState extends ConsumerState<VideoCard> {
                     .valueOrNull;
 
                 if (controller != null) {
-                  if (isVisible && isToolsRoot) {
+                  if (shouldPlay) {
                     if (!controller.value.isPlaying) controller.play();
                   } else {
                     if (controller.value.isPlaying) controller.pause();

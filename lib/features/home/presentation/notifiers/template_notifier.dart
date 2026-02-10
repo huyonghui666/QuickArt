@@ -22,18 +22,16 @@ class Templates extends _$Templates {
     return const AsyncLoading();
   }
 
+  //获取图片模板数据
   Future<ImageTemplatePage> _fetchTemplates({required int page}) async {
-    return ref
-        .read(getTemplatesUseCaseProvider)
+    return ref.read(getTemplatesUseCaseProvider)
         .call(category: category, page: page, size: _pageSize);
   }
 
+  //加载下一页数据
   Future<void> loadMore() async {
     final currentState = state.value;
-    if (state.isLoading ||
-        currentState == null ||
-        !currentState.hasMore ||
-        _isLoadingMore) {
+    if (state.isLoading || currentState == null || !currentState.hasMore || _isLoadingMore) {
       return;
     }
 
@@ -58,6 +56,7 @@ class Templates extends _$Templates {
     }
   }
 
+  //刷新（暂时没有）
   Future<void> refresh() async {
     state = const AsyncLoading();
     try {

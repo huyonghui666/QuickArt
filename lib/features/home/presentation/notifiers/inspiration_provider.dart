@@ -5,6 +5,7 @@ import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 part 'inspiration_provider.g.dart';
 
 enum InspirationCategoryType {
+  //由于使用new与关键字new冲突，所以使用newest然后转化为new即可
   newest,
   manga,
   photography,

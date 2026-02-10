@@ -22,7 +22,6 @@ abstract class IGenerateVideoRemoteDataSource {
   });
 }
 
-
 class GenerateVideoRemoteDataSource implements IGenerateVideoRemoteDataSource {
   final Dio _dio;
 
@@ -80,12 +79,11 @@ class GenerateVideoRemoteDataSource implements IGenerateVideoRemoteDataSource {
         'aspectRatio': aspectRatio,
       });
 
-      final response = await _dio
-          .post(
-            '/videos/mock-generate-from-frames',
-            // '${AppConstants.apiBaseUrl}/videos/generate-from-frames',
-            data: formData,
-          );
+      final response = await _dio.post(
+        // '/videos/mock-generate-from-frames',
+        '/videos/generate-from-frames',
+        data: formData,
+      );
 
       if (response.statusCode != 200) {
         throw NetworkException('Submit failed: ${response.data}');
@@ -137,12 +135,11 @@ class GenerateVideoRemoteDataSource implements IGenerateVideoRemoteDataSource {
         'aspectRatio': aspectRatio,
       });
 
-      final response = await _dio
-          .post(
-            // '${AppConstants.apiBaseUrl}/videos/generate-from-image',
-            '/videos/mock-generate-from-image',
-            data: formData,
-          );
+      final response = await _dio.post(
+        '/videos/generate-from-image',
+        // '/videos/mock-generate-from-image',
+        data: formData,
+      );
 
       if (response.statusCode != 200) {
         throw NetworkException('Submit failed: ${response.data}');

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
+import 'package:quick_art/core/di/config/config_provider.dart';
 
 class SettingScreen extends ConsumerWidget {
   const SettingScreen({super.key});
@@ -11,6 +12,7 @@ class SettingScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
+    final config = ref.watch(appConfigProvider);
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -70,7 +72,7 @@ class SettingScreen extends ConsumerWidget {
                   text: l10n.setting_member_center,
                 ),
                 _buildSocialMediaItem(l10n),
-                _buildVersionItem(l10n),
+                _buildVersionItem(l10n, config.version),
               ],
             ),
           ),
@@ -136,16 +138,16 @@ class SettingScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildVersionItem(AppLocalizations l10n) {
+  Widget _buildVersionItem(AppLocalizations l10n, String version) {
     return ListTile(
       leading: SvgPicture.asset(AppIcons.settingVersion, width: 24, height: 24),
       title: Text(
         l10n.setting_version,
         style: const TextStyle(color: Colors.white, fontSize: 16),
       ),
-      trailing: const Text(
-        '2.3.1.1',
-        style: TextStyle(color: Colors.grey, fontSize: 14),
+      trailing: Text(
+        version,
+        style: const TextStyle(color: Colors.grey, fontSize: 14),
       ),
     );
   }

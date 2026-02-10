@@ -7,7 +7,7 @@ import 'package:quick_art/features/tools/presentation/notifilers/ai_video_tab_ba
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_action_card.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_header_player.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_template_grid.dart';
-import 'package:quick_art/features/tools/presentation/notifiers/video_template_notifier.dart';
+import 'package:quick_art/features/tools/presentation/notifilers/video_template_notifier.dart';
 
 class AiVideoScreen extends ConsumerStatefulWidget {
   const AiVideoScreen({super.key});

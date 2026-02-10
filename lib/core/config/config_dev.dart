@@ -29,4 +29,7 @@ class DevelopmentConfig implements AppConfig {
 
   @override
   Duration get connectionTimeout => const Duration(seconds: 30);
+
+  @override
+  String get version => '2.3.1.1';
 }

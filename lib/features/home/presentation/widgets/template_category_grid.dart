@@ -12,12 +12,10 @@ class TemplateCategoryGrid extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // If category is "newest", pass 'new' to backend
+    // 由于后端存储的是new，但是new是关键字冲突了，所以先判断是newest就转为new去作为Category
     final backendCategory = category == 'newest' ? 'new' : category;
 
-    final templatesAsync = ref.watch(
-      templatesProvider(category: backendCategory),
-    );
+    final templatesAsync = ref.watch(templatesProvider(category: backendCategory));
 
     return templatesAsync.when(
       data: (templatePage) {

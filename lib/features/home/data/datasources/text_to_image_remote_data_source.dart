@@ -18,8 +18,8 @@ class TextToImageRemoteDataSource implements ITextToImageRemoteDataSource {
   Future<ImageGenerationTaskModel> submitTask(String prompt) async {
     try {
       final response = await _dio.post(
-        // '/images/generate',
-        '/images/mock-generate',
+        '/images/generate',
+        // '/images/mock-generate',
         data: {'prompt': prompt},
       );
 

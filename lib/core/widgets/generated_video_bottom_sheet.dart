@@ -14,23 +14,33 @@ class GeneratedVideoBottomSheet extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16.0),
       child: Column(
-        mainAxisSize: MainAxisSize.max,
         children: [
-          // 视频播放区域
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: AspectRatio(
-              aspectRatio: 16 / 9, // 视频通常使用 16:9
-              child: VideoCard(videoPath: videoUrl),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  // 视频播放区域
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: AspectRatio(
+                      aspectRatio: 16 / 9, // 视频通常使用 16:9
+                      child: VideoCard(
+                        videoPath: videoUrl,
+                        checkRouteMatch: false,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 42),
+                  // 提示文本
+                  Text(
+                    l10n.tools_social_hint,
+                    style: const TextStyle(color: Colors.white70),
+                  ),
+                ],
+              ),
             ),
           ),
-          const SizedBox(height: 42),
-          // 提示文本
-          Text(
-            l10n.tools_social_hint,
-            style: const TextStyle(color: Colors.white70),
-          ),
-          const Spacer(),
+          const SizedBox(height: 16),
           // 社交分享按钮
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

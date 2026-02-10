@@ -75,17 +75,10 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
                     if (notification is ScrollEndNotification &&
                         notification.metrics.extentAfter < 500) {
                       ///由于InspirationCategoryType的newest不能更改为new，所以这么获取后端category为new的数据
-                      final backendCategory =
-                          category == InspirationCategoryType.newest
+                      final backendCategory = category == InspirationCategoryType.newest
                           ? 'new'
                           : category.name;
-                      ref
-                          .read(
-                            templatesProvider(
-                              category: backendCategory,
-                            ).notifier,
-                          )
-                          .loadMore();
+                      ref.read(templatesProvider(category: backendCategory).notifier).loadMore();
                     }
                     return false;
                   },
@@ -168,10 +161,13 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 12),
+                  //提示词文本域
                   const PromptTextField(family: 'textToImage'),
                   const SizedBox(height: 12),
+                  //可选区域，例如图生文
                   _buildOptionsSection(context),
                   const SizedBox(height: 12),
+                  //艺术风格
                   const ArtStyleSelector(),
                 ],
               ),

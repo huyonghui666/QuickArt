@@ -50,17 +50,8 @@ class _VideoTemplateGridState extends ConsumerState<VideoTemplateGrid> {
             ),
             itemCount: page.items.length + (page.hasMore ? 1 : 0),
             itemBuilder: (context, index) {
-              // 如果渲染到最后一个 item 且还有更多数据，显示加载指示器并触发加载更多
+              // 底部加载指示器
               if (index == page.items.length) {
-                Future.microtask(
-                  () => ref
-                      .read(
-                        videoTemplatesProvider(
-                          category: widget.category,
-                        ).notifier,
-                      )
-                      .loadMore(),
-                );
                 return const Center(child: CircularProgressIndicator());
               }
               final template = page.items[index];

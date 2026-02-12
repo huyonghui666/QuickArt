@@ -31,8 +31,8 @@ class GenerateVideoRemoteDataSource implements IGenerateVideoRemoteDataSource {
   Future<VideoGenerationTaskModel> submitTask(String prompt) async {
     try {
       final response = await _dio.post(
-        // '/videos/generate',
-        '/videos/mock-generate',
+        '/videos/generate',
+        // '/videos/mock-generate',
         data: {'prompt': prompt},
       );
       if (response.statusCode != 200) {

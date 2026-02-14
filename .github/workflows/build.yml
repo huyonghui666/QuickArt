@@ -2,7 +2,7 @@ name: Flutter Build & Release
 
 on:
   push:
-    branches: [ master, release/* ]  # main 或 release 分支触发生产构建
+    branches: [ main ]  # main 分支触发生产构建
 
 jobs:
   build-android:
@@ -41,6 +41,12 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
+
+      - name: Run Analyze
+        run: flutter analyze
+
+      - name: Run Tests
+        run: flutter test
 
       - name: Build APK (Production) #构建生产环境变量
         run: |

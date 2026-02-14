@@ -81,7 +81,9 @@ class _LanguageScreenState extends ConsumerState<LanguageScreen> {
                   style: const TextStyle(color: Colors.white),
                 ),
                 value: language,
+                // ignore: deprecated_member_use
                 groupValue: selectedLanguage,
+                // ignore: deprecated_member_use
                 onChanged: (String? value) {
                   if (value != null) {
                     final localeCode = _languageMap[value];

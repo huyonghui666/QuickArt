@@ -9,7 +9,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/features/tools/domain/entities/video_template.dart';
-import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/video_template_generation_provider.dart';
 
 /// 视频模板详情页
@@ -44,7 +43,6 @@ class _VideoTemplateDetailScreenState
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     // 获取当前语言环境以显示名称
     final locale = Localizations.localeOf(context).languageCode;
     final name =

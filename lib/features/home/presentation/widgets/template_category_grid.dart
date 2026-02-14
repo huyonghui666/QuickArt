@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/home/presentation/notifiers/template_notifier.dart';
-import 'package:quick_art/features/home/presentation/widgets/template_detail_showModalBottomSheet.dart';
+import 'package:quick_art/features/home/presentation/widgets/template_detail_show_modal_bottom_sheet.dart';
 
 class TemplateCategoryGrid extends ConsumerWidget {
   final String category;
@@ -15,7 +15,9 @@ class TemplateCategoryGrid extends ConsumerWidget {
     // 由于后端存储的是new，但是new是关键字冲突了，所以先判断是newest就转为new去作为Category
     final backendCategory = category == 'newest' ? 'new' : category;
 
-    final templatesAsync = ref.watch(templatesProvider(category: backendCategory));
+    final templatesAsync = ref.watch(
+      templatesProvider(category: backendCategory),
+    );
 
     return templatesAsync.when(
       data: (templatePage) {

@@ -90,9 +90,7 @@ class _StartEndFrameScreenState extends ConsumerState<StartEndFrameScreen> {
                             imagePath: startEndFrameState.startFramePath,
                             onTap: () async {
                               final hasPermission =
-                                  await PermissionManager.requestPhotosPermission(
-                                    context,
-                                  );
+                                  await PermissionManager.requestPhotosPermission();
                               if (!hasPermission) return;
 
                               final picker = ImagePicker();
@@ -113,9 +111,7 @@ class _StartEndFrameScreenState extends ConsumerState<StartEndFrameScreen> {
                             imagePath: startEndFrameState.endFramePath,
                             onTap: () async {
                               final hasPermission =
-                                  await PermissionManager.requestPhotosPermission(
-                                    context,
-                                  );
+                                  await PermissionManager.requestPhotosPermission();
                               if (!hasPermission) return;
 
                               final picker = ImagePicker();
@@ -267,14 +263,10 @@ class _ImageUploadCard extends StatelessWidget {
 
 class _DashedBorderPainter extends CustomPainter {
   final Color color;
-  final double strokeWidth;
-  final double gap;
+  final double strokeWidth = 1.0;
+  final double gap = 5.0;
 
-  _DashedBorderPainter({
-    required this.color,
-    this.strokeWidth = 1.0,
-    this.gap = 5.0,
-  });
+  _DashedBorderPainter({required this.color});
 
   @override
   void paint(Canvas canvas, Size size) {

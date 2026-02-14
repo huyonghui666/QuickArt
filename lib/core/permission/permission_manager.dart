@@ -1,14 +1,13 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class PermissionManager {
   static final DeviceInfoPlugin _deviceInfo = DeviceInfoPlugin();
 
   /// Request photos permission based on Android version
-  static Future<bool> requestPhotosPermission(BuildContext context) async {
+  static Future<bool> requestPhotosPermission() async {
     Permission permission;
 
     if (Platform.isAndroid) {
@@ -27,11 +26,10 @@ class PermissionManager {
       return true;
     }
 
-    return _requestPermission(context, permission, '相册');
+    return _requestPermission(permission, '相册');
   }
 
   static Future<bool> _requestPermission(
-    BuildContext context,
     Permission permission,
     String name,
   ) async {

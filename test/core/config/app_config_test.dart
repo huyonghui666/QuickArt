@@ -51,7 +51,8 @@ void main() {
         expect(config.environment, AppEnvironment.staging);
         expect(config.apiBaseUrl, isNotEmpty);
         expect(config.webSocketUrl, isNotEmpty);
-        // Staging might or might not enable debug tools, check specific requirement or just boolean
+        // Staging might or might not enable debug tools,
+        // check specific requirement or just boolean
         expect(config.enableDebugTools, isA<bool>());
       });
 

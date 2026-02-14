@@ -33,13 +33,12 @@ void main() {
     ).thenAnswer((_) async => tImageTemplatePage);
 
     // Act
-    final result = await useCase(category: 'test', page: 0, size: 20);
+    final result = await useCase(category: 'test');
 
     // Assert
     expect(result, tImageTemplatePage);
     verify(
-      () =>
-          mockRepository.getImageTemplates(category: 'test', page: 0, size: 20),
+      () => mockRepository.getImageTemplates(category: 'test'),
     ).called(1);
     verifyNoMoreInteractions(mockRepository);
   });

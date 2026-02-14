@@ -22,7 +22,8 @@ void main() {
   final tImageGenerationTask = tImageGenerationTaskModel.toEntity();
 
   test(
-    'should return ImageGenerationTask when remote data source call is successful',
+    'should return ImageGenerationTask when remote data source call is '
+    'successful',
     () async {
       // Arrange
       when(

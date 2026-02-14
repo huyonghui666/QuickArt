@@ -53,54 +53,64 @@ void main() {
   test('should fetch templates initially', () async {
     // Arrange
     when(
-      () => mockUseCase(category: any(named: 'category'), page: 0, size: 20),
+      () => mockUseCase(category: any(named: 'category')),
     ).thenAnswer((_) async => tImageTemplatePage);
 
     // Act
-    final sub = container.listen(templatesProvider(category: null), (_, __) {});
+    final sub = container.listen(
+      templatesProvider(),
+      (previous, next) {},
+    );
 
     // Wait for async build to complete
-    await Future.delayed(Duration.zero);
+    await Future<void>.delayed(Duration.zero);
 
     // Assert
     expect(sub.read(), const AsyncData(tImageTemplatePage));
-    verify(() => mockUseCase(category: null, page: 0, size: 20)).called(1);
+    verify(() => mockUseCase(category: '')).called(1);
   });
 
   test('should handle initial fetch error', () async {
     // Arrange
     final exception = NetworkException('Error');
     when(
-      () => mockUseCase(category: any(named: 'category'), page: 0, size: 20),
+      () => mockUseCase(category: any(named: 'category')),
     ).thenThrow(exception);
 
     // Act
-    final sub = container.listen(templatesProvider(category: null), (_, __) {});
+    final sub = container.listen(
+      templatesProvider(),
+      (previous, next) {},
+    );
 
     // Wait for async build to complete
-    await Future.delayed(Duration.zero);
+    await Future<void>.delayed(Duration.zero);
 
     // Assert
-    expect(sub.read(), isA<AsyncError>());
-    verify(() => mockUseCase(category: '', page: 0, size: 20)).called(1);
+    expect(sub.read(), isA<AsyncError<ImageTemplatePage>>());
+    verify(() => mockUseCase(category: any(named: 'category'))).called(1);
   });
 
   test('should load more templates', () async {
     // Arrange
     when(
-      () => mockUseCase(category: '', page: 0, size: 20),
+      () => mockUseCase(category: ''),
     ).thenAnswer((_) async => tImageTemplatePageWithMore);
 
     when(
-      () => mockUseCase(category: '', page: 1, size: 20),
+      () => mockUseCase(category: '', page: 1),
     ).thenAnswer((_) async => tImageTemplatePageNext);
 
     // Initialize
-    final sub = container.listen(templatesProvider(category: null), (_, __) {});
-    await Future.delayed(Duration.zero);
+    final sub = container.listen(
+      templatesProvider(),
+      (previous, next) {},
+    );
+    await Future<void>.delayed(Duration.zero);
 
     // Act
-    await container.read(templatesProvider(category: null).notifier).loadMore();
+    container.read(templatesProvider().notifier).loadMore();
+    await Future<void>.delayed(Duration.zero);
 
     // Assert
     expect(
@@ -118,26 +128,29 @@ void main() {
       ),
     );
 
-    verify(() => mockUseCase(category: '', page: 0, size: 20)).called(1);
-    verify(() => mockUseCase(category: '', page: 1, size: 20)).called(1);
+    verify(() => mockUseCase(category: '')).called(1);
+    verify(() => mockUseCase(category: '', page: 1)).called(1);
   });
 
   test('should refresh templates', () async {
     // Arrange
     when(
-      () => mockUseCase(category: '', page: 0, size: 20),
+      () => mockUseCase(category: ''),
     ).thenAnswer((_) async => tImageTemplatePage);
 
     // Initialize
-    final sub = container.listen(templatesProvider(category: null), (_, __) {});
-    await Future.delayed(Duration.zero);
+    final sub = container.listen(
+      templatesProvider(),
+      (previous, next) {},
+    );
+    await Future<void>.delayed(Duration.zero);
 
     // Act
-    await container.read(templatesProvider(category: null).notifier).refresh();
+    await container.read(templatesProvider().notifier).refresh();
 
     // Assert
     expect(sub.read(), const AsyncData(tImageTemplatePage));
     // Called twice: once for initial load, once for refresh
-    verify(() => mockUseCase(category: '', page: 0, size: 20)).called(2);
+    verify(() => mockUseCase(category: '')).called(2);
   });
 }

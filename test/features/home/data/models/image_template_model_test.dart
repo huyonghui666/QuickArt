@@ -31,7 +31,7 @@ void main() {
   group('ImageTemplateModel', () {
     test('should return a valid model from JSON', () {
       // Arrange
-      final Map<String, dynamic> jsonMap = {
+      final jsonMap = <String, dynamic>{
         'id': tId,
         'name': tName,
         'imageUrl': tImageUrl,

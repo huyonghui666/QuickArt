@@ -34,7 +34,8 @@ void main() {
     );
 
     test(
-      'should return ImageTemplatePage when remote data source call is successful',
+      'should return ImageTemplatePage when remote data source call is '
+      'successful',
       () async {
         // Arrange
         when(
@@ -48,8 +49,6 @@ void main() {
         // Act
         final result = await repository.getImageTemplates(
           category: 'test_category',
-          page: 0,
-          size: 20,
         );
 
         // Assert
@@ -61,8 +60,6 @@ void main() {
         verify(
           () => mockRemoteDataSource.getImageTemplates(
             category: 'test_category',
-            page: 0,
-            size: 20,
           ),
         ).called(1);
       },
@@ -84,8 +81,6 @@ void main() {
         expect(
           () => repository.getImageTemplates(
             category: 'test_category',
-            page: 0,
-            size: 20,
           ),
           throwsA(isA<NetworkException>()),
         );
@@ -93,8 +88,6 @@ void main() {
         verify(
           () => mockRemoteDataSource.getImageTemplates(
             category: 'test_category',
-            page: 0,
-            size: 20,
           ),
         ).called(1);
       },

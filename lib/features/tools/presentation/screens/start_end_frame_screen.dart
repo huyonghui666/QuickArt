@@ -90,8 +90,8 @@ class _StartEndFrameScreenState extends ConsumerState<StartEndFrameScreen> {
                             title: l10n.tools_upload_start_frame,
                             imagePath: startEndFrameState.startFramePath,
                             onTap: () async {
-                              final hasPermission = await
-                                  PermissionManager.requestPhotosPermission();
+                              final hasPermission =
+                                  await PermissionManager.requestPhotosPermission();
                               if (!hasPermission) return;
 
                               final picker = ImagePicker();
@@ -111,8 +111,8 @@ class _StartEndFrameScreenState extends ConsumerState<StartEndFrameScreen> {
                             // title: '上传尾帧图片',
                             imagePath: startEndFrameState.endFramePath,
                             onTap: () async {
-                              final hasPermission = await
-                                  PermissionManager.requestPhotosPermission();
+                              final hasPermission =
+                                  await PermissionManager.requestPhotosPermission();
                               if (!hasPermission) return;
 
                               final picker = ImagePicker();

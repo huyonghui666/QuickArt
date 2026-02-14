@@ -64,9 +64,9 @@ void main() {
     // Act
     final sub = container.listen(
       imageGenerationNotifierProvider(tPrompt),
-      (_, __) {},
+      (previous, next) {},
     );
-    await Future.delayed(
+    await Future<void>.delayed(
       const Duration(milliseconds: 50),
     ); // Wait for async build
 
@@ -87,12 +87,12 @@ void main() {
     // Act
     final sub = container.listen(
       imageGenerationNotifierProvider(tPrompt),
-      (_, __) {},
+      (previous, next) {},
     );
-    await Future.delayed(const Duration(milliseconds: 50));
+    await Future<void>.delayed(const Duration(milliseconds: 50));
 
     // Assert
-    expect(sub.read(), isA<AsyncError>());
+    expect(sub.read(), isA<AsyncError<ImageGenerationTask>>());
     verify(() => mockUseCase.execute(tPrompt)).called(1);
     expect(fakeWebSocketNotifier.subscribedTasks, isEmpty);
   });

@@ -39,7 +39,8 @@ void main() {
     );
 
     test(
-      'should return VideoTemplatePage when remote data source call is successful',
+      'should return VideoTemplatePage when remote data source call is '
+      'successful',
       () async {
         // Arrange 1. 设置模拟行为：当调用getVideoTemplates时，返回预设的页面模型
         when(
@@ -50,11 +51,14 @@ void main() {
           ),
         ).thenAnswer((_) async => tVideoTemplatePageModel);
 
-        // Act 2. 执行被测方法：调用repository的真实逻辑，其中有一段逻辑将模拟tVideoTemplatePageModel转换为Entity
-        final result = await repository.getVideoTemplates(page: 0, size: 20);
+        // Act 2. 执行被测方法：调用repository的真实逻辑，
+        // 其中有一段逻辑将模拟tVideoTemplatePageModel转换为Entity
+        final result = await repository.getVideoTemplates(
+          category: 'test_category',
+        );
 
-        // repository内部会调用 mockRemoteDataSource.getVideoTemplates(page: 0, size: 20)
-        // 由于我们用了any匹配器，任何参数都会返回预设数据
+        // repository内部会调用 mockRemoteDataSource.getVideoTemplates(page: 0,
+        // size: 20) 由于我们用了any匹配器，任何参数都会返回预设数据
         // Assert 3. 验证返回结果
         expect(result.items.length, 1);
         expect(result.items.first.id, '1');
@@ -63,7 +67,9 @@ void main() {
 
         // 4. 验证依赖调用：确认remoteDataSource被正确调用
         verify(
-          () => mockRemoteDataSource.getVideoTemplates(page: 0, size: 20),
+          () => mockRemoteDataSource.getVideoTemplates(
+            category: 'test_category',
+          ),
         ).called(1);
       },
     );
@@ -82,12 +88,16 @@ void main() {
 
         // Act & Assert
         expect(
-          () => repository.getVideoTemplates(page: 0, size: 20),
+          () => repository.getVideoTemplates(
+            category: 'test_category',
+          ),
           throwsA(isA<NetworkException>()),
         );
 
         verify(
-          () => mockRemoteDataSource.getVideoTemplates(page: 0, size: 20),
+          () => mockRemoteDataSource.getVideoTemplates(
+            category: 'test_category',
+          ),
         ).called(1);
       },
     );

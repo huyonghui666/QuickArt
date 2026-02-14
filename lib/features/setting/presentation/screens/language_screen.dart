@@ -22,7 +22,7 @@ class _LanguageScreenState extends ConsumerState<LanguageScreen> {
     '简体中文': 'zh',
     '繁體中文':
         'zh', // Note: GoRouter does not distinguish between zh-CN and zh-TW, so
-              // we use 'zh' for both
+    // we use 'zh' for both
     'English': 'en',
     '日本語': 'ja',
     '한국어': 'ko',

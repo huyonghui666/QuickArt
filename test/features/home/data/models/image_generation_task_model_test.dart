@@ -10,7 +10,7 @@ void main() {
   group('ImageGenerationTaskModel', () {
     test('should return a valid model from JSON', () {
       // Arrange
-      final Map<String, dynamic> jsonMap = {'taskId': tTaskId};
+      final jsonMap = <String, dynamic>{'taskId': tTaskId};
 
       // Act
       final result = ImageGenerationTaskModel.fromJson(jsonMap);

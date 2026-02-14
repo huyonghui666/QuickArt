@@ -3,16 +3,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/tools/presentation/widgets/tools_video_card.dart';
 
+/// 生成视频底部弹出框
 class GeneratedVideoBottomSheet extends StatelessWidget {
+  /// 构造
+  const GeneratedVideoBottomSheet({required this.videoUrl, super.key});
+  /// 视频url
   final String videoUrl;
-
-  const GeneratedVideoBottomSheet({super.key, required this.videoUrl});
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16),
       child: Column(
         children: [
           Expanded(

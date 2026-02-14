@@ -6,7 +6,7 @@ part of 'prompt_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$promptHash() => r'e21afaacd88f113aa8d18f5adcac9075a29445a3';
+String _$promptHash() => r'bc2b18a92995d70085aedd858473134c935fa00e';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -35,16 +35,24 @@ abstract class _$Prompt extends BuildlessAutoDisposeNotifier<PromptState> {
   PromptState build(String id);
 }
 
-/// See also [Prompt].
+/// 提示词 Provider
+///
+/// Copied from [Prompt].
 @ProviderFor(Prompt)
 const promptProvider = PromptFamily();
 
-/// See also [Prompt].
+/// 提示词 Provider
+///
+/// Copied from [Prompt].
 class PromptFamily extends Family<PromptState> {
-  /// See also [Prompt].
+  /// 提示词 Provider
+  ///
+  /// Copied from [Prompt].
   const PromptFamily();
 
-  /// See also [Prompt].
+  /// 提示词 Provider
+  ///
+  /// Copied from [Prompt].
   PromptProvider call(String id) {
     return PromptProvider(id);
   }
@@ -69,10 +77,14 @@ class PromptFamily extends Family<PromptState> {
   String? get name => r'promptProvider';
 }
 
-/// See also [Prompt].
+/// 提示词 Provider
+///
+/// Copied from [Prompt].
 class PromptProvider
     extends AutoDisposeNotifierProviderImpl<Prompt, PromptState> {
-  /// See also [Prompt].
+  /// 提示词 Provider
+  ///
+  /// Copied from [Prompt].
   PromptProvider(String id)
     : this._internal(
         () => Prompt()..id = id,

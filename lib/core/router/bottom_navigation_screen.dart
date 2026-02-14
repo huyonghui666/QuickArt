@@ -6,10 +6,12 @@ import 'package:quick_art/core/router/bottom_navigation.dart';
 import 'package:quick_art/core/widgets/generated_image_bottom_sheet.dart';
 import 'package:quick_art/core/widgets/generated_video_bottom_sheet.dart';
 
+/// 底部导航栏视图
 class BottomNavigationScreen extends ConsumerStatefulWidget {
+  /// 构造
+  const BottomNavigationScreen({required this.navigationShell, super.key});
+  ///
   final StatefulNavigationShell navigationShell;
-
-  const BottomNavigationScreen({super.key, required this.navigationShell});
 
   @override
   ConsumerState<BottomNavigationScreen> createState() =>
@@ -22,7 +24,7 @@ class _BottomNavigationScreenState
   Widget build(BuildContext context) {
     ref.listen(showBottomSheetNotifierProvider, (previous, next) {
       if (next != null) {
-        showModalBottomSheet(
+        showModalBottomSheet<void>(
           context: context,
           useRootNavigator: true,
           isScrollControlled: true,

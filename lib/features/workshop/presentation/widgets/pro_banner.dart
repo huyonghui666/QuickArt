@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 
+/// Pro组件
 class ProBanner extends StatelessWidget {
+  /// 构造
   const ProBanner({super.key});
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      padding: const EdgeInsets.all(20.0),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           colors: [

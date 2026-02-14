@@ -4,10 +4,12 @@ import 'package:quick_art/features/tools/presentation/notifilers/video_player_co
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
+/// 顶部视频UI
 class AiVideoHeaderPlayer extends ConsumerStatefulWidget {
+  /// 构造
+  const AiVideoHeaderPlayer({required this.videoUrl, super.key});
+  /// 视频url
   final String videoUrl;
-
-  const AiVideoHeaderPlayer({super.key, required this.videoUrl});
 
   @override
   ConsumerState<AiVideoHeaderPlayer> createState() =>
@@ -47,9 +49,9 @@ class _AiVideoHeaderPlayerState extends ConsumerState<AiVideoHeaderPlayer> {
 }
 
 class _HeaderVideoPlayer extends ConsumerWidget {
-  final String videoUrl;
 
   const _HeaderVideoPlayer({required this.videoUrl});
+  final String videoUrl;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -73,7 +75,7 @@ class _HeaderVideoPlayer extends ConsumerWidget {
       },
       // Show black background or loading indicator while loading
       loading: () => Container(color: Colors.black),
-      error: (_, __) => Container(color: Colors.black),
+      error: (_, _) => Container(color: Colors.black),
     );
   }
 }

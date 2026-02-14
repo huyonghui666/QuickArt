@@ -1,21 +1,22 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 
+/// 生成图片底部弹出框
 class GeneratedImageBottomSheet extends StatelessWidget {
+  /// 构造
+  const GeneratedImageBottomSheet({required this.imageUrl, super.key});
+  /// 图片url
   final String imageUrl;
-
-  const GeneratedImageBottomSheet({super.key, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     return RepaintBoundary(
       child: Container(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
-          mainAxisSize: MainAxisSize.max,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12),

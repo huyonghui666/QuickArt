@@ -1,18 +1,19 @@
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:quick_art/core/di/prompt_provider.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/permission/permission_manager.dart';
-import 'package:quick_art/core/di/prompt_provider.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/core/widgets/prompt_text_field.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/start_end_frame_provider.dart';
 
+/// 首尾帧页面
 class StartEndFrameScreen extends ConsumerStatefulWidget {
+  /// 构造
   const StartEndFrameScreen({super.key});
 
   @override
@@ -46,13 +47,13 @@ class _StartEndFrameScreenState extends ConsumerState<StartEndFrameScreen> {
           slivers: [
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Top Bar
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
                       child: Row(
                         children: [
                           Transform.translate(
@@ -89,10 +90,8 @@ class _StartEndFrameScreenState extends ConsumerState<StartEndFrameScreen> {
                             title: l10n.tools_upload_start_frame,
                             imagePath: startEndFrameState.startFramePath,
                             onTap: () async {
-                              final hasPermission =
-                                  await PermissionManager.requestPhotosPermission(
-                                    context,
-                                  );
+                              final hasPermission = await
+                                  PermissionManager.requestPhotosPermission();
                               if (!hasPermission) return;
 
                               final picker = ImagePicker();
@@ -112,10 +111,8 @@ class _StartEndFrameScreenState extends ConsumerState<StartEndFrameScreen> {
                             // title: '上传尾帧图片',
                             imagePath: startEndFrameState.endFramePath,
                             onTap: () async {
-                              final hasPermission =
-                                  await PermissionManager.requestPhotosPermission(
-                                    context,
-                                  );
+                              final hasPermission = await
+                                  PermissionManager.requestPhotosPermission();
                               if (!hasPermission) return;
 
                               final picker = ImagePicker();
@@ -217,14 +214,16 @@ class _ImageUploadCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: Colors.white.withValues(alpha: 0.3),
-            width: 1,
             style: BorderStyle
-                .none, // We simulate dashed border if needed, but keeping it simple for now
+                /// We simulate dashed border if needed,
+                /// but keeping it simple for now
+                .none,
           ),
         ),
         child: Stack(
           children: [
-            // Dashed border effect (simplified with just border for now or we can use CustomPaint)
+            /// Dashed border effect (simplified with just border for now or
+            /// we can use CustomPaint)
             Positioned.fill(
               child: CustomPaint(
                 painter: _DashedBorderPainter(
@@ -235,9 +234,7 @@ class _ImageUploadCard extends StatelessWidget {
             if (imagePath != null)
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: double.infinity,
+                child: SizedBox.expand(
                   child: Image.file(File(imagePath!), fit: BoxFit.cover),
                 ),
               )
@@ -266,24 +263,21 @@ class _ImageUploadCard extends StatelessWidget {
 }
 
 class _DashedBorderPainter extends CustomPainter {
-  final Color color;
-  final double strokeWidth;
-  final double gap;
-
   _DashedBorderPainter({
     required this.color,
-    this.strokeWidth = 1.0,
-    this.gap = 5.0,
   });
+  final Color color;
+  final double strokeWidth = 1;
+  final double gap = 5;
 
   @override
   void paint(Canvas canvas, Size size) {
-    final Paint paint = Paint()
+    final paint = Paint()
       ..color = color
       ..strokeWidth = strokeWidth
       ..style = PaintingStyle.stroke;
 
-    final Path path = Path()
+    final path = Path()
       ..addRRect(
         RRect.fromRectAndRadius(
           Rect.fromLTWH(0, 0, size.width, size.height),
@@ -291,9 +285,9 @@ class _DashedBorderPainter extends CustomPainter {
         ),
       );
 
-    final Path dashedPath = Path();
-    for (final PathMetric metric in path.computeMetrics()) {
-      double distance = 0.0;
+    final dashedPath = Path();
+    for (final metric in path.computeMetrics()) {
+      var distance = 0.0;
       while (distance < metric.length) {
         dashedPath.addPath(
           metric.extractPath(distance, distance + gap),

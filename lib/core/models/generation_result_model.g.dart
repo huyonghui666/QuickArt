@@ -6,9 +6,9 @@ part of 'generation_result_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GenerationResultModelImpl _$$GenerationResultModelImplFromJson(
+_GenerationResultModel _$GenerationResultModelFromJson(
   Map<String, dynamic> json,
-) => _$GenerationResultModelImpl(
+) => _GenerationResultModel(
   taskId: json['taskId'] as String,
   event: json['event'] as String,
   type: json['type'] as String?,
@@ -17,8 +17,8 @@ _$GenerationResultModelImpl _$$GenerationResultModelImplFromJson(
   error: json['error'] as String?,
 );
 
-Map<String, dynamic> _$$GenerationResultModelImplToJson(
-  _$GenerationResultModelImpl instance,
+Map<String, dynamic> _$GenerationResultModelToJson(
+  _GenerationResultModel instance,
 ) => <String, dynamic>{
   'taskId': instance.taskId,
   'event': instance.event,

@@ -3,6 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'ai_video_tab_bar_provider.g.dart';
 
+/// 视频模板的tab
 @riverpod
 List<String> aiVideoTabs(Ref ref) {
   return [

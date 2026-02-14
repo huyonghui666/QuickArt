@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
+/// 文生图、首尾帧、多主体的Card
 class AiVideoActionCard extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final VoidCallback? onTap;
-
+  /// 构造
   const AiVideoActionCard({
-    super.key,
-    required this.icon,
-    required this.title,
+    required this.icon, required this.title, super.key,
     this.onTap,
   });
+  /// icon
+  final IconData icon;
+  /// 标题
+  final String title;
+  /// 点击回调
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {

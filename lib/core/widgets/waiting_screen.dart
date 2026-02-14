@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/di/generation_event_provider.dart';
 import 'package:quick_art/core/di/show_bottom_sheet_notifier.dart';
-import 'package:quick_art/core/widgets/loading_animation.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/models/generation_result_model.dart';
 import 'package:quick_art/core/utils/log/logger.dart';
+import 'package:quick_art/core/widgets/loading_animation.dart';
 import 'package:quick_art/features/home/domain/entities/image_generation_task.dart';
 import 'package:quick_art/features/home/presentation/notifiers/image_generation_provider.dart';
 import 'package:quick_art/features/tools/domain/entities/video_generation_task.dart';
@@ -14,19 +14,21 @@ import 'package:quick_art/features/tools/presentation/notifilers/start_end_frame
 import 'package:quick_art/features/tools/presentation/notifilers/video_generation_provider.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/video_template_generation_provider.dart';
 
-final _waitingScreenErrorProvider = StateProvider.autoDispose<String?>(
+final AutoDisposeStateProvider<String?> _waitingScreenErrorProvider
+= StateProvider.autoDispose<String?>(
   (ref) => null,
 );
 
+/// 等待页面
 class WaitingScreen extends ConsumerWidget {
-  final String taskType;
-  final String prompt;
-
+  /// 构造
   const WaitingScreen({
-    super.key,
-    required this.taskType,
-    required this.prompt,
+    required this.taskType, required this.prompt, super.key,
   });
+  /// 任务类型
+  final String taskType;
+  /// 提示词
+  final String prompt;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -60,27 +62,27 @@ class WaitingScreen extends ConsumerWidget {
   ) {
     // 统一处理事件，根据 taskType 获取对应的 Provider
     if (taskType == 'video') {
-      final asyncTask = ref.read(videoGenerationNotifierProvider(prompt));
-      asyncTask.whenData((task) {
+      ref.read(videoGenerationNotifierProvider(prompt))
+      .whenData((task) {
         _processEvent(context, ref, result, task.taskId);
       });
     } else if (taskType == 'start_end_frame') {
-      final asyncTask = ref.read(
+      ref.read(
         startEndFrameGenerationNotifierProvider(prompt),
-      );
-      asyncTask.whenData((task) {
+      )
+      .whenData((task) {
         _processEvent(context, ref, result, task.taskId);
       });
     } else if (taskType == 'template_video') {
-      final asyncTask = ref.read(
+      ref.read(
         videoTemplateGenerationNotifierProvider(prompt),
-      );
-      asyncTask.whenData((task) {
+      )
+      .whenData((task) {
         _processEvent(context, ref, result, task.taskId);
       });
     } else {
-      final asyncTask = ref.read(imageGenerationNotifierProvider(prompt));
-      asyncTask.whenData((taskModel) {
+      ref.read(imageGenerationNotifierProvider(prompt))
+      .whenData((taskModel) {
         _processEvent(context, ref, result, taskModel.taskId);
       });
     }

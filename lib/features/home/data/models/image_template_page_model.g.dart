@@ -6,9 +6,9 @@ part of 'image_template_page_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ImageTemplatePageModelImpl _$$ImageTemplatePageModelImplFromJson(
+_ImageTemplatePageModel _$ImageTemplatePageModelFromJson(
   Map<String, dynamic> json,
-) => _$ImageTemplatePageModelImpl(
+) => _ImageTemplatePageModel(
   content: (json['content'] as List<dynamic>)
       .map((e) => ImageTemplateModel.fromJson(e as Map<String, dynamic>))
       .toList(),
@@ -17,8 +17,8 @@ _$ImageTemplatePageModelImpl _$$ImageTemplatePageModelImplFromJson(
   last: json['last'] as bool,
 );
 
-Map<String, dynamic> _$$ImageTemplatePageModelImplToJson(
-  _$ImageTemplatePageModelImpl instance,
+Map<String, dynamic> _$ImageTemplatePageModelToJson(
+  _ImageTemplatePageModel instance,
 ) => <String, dynamic>{
   'content': instance.content,
   'number': instance.number,

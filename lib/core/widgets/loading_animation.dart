@@ -1,18 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-// 粒子类
+/// 粒子类
 class Particle {
-  double x;
-  double y;
-  double z; // 模拟深度
-  double vx;
-  double vy;
-  double vz;
-  Color color;
-  Color baseColor; // 预计算的基础颜色
-  double baseSize;
-  double size;
 
   Particle({
     required this.x,
@@ -26,6 +16,16 @@ class Particle {
     required this.baseSize,
     required this.size,
   });
+  double x;
+  double y;
+  double z; // 模拟深度
+  double vx;
+  double vy;
+  double vz;
+  Color color;
+  Color baseColor; // 预计算的基础颜色
+  double baseSize;
+  double size;
 }
 
 class ParticleAnimation extends StatefulWidget {
@@ -231,28 +231,28 @@ class _ParticleAnimationState extends State<ParticleAnimation>
         final double dx = targetX - p.x;
         final double dy = targetY - p.y;
 
-        p.vx += dx * 0.03;
-        p.vy += dy * 0.03;
-        p.vx *= 0.82;
-        p.vy *= 0.82;
+        p..vx += dx * 0.03
+        ..vy += dy * 0.03
+        ..vx *= 0.82
+        ..vy *= 0.82
 
-        p.color = Colors.white.withValues(alpha: 0.5);
+        ..color = Colors.white.withValues(alpha: 0.5);
       }
 
       // 更新位置
-      p.x += p.vx * 0.6; // 时间步长缩放
-      p.y += p.vy * 0.6;
+      p..x += p.vx * 0.6 // 时间步长缩放
+      ..y += p.vy * 0.6;
 
       // 简单模拟 3D 尺寸变化 (根据 y 轴或假想 z 轴)
       // 这里简单用随机闪烁或距离中心的距离来调整大小
-      final double pulse = sin(t * 10 + i) * 0.5 + 1.0;
+      final pulse = sin(t * 10 + i) * 0.5 + 1.0;
       p.size = p.baseSize * pulse;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ColoredBox(
       color: Colors.black,
       child: AnimatedBuilder(
         animation: _controller,
@@ -270,16 +270,17 @@ class _ParticleAnimationState extends State<ParticleAnimation>
   }
 }
 
-class ParticlePainter extends CustomPainter {
-  final List<Particle> particles;
-  final double controllerValue;
-  final Function(Size, double) onUpdate;
 
+class ParticlePainter extends CustomPainter {
+  /// 构造
   ParticlePainter({
     required this.particles,
     required this.controllerValue,
     required this.onUpdate,
   });
+  final List<Particle> particles;
+  final double controllerValue;
+  final Function(Size, double) onUpdate;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -293,7 +294,7 @@ class ParticlePainter extends CustomPainter {
     // 创建一个 Paint 对象开销很小。如果追求极致，可以作为类成员。
     final paint = Paint()..blendMode = BlendMode.srcOver;
 
-    for (var p in particles) {
+    for (final p in particles) {
       // 只有当 alpha > 0 时才绘制，减少绘制指令
       if (p.color.a > 0) {
         paint.color = p.color;

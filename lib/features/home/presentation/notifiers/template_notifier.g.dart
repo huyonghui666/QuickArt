@@ -6,7 +6,7 @@ part of 'template_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$templatesHash() => r'7d291a941463568df86e0421be7f2d06ae49365b';
+String _$templatesHash() => r'9c29dc3a9030ae082468289b5b10daa29f9963e7';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -36,16 +36,24 @@ abstract class _$Templates
   AsyncValue<ImageTemplatePage> build({String? category});
 }
 
-/// See also [Templates].
+/// 模板数据 Notifier
+///
+/// Copied from [Templates].
 @ProviderFor(Templates)
 const templatesProvider = TemplatesFamily();
 
-/// See also [Templates].
+/// 模板数据 Notifier
+///
+/// Copied from [Templates].
 class TemplatesFamily extends Family<AsyncValue<ImageTemplatePage>> {
-  /// See also [Templates].
+  /// 模板数据 Notifier
+  ///
+  /// Copied from [Templates].
   const TemplatesFamily();
 
-  /// See also [Templates].
+  /// 模板数据 Notifier
+  ///
+  /// Copied from [Templates].
   TemplatesProvider call({String? category}) {
     return TemplatesProvider(category: category);
   }
@@ -70,14 +78,18 @@ class TemplatesFamily extends Family<AsyncValue<ImageTemplatePage>> {
   String? get name => r'templatesProvider';
 }
 
-/// See also [Templates].
+/// 模板数据 Notifier
+///
+/// Copied from [Templates].
 class TemplatesProvider
     extends
         AutoDisposeNotifierProviderImpl<
           Templates,
           AsyncValue<ImageTemplatePage>
         > {
-  /// See also [Templates].
+  /// 模板数据 Notifier
+  ///
+  /// Copied from [Templates].
   TemplatesProvider({String? category})
     : this._internal(
         () => Templates()..category = category,

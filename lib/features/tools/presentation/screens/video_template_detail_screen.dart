@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,14 +8,15 @@ import 'package:image_picker/image_picker.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/features/tools/domain/entities/video_template.dart';
-import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/video_template_generation_provider.dart';
 
 /// 视频模板详情页
 class VideoTemplateDetailScreen extends ConsumerStatefulWidget {
-  final VideoTemplate template;
+  /// 构造
+  const VideoTemplateDetailScreen({required this.template, super.key});
 
-  const VideoTemplateDetailScreen({super.key, required this.template});
+  /// 视频模板
+  final VideoTemplate template;
 
   @override
   ConsumerState<VideoTemplateDetailScreen> createState() =>
@@ -31,20 +31,20 @@ class _VideoTemplateDetailScreenState
   /// 选择图片
   Future<void> _pickImage() async {
     try {
-      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+      final image = await _picker.pickImage(source: ImageSource.gallery);
       if (image != null) {
         setState(() {
           _selectedImage = File(image.path);
         });
       }
-    } catch (e) {
+    } on Exception catch (e) {
       debugPrint('Error picking image: $e');
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    /// final l10n = AppLocalizations.of(context)!;
     // 获取当前语言环境以显示名称
     final locale = Localizations.localeOf(context).languageCode;
     final name =
@@ -70,10 +70,10 @@ class _VideoTemplateDetailScreenState
           // 图片选择区域
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Center(
                 child: AspectRatio(
-                  aspectRatio: 1.0,
+                  aspectRatio: 1,
                   child: GestureDetector(
                     onTap: _pickImage,
                     child: _selectedImage != null
@@ -88,7 +88,6 @@ class _VideoTemplateDetailScreenState
                             painter: _DashedRectPainter(
                               color: Colors.grey,
                               strokeWidth: 1.5,
-                              gap: 5.0,
                             ),
                             child: Container(
                               alignment: Alignment.center,
@@ -107,7 +106,7 @@ class _VideoTemplateDetailScreenState
           const SizedBox(height: 40),
           // 绘制按钮
           Padding(
-            padding: const EdgeInsets.only(bottom: 40.0),
+            padding: const EdgeInsets.only(bottom: 40),
             child: DrawButton(
               family: 'video_template_detail',
               onTap: () {
@@ -136,24 +135,22 @@ class _VideoTemplateDetailScreenState
 }
 
 class _DashedRectPainter extends CustomPainter {
-  final Color color;
-  final double strokeWidth;
-  final double gap;
-
   _DashedRectPainter({
     required this.color,
     this.strokeWidth = 1.0,
-    this.gap = 5.0,
   });
+  final Color color;
+  final double strokeWidth;
+  final double gap = 5;
 
   @override
   void paint(Canvas canvas, Size size) {
-    final Paint paint = Paint()
+    final paint = Paint()
       ..color = color
       ..strokeWidth = strokeWidth
       ..style = PaintingStyle.stroke;
 
-    final Path path = Path()
+    final path = Path()
       ..addRRect(
         RRect.fromRectAndRadius(
           Rect.fromLTWH(0, 0, size.width, size.height),
@@ -161,14 +158,14 @@ class _DashedRectPainter extends CustomPainter {
         ),
       );
 
-    final Path dashedPath = _dashPath(path, width: 10, space: gap);
+    final dashedPath = _dashPath(path, width: 10, space: gap);
     canvas.drawPath(dashedPath, paint);
   }
 
   Path _dashPath(Path source, {required double width, required double space}) {
-    final Path dest = Path();
-    for (final PathMetric metric in source.computeMetrics()) {
-      double distance = 0.0;
+    final dest = Path();
+    for (final metric in source.computeMetrics()) {
+      var distance = 0.0;
       while (distance < metric.length) {
         dest.addPath(
           metric.extractPath(distance, distance + width),

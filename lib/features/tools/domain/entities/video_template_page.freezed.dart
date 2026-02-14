@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,251 +9,287 @@ part of 'video_template_page.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$VideoTemplatePage {
-  /// 模板列表
-  List<VideoTemplate> get items => throw _privateConstructorUsedError;
 
-  /// 当前页码
-  int get currentPage => throw _privateConstructorUsedError;
+/// 模板列表
+ List<VideoTemplate> get items;/// 当前页码
+ int get currentPage;/// 总页数
+ int get totalPages;/// 是否有下一页数据
+ bool get hasMore;
+/// Create a copy of VideoTemplatePage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$VideoTemplatePageCopyWith<VideoTemplatePage> get copyWith => _$VideoTemplatePageCopyWithImpl<VideoTemplatePage>(this as VideoTemplatePage, _$identity);
 
-  /// 总页数
-  int get totalPages => throw _privateConstructorUsedError;
 
-  /// 是否有更多数据
-  bool get hasMore => throw _privateConstructorUsedError;
 
-  /// Create a copy of VideoTemplatePage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $VideoTemplatePageCopyWith<VideoTemplatePage> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VideoTemplatePage&&const DeepCollectionEquality().equals(other.items, items)&&(identical(other.currentPage, currentPage) || other.currentPage == currentPage)&&(identical(other.totalPages, totalPages) || other.totalPages == totalPages)&&(identical(other.hasMore, hasMore) || other.hasMore == hasMore));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(items),currentPage,totalPages,hasMore);
+
+@override
+String toString() {
+  return 'VideoTemplatePage(items: $items, currentPage: $currentPage, totalPages: $totalPages, hasMore: $hasMore)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $VideoTemplatePageCopyWith<$Res> {
-  factory $VideoTemplatePageCopyWith(
-    VideoTemplatePage value,
-    $Res Function(VideoTemplatePage) then,
-  ) = _$VideoTemplatePageCopyWithImpl<$Res, VideoTemplatePage>;
-  @useResult
-  $Res call({
-    List<VideoTemplate> items,
-    int currentPage,
-    int totalPages,
-    bool hasMore,
-  });
-}
+abstract mixin class $VideoTemplatePageCopyWith<$Res>  {
+  factory $VideoTemplatePageCopyWith(VideoTemplatePage value, $Res Function(VideoTemplatePage) _then) = _$VideoTemplatePageCopyWithImpl;
+@useResult
+$Res call({
+ List<VideoTemplate> items, int currentPage, int totalPages, bool hasMore
+});
 
+
+
+
+}
 /// @nodoc
-class _$VideoTemplatePageCopyWithImpl<$Res, $Val extends VideoTemplatePage>
+class _$VideoTemplatePageCopyWithImpl<$Res>
     implements $VideoTemplatePageCopyWith<$Res> {
-  _$VideoTemplatePageCopyWithImpl(this._value, this._then);
+  _$VideoTemplatePageCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final VideoTemplatePage _self;
+  final $Res Function(VideoTemplatePage) _then;
 
-  /// Create a copy of VideoTemplatePage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? items = null,
-    Object? currentPage = null,
-    Object? totalPages = null,
-    Object? hasMore = null,
-  }) {
-    return _then(
-      _value.copyWith(
-            items: null == items
-                ? _value.items
-                : items // ignore: cast_nullable_to_non_nullable
-                      as List<VideoTemplate>,
-            currentPage: null == currentPage
-                ? _value.currentPage
-                : currentPage // ignore: cast_nullable_to_non_nullable
-                      as int,
-            totalPages: null == totalPages
-                ? _value.totalPages
-                : totalPages // ignore: cast_nullable_to_non_nullable
-                      as int,
-            hasMore: null == hasMore
-                ? _value.hasMore
-                : hasMore // ignore: cast_nullable_to_non_nullable
-                      as bool,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of VideoTemplatePage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? items = null,Object? currentPage = null,Object? totalPages = null,Object? hasMore = null,}) {
+  return _then(_self.copyWith(
+items: null == items ? _self.items : items // ignore: cast_nullable_to_non_nullable
+as List<VideoTemplate>,currentPage: null == currentPage ? _self.currentPage : currentPage // ignore: cast_nullable_to_non_nullable
+as int,totalPages: null == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
+as int,hasMore: null == hasMore ? _self.hasMore : hasMore // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [VideoTemplatePage].
+extension VideoTemplatePagePatterns on VideoTemplatePage {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _VideoTemplatePage value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _VideoTemplatePage() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _VideoTemplatePage value)  $default,){
+final _that = this;
+switch (_that) {
+case _VideoTemplatePage():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _VideoTemplatePage value)?  $default,){
+final _that = this;
+switch (_that) {
+case _VideoTemplatePage() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<VideoTemplate> items,  int currentPage,  int totalPages,  bool hasMore)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _VideoTemplatePage() when $default != null:
+return $default(_that.items,_that.currentPage,_that.totalPages,_that.hasMore);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<VideoTemplate> items,  int currentPage,  int totalPages,  bool hasMore)  $default,) {final _that = this;
+switch (_that) {
+case _VideoTemplatePage():
+return $default(_that.items,_that.currentPage,_that.totalPages,_that.hasMore);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<VideoTemplate> items,  int currentPage,  int totalPages,  bool hasMore)?  $default,) {final _that = this;
+switch (_that) {
+case _VideoTemplatePage() when $default != null:
+return $default(_that.items,_that.currentPage,_that.totalPages,_that.hasMore);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$VideoTemplatePageImplCopyWith<$Res>
-    implements $VideoTemplatePageCopyWith<$Res> {
-  factory _$$VideoTemplatePageImplCopyWith(
-    _$VideoTemplatePageImpl value,
-    $Res Function(_$VideoTemplatePageImpl) then,
-  ) = __$$VideoTemplatePageImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    List<VideoTemplate> items,
-    int currentPage,
-    int totalPages,
-    bool hasMore,
-  });
+
+
+class _VideoTemplatePage implements VideoTemplatePage {
+  const _VideoTemplatePage({required final  List<VideoTemplate> items, required this.currentPage, required this.totalPages, required this.hasMore}): _items = items;
+  
+
+/// 模板列表
+ final  List<VideoTemplate> _items;
+/// 模板列表
+@override List<VideoTemplate> get items {
+  if (_items is EqualUnmodifiableListView) return _items;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_items);
+}
+
+/// 当前页码
+@override final  int currentPage;
+/// 总页数
+@override final  int totalPages;
+/// 是否有下一页数据
+@override final  bool hasMore;
+
+/// Create a copy of VideoTemplatePage
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$VideoTemplatePageCopyWith<_VideoTemplatePage> get copyWith => __$VideoTemplatePageCopyWithImpl<_VideoTemplatePage>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VideoTemplatePage&&const DeepCollectionEquality().equals(other._items, _items)&&(identical(other.currentPage, currentPage) || other.currentPage == currentPage)&&(identical(other.totalPages, totalPages) || other.totalPages == totalPages)&&(identical(other.hasMore, hasMore) || other.hasMore == hasMore));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_items),currentPage,totalPages,hasMore);
+
+@override
+String toString() {
+  return 'VideoTemplatePage(items: $items, currentPage: $currentPage, totalPages: $totalPages, hasMore: $hasMore)';
+}
+
+
 }
 
 /// @nodoc
-class __$$VideoTemplatePageImplCopyWithImpl<$Res>
-    extends _$VideoTemplatePageCopyWithImpl<$Res, _$VideoTemplatePageImpl>
-    implements _$$VideoTemplatePageImplCopyWith<$Res> {
-  __$$VideoTemplatePageImplCopyWithImpl(
-    _$VideoTemplatePageImpl _value,
-    $Res Function(_$VideoTemplatePageImpl) _then,
-  ) : super(_value, _then);
+abstract mixin class _$VideoTemplatePageCopyWith<$Res> implements $VideoTemplatePageCopyWith<$Res> {
+  factory _$VideoTemplatePageCopyWith(_VideoTemplatePage value, $Res Function(_VideoTemplatePage) _then) = __$VideoTemplatePageCopyWithImpl;
+@override @useResult
+$Res call({
+ List<VideoTemplate> items, int currentPage, int totalPages, bool hasMore
+});
 
-  /// Create a copy of VideoTemplatePage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? items = null,
-    Object? currentPage = null,
-    Object? totalPages = null,
-    Object? hasMore = null,
-  }) {
-    return _then(
-      _$VideoTemplatePageImpl(
-        items: null == items
-            ? _value._items
-            : items // ignore: cast_nullable_to_non_nullable
-                  as List<VideoTemplate>,
-        currentPage: null == currentPage
-            ? _value.currentPage
-            : currentPage // ignore: cast_nullable_to_non_nullable
-                  as int,
-        totalPages: null == totalPages
-            ? _value.totalPages
-            : totalPages // ignore: cast_nullable_to_non_nullable
-                  as int,
-        hasMore: null == hasMore
-            ? _value.hasMore
-            : hasMore // ignore: cast_nullable_to_non_nullable
-                  as bool,
-      ),
-    );
-  }
+
+
+
 }
-
 /// @nodoc
+class __$VideoTemplatePageCopyWithImpl<$Res>
+    implements _$VideoTemplatePageCopyWith<$Res> {
+  __$VideoTemplatePageCopyWithImpl(this._self, this._then);
 
-class _$VideoTemplatePageImpl implements _VideoTemplatePage {
-  const _$VideoTemplatePageImpl({
-    required final List<VideoTemplate> items,
-    required this.currentPage,
-    required this.totalPages,
-    required this.hasMore,
-  }) : _items = items;
+  final _VideoTemplatePage _self;
+  final $Res Function(_VideoTemplatePage) _then;
 
-  /// 模板列表
-  final List<VideoTemplate> _items;
-
-  /// 模板列表
-  @override
-  List<VideoTemplate> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
-  }
-
-  /// 当前页码
-  @override
-  final int currentPage;
-
-  /// 总页数
-  @override
-  final int totalPages;
-
-  /// 是否有更多数据
-  @override
-  final bool hasMore;
-
-  @override
-  String toString() {
-    return 'VideoTemplatePage(items: $items, currentPage: $currentPage, totalPages: $totalPages, hasMore: $hasMore)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$VideoTemplatePageImpl &&
-            const DeepCollectionEquality().equals(other._items, _items) &&
-            (identical(other.currentPage, currentPage) ||
-                other.currentPage == currentPage) &&
-            (identical(other.totalPages, totalPages) ||
-                other.totalPages == totalPages) &&
-            (identical(other.hasMore, hasMore) || other.hasMore == hasMore));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_items),
-    currentPage,
-    totalPages,
-    hasMore,
-  );
-
-  /// Create a copy of VideoTemplatePage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$VideoTemplatePageImplCopyWith<_$VideoTemplatePageImpl> get copyWith =>
-      __$$VideoTemplatePageImplCopyWithImpl<_$VideoTemplatePageImpl>(
-        this,
-        _$identity,
-      );
+/// Create a copy of VideoTemplatePage
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? items = null,Object? currentPage = null,Object? totalPages = null,Object? hasMore = null,}) {
+  return _then(_VideoTemplatePage(
+items: null == items ? _self._items : items // ignore: cast_nullable_to_non_nullable
+as List<VideoTemplate>,currentPage: null == currentPage ? _self.currentPage : currentPage // ignore: cast_nullable_to_non_nullable
+as int,totalPages: null == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
+as int,hasMore: null == hasMore ? _self.hasMore : hasMore // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
 }
 
-abstract class _VideoTemplatePage implements VideoTemplatePage {
-  const factory _VideoTemplatePage({
-    required final List<VideoTemplate> items,
-    required final int currentPage,
-    required final int totalPages,
-    required final bool hasMore,
-  }) = _$VideoTemplatePageImpl;
 
-  /// 模板列表
-  @override
-  List<VideoTemplate> get items;
-
-  /// 当前页码
-  @override
-  int get currentPage;
-
-  /// 总页数
-  @override
-  int get totalPages;
-
-  /// 是否有更多数据
-  @override
-  bool get hasMore;
-
-  /// Create a copy of VideoTemplatePage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$VideoTemplatePageImplCopyWith<_$VideoTemplatePageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+// dart format on

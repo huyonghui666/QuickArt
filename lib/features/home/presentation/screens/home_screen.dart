@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/di/prompt_provider.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
+import 'package:quick_art/core/theme/app_icons.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/core/widgets/prompt_text_field.dart';
 import 'package:quick_art/features/home/presentation/notifiers/art_style_notifier.dart';
 import 'package:quick_art/features/home/presentation/notifiers/inspiration_provider.dart';
+import 'package:quick_art/features/home/presentation/notifiers/template_notifier.dart';
 import 'package:quick_art/features/home/presentation/widgets/art_style_selector.dart';
-import 'package:quick_art/core/theme/app_icons.dart';
 import 'package:quick_art/features/home/presentation/widgets/inspiration_tab_header_delegate.dart';
 import 'package:quick_art/features/home/presentation/widgets/template_category_grid.dart';
-import 'package:quick_art/features/home/presentation/notifiers/template_notifier.dart';
 
+/// 首页
 class HomeScreen extends ConsumerStatefulWidget {
+  /// 构造
   const HomeScreen({super.key});
 
   @override
@@ -74,11 +76,19 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
                     /// 当距离底部不足 500 像素时，触发 loadMore()
                     if (notification is ScrollEndNotification &&
                         notification.metrics.extentAfter < 500) {
-                      ///由于InspirationCategoryType的newest不能更改为new，所以这么获取后端category为new的数据
-                      final backendCategory = category == InspirationCategoryType.newest
+                      ///由于InspirationCategoryType的newest不能更改为new，
+                      ///所以这么获取后端category为new的数据
+                      final backendCategory =
+                          category == InspirationCategoryType.newest
                           ? 'new'
                           : category.name;
-                      ref.read(templatesProvider(category: backendCategory).notifier).loadMore();
+                      ref
+                          .read(
+                            templatesProvider(
+                              category: backendCategory,
+                            ).notifier,
+                          )
+                          .loadMore();
                     }
                     return false;
                   },
@@ -125,6 +135,7 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
     );
   }
 
+  /// 构建顶部区域（背景图 + 标题 + 输入框）
   Widget _buildTopSection(BuildContext context, WidgetRef ref) {
     return Stack(
       children: [

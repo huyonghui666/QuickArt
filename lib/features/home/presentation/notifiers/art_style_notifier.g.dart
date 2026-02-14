@@ -8,7 +8,9 @@ part of 'art_style_notifier.dart';
 
 String _$artStyleNotifierHash() => r'2407676e581d489c06eb60444ddbb7879f08a6b8';
 
-/// See also [ArtStyleNotifier].
+/// 艺术风格选择状态管理
+///
+/// Copied from [ArtStyleNotifier].
 @ProviderFor(ArtStyleNotifier)
 final artStyleNotifierProvider =
     AutoDisposeNotifierProvider<ArtStyleNotifier, ArtStyle>.internal(

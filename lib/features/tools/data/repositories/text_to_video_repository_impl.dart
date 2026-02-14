@@ -2,10 +2,12 @@ import 'package:quick_art/features/tools/data/datasources/generate_video_remote_
 import 'package:quick_art/features/tools/domain/entities/video_generation_task.dart';
 import 'package:quick_art/features/tools/domain/repositories/text_to_video_repository.dart';
 
+/// 生成视频仓库实现
 class GenerateVideoRepositoryImpl implements TextToVideoRepository {
-  final IGenerateVideoRemoteDataSource _remoteDataSource;
-
+  /// 构造
   GenerateVideoRepositoryImpl(this._remoteDataSource);
+
+  final IGenerateVideoRemoteDataSource _remoteDataSource;
 
   @override
   Future<VideoGenerationTask> generateVideo(String prompt) async {

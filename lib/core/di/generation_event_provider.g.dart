@@ -7,7 +7,7 @@ part of 'generation_event_provider.dart';
 // **************************************************************************
 
 String _$generationEventControllerHash() =>
-    r'c850a8d4d6edbb4eae70d2c8965401f798f7040d';
+    r'7aa70d4b704e6740dff565c87cae1f566aa5e407';
 
 /// 全局任务结果事件流控制器
 /// 使用 Provider 管理 Controller，确保可测试性和生命周期管理

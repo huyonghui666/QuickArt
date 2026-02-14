@@ -1,17 +1,17 @@
 import 'package:path/path.dart';
 import 'package:quick_art/features/workshop/domain/entities/workshop_task.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'package:sentry_flutter/sentry_flutter.dart';
-
+/// 本地工作室数据库
 class DatabaseHelper {
-  static final DatabaseHelper _instance = DatabaseHelper._internal();
-  static Database? _database;
-
+  /// 构造
   factory DatabaseHelper() => _instance;
 
   DatabaseHelper._internal();
-
+  static final DatabaseHelper _instance = DatabaseHelper._internal();
+  static Database? _database;
+  /// 数据库实例
   Future<Database> get database async {
     if (_database != null) return _database!;
     try {
@@ -22,8 +22,8 @@ class DatabaseHelper {
         e,
         stackTrace: stackTrace,
         withScope: (scope) {
-          scope.setTag('feature', 'database');
-          scope.level = SentryLevel.fatal;
+          scope..setTag('feature', 'database')
+          ..level = SentryLevel.fatal;
         },
       );
       rethrow;
@@ -34,7 +34,7 @@ class DatabaseHelper {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, 'workshop_tasks.db');
 
-    return await openDatabase(
+    return openDatabase(
       path,
       version: 1,
       onCreate: (db, version) async {
@@ -52,7 +52,7 @@ class DatabaseHelper {
       },
     );
   }
-
+  /// 插入生成任务
   Future<void> insertTask(WorkshopTask task) async {
     final db = await database;
     await db.insert(
@@ -61,7 +61,7 @@ class DatabaseHelper {
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
-
+  /// 更新
   Future<void> updateTask(WorkshopTask task) async {
     final db = await database;
     await db.update(
@@ -72,7 +72,7 @@ class DatabaseHelper {
     );
   }
 
-  // 用于仅更新部分字段，例如任务完成后更新状态和URL
+  /// 用于仅更新部分字段，例如任务完成后更新状态和URL
   Future<void> updateTaskStatus(
     String id,
     WorkshopTaskStatus status, {
@@ -81,14 +81,14 @@ class DatabaseHelper {
     String? errorMessage,
   }) async {
     final db = await database;
-    final Map<String, dynamic> values = {'status': status.name};
+    final values = <String, dynamic>{'status': status.name};
     if (url != null) values['url'] = url;
     if (thumbnailUrl != null) values['thumbnail_url'] = thumbnailUrl;
     if (errorMessage != null) values['error_message'] = errorMessage;
 
     await db.update('workshop_tasks', values, where: 'id = ?', whereArgs: [id]);
   }
-
+  /// 获取所有生成任务
   Future<List<WorkshopTask>> getTasks() async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query(
@@ -100,7 +100,7 @@ class DatabaseHelper {
       return WorkshopTask.fromMap(maps[i]);
     });
   }
-
+  /// 通过id获取某个任务
   Future<WorkshopTask?> getTaskById(String id) async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query(

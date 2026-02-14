@@ -63,8 +63,8 @@ void main() {
     await Future.delayed(Duration.zero);
 
     // Assert
-    expect(sub.read(), AsyncData(tImageTemplatePage));
-    verify(() => mockUseCase(category: '', page: 0, size: 20)).called(1);
+    expect(sub.read(), const AsyncData(tImageTemplatePage));
+    verify(() => mockUseCase(category: null, page: 0, size: 20)).called(1);
   });
 
   test('should handle initial fetch error', () async {
@@ -103,13 +103,20 @@ void main() {
     await container.read(templatesProvider(category: null).notifier).loadMore();
 
     // Assert
-    final state = sub.read();
     expect(
-      state.value!.items.length,
-      2,
-    ); // 1 from first page + 1 from second page
-    expect(state.value!.currentPage, 1);
-    expect(state.value!.hasMore, false);
+      sub.read(),
+      const AsyncData(
+        ImageTemplatePage(
+          items: [
+            ImageTemplate(id: '1', imageUrl: 'url', name: {'en': 'name'}),
+            ImageTemplate(id: '2', imageUrl: 'url2', name: {'en': 'name2'}),
+          ],
+          currentPage: 1,
+          totalPages: 2,
+          hasMore: false,
+        ),
+      ),
+    );
 
     verify(() => mockUseCase(category: '', page: 0, size: 20)).called(1);
     verify(() => mockUseCase(category: '', page: 1, size: 20)).called(1);
@@ -129,7 +136,7 @@ void main() {
     await container.read(templatesProvider(category: null).notifier).refresh();
 
     // Assert
-    expect(sub.read(), AsyncData(tImageTemplatePage));
+    expect(sub.read(), const AsyncData(tImageTemplatePage));
     // Called twice: once for initial load, once for refresh
     verify(() => mockUseCase(category: '', page: 0, size: 20)).called(2);
   });

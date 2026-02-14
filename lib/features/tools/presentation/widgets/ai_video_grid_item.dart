@@ -77,8 +77,6 @@ class _AiVideoGridItemState extends ConsumerState<AiVideoGridItem> {
 
   @override
   Widget build(BuildContext context) {
-    /// final l10n = AppLocalizations.of(context)!;
-
     // 使用 VisibilityDetector 检测当前 Item 是否在屏幕内
     return VisibilityDetector(
       // 必须确保全局唯一，建议加上 index

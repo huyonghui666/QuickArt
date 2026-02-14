@@ -71,7 +71,7 @@ void main() {
     ); // Wait for async build
 
     // Assert
-    expect(sub.read(), AsyncData(tTask));
+    expect(sub.read(), const AsyncData(tTask));
 
     verify(() => mockUseCase.execute(tPrompt)).called(1);
     expect(fakeWebSocketNotifier.subscribedTasks, contains('123'));

@@ -44,7 +44,6 @@ class _VideoTemplateDetailScreenState
 
   @override
   Widget build(BuildContext context) {
-    /// final l10n = AppLocalizations.of(context)!;
     // 获取当前语言环境以显示名称
     final locale = Localizations.localeOf(context).languageCode;
     final name =

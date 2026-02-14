@@ -7,7 +7,7 @@ part of 'video_generation_provider.dart';
 // **************************************************************************
 
 String _$videoGenerationNotifierHash() =>
-    r'f743a29e6e010a5fe9a853ad4689e8b6b26b775e';
+    r'b0106901c71c23c9cbf5f9b7cce68885f25bde30';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -37,17 +37,25 @@ abstract class _$VideoGenerationNotifier
   AsyncValue<VideoGenerationTask> build(String prompt);
 }
 
-/// See also [VideoGenerationNotifier].
+/// 文生视频Notifier
+///
+/// Copied from [VideoGenerationNotifier].
 @ProviderFor(VideoGenerationNotifier)
 const videoGenerationNotifierProvider = VideoGenerationNotifierFamily();
 
-/// See also [VideoGenerationNotifier].
+/// 文生视频Notifier
+///
+/// Copied from [VideoGenerationNotifier].
 class VideoGenerationNotifierFamily
     extends Family<AsyncValue<VideoGenerationTask>> {
-  /// See also [VideoGenerationNotifier].
+  /// 文生视频Notifier
+  ///
+  /// Copied from [VideoGenerationNotifier].
   const VideoGenerationNotifierFamily();
 
-  /// See also [VideoGenerationNotifier].
+  /// 文生视频Notifier
+  ///
+  /// Copied from [VideoGenerationNotifier].
   VideoGenerationNotifierProvider call(String prompt) {
     return VideoGenerationNotifierProvider(prompt);
   }
@@ -74,14 +82,18 @@ class VideoGenerationNotifierFamily
   String? get name => r'videoGenerationNotifierProvider';
 }
 
-/// See also [VideoGenerationNotifier].
+/// 文生视频Notifier
+///
+/// Copied from [VideoGenerationNotifier].
 class VideoGenerationNotifierProvider
     extends
         AutoDisposeNotifierProviderImpl<
           VideoGenerationNotifier,
           AsyncValue<VideoGenerationTask>
         > {
-  /// See also [VideoGenerationNotifier].
+  /// 文生视频Notifier
+  ///
+  /// Copied from [VideoGenerationNotifier].
   VideoGenerationNotifierProvider(String prompt)
     : this._internal(
         () => VideoGenerationNotifier()..prompt = prompt,

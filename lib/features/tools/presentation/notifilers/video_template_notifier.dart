@@ -1,17 +1,16 @@
 import 'package:quick_art/core/di/injection_container.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:quick_art/features/tools/domain/entities/video_template_page.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'video_template_notifier.g.dart';
 
 @riverpod
 /// 视频模板状态管理 Notifier
 class VideoTemplates extends _$VideoTemplates {
-  static const int _pageSize = 20;
   bool _isLoadingMore = false;
 
   @override
-  FutureOr<VideoTemplatePage> build({String? category}) async {
+  FutureOr<VideoTemplatePage> build({required String category}) async {
     return _fetch(page: 0);
   }
 
@@ -19,7 +18,7 @@ class VideoTemplates extends _$VideoTemplates {
   Future<VideoTemplatePage> _fetch({required int page}) async {
     return ref
         .read(getVideoTemplatesUseCaseProvider)
-        .call(category: category, page: page, size: _pageSize);
+        .call(category: category, page: page);
   }
 
   /// 加载更多
@@ -46,7 +45,7 @@ class VideoTemplates extends _$VideoTemplates {
           hasMore: newPage.hasMore,
         ),
       );
-    } catch (e, stack) {
+    } on Exception catch (e, stack) {
       // 保持现有数据，但设置错误状态
       state = AsyncError(e, stack);
     } finally {

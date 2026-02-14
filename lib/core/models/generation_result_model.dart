@@ -10,7 +10,8 @@ part 'generation_result_model.g.dart';
 /// @property type 任务类型 (IMAGE, VIDEO)
 /// @property error 错误信息 (如果失败)
 @freezed
-class GenerationResultModel with _$GenerationResultModel {
+abstract class GenerationResultModel with _$GenerationResultModel {
+  /// 构造
   const factory GenerationResultModel({
     required String taskId,
     required String event, // success, failed, processing
@@ -20,6 +21,7 @@ class GenerationResultModel with _$GenerationResultModel {
     String? error,
   }) = _GenerationResultModel;
 
+  /// 转换
   factory GenerationResultModel.fromJson(Map<String, dynamic> json) =>
       _$GenerationResultModelFromJson(json);
 }

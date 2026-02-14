@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 /// 统一主题配置 - 只提供明亮主题
 class AppTheme {
   // 主题配置常量
-  static const double _borderRadius = 12.0;
-  static const double _buttonBorderRadius = 8.0;
-  static const double _cardElevation = 1.0;
+  static const double _borderRadius = 12;
+  static const double _buttonBorderRadius = 8;
+  static const double _cardElevation = 1;
 
   // 间距常量
   static const EdgeInsets _buttonPadding = EdgeInsets.symmetric(
@@ -16,7 +16,7 @@ class AppTheme {
     horizontal: 16,
     vertical: 12,
   );
-  static const EdgeInsets _cardMargin = EdgeInsets.all(8.0);
+  static const EdgeInsets _cardMargin = EdgeInsets.all(8);
 
   /// 统一明亮主题 - Material Design 3 风格
   static final ThemeData lightTheme = ThemeData(
@@ -26,7 +26,6 @@ class AppTheme {
     // 颜色方案 - 使用紫色作为主色调
     colorScheme: ColorScheme.fromSeed(
       seedColor: Colors.deepPurple,
-      brightness: Brightness.light,
       primary: Colors.deepPurple,
       secondary: Colors.purpleAccent,
       tertiary: Colors.indigo,
@@ -157,11 +156,11 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(_borderRadius),
-        borderSide: const BorderSide(color: Colors.deepPurple, width: 1),
+        borderSide: const BorderSide(color: Colors.deepPurple),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(_borderRadius),
-        borderSide: BorderSide(color: Colors.grey.shade400, width: 1),
+        borderSide: BorderSide(color: Colors.grey.shade400),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(_borderRadius),
@@ -169,7 +168,7 @@ class AppTheme {
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(_borderRadius),
-        borderSide: const BorderSide(color: Colors.red, width: 1),
+        borderSide: const BorderSide(color: Colors.red),
       ),
       contentPadding: _inputPadding,
       filled: true,

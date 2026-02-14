@@ -4,10 +4,12 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
 
+/// 自定义底部导航栏组件
 class CustomBottomNavigation extends StatelessWidget {
+  /// 构造
+  const CustomBottomNavigation({required this.navigationShell, super.key});
+  ///
   final StatefulNavigationShell navigationShell;
-
-  const CustomBottomNavigation({super.key, required this.navigationShell});
 
   void _onTap(int index) {
     navigationShell.goBranch(

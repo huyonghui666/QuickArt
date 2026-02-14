@@ -6,9 +6,9 @@ part of 'video_template_page_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$VideoTemplatePageModelImpl _$$VideoTemplatePageModelImplFromJson(
+_VideoTemplatePageModel _$VideoTemplatePageModelFromJson(
   Map<String, dynamic> json,
-) => _$VideoTemplatePageModelImpl(
+) => _VideoTemplatePageModel(
   content: (json['content'] as List<dynamic>)
       .map((e) => VideoTemplateModel.fromJson(e as Map<String, dynamic>))
       .toList(),
@@ -19,8 +19,8 @@ _$VideoTemplatePageModelImpl _$$VideoTemplatePageModelImplFromJson(
   number: (json['number'] as num).toInt(),
 );
 
-Map<String, dynamic> _$$VideoTemplatePageModelImplToJson(
-  _$VideoTemplatePageModelImpl instance,
+Map<String, dynamic> _$VideoTemplatePageModelToJson(
+  _VideoTemplatePageModel instance,
 ) => <String, dynamic>{
   'content': instance.content,
   'totalPages': instance.totalPages,

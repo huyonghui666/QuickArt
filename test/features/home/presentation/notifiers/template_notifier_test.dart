@@ -82,17 +82,17 @@ void main() {
 
     // Assert
     expect(sub.read(), isA<AsyncError>());
-    verify(() => mockUseCase(category: null, page: 0, size: 20)).called(1);
+    verify(() => mockUseCase(category: '', page: 0, size: 20)).called(1);
   });
 
   test('should load more templates', () async {
     // Arrange
     when(
-      () => mockUseCase(category: null, page: 0, size: 20),
+      () => mockUseCase(category: '', page: 0, size: 20),
     ).thenAnswer((_) async => tImageTemplatePageWithMore);
 
     when(
-      () => mockUseCase(category: null, page: 1, size: 20),
+      () => mockUseCase(category: '', page: 1, size: 20),
     ).thenAnswer((_) async => tImageTemplatePageNext);
 
     // Initialize
@@ -118,14 +118,14 @@ void main() {
       ),
     );
 
-    verify(() => mockUseCase(category: null, page: 0, size: 20)).called(1);
-    verify(() => mockUseCase(category: null, page: 1, size: 20)).called(1);
+    verify(() => mockUseCase(category: '', page: 0, size: 20)).called(1);
+    verify(() => mockUseCase(category: '', page: 1, size: 20)).called(1);
   });
 
   test('should refresh templates', () async {
     // Arrange
     when(
-      () => mockUseCase(category: null, page: 0, size: 20),
+      () => mockUseCase(category: '', page: 0, size: 20),
     ).thenAnswer((_) async => tImageTemplatePage);
 
     // Initialize
@@ -138,6 +138,6 @@ void main() {
     // Assert
     expect(sub.read(), const AsyncData(tImageTemplatePage));
     // Called twice: once for initial load, once for refresh
-    verify(() => mockUseCase(category: null, page: 0, size: 20)).called(2);
+    verify(() => mockUseCase(category: '', page: 0, size: 20)).called(2);
   });
 }

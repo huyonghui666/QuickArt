@@ -6,7 +6,8 @@ import 'package:quick_art/features/home/data/models/image_template_model.dart';
 import 'package:quick_art/features/home/data/models/image_template_page_model.dart';
 import 'package:quick_art/features/home/data/repositories/template_repository_impl.dart';
 
-class MockTemplateRemoteDataSource extends Mock implements ITemplateRemoteDataSource {}
+class MockTemplateRemoteDataSource extends Mock
+    implements ITemplateRemoteDataSource {}
 
 void main() {
   late TemplateRepositoryImpl repository;
@@ -32,47 +33,71 @@ void main() {
       last: true,
     );
 
-    test('should return ImageTemplatePage when remote data source call is successful', () async {
-      // Arrange
-      when(() => mockRemoteDataSource.getTemplates(
+    test(
+      'should return ImageTemplatePage when remote data source call is successful',
+      () async {
+        // Arrange
+        when(
+          () => mockRemoteDataSource.getImageTemplates(
             category: any(named: 'category'),
             page: any(named: 'page'),
             size: any(named: 'size'),
-          )).thenAnswer((_) async => tImageTemplatePageModel);
+          ),
+        ).thenAnswer((_) async => tImageTemplatePageModel);
 
-      // Act
-      final result = await repository.getTemplates(page: 0, size: 20);
+        // Act
+        final result = await repository.getImageTemplates(
+          category: 'test_category',
+          page: 0,
+          size: 20,
+        );
 
-      // Assert
-      expect(result.items.length, 1);
-      expect(result.items.first.id, '1');
-      expect(result.currentPage, 0);
-      expect(result.hasMore, false);
-      
-      verify(() => mockRemoteDataSource.getTemplates(
+        // Assert
+        expect(result.items.length, 1);
+        expect(result.items.first.id, '1');
+        expect(result.currentPage, 0);
+        expect(result.hasMore, false);
+
+        verify(
+          () => mockRemoteDataSource.getImageTemplates(
+            category: 'test_category',
             page: 0,
             size: 20,
-          )).called(1);
-    });
+          ),
+        ).called(1);
+      },
+    );
 
-    test('should rethrow exception when remote data source call fails', () async {
-      // Arrange
-      when(() => mockRemoteDataSource.getTemplates(
+    test(
+      'should rethrow exception when remote data source call fails',
+      () async {
+        // Arrange
+        when(
+          () => mockRemoteDataSource.getImageTemplates(
             category: any(named: 'category'),
             page: any(named: 'page'),
             size: any(named: 'size'),
-          )).thenThrow(NetworkException('Server Error'));
+          ),
+        ).thenThrow(NetworkException('Server Error'));
 
-      // Act & Assert
-      expect(
-        () => repository.getTemplates(page: 0, size: 20),
-        throwsA(isA<NetworkException>()),
-      );
-      
-      verify(() => mockRemoteDataSource.getTemplates(
+        // Act & Assert
+        expect(
+          () => repository.getImageTemplates(
+            category: 'test_category',
             page: 0,
             size: 20,
-          )).called(1);
-    });
+          ),
+          throwsA(isA<NetworkException>()),
+        );
+
+        verify(
+          () => mockRemoteDataSource.getImageTemplates(
+            category: 'test_category',
+            page: 0,
+            size: 20,
+          ),
+        ).called(1);
+      },
+    );
   });
 }

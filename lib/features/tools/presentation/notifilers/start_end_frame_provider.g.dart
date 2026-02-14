@@ -8,7 +8,9 @@ part of 'start_end_frame_provider.dart';
 
 String _$startEndFrameHash() => r'0d891d4a16e572a8d10e724834bbb9d9bbd558f4';
 
-/// See also [StartEndFrame].
+/// 首尾帧设置
+///
+/// Copied from [StartEndFrame].
 @ProviderFor(StartEndFrame)
 final startEndFrameProvider =
     AutoDisposeNotifierProvider<StartEndFrame, StartEndFrameState>.internal(

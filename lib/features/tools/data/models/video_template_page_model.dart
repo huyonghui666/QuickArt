@@ -7,9 +7,9 @@ part 'video_template_page_model.g.dart';
 
 @freezed
 /// 视频模板分页数据模型（对应后端 API 分页响应）
-class VideoTemplatePageModel with _$VideoTemplatePageModel {
-  const VideoTemplatePageModel._();
-
+@freezed
+abstract class VideoTemplatePageModel with _$VideoTemplatePageModel {
+  /// 构造
   const factory VideoTemplatePageModel({
     /// 模板列表数据
     required List<VideoTemplateModel> content,
@@ -29,7 +29,9 @@ class VideoTemplatePageModel with _$VideoTemplatePageModel {
     /// 当前页码
     required int number,
   }) = _VideoTemplatePageModel;
+  const VideoTemplatePageModel._();
 
+  /// 转换
   factory VideoTemplatePageModel.fromJson(Map<String, dynamic> json) =>
       _$VideoTemplatePageModelFromJson(json);
 

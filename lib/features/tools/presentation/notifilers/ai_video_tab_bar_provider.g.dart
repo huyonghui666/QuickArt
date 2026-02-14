@@ -8,7 +8,9 @@ part of 'ai_video_tab_bar_provider.dart';
 
 String _$aiVideoTabsHash() => r'bc693727eb93343cd5bddea2501192011b3700ec';
 
-/// See also [aiVideoTabs].
+/// 视频模板的tab
+///
+/// Copied from [aiVideoTabs].
 @ProviderFor(aiVideoTabs)
 final aiVideoTabsProvider = AutoDisposeProvider<List<String>>.internal(
   aiVideoTabs,

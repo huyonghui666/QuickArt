@@ -4,7 +4,9 @@ part 'video_template.freezed.dart';
 
 @freezed
 /// 视频模板实体类
-class VideoTemplate with _$VideoTemplate {
+@freezed
+abstract class VideoTemplate with _$VideoTemplate {
+  /// 构造
   const factory VideoTemplate({
     /// 模板ID
     required String id,

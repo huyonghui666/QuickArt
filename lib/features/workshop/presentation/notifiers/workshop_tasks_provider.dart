@@ -1,21 +1,20 @@
+import 'package:quick_art/core/di/generation_event_provider.dart';
 import 'package:quick_art/core/di/injection_container.dart';
 import 'package:quick_art/core/models/generate_task_type.dart';
 import 'package:quick_art/core/models/generation_result_model.dart';
-import 'package:quick_art/core/di/generation_event_provider.dart';
 import 'package:quick_art/features/workshop/domain/entities/workshop_task.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'workshop_tasks_provider.g.dart';
 
+/// 工作室Notifier
 @riverpod
 class WorkshopTasksNotifier extends _$WorkshopTasksNotifier {
   @override
   Future<List<WorkshopTask>> build() async {
     // 监听 WebSocket 全局事件流，实现实时响应
     ref.listen(generationEventProvider, (previous, next) {
-      next.whenData((event) {
-        _handleGenerationEvent(event);
-      });
+      next.whenData(_handleGenerationEvent);
     });
 
     return _fetchTasks();
@@ -23,12 +22,13 @@ class WorkshopTasksNotifier extends _$WorkshopTasksNotifier {
 
   Future<List<WorkshopTask>> _fetchTasks() async {
     final useCase = ref.watch(getWorkshopTasksUseCaseProvider);
-    return await useCase.execute();
+    return useCase.execute();
   }
 
+  /// 刷新
   Future<void> refresh() async {
     state = const AsyncValue.loading();
-    state = await AsyncValue.guard(() => _fetchTasks());
+    state = await AsyncValue.guard(_fetchTasks);
   }
 
   /// 处理 WebSocket 推送的任务结果事件
@@ -78,7 +78,7 @@ class WorkshopTasksNotifier extends _$WorkshopTasksNotifier {
 
           final newList = [newTask, ...currentList];
           state = AsyncValue.data(newList);
-        } catch (_) {
+        } on Exception catch (_) {
           refresh();
         }
       } else {

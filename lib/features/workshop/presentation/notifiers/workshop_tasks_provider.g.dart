@@ -7,9 +7,11 @@ part of 'workshop_tasks_provider.dart';
 // **************************************************************************
 
 String _$workshopTasksNotifierHash() =>
-    r'eaac36dd870004badef04fbdb1ddb31030dffaec';
+    r'b4c3041a1e369a436a019d2bfed36145c9b5bbf2';
 
-/// See also [WorkshopTasksNotifier].
+/// 工作室Notifier
+///
+/// Copied from [WorkshopTasksNotifier].
 @ProviderFor(WorkshopTasksNotifier)
 final workshopTasksNotifierProvider =
     AutoDisposeAsyncNotifierProvider<

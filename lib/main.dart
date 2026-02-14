@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/core/di/config/config_provider.dart';
+import 'package:quick_art/core/di/localization/locale_provider.dart';
 import 'package:quick_art/core/error/setup_error_handling.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
-import 'package:quick_art/core/di/localization/locale_provider.dart';
 import 'package:quick_art/core/router/router.dart';
 import 'package:quick_art/core/theme/app_theme.dart';
 import 'package:quick_art/core/websocket/websocket_provider.dart';
@@ -22,19 +22,20 @@ Future<void> main() async {
 
   await SentryFlutter.init(
     (options) {
-      options.dsn = config.sentryDsn;
-      options.tracesSampleRate = config.tracesSampleRate;
-      options.environment = config.environment.shortName;
+      options..dsn = config.sentryDsn
+      ..tracesSampleRate = config.tracesSampleRate
+      ..environment = config.environment.shortName
 
       // 可选：崩溃附截图、自动面包屑等
-      options.attachScreenshot = true;
-      options.enableAutoNativeBreadcrumbs = true;
+      ..attachScreenshot = true
+      ..enableAutoNativeBreadcrumbs = true;
     },
 
     appRunner: () async {
       await setupErrorHandling();
       runApp(
-        // UncontrolledProviderScope 用于将我们上面手动创建的 container 注入到 Flutter 的 Widget 树中。
+        // UncontrolledProviderScope 用于将我们上面手动创建的 container 注入到 Flutter
+        // 的 Widget 树中。
         // 这样，整个应用就可以复用这个 container 里的状态（比如我们刚刚读取的 appConfigProvider），
         // 而不是重新创建一个新的（那样会导致配置状态丢失或重复初始化）。
         UncontrolledProviderScope(
@@ -46,7 +47,9 @@ Future<void> main() async {
   );
 }
 
+/// APP 入口
 class QuickArtApp extends ConsumerStatefulWidget {
+  /// 构造
   const QuickArtApp({super.key});
 
   @override

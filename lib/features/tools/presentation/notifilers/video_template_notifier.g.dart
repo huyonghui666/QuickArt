@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '../notifilers/video_template_notifier.dart';
+part of 'video_template_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$videoTemplatesHash() => r'2fc49a399a06b9d4b01a9a3e3a9688cdc5f2266e';
+String _$videoTemplatesHash() => r'0f52374892aa43df8f172854918f270ca5421ac3';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,9 +31,9 @@ class _SystemHash {
 
 abstract class _$VideoTemplates
     extends BuildlessAutoDisposeAsyncNotifier<VideoTemplatePage> {
-  late final String? category;
+  late final String category;
 
-  FutureOr<VideoTemplatePage> build({String? category});
+  FutureOr<VideoTemplatePage> build({required String category});
 }
 
 /// 视频模板状态管理 Notifier
@@ -54,7 +54,7 @@ class VideoTemplatesFamily extends Family<AsyncValue<VideoTemplatePage>> {
   /// 视频模板状态管理 Notifier
   ///
   /// Copied from [VideoTemplates].
-  VideoTemplatesProvider call({String? category}) {
+  VideoTemplatesProvider call({required String category}) {
     return VideoTemplatesProvider(category: category);
   }
 
@@ -92,7 +92,7 @@ class VideoTemplatesProvider
   /// 视频模板状态管理 Notifier
   ///
   /// Copied from [VideoTemplates].
-  VideoTemplatesProvider({String? category})
+  VideoTemplatesProvider({required String category})
     : this._internal(
         () => VideoTemplates()..category = category,
         from: videoTemplatesProvider,
@@ -116,7 +116,7 @@ class VideoTemplatesProvider
     required this.category,
   }) : super.internal();
 
-  final String? category;
+  final String category;
 
   @override
   FutureOr<VideoTemplatePage> runNotifierBuild(
@@ -166,7 +166,7 @@ class VideoTemplatesProvider
 mixin VideoTemplatesRef
     on AutoDisposeAsyncNotifierProviderRef<VideoTemplatePage> {
   /// The parameter `category` of this provider.
-  String? get category;
+  String get category;
 }
 
 class _VideoTemplatesProviderElement
@@ -179,7 +179,7 @@ class _VideoTemplatesProviderElement
   _VideoTemplatesProviderElement(super.provider);
 
   @override
-  String? get category => (origin as VideoTemplatesProvider).category;
+  String get category => (origin as VideoTemplatesProvider).category;
 }
 
 // ignore_for_file: type=lint

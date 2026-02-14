@@ -3,45 +3,51 @@ import 'package:quick_art/core/error/exception.dart';
 import 'package:quick_art/features/home/data/models/image_template_page_model.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-///图片模板包数据
+/// 图片模板数据源接口
 abstract class ITemplateRemoteDataSource {
-  Future<ImageTemplatePageModel> getTemplates({
-    String? category,
+  /// 获取图片模板列表
+  ///
+  /// [category] 分类
+  /// [page] 页码
+  /// [size] 每页数量
+  Future<ImageTemplatePageModel> getImageTemplates({
+    required String category,
     int page = 0,
     int size = 20,
   });
 }
 
+/// 图片模板数据源实现类
 class TemplateRemoteDataSource implements ITemplateRemoteDataSource {
-  final Dio _dio;
-
+  /// 构造函数
   TemplateRemoteDataSource(this._dio);
 
+  final Dio _dio;
+
   @override
-  Future<ImageTemplatePageModel> getTemplates({
-    String? category,
+  Future<ImageTemplatePageModel> getImageTemplates({
+    required String category,
     int page = 0,
     int size = 20,
   }) async {
     try {
-      final queryParameters = {
+      final queryParameters = <String, dynamic>{
         'page': page,
         'size': size,
-        if (category != null) 'category': category,
+        'category': category,
       };
 
-      final response = await _dio.get(
+      final response = await _dio.get<Map<String, dynamic>>(
         '/templates',
         queryParameters: queryParameters,
       );
-      // .timeout(AppConstants.timeout);
 
       if (response.statusCode != 200) {
         throw NetworkException('Get templates failed: ${response.data}');
       }
 
       final data = response.data;
-      if (data['content'] == null) {
+      if (data == null || data['content'] == null) {
         throw DataException('No content');
       }
       return ImageTemplatePageModel.fromJson(data);
@@ -50,10 +56,10 @@ class TemplateRemoteDataSource implements ITemplateRemoteDataSource {
       await Sentry.captureException(
         e,
         stackTrace: stackTrace,
-        withScope: (scope) {
-          scope.setTag('feature', 'get_templates');
+        withScope: (scope) async {
+          await scope.setTag('feature', 'get_image_templates');
           scope.contexts['input'] = {
-            'category': category ?? 'all',
+            'category': category,
             'page': page,
             'size': size,
           };
@@ -65,10 +71,10 @@ class TemplateRemoteDataSource implements ITemplateRemoteDataSource {
       await Sentry.captureException(
         e,
         stackTrace: stackTrace,
-        withScope: (scope) {
-          scope.setTag('feature', 'get_templates');
+        withScope: (scope) async {
+          await scope.setTag('feature', 'get_image_templates');
           scope.contexts['input'] = {
-            'category': category ?? 'all',
+            'category': category,
             'page': page,
             'size': size,
           };

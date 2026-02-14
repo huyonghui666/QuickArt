@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+/// 权限管理
 class PermissionManager {
   static final DeviceInfoPlugin _deviceInfo = DeviceInfoPlugin();
 

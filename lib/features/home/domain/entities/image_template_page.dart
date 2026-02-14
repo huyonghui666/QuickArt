@@ -9,15 +9,16 @@ part 'image_template_page.freezed.dart';
 /// @param totalPages 总共页数
 /// @param hasMore 判断是否有下一页
 @freezed
-class ImageTemplatePage with _$ImageTemplatePage {
-  const ImageTemplatePage._();
+abstract class ImageTemplatePage with _$ImageTemplatePage {
 
+  ///构造
   const factory ImageTemplatePage({
     required List<ImageTemplate> items,
     required int currentPage,
     required int totalPages,
     required bool hasMore,
   }) = _ImageTemplatePage;
+  const ImageTemplatePage._();
 
   /// 是否为空
   bool get isEmpty => items.isEmpty;

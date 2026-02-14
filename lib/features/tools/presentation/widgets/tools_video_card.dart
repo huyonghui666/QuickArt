@@ -1,24 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quick_art/features/tools/presentation/notifilers/video_player_controller_provider.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
-import 'package:quick_art/features/tools/presentation/notifilers/video_player_controller_provider.dart';
 
-// 创建可复用的视频卡片 Widget
+/// 创建可复用的视频卡片 Widget
 class VideoCard extends ConsumerStatefulWidget {
-  final String videoPath;
-  final String title;
-  final VoidCallback? onTap;
-  final bool checkRouteMatch;
-
+  /// 构造
   const VideoCard({
-    super.key,
     required this.videoPath,
+    super.key,
     this.title = '',
     this.onTap,
     this.checkRouteMatch = true,
   });
+
+  /// 视频assets本地路径
+  final String videoPath;
+
+  /// 标题
+  final String title;
+
+  /// 点击回调
+  final VoidCallback? onTap;
+
+  /// 检查路由匹配
+  final bool checkRouteMatch;
 
   @override
   ConsumerState<VideoCard> createState() => _VideoCardState();
@@ -29,10 +37,12 @@ class _VideoCardState extends ConsumerState<VideoCard> {
   Widget build(BuildContext context) {
     // 实时获取当前路径 (GoRouter 监听机制)
     // GoRouterState.of(context) 会在路由变化时重建 widget
-    String currentLocation = '';
+    var currentLocation = '';
     try {
       currentLocation = GoRouterState.of(context).uri.toString();
-    } catch (e) {
+      // GoRouterState.of throws an Error (not Exception) when not found.
+      // ignore: avoid_catches_without_on_clauses
+    } catch (_) {
       // 兼容在非 GoRouter 上下文中使用（如 BottomSheet）
       currentLocation = '';
     }
@@ -54,7 +64,7 @@ class _VideoCardState extends ConsumerState<VideoCard> {
     return GestureDetector(
       onTap: widget.onTap,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(16.0),
+        borderRadius: BorderRadius.circular(16),
         child: Stack(
           fit: StackFit.expand,
           children: [
@@ -98,7 +108,7 @@ class _VideoCardState extends ConsumerState<VideoCard> {
                     ),
                     loading: () => const Center(
                       child: CircularProgressIndicator(
-                        strokeWidth: 2.0,
+                        strokeWidth: 2,
                         color: Colors.white,
                       ),
                     ),
@@ -137,7 +147,7 @@ class _VideoCardState extends ConsumerState<VideoCard> {
                     fontWeight: FontWeight.bold,
                     shadows: [
                       Shadow(
-                        blurRadius: 8.0,
+                        blurRadius: 8,
                         color: Colors.black54,
                         offset: Offset(0, 2),
                       ),

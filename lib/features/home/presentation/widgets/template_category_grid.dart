@@ -5,10 +5,13 @@ import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/home/presentation/notifiers/template_notifier.dart';
 import 'package:quick_art/features/home/presentation/widgets/template_detail_show_modal_bottom_sheet.dart';
 
+/// 模板分类网格列表
 class TemplateCategoryGrid extends ConsumerWidget {
-  final String category;
+  ///构造
+  const TemplateCategoryGrid({required this.category, super.key});
 
-  const TemplateCategoryGrid({super.key, required this.category});
+  /// 分类
+  final String category;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -25,7 +28,7 @@ class TemplateCategoryGrid extends ConsumerWidget {
         if (templates.isEmpty) {
           return const SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.all(20.0),
+              padding: EdgeInsets.all(20),
               child: Center(
                 child: Text(
                   'No templates found',
@@ -52,7 +55,7 @@ class TemplateCategoryGrid extends ConsumerWidget {
             final template = templates[index];
             return GestureDetector(
               onTap: () {
-                showModalBottomSheet(
+                showModalBottomSheet<void>(
                   context: context,
                   isScrollControlled: true,
                   backgroundColor: Colors.black,
@@ -78,9 +81,9 @@ class TemplateCategoryGrid extends ConsumerWidget {
                     CachedNetworkImage(
                       imageUrl: template.thumbnailUrl ?? template.imageUrl,
                       fit: BoxFit.cover,
-                      placeholder: (_, __) =>
+                      placeholder: (_, _) =>
                           const Center(child: CircularProgressIndicator()),
-                      errorWidget: (_, __, ___) => const Icon(Icons.error),
+                      errorWidget: (_, _, _) => const Icon(Icons.error),
                     ),
                     Positioned(
                       bottom: 12,
@@ -117,13 +120,13 @@ class TemplateCategoryGrid extends ConsumerWidget {
       },
       loading: () => const SliverToBoxAdapter(
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(20),
           child: Center(child: CircularProgressIndicator()),
         ),
       ),
       error: (err, stack) => SliverToBoxAdapter(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20),
           child: Center(
             child: Text(
               'Error loading templates: $err',

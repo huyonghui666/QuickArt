@@ -1,13 +1,16 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/di/localization/locale_provider.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
 
+/// 语言页面
 class LanguageScreen extends ConsumerStatefulWidget {
+  /// 构造
   const LanguageScreen({super.key});
 
   @override
@@ -18,7 +21,8 @@ class _LanguageScreenState extends ConsumerState<LanguageScreen> {
   static const Map<String, String> _languageMap = {
     '简体中文': 'zh',
     '繁體中文':
-        'zh', // Note: GoRouter does not distinguish between zh-CN and zh-TW, so we use 'zh' for both
+        'zh', // Note: GoRouter does not distinguish between zh-CN and zh-TW, so
+              // we use 'zh' for both
     'English': 'en',
     '日本語': 'ja',
     '한국어': 'ko',
@@ -66,7 +70,7 @@ class _LanguageScreenState extends ConsumerState<LanguageScreen> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Material(
           color: const Color(0xFF1C1C1E),
           borderRadius: BorderRadius.circular(16),

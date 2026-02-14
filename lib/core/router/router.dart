@@ -1,13 +1,14 @@
 import 'package:go_router/go_router.dart';
+import 'package:quick_art/core/router/bottom_navigation_screen.dart';
 import 'package:quick_art/core/widgets/waiting_screen.dart';
 import 'package:quick_art/features/explore/routes/explore_routes.dart';
-import 'package:quick_art/core/router/bottom_navigation_screen.dart';
 import 'package:quick_art/features/home/routes/home_routes.dart';
 import 'package:quick_art/features/setting/routes/setting_routes.dart';
 import 'package:quick_art/features/tools/routes/tools_routes.dart';
 import 'package:quick_art/features/workshop/routes/workshop_routes.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+/// 主路由
 final GoRouter router = GoRouter(
   initialLocation: '/',
   observers: [SentryNavigatorObserver()],  //sentry监听路由

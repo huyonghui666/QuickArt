@@ -6,10 +6,12 @@ import 'package:quick_art/features/tools/presentation/screens/text_to_video_scre
 import 'package:quick_art/features/tools/presentation/screens/tools_screen.dart';
 import 'package:quick_art/features/tools/presentation/screens/video_template_detail_screen.dart';
 
+/// 底部导航栏路由
 List<GoRoute> get toolsRoutes => [
   GoRoute(path: '/tools', builder: (context, state) => const ToolsScreen()),
 ];
 
+/// tools的子路由
 List<GoRoute> get toolsStandaloneRoutes => [
   GoRoute(
     path: '/tools/ai-video',
@@ -26,7 +28,7 @@ List<GoRoute> get toolsStandaloneRoutes => [
   GoRoute(
     path: '/tools/ai-video/template-detail',
     builder: (context, state) {
-      final template = state.extra as VideoTemplate;
+      final template = state.extra! as VideoTemplate;
       return VideoTemplateDetailScreen(template: template);
     },
   ),

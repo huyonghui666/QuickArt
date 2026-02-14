@@ -6,10 +6,10 @@ part of 'image_generation_task_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ImageGenerationTaskModelImpl _$$ImageGenerationTaskModelImplFromJson(
+_ImageGenerationTaskModel _$ImageGenerationTaskModelFromJson(
   Map<String, dynamic> json,
-) => _$ImageGenerationTaskModelImpl(taskId: json['taskId'] as String);
+) => _ImageGenerationTaskModel(taskId: json['taskId'] as String);
 
-Map<String, dynamic> _$$ImageGenerationTaskModelImplToJson(
-  _$ImageGenerationTaskModelImpl instance,
+Map<String, dynamic> _$ImageGenerationTaskModelToJson(
+  _ImageGenerationTaskModel instance,
 ) => <String, dynamic>{'taskId': instance.taskId};

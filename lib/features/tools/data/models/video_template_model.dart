@@ -6,9 +6,9 @@ part 'video_template_model.g.dart';
 
 @freezed
 /// 视频模板数据模型（对应后端 API 响应）
-class VideoTemplateModel with _$VideoTemplateModel {
-  const VideoTemplateModel._();
-
+@freezed
+abstract class VideoTemplateModel with _$VideoTemplateModel {
+  /// 构造
   const factory VideoTemplateModel({
     /// 模板ID
     required String id,
@@ -28,7 +28,9 @@ class VideoTemplateModel with _$VideoTemplateModel {
     /// 模板描述
     String? description,
   }) = _VideoTemplateModel;
+  const VideoTemplateModel._();
 
+  /// 转换
   factory VideoTemplateModel.fromJson(Map<String, dynamic> json) =>
       _$VideoTemplateModelFromJson(json);
 

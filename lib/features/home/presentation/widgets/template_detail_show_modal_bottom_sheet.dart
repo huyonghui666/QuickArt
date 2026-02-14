@@ -3,19 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/di/prompt_provider.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
 import 'package:quick_art/features/home/domain/entities/image_template.dart';
 
+/// 模板详情底部弹窗
 class TemplateDetailShowModalBottomSheet extends ConsumerWidget {
+  /// 构造
+  const TemplateDetailShowModalBottomSheet({required this.template, super.key});
+  /// 图片模板数据
   final ImageTemplate template;
-
-  const TemplateDetailShowModalBottomSheet({super.key, required this.template});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Container(
+    return ColoredBox(
       color: Colors.black,
       child: Stack(
         children: [
@@ -29,9 +31,9 @@ class TemplateDetailShowModalBottomSheet extends ConsumerWidget {
                     (MediaQuery.of(context).size.width *
                             MediaQuery.of(context).devicePixelRatio)
                         .toInt(),
-                placeholder: (_, __) =>
+                placeholder: (_, _) =>
                     const Center(child: CircularProgressIndicator()),
-                errorWidget: (_, __, ___) =>
+                errorWidget: (_, _, _) =>
                     const Icon(Icons.error, color: Colors.white),
               ),
             ),
@@ -49,7 +51,7 @@ class TemplateDetailShowModalBottomSheet extends ConsumerWidget {
                   end: Alignment.topCenter,
                   colors: [
                     Colors.black.withValues(alpha: 0.9),
-                    Colors.black.withValues(alpha: 0.0),
+                    Colors.black.withValues(alpha: 0),
                   ],
                 ),
               ),

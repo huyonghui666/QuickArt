@@ -7,7 +7,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 abstract class IVideoTemplateRemoteDataSource {
   /// 获取视频模板列表
   Future<VideoTemplatePageModel> getVideoTemplates({
-    String? category,
+    required String category,
     int page = 0,
     int size = 20,
   });
@@ -15,13 +15,14 @@ abstract class IVideoTemplateRemoteDataSource {
 
 /// 视频模板远程数据源实现
 class VideoTemplateRemoteDataSource implements IVideoTemplateRemoteDataSource {
-  final Dio _dio;
-
+  /// 构造
   VideoTemplateRemoteDataSource(this._dio);
+
+  final Dio _dio;
 
   @override
   Future<VideoTemplatePageModel> getVideoTemplates({
-    String? category,
+    required String category,
     int page = 0,
     int size = 20,
   }) async {
@@ -29,15 +30,20 @@ class VideoTemplateRemoteDataSource implements IVideoTemplateRemoteDataSource {
       final queryParameters = {
         'page': page,
         'size': size,
-        if (category != null) 'category': category,
+        'category': category,
       };
 
-      final response = await _dio.get(
+      final response = await _dio.get<Map<String, dynamic>>(
         '/video-templates',
         queryParameters: queryParameters,
       );
 
-      return VideoTemplatePageModel.fromJson(response.data);
+      final data = response.data;
+      if (data == null || data['content'] == null) {
+        throw DataException('No content');
+      }
+
+      return VideoTemplatePageModel.fromJson(data);
     } on DioException catch (e, stackTrace) {
       // 记录错误到 Sentry
       await Sentry.captureException(

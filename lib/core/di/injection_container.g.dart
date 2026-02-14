@@ -8,7 +8,9 @@ part of 'injection_container.dart';
 
 String _$dioHash() => r'12c3f9ea7b0a2c11d6239a75a4352a954eb063f4';
 
-/// See also [dio].
+/// dio 实例
+///
+/// Copied from [dio].
 @ProviderFor(dio)
 final dioProvider = AutoDisposeProvider<Dio>.internal(
   dio,
@@ -26,7 +28,9 @@ typedef DioRef = AutoDisposeProviderRef<Dio>;
 String _$textToImageRemoteDataSourceHash() =>
     r'2d1363d546f3093493a3f885a5f21d77d10b5e35';
 
-/// See also [textToImageRemoteDataSource].
+/// 文生图远程数据源
+///
+/// Copied from [textToImageRemoteDataSource].
 @ProviderFor(textToImageRemoteDataSource)
 final textToImageRemoteDataSourceProvider =
     AutoDisposeProvider<ITextToImageRemoteDataSource>.internal(
@@ -46,7 +50,9 @@ typedef TextToImageRemoteDataSourceRef =
 String _$textToImageRepositoryHash() =>
     r'36872ee54b9cb250bc0ebad5c0de79a113f34fd2';
 
-/// See also [textToImageRepository].
+/// 文生图仓库
+///
+/// Copied from [textToImageRepository].
 @ProviderFor(textToImageRepository)
 final textToImageRepositoryProvider =
     AutoDisposeProvider<TextToImageRepository>.internal(
@@ -66,7 +72,9 @@ typedef TextToImageRepositoryRef =
 String _$textToGenerateImageUseCaseHash() =>
     r'32dc099d58dfc2a676cd3b564b556afd58d6605e';
 
-/// See also [textToGenerateImageUseCase].
+/// 文生图用例
+///
+/// Copied from [textToGenerateImageUseCase].
 @ProviderFor(textToGenerateImageUseCase)
 final textToGenerateImageUseCaseProvider =
     AutoDisposeProvider<TextToGenerateImageUseCase>.internal(
@@ -86,7 +94,9 @@ typedef TextToGenerateImageUseCaseRef =
 String _$textToVideoRemoteDataSourceHash() =>
     r'5d6430e3a4f341644ca1d8e48df4ed64ee6a70c4';
 
-/// See also [textToVideoRemoteDataSource].
+/// 视频生成远程数据源
+///
+/// Copied from [textToVideoRemoteDataSource].
 @ProviderFor(textToVideoRemoteDataSource)
 final textToVideoRemoteDataSourceProvider =
     AutoDisposeProvider<IGenerateVideoRemoteDataSource>.internal(
@@ -106,7 +116,9 @@ typedef TextToVideoRemoteDataSourceRef =
 String _$textToVideoRepositoryHash() =>
     r'6f2344fa516b3a4da8aaab8bcf6f18c283673f54';
 
-/// See also [textToVideoRepository].
+/// 视频生成仓库
+///
+/// Copied from [textToVideoRepository].
 @ProviderFor(textToVideoRepository)
 final textToVideoRepositoryProvider =
     AutoDisposeProvider<TextToVideoRepository>.internal(
@@ -126,7 +138,9 @@ typedef TextToVideoRepositoryRef =
 String _$textToGenerateVideoUseCaseHash() =>
     r'ed29f04324270fc75d89b3a8da9ed5a9ae1bb4b7';
 
-/// See also [textToGenerateVideoUseCase].
+/// 文生视频用例
+///
+/// Copied from [textToGenerateVideoUseCase].
 @ProviderFor(textToGenerateVideoUseCase)
 final textToGenerateVideoUseCaseProvider =
     AutoDisposeProvider<TextToGenerateVideoUseCase>.internal(
@@ -146,7 +160,9 @@ typedef TextToGenerateVideoUseCaseRef =
 String _$startEndFrameGenerateVideoUseCaseHash() =>
     r'e1b8a3a1b12b8a9efe01a00cc7bef741a86d1712';
 
-/// See also [startEndFrameGenerateVideoUseCase].
+/// 首尾帧生成视频用例
+///
+/// Copied from [startEndFrameGenerateVideoUseCase].
 @ProviderFor(startEndFrameGenerateVideoUseCase)
 final startEndFrameGenerateVideoUseCaseProvider =
     AutoDisposeProvider<StartEndFrameGenerateVideoUseCase>.internal(
@@ -166,7 +182,9 @@ typedef StartEndFrameGenerateVideoUseCaseRef =
 String _$generateVideoFromImageUseCaseHash() =>
     r'5049fb5e154c3c8209369fcd7ac187cd0f3164ae';
 
-/// See also [generateVideoFromImageUseCase].
+/// 图生视频用例
+///
+/// Copied from [generateVideoFromImageUseCase].
 @ProviderFor(generateVideoFromImageUseCase)
 final generateVideoFromImageUseCaseProvider =
     AutoDisposeProvider<GenerateVideoFromImageUseCase>.internal(
@@ -185,7 +203,9 @@ typedef GenerateVideoFromImageUseCaseRef =
     AutoDisposeProviderRef<GenerateVideoFromImageUseCase>;
 String _$databaseHelperHash() => r'd9a91b257d3ed9a4f2d87bd829e17dc900678685';
 
-/// See also [databaseHelper].
+/// 数据库帮助类
+///
+/// Copied from [databaseHelper].
 @ProviderFor(databaseHelper)
 final databaseHelperProvider = AutoDisposeProvider<DatabaseHelper>.internal(
   databaseHelper,
@@ -203,7 +223,9 @@ typedef DatabaseHelperRef = AutoDisposeProviderRef<DatabaseHelper>;
 String _$workshopRepositoryHash() =>
     r'e55a612e4a198db9d4031b243adc01ff53f3df1e';
 
-/// See also [workshopRepository].
+/// 工作坊仓库
+///
+/// Copied from [workshopRepository].
 @ProviderFor(workshopRepository)
 final workshopRepositoryProvider =
     AutoDisposeProvider<WorkshopRepository>.internal(
@@ -222,7 +244,9 @@ typedef WorkshopRepositoryRef = AutoDisposeProviderRef<WorkshopRepository>;
 String _$getWorkshopTasksUseCaseHash() =>
     r'079c3c56bf7b9865ddb51c6f72f60c08c13201ef';
 
-/// See also [getWorkshopTasksUseCase].
+/// 获取工作坊任务用例
+///
+/// Copied from [getWorkshopTasksUseCase].
 @ProviderFor(getWorkshopTasksUseCase)
 final getWorkshopTasksUseCaseProvider =
     AutoDisposeProvider<GetWorkshopTasksUseCase>.internal(
@@ -242,7 +266,9 @@ typedef GetWorkshopTasksUseCaseRef =
 String _$templateRemoteDataSourceHash() =>
     r'7499ad9f691e09bf18a697c2e7493419eacd2766';
 
-/// See also [templateRemoteDataSource].
+/// 图片模板远程数据源
+///
+/// Copied from [templateRemoteDataSource].
 @ProviderFor(templateRemoteDataSource)
 final templateRemoteDataSourceProvider =
     AutoDisposeProvider<ITemplateRemoteDataSource>.internal(
@@ -262,7 +288,9 @@ typedef TemplateRemoteDataSourceRef =
 String _$templateRepositoryHash() =>
     r'b75c1cec8d6045014d32da9d7d8ee32e5ef5b549';
 
-/// See also [templateRepository].
+/// 图片模板仓库
+///
+/// Copied from [templateRepository].
 @ProviderFor(templateRepository)
 final templateRepositoryProvider =
     AutoDisposeProvider<TemplateRepository>.internal(
@@ -281,7 +309,9 @@ typedef TemplateRepositoryRef = AutoDisposeProviderRef<TemplateRepository>;
 String _$getTemplatesUseCaseHash() =>
     r'ef04dfdb077b93f6ec17d5566aaa98d75abc0885';
 
-/// See also [getTemplatesUseCase].
+/// 获取图片模板用例
+///
+/// Copied from [getTemplatesUseCase].
 @ProviderFor(getTemplatesUseCase)
 final getTemplatesUseCaseProvider =
     AutoDisposeProvider<GetTemplatesUseCase>.internal(
@@ -300,7 +330,9 @@ typedef GetTemplatesUseCaseRef = AutoDisposeProviderRef<GetTemplatesUseCase>;
 String _$videoTemplateRemoteDataSourceHash() =>
     r'33f93f9d3abbf502811c220b16b7706c00595b30';
 
-/// See also [videoTemplateRemoteDataSource].
+/// 视频模板远程数据源
+///
+/// Copied from [videoTemplateRemoteDataSource].
 @ProviderFor(videoTemplateRemoteDataSource)
 final videoTemplateRemoteDataSourceProvider =
     AutoDisposeProvider<IVideoTemplateRemoteDataSource>.internal(
@@ -320,7 +352,9 @@ typedef VideoTemplateRemoteDataSourceRef =
 String _$videoTemplateRepositoryHash() =>
     r'3fbad67d0ead30a3699d5a550b3f3370a82d02cb';
 
-/// See also [videoTemplateRepository].
+/// 视频模板仓库
+///
+/// Copied from [videoTemplateRepository].
 @ProviderFor(videoTemplateRepository)
 final videoTemplateRepositoryProvider =
     AutoDisposeProvider<VideoTemplateRepository>.internal(
@@ -340,7 +374,9 @@ typedef VideoTemplateRepositoryRef =
 String _$getVideoTemplatesUseCaseHash() =>
     r'c87de6ef7b5560eb7e676bd92eb2a2795ac6aa9b';
 
-/// See also [getVideoTemplatesUseCase].
+/// 获取视频模板用例
+///
+/// Copied from [getVideoTemplatesUseCase].
 @ProviderFor(getVideoTemplatesUseCase)
 final getVideoTemplatesUseCaseProvider =
     AutoDisposeProvider<GetVideoTemplatesUseCase>.internal(

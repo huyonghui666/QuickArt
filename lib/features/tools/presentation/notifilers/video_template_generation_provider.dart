@@ -6,24 +6,28 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'video_template_generation_provider.g.dart';
 
-// State to hold the input
+/// State to hold the input
 class VideoTemplateGenerationInput {
-  final String? imagePath;
-  final String? prompt;
-
+  /// 构造
   VideoTemplateGenerationInput({this.imagePath, this.prompt});
+  /// 图片本地路径
+  final String? imagePath;
+  /// 提示词
+  final String? prompt;
 }
 
+///
 @Riverpod(keepAlive: true)
 class VideoTemplateInput extends _$VideoTemplateInput {
   @override
   VideoTemplateGenerationInput build() => VideoTemplateGenerationInput();
-
+  /// 设置
   void setInput(String imagePath, String prompt) {
     state = VideoTemplateGenerationInput(imagePath: imagePath, prompt: prompt);
   }
 }
 
+/// 视频模板生成Notifier
 @riverpod
 class VideoTemplateGenerationNotifier
     extends _$VideoTemplateGenerationNotifier {
@@ -38,7 +42,7 @@ class VideoTemplateGenerationNotifier
     try {
       final input = ref.read(videoTemplateInputProvider);
       if (input.imagePath == null) {
-        throw Exception("Image not selected");
+        throw Exception('Image not selected');
       }
 
       final useCase = ref.read(generateVideoFromImageUseCaseProvider);
@@ -50,11 +54,11 @@ class VideoTemplateGenerationNotifier
           .subscribeTask(task.taskId, type: GenerateTaskType.video);
 
       state = AsyncValue.data(task);
-    } catch (e, stack) {
+    } on Exception catch (e, stack) {
       state = AsyncValue.error(e, stack);
     }
   }
-
+  /// 重试
   void retry() {
     ref.invalidateSelf();
   }

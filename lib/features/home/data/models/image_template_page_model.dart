@@ -12,19 +12,21 @@ part 'image_template_page_model.g.dart';
 /// @param totalPages 总共页数
 /// @param last 是否最后一页
 @freezed
-class ImageTemplatePageModel with _$ImageTemplatePageModel {
-  const ImageTemplatePageModel._();
-
+abstract class ImageTemplatePageModel with _$ImageTemplatePageModel {
+  /// 构造
   const factory ImageTemplatePageModel({
     required List<ImageTemplateModel> content,
     required int number,
     required int totalPages,
     required bool last,
   }) = _ImageTemplatePageModel;
+  const ImageTemplatePageModel._();
 
+  /// 从 JSON 创建实例
   factory ImageTemplatePageModel.fromJson(Map<String, dynamic> json) =>
       _$ImageTemplatePageModelFromJson(json);
 
+  /// 转换为实体
   ImageTemplatePage toEntity() {
     return ImageTemplatePage(
       items: content.map((e) => e.toEntity()).toList(),

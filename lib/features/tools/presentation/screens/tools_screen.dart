@@ -4,7 +4,9 @@ import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/tools/presentation/widgets/tools_image_card.dart';
 import 'package:quick_art/features/tools/presentation/widgets/tools_video_card.dart';
 
+/// 工具页面
 class ToolsScreen extends StatelessWidget {
+  /// 构造
   const ToolsScreen({super.key});
 
   @override
@@ -25,7 +27,7 @@ class ToolsScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView(
           children: [
             const SizedBox(height: 16),
@@ -46,7 +48,7 @@ class ToolsScreen extends StatelessWidget {
                 videoPath: 'assets/videos/artisticPhoto_video.mp4',
                 title: l10n.tools_artistic_photo,
                 onTap: () {
-                  // TODO: 实现导航到艺术照页面
+                  // TODO(user): 实现导航到艺术照页面
                 },
               ),
             ),
@@ -58,7 +60,7 @@ class ToolsScreen extends StatelessWidget {
                 imageUrl: 'assets/images/tools/AIFaceSwapping.webp',
                 title: l10n.tools_ai_face_swap,
                 onTap: () {
-                  // TODO: 实现导航到 AI 换脸页面
+                  // TODO(user): 实现导航到 AI 换脸页面
                 },
               ),
             ),

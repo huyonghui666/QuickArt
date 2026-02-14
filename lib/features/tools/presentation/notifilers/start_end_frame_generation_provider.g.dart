@@ -7,7 +7,7 @@ part of 'start_end_frame_generation_provider.dart';
 // **************************************************************************
 
 String _$startEndFrameGenerationNotifierHash() =>
-    r'40361bb7c664ae99973eafc8e7f34dea5bcccece';
+    r'a97b556cd09406f8eefac1367061f12e4d521f47';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -37,18 +37,26 @@ abstract class _$StartEndFrameGenerationNotifier
   AsyncValue<VideoGenerationTask> build(String prompt);
 }
 
-/// See also [StartEndFrameGenerationNotifier].
+/// 首尾帧Notifier
+///
+/// Copied from [StartEndFrameGenerationNotifier].
 @ProviderFor(StartEndFrameGenerationNotifier)
 const startEndFrameGenerationNotifierProvider =
     StartEndFrameGenerationNotifierFamily();
 
-/// See also [StartEndFrameGenerationNotifier].
+/// 首尾帧Notifier
+///
+/// Copied from [StartEndFrameGenerationNotifier].
 class StartEndFrameGenerationNotifierFamily
     extends Family<AsyncValue<VideoGenerationTask>> {
-  /// See also [StartEndFrameGenerationNotifier].
+  /// 首尾帧Notifier
+  ///
+  /// Copied from [StartEndFrameGenerationNotifier].
   const StartEndFrameGenerationNotifierFamily();
 
-  /// See also [StartEndFrameGenerationNotifier].
+  /// 首尾帧Notifier
+  ///
+  /// Copied from [StartEndFrameGenerationNotifier].
   StartEndFrameGenerationNotifierProvider call(String prompt) {
     return StartEndFrameGenerationNotifierProvider(prompt);
   }
@@ -75,14 +83,18 @@ class StartEndFrameGenerationNotifierFamily
   String? get name => r'startEndFrameGenerationNotifierProvider';
 }
 
-/// See also [StartEndFrameGenerationNotifier].
+/// 首尾帧Notifier
+///
+/// Copied from [StartEndFrameGenerationNotifier].
 class StartEndFrameGenerationNotifierProvider
     extends
         AutoDisposeNotifierProviderImpl<
           StartEndFrameGenerationNotifier,
           AsyncValue<VideoGenerationTask>
         > {
-  /// See also [StartEndFrameGenerationNotifier].
+  /// 首尾帧Notifier
+  ///
+  /// Copied from [StartEndFrameGenerationNotifier].
   StartEndFrameGenerationNotifierProvider(String prompt)
     : this._internal(
         () => StartEndFrameGenerationNotifier()..prompt = prompt,

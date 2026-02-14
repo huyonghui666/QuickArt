@@ -16,7 +16,7 @@ class StagingConfig implements AppConfig {
   String get sentryDsn => const String.fromEnvironment('SENTRY_DSN_STAGING');
 
   @override
-  double get tracesSampleRate => 1.0;
+  double get tracesSampleRate => 1;
 
   @override
   bool get enableDebugTools => true;

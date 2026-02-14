@@ -3,13 +3,13 @@ import 'package:quick_art/features/tools/domain/repositories/video_template_repo
 
 /// 获取视频模板列表用例
 class GetVideoTemplatesUseCase {
-  final VideoTemplateRepository _repository;
-
+  /// 构造
   GetVideoTemplatesUseCase(this._repository);
+  final VideoTemplateRepository _repository;
 
   /// 执行用例
   Future<VideoTemplatePage> call({
-    String? category,
+    required String category,
     int page = 0,
     int size = 20,
   }) {

@@ -3,11 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/video_template_notifier.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_grid_item.dart';
 
+/// 视频模板Grid
 class VideoTemplateGrid extends ConsumerStatefulWidget {
+  /// 构造
+  const VideoTemplateGrid({required this.category, super.key});
   /// 分类 Key
   final String category;
-
-  const VideoTemplateGrid({super.key, required this.category});
 
   @override
   ConsumerState<VideoTemplateGrid> createState() => _VideoTemplateGridState();
@@ -41,7 +42,7 @@ class _VideoTemplateGridState extends ConsumerState<VideoTemplateGrid> {
           },
           // 下拉刷新
           child: GridView.builder(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 12,

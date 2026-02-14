@@ -4,7 +4,7 @@ import 'package:quick_art/features/tools/domain/entities/video_template_page.dar
 abstract class VideoTemplateRepository {
   /// 获取视频模板列表
   Future<VideoTemplatePage> getVideoTemplates({
-    String? category,
+    required String category,
     int page = 0,
     int size = 20,
   });

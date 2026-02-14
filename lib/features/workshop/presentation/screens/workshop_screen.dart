@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quick_art/core/di/show_bottom_sheet_notifier.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/models/generate_task_type.dart';
-import 'package:quick_art/core/di/show_bottom_sheet_notifier.dart';
 import 'package:quick_art/features/workshop/presentation/notifiers/workshop_tasks_provider.dart';
 import 'package:quick_art/features/workshop/presentation/widgets/pro_banner.dart';
 import 'package:quick_art/features/workshop/presentation/widgets/workshop_header.dart';
 import 'package:quick_art/features/workshop/presentation/widgets/workshop_task_card.dart';
 
+/// 工作室页面
 class WorkshopScreen extends ConsumerWidget {
+  /// 构造
   const WorkshopScreen({super.key});
 
   @override
@@ -25,7 +27,7 @@ class WorkshopScreen extends ConsumerWidget {
             const ProBanner(),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: tasksAsyncValue.when(
                   data: (tasks) {
                     if (tasks.isEmpty) {
@@ -52,10 +54,7 @@ class WorkshopScreen extends ConsumerWidget {
                           onTap: () {
                             //弹出底部弹出框
                             if (task.url != null) {
-                              ref
-                                  .read(
-                                    showBottomSheetNotifierProvider.notifier,
-                                  )
+                              ref.read(showBottomSheetNotifierProvider.notifier)
                                   .trigger(
                                     task.url!,
                                     task.type == GenerateTaskType.video
@@ -65,7 +64,7 @@ class WorkshopScreen extends ConsumerWidget {
                             }
                           },
                           onRetry: () {
-                            // TODO: Implement retry logic
+                            // TODO(user): Implement retry logic
                             debugPrint('Retry task ${task.id}');
                           },
                         );

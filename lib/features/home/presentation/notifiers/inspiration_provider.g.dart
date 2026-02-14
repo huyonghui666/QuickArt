@@ -9,7 +9,9 @@ part of 'inspiration_provider.dart';
 String _$inspirationCategoriesHash() =>
     r'2bd231742bf6872aed6b73fb3d47d1d28c59b563';
 
-/// See also [inspirationCategories].
+/// 灵感分类 Provider
+///
+/// Copied from [inspirationCategories].
 @ProviderFor(inspirationCategories)
 final inspirationCategoriesProvider =
     AutoDisposeProvider<List<InspirationCategoryType>>.internal(

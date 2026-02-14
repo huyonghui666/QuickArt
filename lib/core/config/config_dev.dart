@@ -16,7 +16,7 @@ class DevelopmentConfig implements AppConfig {
   String get sentryDsn => '';
 
   @override
-  double get tracesSampleRate => 1.0; // 开发环境全量采样
+  double get tracesSampleRate => 1; // 开发环境全量采样
 
   @override
   bool get enableDebugTools => true;

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
-import 'package:quick_art/features/home/presentation/notifiers/art_style_notifier.dart';
 import 'package:quick_art/core/theme/app_icons.dart';
+import 'package:quick_art/features/home/presentation/notifiers/art_style_notifier.dart';
 
+/// 艺术风格选择器
 class ArtStyleSelector extends StatelessWidget {
+  /// 构造
   const ArtStyleSelector({super.key});
 
   @override
@@ -41,7 +43,6 @@ class ArtStyleSelector extends StatelessWidget {
                             .setStyle(style);
                       },
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           _StyleCard(style: style, selected: isSelected),
                           const SizedBox(height: 6),

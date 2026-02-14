@@ -5,16 +5,18 @@ import 'package:quick_art/core/error/exception.dart';
 import 'package:quick_art/features/tools/data/models/video_generation_task_model.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+/// 生成视频远程数据源抽象接口
 abstract class IGenerateVideoRemoteDataSource {
+  /// 文生视频方法
   Future<VideoGenerationTaskModel> submitTask(String prompt);
-
+  /// 首尾帧方法
   Future<VideoGenerationTaskModel> submitTaskFromFrames(
     String prompt,
     String firstFramePath,
     String lastFramePath, {
     String aspectRatio = '16:9',
   });
-
+  /// 首帧方法
   Future<VideoGenerationTaskModel> submitTaskFromImage(
     String prompt,
     String imagePath, {
@@ -22,24 +24,31 @@ abstract class IGenerateVideoRemoteDataSource {
   });
 }
 
+/// 生成视频远程数据源
 class GenerateVideoRemoteDataSource implements IGenerateVideoRemoteDataSource {
-  final Dio _dio;
-
+  /// 构造
   GenerateVideoRemoteDataSource(this._dio);
+
+  final Dio _dio;
 
   @override
   Future<VideoGenerationTaskModel> submitTask(String prompt) async {
     try {
-      final response = await _dio.post(
-        '/videos/generate',
-        // '/videos/mock-generate',
+      final response = await _dio.post<Map<String, dynamic>>(
+        // '/videos/generate',
+        '/videos/mock-generate',
         data: {'prompt': prompt},
       );
       if (response.statusCode != 200) {
         throw NetworkException('Submit failed: ${response.data}');
       }
 
-      return VideoGenerationTaskModel.fromJson(response.data);
+      final data = response.data;
+      if (data == null) {
+        throw DataException('No data');
+      }
+
+      return VideoGenerationTaskModel.fromJson(data);
     } on DioException catch (e, stackTrace) {
       await Sentry.captureException(
         e,
@@ -79,9 +88,9 @@ class GenerateVideoRemoteDataSource implements IGenerateVideoRemoteDataSource {
         'aspectRatio': aspectRatio,
       });
 
-      final response = await _dio.post(
-        // '/videos/mock-generate-from-frames',
-        '/videos/generate-from-frames',
+      final response = await _dio.post<Map<String, dynamic>>(
+        '/videos/mock-generate-from-frames',
+        // '/videos/generate-from-frames',
         data: formData,
       );
 
@@ -89,7 +98,12 @@ class GenerateVideoRemoteDataSource implements IGenerateVideoRemoteDataSource {
         throw NetworkException('Submit failed: ${response.data}');
       }
 
-      return VideoGenerationTaskModel.fromJson(response.data);
+      final data = response.data;
+      if (data == null) {
+        throw DataException('No data');
+      }
+
+      return VideoGenerationTaskModel.fromJson(data);
     } on DioException catch (e, stackTrace) {
       await Sentry.captureException(
         e,
@@ -135,9 +149,9 @@ class GenerateVideoRemoteDataSource implements IGenerateVideoRemoteDataSource {
         'aspectRatio': aspectRatio,
       });
 
-      final response = await _dio.post(
-        '/videos/generate-from-image',
-        // '/videos/mock-generate-from-image',
+      final response = await _dio.post<Map<String, dynamic>>(
+        // '/videos/generate-from-image',
+        '/videos/mock-generate-from-image',
         data: formData,
       );
 
@@ -145,7 +159,12 @@ class GenerateVideoRemoteDataSource implements IGenerateVideoRemoteDataSource {
         throw NetworkException('Submit failed: ${response.data}');
       }
 
-      return VideoGenerationTaskModel.fromJson(response.data);
+      final data = response.data;
+      if (data == null) {
+        throw DataException('No data');
+      }
+
+      return VideoGenerationTaskModel.fromJson(data);
     } on DioException catch (e, stackTrace) {
       await Sentry.captureException(
         e,

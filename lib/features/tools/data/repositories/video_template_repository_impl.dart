@@ -4,13 +4,14 @@ import 'package:quick_art/features/tools/domain/repositories/video_template_repo
 
 /// 视频模板仓库实现类
 class VideoTemplateRepositoryImpl implements VideoTemplateRepository {
-  final IVideoTemplateRemoteDataSource _remoteDataSource;
-
+  /// 构造
   VideoTemplateRepositoryImpl(this._remoteDataSource);
+
+  final IVideoTemplateRemoteDataSource _remoteDataSource;
 
   @override
   Future<VideoTemplatePage> getVideoTemplates({
-    String? category,
+    required String category,
     int page = 0,
     int size = 20,
   }) async {

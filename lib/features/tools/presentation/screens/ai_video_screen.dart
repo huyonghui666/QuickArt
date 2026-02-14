@@ -4,12 +4,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/ai_video_tab_bar_provider.dart';
+import 'package:quick_art/features/tools/presentation/notifilers/video_template_notifier.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_action_card.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_header_player.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_template_grid.dart';
-import 'package:quick_art/features/tools/presentation/notifilers/video_template_notifier.dart';
 
+/// AiVideo页面
 class AiVideoScreen extends ConsumerStatefulWidget {
+  /// 构造
   const AiVideoScreen({super.key});
 
   @override
@@ -21,12 +23,12 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
   late final TabController _tabController;
   late final ScrollController _scrollController;
   //标题透明度
-  double _titleOpacity = 0.0;
+  double _titleOpacity = 0;
   String _currentTabKey = '';
 
   //AI 视频 (大标题)和[文生视频]的组件高度
   static const double _contentBlockHeight =
-      168.0; // fontSize 32(~40) + padding 24 + cardRow(~80) + padding 24
+      168; // fontSize 32(~40) + padding 24 + cardRow(~80) + padding 24
 
   @override
   void initState() {
@@ -43,10 +45,10 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
 
   @override
   void dispose() {
-    _tabController.removeListener(_onTabChanged);
-    _tabController.dispose();
-    _scrollController.removeListener(_onScroll);
-    _scrollController.dispose();
+    _tabController..removeListener(_onTabChanged)
+    ..dispose();
+    _scrollController..removeListener(_onScroll)
+    ..dispose();
     super.dispose();
   }
 
@@ -68,19 +70,21 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
   }
 
   void _onScroll() {
-    // kToolbarHeight表示 Material Design 应用栏的标准高度（56.0），appBarMinHeight：应用标题栏高度+系统状态栏高度（因为系统状态栏被允许占用了）
-    final double appBarMinHeight =
+    // kToolbarHeight表示 Material Design 应用栏的标准高度（56.0），appBarMinHeight：
+    // 应用标题栏高度+系统状态栏高度（因为系统状态栏被允许占用了）
+    final appBarMinHeight =
         kToolbarHeight + MediaQuery.of(context).padding.top;
-    // 250是SliverAppBar的expandedHeight，也就是应用栏展开高度。scrollForAppBarCollapse：需要滚动的距离：250 - appBarMinHeight
-    final double scrollForAppBarCollapse = 250.0 - appBarMinHeight;
+    // 250是SliverAppBar的expandedHeight，也就是应用栏展开高度。scrollForAppBarCollapse：
+    // 需要滚动的距离：250 - appBarMinHeight
+    final scrollForAppBarCollapse = 250.0 - appBarMinHeight;
     // titleTriggerOffset：计算标题显示的触发点高度
-    final double titleTriggerOffset =
+    final titleTriggerOffset =
         scrollForAppBarCollapse + _contentBlockHeight;
     // 获取当前滚动位置
     final scrollOffset = _scrollController.offset;
 
     // 计算新状态，是否修改透明度以显示标题
-    final double newOpacity = (scrollOffset >= titleTriggerOffset) ? 1.0 : 0.0;
+    final newOpacity = (scrollOffset >= titleTriggerOffset) ? 1.0 : 0.0;
 
     // 只在状态变化时更新UI
     if (newOpacity != _titleOpacity) {
@@ -121,7 +125,7 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                 background: Stack(
                   fit: StackFit.expand,
                   children: [
-                    //TODO 这是兜底图片应该使用覆盖图
+                    // TODO(user): 这是兜底图片应该使用覆盖图
                     // 头部背景视频/图片展示
                     headerTemplatesAsync.when(
                       data: (page) {
@@ -143,7 +147,7 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                         fit: BoxFit.cover,
                         alignment: Alignment.topCenter,
                       ),
-                      error: (_, __) => Image.network(
+                      error: (_, _) => Image.network(
                         'https://picsum.photos/seed/ai_video_bg/800/1200',
                         fit: BoxFit.cover,
                         alignment: Alignment.topCenter,
@@ -229,7 +233,7 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
                   controller: _tabController,
                   isScrollable: true,
                   tabAlignment: TabAlignment.start,
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   indicatorColor: Colors.white,
                   labelColor: Colors.white,
                   unselectedLabelColor: Colors.grey[400],
@@ -302,7 +306,7 @@ class _SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
     double shrinkOffset,
     bool overlapsContent,
   ) {
-    return Container(color: Colors.black, child: _tabBar);
+    return ColoredBox(color: Colors.black, child: _tabBar);
   }
 
   @override

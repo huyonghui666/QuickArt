@@ -10,9 +10,7 @@ part 'generation_event_provider.g.dart';
 @Riverpod(keepAlive: true)
 StreamController<GenerationResultModel> generationEventController(Ref ref) {
   final controller = StreamController<GenerationResultModel>.broadcast();
-  ref.onDispose(() {
-    controller.close();
-  });
+  ref.onDispose(controller.close);
   return controller;
 }
 

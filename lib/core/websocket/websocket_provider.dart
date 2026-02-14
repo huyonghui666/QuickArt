@@ -1,15 +1,16 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:quick_art/core/models/generation_result_model.dart';
-import 'package:quick_art/core/di/generation_event_provider.dart';
-import 'package:quick_art/features/workshop/data/datasources/local_data_source/database_helper.dart';
+
+import 'package:logger/logger.dart';
 import 'package:quick_art/core/di/config/config_provider.dart';
+import 'package:quick_art/core/di/generation_event_provider.dart';
 import 'package:quick_art/core/models/generate_task_type.dart';
+import 'package:quick_art/core/models/generation_result_model.dart';
+import 'package:quick_art/features/workshop/data/datasources/local_data_source/database_helper.dart';
 import 'package:quick_art/features/workshop/domain/entities/workshop_task.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
-import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 part 'websocket_provider.g.dart';
 
@@ -25,12 +26,11 @@ class WebSocketNotifier extends _$WebSocketNotifier {
 
   @override
   WebSocketChannel? build() {
-    ref.onDispose(() {
-      _disconnect();
-    });
+    ref.onDispose(_disconnect);
     return null;
   }
 
+  /// 连接
   Future<void> connect() async {
     if (state != null) return; // 已连接
 
@@ -48,47 +48,44 @@ class WebSocketNotifier extends _$WebSocketNotifier {
 
       // 监听消息
       channel.stream.listen(
-        (message) {
-          _handleMessage(message);
-        },
-        onError: (error) {
+        _handleMessage,
+        onError: (Object error) {
           _logger.e('WebSocket error: $error');
           _handleError(error);
         },
-        onDone: () {
-          _handleDisconnect();
-        },
+        onDone: _handleDisconnect,
       );
 
       _logger.i('WebSocket connected');
       // 连接成功后，恢复挂起的订阅
       await _restorePendingSubscriptions();
-    } catch (e) {
+    } on Exception catch (e) {
       _logger.e('WebSocket connect failed: $e');
       _reconnect();
     }
   }
 
-  void _handleMessage(dynamic message) async {
+  /// 处理消息
+  Future<void> _handleMessage(dynamic message) async {
     try {
-      final payload = jsonDecode(message as String);
+      final payload = jsonDecode(message as String) as Map<String, dynamic>;
       _logger.d('WebSocket message received: $payload');
 
-      final event = payload['event'];
+      final event = payload['event'] as String?;
 
       if (event == 'success' || event == 'failed') {
         try {
-          final taskId = payload['taskId'];
+          final taskId = payload['taskId'] as String?;
           if (taskId == null) return;
 
-          final type = payload['type'];
-          final error = payload['error'];
-          final url = payload['imageUrl'] ?? payload['videoUrl'];
-          final lastFrameUrl = payload['lastFrameUrl'];
+          final type = payload['type'] as String?;
+          final error = payload['error'] as String?;
+          final url = (payload['imageUrl'] ?? payload['videoUrl']) as String?;
+          final lastFrameUrl = payload['lastFrameUrl'] as String?;
 
           final result = GenerationResultModel(
             taskId: taskId,
-            event: event,
+            event: event!,
             type: type,
             url: url,
             thumbnailUrl: lastFrameUrl,
@@ -112,11 +109,11 @@ class WebSocketNotifier extends _$WebSocketNotifier {
 
           // 任务结束（无论成功失败），移除本地挂起记录
           _removePendingTask(taskId);
-        } catch (e) {
+        } on Exception catch (e) {
           _logger.e('Error creating GenerationResult: $e');
         }
       }
-    } catch (e) {
+    } on Exception catch (e) {
       _logger.e('Error parsing message: $e');
     }
   }
@@ -133,6 +130,7 @@ class WebSocketNotifier extends _$WebSocketNotifier {
     _reconnect();
   }
 
+  /// 订阅生成任务
   Future<void> subscribeTask(
     String taskId, {
     required GenerateTaskType type,
@@ -168,7 +166,7 @@ class WebSocketNotifier extends _$WebSocketNotifier {
     try {
       state?.sink.add(jsonEncode({'event': 'subscribe', 'taskId': taskId}));
       _logger.i('Subscribed to task: $taskId');
-    } catch (e) {
+    } on Exception catch (e) {
       _logger.e('Failed to subscribe task $taskId: $e');
     }
   }
@@ -179,7 +177,7 @@ class WebSocketNotifier extends _$WebSocketNotifier {
       if (state != null) {
         try {
           state?.sink.add(jsonEncode({'event': 'ping'}));
-        } catch (e) {
+        } on Exception catch (e) {
           _logger.w('Heartbeat failed: $e');
         }
       }
@@ -214,7 +212,7 @@ class WebSocketNotifier extends _$WebSocketNotifier {
         await prefs.setStringList(_pendingTasksKey, pending);
         _logger.i('Task saved pending: $taskId');
       }
-    } catch (e) {
+    } on Exception catch (e) {
       _logger.e('Failed to save pending task: $e');
     }
   }
@@ -228,7 +226,7 @@ class WebSocketNotifier extends _$WebSocketNotifier {
         await prefs.setStringList(_pendingTasksKey, pending);
         _logger.i('Task removed from pending: $taskId');
       }
-    } catch (e) {
+    } on Exception catch (e) {
       _logger.e('Failed to remove pending task: $e');
     }
   }
@@ -240,11 +238,9 @@ class WebSocketNotifier extends _$WebSocketNotifier {
       final pending = prefs.getStringList(_pendingTasksKey) ?? [];
       if (pending.isNotEmpty) {
         _logger.i('Restoring ${pending.length} pending subscriptions...');
-        for (var taskId in pending) {
-          _sendSubscribe(taskId);
-        }
+        pending.forEach(_sendSubscribe);
       }
-    } catch (e) {
+    } on Exception catch (e) {
       _logger.e('Failed to restore pending subscriptions: $e');
     }
   }

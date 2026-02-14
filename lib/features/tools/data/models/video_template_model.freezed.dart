@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,328 +9,303 @@ part of 'video_template_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-VideoTemplateModel _$VideoTemplateModelFromJson(Map<String, dynamic> json) {
-  return _VideoTemplateModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$VideoTemplateModel {
-  /// 模板ID
-  String get id => throw _privateConstructorUsedError;
 
-  /// 模板名称（多语言支持）
-  Map<String, String> get name => throw _privateConstructorUsedError;
-
-  /// 封面图URL
-  String get coverUrl => throw _privateConstructorUsedError;
-
-  /// 视频URL
-  String get videoUrl => throw _privateConstructorUsedError;
-
-  /// 模板分类
-  String? get category => throw _privateConstructorUsedError;
-
-  /// 模板描述
-  String? get description => throw _privateConstructorUsedError;
+/// 模板ID
+ String get id;/// 模板名称（多语言支持）
+ Map<String, String> get name;/// 封面图URL
+ String get coverUrl;/// 视频URL
+ String get videoUrl;/// 模板分类
+ String? get category;/// 模板描述
+ String? get description;
+/// Create a copy of VideoTemplateModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$VideoTemplateModelCopyWith<VideoTemplateModel> get copyWith => _$VideoTemplateModelCopyWithImpl<VideoTemplateModel>(this as VideoTemplateModel, _$identity);
 
   /// Serializes this VideoTemplateModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of VideoTemplateModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $VideoTemplateModelCopyWith<VideoTemplateModel> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VideoTemplateModel&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other.name, name)&&(identical(other.coverUrl, coverUrl) || other.coverUrl == coverUrl)&&(identical(other.videoUrl, videoUrl) || other.videoUrl == videoUrl)&&(identical(other.category, category) || other.category == category)&&(identical(other.description, description) || other.description == description));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(name),coverUrl,videoUrl,category,description);
+
+@override
+String toString() {
+  return 'VideoTemplateModel(id: $id, name: $name, coverUrl: $coverUrl, videoUrl: $videoUrl, category: $category, description: $description)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $VideoTemplateModelCopyWith<$Res> {
-  factory $VideoTemplateModelCopyWith(
-    VideoTemplateModel value,
-    $Res Function(VideoTemplateModel) then,
-  ) = _$VideoTemplateModelCopyWithImpl<$Res, VideoTemplateModel>;
-  @useResult
-  $Res call({
-    String id,
-    Map<String, String> name,
-    String coverUrl,
-    String videoUrl,
-    String? category,
-    String? description,
-  });
-}
+abstract mixin class $VideoTemplateModelCopyWith<$Res>  {
+  factory $VideoTemplateModelCopyWith(VideoTemplateModel value, $Res Function(VideoTemplateModel) _then) = _$VideoTemplateModelCopyWithImpl;
+@useResult
+$Res call({
+ String id, Map<String, String> name, String coverUrl, String videoUrl, String? category, String? description
+});
 
+
+
+
+}
 /// @nodoc
-class _$VideoTemplateModelCopyWithImpl<$Res, $Val extends VideoTemplateModel>
+class _$VideoTemplateModelCopyWithImpl<$Res>
     implements $VideoTemplateModelCopyWith<$Res> {
-  _$VideoTemplateModelCopyWithImpl(this._value, this._then);
+  _$VideoTemplateModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final VideoTemplateModel _self;
+  final $Res Function(VideoTemplateModel) _then;
 
-  /// Create a copy of VideoTemplateModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? coverUrl = null,
-    Object? videoUrl = null,
-    Object? category = freezed,
-    Object? description = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            name: null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                      as Map<String, String>,
-            coverUrl: null == coverUrl
-                ? _value.coverUrl
-                : coverUrl // ignore: cast_nullable_to_non_nullable
-                      as String,
-            videoUrl: null == videoUrl
-                ? _value.videoUrl
-                : videoUrl // ignore: cast_nullable_to_non_nullable
-                      as String,
-            category: freezed == category
-                ? _value.category
-                : category // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            description: freezed == description
-                ? _value.description
-                : description // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of VideoTemplateModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? coverUrl = null,Object? videoUrl = null,Object? category = freezed,Object? description = freezed,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as Map<String, String>,coverUrl: null == coverUrl ? _self.coverUrl : coverUrl // ignore: cast_nullable_to_non_nullable
+as String,videoUrl: null == videoUrl ? _self.videoUrl : videoUrl // ignore: cast_nullable_to_non_nullable
+as String,category: freezed == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$VideoTemplateModelImplCopyWith<$Res>
-    implements $VideoTemplateModelCopyWith<$Res> {
-  factory _$$VideoTemplateModelImplCopyWith(
-    _$VideoTemplateModelImpl value,
-    $Res Function(_$VideoTemplateModelImpl) then,
-  ) = __$$VideoTemplateModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    String id,
-    Map<String, String> name,
-    String coverUrl,
-    String videoUrl,
-    String? category,
-    String? description,
-  });
 }
 
-/// @nodoc
-class __$$VideoTemplateModelImplCopyWithImpl<$Res>
-    extends _$VideoTemplateModelCopyWithImpl<$Res, _$VideoTemplateModelImpl>
-    implements _$$VideoTemplateModelImplCopyWith<$Res> {
-  __$$VideoTemplateModelImplCopyWithImpl(
-    _$VideoTemplateModelImpl _value,
-    $Res Function(_$VideoTemplateModelImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of VideoTemplateModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? coverUrl = null,
-    Object? videoUrl = null,
-    Object? category = freezed,
-    Object? description = freezed,
-  }) {
-    return _then(
-      _$VideoTemplateModelImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        name: null == name
-            ? _value._name
-            : name // ignore: cast_nullable_to_non_nullable
-                  as Map<String, String>,
-        coverUrl: null == coverUrl
-            ? _value.coverUrl
-            : coverUrl // ignore: cast_nullable_to_non_nullable
-                  as String,
-        videoUrl: null == videoUrl
-            ? _value.videoUrl
-            : videoUrl // ignore: cast_nullable_to_non_nullable
-                  as String,
-        category: freezed == category
-            ? _value.category
-            : category // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        description: freezed == description
-            ? _value.description
-            : description // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
+/// Adds pattern-matching-related methods to [VideoTemplateModel].
+extension VideoTemplateModelPatterns on VideoTemplateModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _VideoTemplateModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _VideoTemplateModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _VideoTemplateModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _VideoTemplateModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _VideoTemplateModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _VideoTemplateModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  Map<String, String> name,  String coverUrl,  String videoUrl,  String? category,  String? description)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _VideoTemplateModel() when $default != null:
+return $default(_that.id,_that.name,_that.coverUrl,_that.videoUrl,_that.category,_that.description);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  Map<String, String> name,  String coverUrl,  String videoUrl,  String? category,  String? description)  $default,) {final _that = this;
+switch (_that) {
+case _VideoTemplateModel():
+return $default(_that.id,_that.name,_that.coverUrl,_that.videoUrl,_that.category,_that.description);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  Map<String, String> name,  String coverUrl,  String videoUrl,  String? category,  String? description)?  $default,) {final _that = this;
+switch (_that) {
+case _VideoTemplateModel() when $default != null:
+return $default(_that.id,_that.name,_that.coverUrl,_that.videoUrl,_that.category,_that.description);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$VideoTemplateModelImpl extends _VideoTemplateModel {
-  const _$VideoTemplateModelImpl({
-    required this.id,
-    required final Map<String, String> name,
-    required this.coverUrl,
-    required this.videoUrl,
-    this.category,
-    this.description,
-  }) : _name = name,
-       super._();
 
-  factory _$VideoTemplateModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$VideoTemplateModelImplFromJson(json);
+class _VideoTemplateModel extends VideoTemplateModel {
+  const _VideoTemplateModel({required this.id, required final  Map<String, String> name, required this.coverUrl, required this.videoUrl, this.category, this.description}): _name = name,super._();
+  factory _VideoTemplateModel.fromJson(Map<String, dynamic> json) => _$VideoTemplateModelFromJson(json);
 
-  /// 模板ID
-  @override
-  final String id;
-
-  /// 模板名称（多语言支持）
-  final Map<String, String> _name;
-
-  /// 模板名称（多语言支持）
-  @override
-  Map<String, String> get name {
-    if (_name is EqualUnmodifiableMapView) return _name;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_name);
-  }
-
-  /// 封面图URL
-  @override
-  final String coverUrl;
-
-  /// 视频URL
-  @override
-  final String videoUrl;
-
-  /// 模板分类
-  @override
-  final String? category;
-
-  /// 模板描述
-  @override
-  final String? description;
-
-  @override
-  String toString() {
-    return 'VideoTemplateModel(id: $id, name: $name, coverUrl: $coverUrl, videoUrl: $videoUrl, category: $category, description: $description)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$VideoTemplateModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            const DeepCollectionEquality().equals(other._name, _name) &&
-            (identical(other.coverUrl, coverUrl) ||
-                other.coverUrl == coverUrl) &&
-            (identical(other.videoUrl, videoUrl) ||
-                other.videoUrl == videoUrl) &&
-            (identical(other.category, category) ||
-                other.category == category) &&
-            (identical(other.description, description) ||
-                other.description == description));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    const DeepCollectionEquality().hash(_name),
-    coverUrl,
-    videoUrl,
-    category,
-    description,
-  );
-
-  /// Create a copy of VideoTemplateModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$VideoTemplateModelImplCopyWith<_$VideoTemplateModelImpl> get copyWith =>
-      __$$VideoTemplateModelImplCopyWithImpl<_$VideoTemplateModelImpl>(
-        this,
-        _$identity,
-      );
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$VideoTemplateModelImplToJson(this);
-  }
+/// 模板ID
+@override final  String id;
+/// 模板名称（多语言支持）
+ final  Map<String, String> _name;
+/// 模板名称（多语言支持）
+@override Map<String, String> get name {
+  if (_name is EqualUnmodifiableMapView) return _name;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableMapView(_name);
 }
 
-abstract class _VideoTemplateModel extends VideoTemplateModel {
-  const factory _VideoTemplateModel({
-    required final String id,
-    required final Map<String, String> name,
-    required final String coverUrl,
-    required final String videoUrl,
-    final String? category,
-    final String? description,
-  }) = _$VideoTemplateModelImpl;
-  const _VideoTemplateModel._() : super._();
+/// 封面图URL
+@override final  String coverUrl;
+/// 视频URL
+@override final  String videoUrl;
+/// 模板分类
+@override final  String? category;
+/// 模板描述
+@override final  String? description;
 
-  factory _VideoTemplateModel.fromJson(Map<String, dynamic> json) =
-      _$VideoTemplateModelImpl.fromJson;
+/// Create a copy of VideoTemplateModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$VideoTemplateModelCopyWith<_VideoTemplateModel> get copyWith => __$VideoTemplateModelCopyWithImpl<_VideoTemplateModel>(this, _$identity);
 
-  /// 模板ID
-  @override
-  String get id;
-
-  /// 模板名称（多语言支持）
-  @override
-  Map<String, String> get name;
-
-  /// 封面图URL
-  @override
-  String get coverUrl;
-
-  /// 视频URL
-  @override
-  String get videoUrl;
-
-  /// 模板分类
-  @override
-  String? get category;
-
-  /// 模板描述
-  @override
-  String? get description;
-
-  /// Create a copy of VideoTemplateModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$VideoTemplateModelImplCopyWith<_$VideoTemplateModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$VideoTemplateModelToJson(this, );
 }
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VideoTemplateModel&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other._name, _name)&&(identical(other.coverUrl, coverUrl) || other.coverUrl == coverUrl)&&(identical(other.videoUrl, videoUrl) || other.videoUrl == videoUrl)&&(identical(other.category, category) || other.category == category)&&(identical(other.description, description) || other.description == description));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(_name),coverUrl,videoUrl,category,description);
+
+@override
+String toString() {
+  return 'VideoTemplateModel(id: $id, name: $name, coverUrl: $coverUrl, videoUrl: $videoUrl, category: $category, description: $description)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$VideoTemplateModelCopyWith<$Res> implements $VideoTemplateModelCopyWith<$Res> {
+  factory _$VideoTemplateModelCopyWith(_VideoTemplateModel value, $Res Function(_VideoTemplateModel) _then) = __$VideoTemplateModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String id, Map<String, String> name, String coverUrl, String videoUrl, String? category, String? description
+});
+
+
+
+
+}
+/// @nodoc
+class __$VideoTemplateModelCopyWithImpl<$Res>
+    implements _$VideoTemplateModelCopyWith<$Res> {
+  __$VideoTemplateModelCopyWithImpl(this._self, this._then);
+
+  final _VideoTemplateModel _self;
+  final $Res Function(_VideoTemplateModel) _then;
+
+/// Create a copy of VideoTemplateModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? coverUrl = null,Object? videoUrl = null,Object? category = freezed,Object? description = freezed,}) {
+  return _then(_VideoTemplateModel(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self._name : name // ignore: cast_nullable_to_non_nullable
+as Map<String, String>,coverUrl: null == coverUrl ? _self.coverUrl : coverUrl // ignore: cast_nullable_to_non_nullable
+as String,videoUrl: null == videoUrl ? _self.videoUrl : videoUrl // ignore: cast_nullable_to_non_nullable
+as String,category: freezed == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

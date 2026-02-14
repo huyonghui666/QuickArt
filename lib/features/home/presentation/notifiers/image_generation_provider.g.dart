@@ -7,7 +7,7 @@ part of 'image_generation_provider.dart';
 // **************************************************************************
 
 String _$imageGenerationNotifierHash() =>
-    r'172dba55f24bf1a8076bdd8aa9343be0813f2028';
+    r'ea4e18901ea7a60b1f46158d52f702442d26d0fe';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -37,17 +37,25 @@ abstract class _$ImageGenerationNotifier
   AsyncValue<ImageGenerationTask> build(String prompt);
 }
 
-/// See also [ImageGenerationNotifier].
+/// 图片生成 Notifier
+///
+/// Copied from [ImageGenerationNotifier].
 @ProviderFor(ImageGenerationNotifier)
 const imageGenerationNotifierProvider = ImageGenerationNotifierFamily();
 
-/// See also [ImageGenerationNotifier].
+/// 图片生成 Notifier
+///
+/// Copied from [ImageGenerationNotifier].
 class ImageGenerationNotifierFamily
     extends Family<AsyncValue<ImageGenerationTask>> {
-  /// See also [ImageGenerationNotifier].
+  /// 图片生成 Notifier
+  ///
+  /// Copied from [ImageGenerationNotifier].
   const ImageGenerationNotifierFamily();
 
-  /// See also [ImageGenerationNotifier].
+  /// 图片生成 Notifier
+  ///
+  /// Copied from [ImageGenerationNotifier].
   ImageGenerationNotifierProvider call(String prompt) {
     return ImageGenerationNotifierProvider(prompt);
   }
@@ -74,14 +82,18 @@ class ImageGenerationNotifierFamily
   String? get name => r'imageGenerationNotifierProvider';
 }
 
-/// See also [ImageGenerationNotifier].
+/// 图片生成 Notifier
+///
+/// Copied from [ImageGenerationNotifier].
 class ImageGenerationNotifierProvider
     extends
         AutoDisposeNotifierProviderImpl<
           ImageGenerationNotifier,
           AsyncValue<ImageGenerationTask>
         > {
-  /// See also [ImageGenerationNotifier].
+  /// 图片生成 Notifier
+  ///
+  /// Copied from [ImageGenerationNotifier].
   ImageGenerationNotifierProvider(String prompt)
     : this._internal(
         () => ImageGenerationNotifier()..prompt = prompt,

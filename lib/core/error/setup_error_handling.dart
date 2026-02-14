@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+/// 全局错误处理
 Future<void> setupErrorHandling() async {
   //  Flutter 框架级错误（同步）
   FlutterError.onError = (FlutterErrorDetails details) {
@@ -40,7 +41,7 @@ Future<void> setupErrorHandling() async {
             appBar: AppBar(title: const Text('出错了')),
             body: Center(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -72,7 +73,7 @@ Future<void> setupErrorHandling() async {
                     const SizedBox(height: 16),
                     TextButton(
                       onPressed: () {
-                        //TODO 可加反馈按钮，跳转客服或邮件
+                        // TODO(user): 可加反馈按钮，跳转客服或邮件
                       },
                       child: const Text('可以艾特我们官方社媒 @quickartai'),
                     ),

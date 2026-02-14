@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/di/prompt_provider.dart';
+import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/core/widgets/prompt_text_field.dart';
 
+/// 文生视频页面
 class TextToVideoScreen extends ConsumerStatefulWidget {
+  /// 构造
   const TextToVideoScreen({super.key});
 
   @override
@@ -57,7 +59,7 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
               SafeArea(
                 bottom: false,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
@@ -87,7 +89,7 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
             child: SafeArea(
               top: false,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: [
                     const Spacer(),

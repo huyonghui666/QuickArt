@@ -25,7 +25,7 @@ void main() {
   test('should get templates from the repository', () async {
     // Arrange
     when(
-      () => mockRepository.getTemplates(
+      () => mockRepository.getImageTemplates(
         category: any(named: 'category'),
         page: any(named: 'page'),
         size: any(named: 'size'),
@@ -38,7 +38,8 @@ void main() {
     // Assert
     expect(result, tImageTemplatePage);
     verify(
-      () => mockRepository.getTemplates(category: 'test', page: 0, size: 20),
+      () =>
+          mockRepository.getImageTemplates(category: 'test', page: 0, size: 20),
     ).called(1);
     verifyNoMoreInteractions(mockRepository);
   });

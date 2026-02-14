@@ -2,19 +2,21 @@ import 'package:quick_art/features/workshop/data/datasources/local_data_source/d
 import 'package:quick_art/features/workshop/domain/entities/workshop_task.dart';
 import 'package:quick_art/features/workshop/domain/repositories/workshop_repository.dart';
 
+/// 工作室仓库实现
 class WorkshopRepositoryImpl implements WorkshopRepository {
-  final DatabaseHelper _databaseHelper;
-
+  /// 构造
   WorkshopRepositoryImpl(this._databaseHelper);
+
+  final DatabaseHelper _databaseHelper;
 
   @override
   Future<List<WorkshopTask>> getTasks() async {
-    return await _databaseHelper.getTasks();
+    return _databaseHelper.getTasks();
   }
 
   @override
   Future<WorkshopTask?> getTaskById(String id) async {
-    return await _databaseHelper.getTaskById(id);
+    return _databaseHelper.getTaskById(id);
   }
 
   @override

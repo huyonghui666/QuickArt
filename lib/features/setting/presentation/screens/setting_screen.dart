@@ -23,7 +23,7 @@ class SettingScreen extends ConsumerWidget {
         elevation: 0,
         leading: IconButton(
           icon: SvgPicture.asset(
-            AppIcons.settingNavBack,
+            AppIcons.backPreviousPage,
             width: 24,
             height: 24,
           ),
@@ -95,7 +95,7 @@ class SettingScreen extends ConsumerWidget {
         style: const TextStyle(color: Colors.white, fontSize: 14),
       ),
       trailing: SvgPicture.asset(
-        AppIcons.settingRatioNext,
+        AppIcons.ratioNext,
         width: 20,
         height: 20,
       ),
@@ -118,19 +118,21 @@ class SettingScreen extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
-            icon: SvgPicture.asset(AppIcons.settingTT, width: 20, height: 20),
+            icon: SvgPicture.asset(
+                AppIcons.tikTok,
+                width: 20, height: 20),
             onPressed: () {},
             padding: const EdgeInsets.symmetric(horizontal: 4),
             constraints: const BoxConstraints(),
           ),
           IconButton(
-            icon: SvgPicture.asset(AppIcons.settingFB, width: 20, height: 20),
+            icon: SvgPicture.asset(AppIcons.facebook, width: 20, height: 20),
             onPressed: () {},
             padding: const EdgeInsets.symmetric(horizontal: 4),
             constraints: const BoxConstraints(),
           ),
           IconButton(
-            icon: SvgPicture.asset(AppIcons.settingIns, width: 20, height: 20),
+            icon: SvgPicture.asset(AppIcons.instagram, width: 20, height: 20),
             onPressed: () {},
             padding: const EdgeInsets.symmetric(horizontal: 4),
             constraints: const BoxConstraints(),

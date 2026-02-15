@@ -195,10 +195,10 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SvgPicture.asset(AppIcons.homeTitle, height: 50),
+          SvgPicture.asset(AppIcons.quickArtTitle, height: 50),
           Row(
             children: [
-              SvgPicture.asset(AppIcons.homeVip, width: 20, height: 20),
+              SvgPicture.asset(AppIcons.pro, width: 20, height: 20),
               const SizedBox(width: 16),
               GestureDetector(
                 onTap: () => context.push('/setting'),
@@ -220,7 +220,7 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         _buildActionItem(
-          AppIcons.homeDescribe,
+          AppIcons.homeImageToText,
           AppLocalizations.of(context)!.home_describe,
         ),
         _buildActionItem(
@@ -230,7 +230,7 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
         _buildActionItem(
           AppIcons.homeRatio11,
           '1:1',
-          trailingIconPath: AppIcons.homeRatioNext,
+          trailingIconPath: AppIcons.ratioNext,
         ),
         _buildActionItem(
           AppIcons.homeHistory,

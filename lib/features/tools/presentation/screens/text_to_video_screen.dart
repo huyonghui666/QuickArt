@@ -28,7 +28,7 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
         elevation: 0,
         leading: IconButton(
           icon: SvgPicture.asset(
-            'assets/icons/svg/Setting/btn_nav_back.svg',
+            'assets/icons/svg/setting/back_previous_page.svg',
             width: 24,
             height: 24,
           ),
@@ -129,14 +129,14 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
         _buildOptionItem(
           context,
           theme,
-          iconPath: 'assets/icons/svg/Home/home_nav_explore_press.svg',
+          iconPath: 'assets/icons/svg/home/bottom_nav_explore_press.svg',
           label: l10n.tools_random,
         ),
         const SizedBox(width: 16),
         _buildOptionItem(
           context,
           theme,
-          iconPath: 'assets/icons/svg/Home/ratio_ic_11.svg',
+          iconPath: 'assets/icons/svg/home/home_ratio_11.svg',
           label: '1:1',
         ),
       ],

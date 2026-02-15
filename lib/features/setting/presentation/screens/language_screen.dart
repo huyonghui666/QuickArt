@@ -63,7 +63,7 @@ class _LanguageScreenState extends ConsumerState<LanguageScreen> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: IconButton(
-          icon: SvgPicture.asset(AppIcons.settingNavBack),
+          icon: SvgPicture.asset(AppIcons.backPreviousPage),
           onPressed: () => context.pop(),
         ),
         title: Text(l10n.language, style: const TextStyle(color: Colors.white)),

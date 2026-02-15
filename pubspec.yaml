@@ -60,10 +60,13 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/icons/svg/Home/
+    - assets/icons/svg/home/
+    - assets/icons/svg/setting/
+    - assets/icons/svg/bottom_navigation/
+    - assets/icons/svg/core/
+
     - assets/images/art_styles/
     - assets/images/bg/
     - assets/images/tools/
-    - assets/icons/svg/Setting/
     - assets/rive_animation/
     - assets/videos/

@@ -115,7 +115,7 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
               pinned: true,
               leading: IconButton(
                 icon: SvgPicture.asset(
-                  'assets/icons/svg/Setting/btn_nav_back.svg',
+                  'assets/icons/svg/setting/back_previous_page.svg',
                   width: 24,
                   height: 24,
                 ),

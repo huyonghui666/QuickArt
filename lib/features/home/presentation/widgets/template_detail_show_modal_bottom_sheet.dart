@@ -117,7 +117,7 @@ class TemplateDetailShowModalBottomSheet extends ConsumerWidget {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(28),
                             child: SvgPicture.asset(
-                              AppIcons.homeBtnStart,
+                              AppIcons.draw,
                               fit: BoxFit.cover,
                               width: double.infinity,
                               height: double.infinity,

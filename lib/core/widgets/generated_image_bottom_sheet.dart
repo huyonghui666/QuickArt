@@ -48,19 +48,19 @@ class GeneratedImageBottomSheet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildSocialButton(
-                'assets/icons/svg/Home/home_ic_history.svg',
+                'assets/icons/svg/home/home_history.svg',
                 l10n.share_save,
               ),
               _buildSocialButton(
-                'assets/icons/svg/Setting/setting_ic_tt.svg',
+                'assets/icons/svg/setting/tiktok.svg',
                 l10n.share_tiktok,
               ),
               _buildSocialButton(
-                'assets/icons/svg/Setting/setting_ic_ins.svg',
+                'assets/icons/svg/setting/instagram.svg',
                 l10n.share_instagram,
               ),
               _buildSocialButton(
-                'assets/icons/svg/Setting/setting_ic_fb.svg',
+                'assets/icons/svg/setting/facebook.svg',
                 l10n.share_facebook,
               ),
             ],

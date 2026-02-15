@@ -1,72 +1,105 @@
+/// icon
 class AppIcons {
   AppIcons._();
 
   static const String _svgBasePath = 'assets/icons/svg';
 
-  //首页的icon--------------------------------------
-  //首页顶部的icon
-  static const String homeTitle = '$_svgBasePath/Home/home_ic_title.svg';
-  static const String homeVip = '$_svgBasePath/Home/home_ic_vip.svg';
-  static const String homeSettings = '$_svgBasePath/Home/btn_home_settings.svg';
 
-  //提示词输入框的icon
-  static const String promptBack = '$_svgBasePath/Home/prompt_btn_back.svg';
-  static const String promptNextUnable =
-      '$_svgBasePath/Home/prompt_btn_next_unable.svg';
-  static const String promptDelete = '$_svgBasePath/Home/prompt_btn_del.svg';
+  /// --------------通用icon--------------------------------------------------
+  /// 绘制
+  static const String draw = '$_svgBasePath/core/draw.svg';
+  /// 不能绘制
+  static const String drawUnable = '$_svgBasePath/core/draw_unable.svg';
+  /// （1：1和设置页面）
+  static const String ratioNext = '$_svgBasePath/core/ratio_next.svg';
+  /// QuickArt
+  static const String quickArtTitle = '$_svgBasePath/core/quickArt_title.svg';
+  /// Pro
+  static const String pro = '$_svgBasePath/core/pro.svg';
+  /// ----------------提示词输入框的icon-------------
+  /// 撤销 (能)
+  static const String promptBack = '$_svgBasePath/core/prompt_back.svg';
+  /// 撤销 (不能)
+  static const String promptBackUnable = '$_svgBasePath/core/prompt_back_unable.svg';
+  /// 恢复 （能）
+  static const String promptRestore = '$_svgBasePath/core/prompt_restore.svg';
+  /// 恢复 （不能）
+  static const String promptRestoreUnable = '$_svgBasePath/core/prompt_restore_unable.svg';
+  /// 删除
+  static const String promptDelete = '$_svgBasePath/core/prompt_del.svg';
 
-  //提示词下方操作行的icon
-  static const String homeDescribe = '$_svgBasePath/Home/home_ic_describe.svg';
-  static const String homePhoto = '$_svgBasePath/Home/home_ic_photo.svg';
-  static const String homeRatio11 = '$_svgBasePath/Home/ratio_ic_11.svg';
-  static const String homeHistory = '$_svgBasePath/Home/home_ic_history.svg';
-  static const String homeRatioNext =
-      '$_svgBasePath/Home/home_ic_ratio_next.svg';
 
-  //无风格icon
-  static const String homeBgStyleNo = '$_svgBasePath/Home/home_bg_style_no.svg';
+  /// 返回上一页
+  static const String backPreviousPage = '$_svgBasePath/core/back_previous_page.svg';
 
-  //绘制按钮
-  static const String homeBtnStart =
-      '$_svgBasePath/Home/home_btn_start.svg';
-  static const String homeBtnStartUnable =
-      '$_svgBasePath/Home/home_btn_start_unable.svg';
+  /// facebook
+  static const String facebook = '$_svgBasePath/core/facebook.svg';
+  /// Instagram
+  static const String instagram = '$_svgBasePath/core/instagram.svg';
+  /// TikTok
+  static const String tikTok = '$_svgBasePath/core/tiktok.svg';
 
-  //底部导航栏icon
-  static const String navQuickArt = '$_svgBasePath/Home/home_nav_quickart.svg';
-  static const String navQuickArtPress =
-      '$_svgBasePath/Home/home_nav_quickart_press.svg';
-  static const String navExplore = '$_svgBasePath/Home/home_nav_explore.svg';
-  static const String navExplorePress =
-      '$_svgBasePath/Home/home_nav_explore_press.svg';
-  static const String navTools = '$_svgBasePath/Home/home_nav_tools.svg';
-  static const String navToolsPress =
-      '$_svgBasePath/Home/home_nav_tools_press.svg';
-  static const String navStudio = '$_svgBasePath/Home/home_nav_studio.svg';
-  static const String navStudioPress =
-      '$_svgBasePath/Home/home_nav_studio_press.svg';
 
-  //设置页面icon
-  static const String settingNavBack = '$_svgBasePath/Setting/btn_nav_back.svg';
-  static const String settingDiscord =
-      '$_svgBasePath/Setting/setting_ic_discord.svg';
-  static const String settingLanguage =
-      '$_svgBasePath/Setting/setting_ic_language.svg';
-  static const String settingRateUs =
-      '$_svgBasePath/Setting/setting_ic_rateus.svg';
-  static const String settingPolicy =
-      '$_svgBasePath/Setting/setting_ic_policy.svg';
-  static const String settingTerms =
-      '$_svgBasePath/Setting/setting_ic_terms.svg';
-  static const String settingMember =
-      '$_svgBasePath/Setting/setting_ic_member.svg';
-  static const String settingFollowUs =
-      '$_svgBasePath/Setting/setting_ic_followus.svg';
-  static const String settingTT = '$_svgBasePath/Setting/setting_ic_tt.svg';
-  static const String settingFB = '$_svgBasePath/Setting/setting_ic_fb.svg';
-  static const String settingIns = '$_svgBasePath/Setting/setting_ic_ins.svg';
-  static const String settingVersion =
-      '$_svgBasePath/Setting/setting_ic_version.svg';
-  static const String settingRatioNext =
-      '$_svgBasePath/Setting/ic_ratio_next.svg';
+
+
+  /// ----------------首页的icon-----------------------------------------------
+  /// ----------------首页顶部的icon----------------
+  static const String homeSettings = '$_svgBasePath/home/home_settings.svg';
+
+  /// ----------------提示词下方操作行的icon----------
+  /// 图生文icon
+  static const String homeImageToText = '$_svgBasePath/home/home_image_to_text.svg';
+  /// 参考图片
+  static const String homePhoto = '$_svgBasePath/home/home_photo.svg';
+  /// 1:1
+  static const String homeRatio11 = '$_svgBasePath/home/home_ratio_11.svg';
+  /// 历史
+  static const String homeHistory = '$_svgBasePath/home/home_history.svg';
+
+  /// 无风格icon
+  static const String homeBgStyleNo = '$_svgBasePath/home/home_style_no.svg';
+
+
+
+
+
+  /// ----------------底部导航栏icon---------------------------------------------
+  /// QuickArt （没有选择）
+  static const String bottomNavQuickArt = '$_svgBasePath/bottom_navigation/bottom_nav_quickArt.svg';
+  /// QuickArt（选择）
+  static const String bottomNavQuickArtPress = '$_svgBasePath/bottom_navigation/bottom_nav_quickArt_press.svg';
+  /// 发现（没有选择）
+  static const String bottomNavExplore = '$_svgBasePath/bottom_navigation/bottom_nav_explore.svg';
+  /// 发现（选择）
+  static const String bottomNavExplorePress = '$_svgBasePath/bottom_navigation/bottom_nav_explore_press.svg';
+  /// 工具（没有选择）
+  static const String bottomNavTools = '$_svgBasePath/bottom_navigation/bottom_nav_tools.svg';
+  /// 工具（选择）
+  static const String bottomNavToolsPress = '$_svgBasePath/bottom_navigation/bottom_nav_tools_press.svg';
+  /// 工作室 （没有选择）
+  static const String bottomNavStudio = '$_svgBasePath/bottom_navigation/bottom_nav_studio.svg';
+  /// 工作室 （选择）
+  static const String bottomNavStudioPress = '$_svgBasePath/bottom_navigation/bottom_nav_studio_press.svg';
+
+
+
+
+
+  /// ----------------设置页面icon------------------------------------------------
+  /// Discord
+  static const String settingDiscord = '$_svgBasePath/setting/setting_discord.svg';
+  /// 语言
+  static const String settingLanguage = '$_svgBasePath/setting/setting_language.svg';
+  /// 给我们评分
+  static const String settingRateUs = '$_svgBasePath/setting/setting_rate_us.svg';
+  /// 隐私协议
+  static const String settingPolicy = '$_svgBasePath/setting/setting_policy.svg';
+  /// 服务条款
+  static const String settingTerms = '$_svgBasePath/setting/setting_terms.svg';
+  /// 会员支持中心
+  static const String settingMember = '$_svgBasePath/setting/setting_member.svg';
+  /// 社媒
+  static const String settingFollowUs = '$_svgBasePath/setting/setting_followUs.svg';
+  /// 版本号
+  static const String settingVersion = '$_svgBasePath/setting/setting_version.svg';
 }

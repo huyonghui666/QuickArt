@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/di/prompt_provider.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
+import 'package:quick_art/core/theme/app_icons.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/core/widgets/prompt_text_field.dart';
 
@@ -28,7 +29,7 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
         elevation: 0,
         leading: IconButton(
           icon: SvgPicture.asset(
-            'assets/icons/svg/setting/back_previous_page.svg',
+            AppIcons.backPreviousPage,
             width: 24,
             height: 24,
           ),

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
+import 'package:quick_art/core/theme/app_icons.dart';
 
 /// 生成图片底部弹出框
 class GeneratedImageBottomSheet extends StatelessWidget {
@@ -48,19 +49,19 @@ class GeneratedImageBottomSheet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildSocialButton(
-                'assets/icons/svg/home/home_history.svg',
+                AppIcons.homeHistory,
                 l10n.share_save,
               ),
               _buildSocialButton(
-                'assets/icons/svg/setting/tiktok.svg',
+                AppIcons.tikTok,
                 l10n.share_tiktok,
               ),
               _buildSocialButton(
-                'assets/icons/svg/setting/instagram.svg',
+                AppIcons.instagram,
                 l10n.share_instagram,
               ),
               _buildSocialButton(
-                'assets/icons/svg/setting/facebook.svg',
+                AppIcons.facebook,
                 l10n.share_facebook,
               ),
             ],

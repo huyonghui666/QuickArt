@@ -4,8 +4,8 @@ import 'package:quick_art/core/di/config/config_provider.dart';
 import 'package:quick_art/core/di/localization/locale_provider.dart';
 import 'package:quick_art/core/error/setup_error_handling.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
+import 'package:quick_art/core/resource_management/app_theme.dart';
 import 'package:quick_art/core/router/router.dart';
-import 'package:quick_art/core/theme/app_theme.dart';
 import 'package:quick_art/core/websocket/websocket_provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 

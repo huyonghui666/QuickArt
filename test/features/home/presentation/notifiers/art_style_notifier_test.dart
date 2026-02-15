@@ -19,14 +19,16 @@ void main() {
   });
 
   test('setStyle should update state to cuteCartoon', () {
-    container.read(artStyleNotifierProvider.notifier)
-    .setStyle(ArtStyle.cuteCartoon);
+    container
+        .read(artStyleNotifierProvider.notifier)
+        .setStyle(ArtStyle.cuteCartoon);
     expect(container.read(artStyleNotifierProvider), ArtStyle.cuteCartoon);
   });
 
   test('setStyle should update state to cyberpunk', () {
-    container.read(artStyleNotifierProvider.notifier)
-    .setStyle(ArtStyle.cyberpunk);
+    container
+        .read(artStyleNotifierProvider.notifier)
+        .setStyle(ArtStyle.cyberpunk);
     expect(container.read(artStyleNotifierProvider), ArtStyle.cyberpunk);
   });
 }

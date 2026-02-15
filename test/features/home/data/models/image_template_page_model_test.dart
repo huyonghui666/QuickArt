@@ -8,7 +8,7 @@ void main() {
   const tId = '1';
   const tName = {'en': 'Test Template'};
   const tImageUrl = 'http://test.com/image.jpg';
-  
+
   const tImageTemplateModel = ImageTemplateModel(
     id: tId,
     name: tName,
@@ -44,7 +44,7 @@ void main() {
             'id': tId,
             'name': tName,
             'imageUrl': tImageUrl,
-          }
+          },
         ],
         'number': 0,
         'totalPages': 1,

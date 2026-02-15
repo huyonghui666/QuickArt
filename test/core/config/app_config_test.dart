@@ -59,11 +59,14 @@ void main() {
       test('ProductionConfig 应具有正确的值', () {
         final config = ProductionConfig();
         expect(config.environment, AppEnvironment.production);
-        expect(config.apiBaseUrl, allOf([
-          isNotEmpty,
-          contains('https://'), // 必须使用HTTPS
-          //startsWith('https://api.'), // 特定前缀
-        ]));
+        expect(
+          config.apiBaseUrl,
+          allOf([
+            isNotEmpty,
+            contains('https://'), // 必须使用HTTPS
+            //startsWith('https://api.'), // 特定前缀
+          ]),
+        );
         // expect(config.apiBaseUrl, isNotEmpty);
         expect(config.webSocketUrl, isNotEmpty);
         expect(config.enableDebugTools, isFalse);

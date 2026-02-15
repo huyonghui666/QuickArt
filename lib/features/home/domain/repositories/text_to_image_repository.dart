@@ -6,5 +6,5 @@ import 'package:quick_art/features/home/domain/entities/image_generation_task.da
 abstract class TextToImageRepository {
   /// 提交生成任务
   /// [prompt] 提示词
-  Future<ImageGenerationTask> submitTask(String prompt);
+  Future<ImageGenerationTask> submitTextToImageTask(String prompt);
 }

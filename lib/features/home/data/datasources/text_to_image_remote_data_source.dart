@@ -10,7 +10,7 @@ abstract class ITextToImageRemoteDataSource {
   /// 获取图片模板列表
   ///
   /// [prompt] 提示词
-  Future<ImageGenerationTaskModel> submitTask(String prompt);
+  Future<ImageGenerationTaskModel> submitTextToImageTask(String prompt);
 }
 
 ///文生图数据源
@@ -20,7 +20,7 @@ class TextToImageRemoteDataSource implements ITextToImageRemoteDataSource {
   final Dio _dio;
 
   @override
-  Future<ImageGenerationTaskModel> submitTask(String prompt) async {
+  Future<ImageGenerationTaskModel> submitTextToImageTask(String prompt) async {
     try {
       final response = await _dio.post<Map<String, dynamic>>(
         // '/images/generate',
@@ -44,7 +44,7 @@ class TextToImageRemoteDataSource implements ITextToImageRemoteDataSource {
         e,
         stackTrace: stackTrace,
         withScope: (scope) async {
-          await scope.setTag('feature', 'image_generation');
+          await scope.setTag('feature', 'submitTextToImageTask');
           scope.contexts['input'] = {'prompt': prompt};
         },
       );
@@ -55,7 +55,7 @@ class TextToImageRemoteDataSource implements ITextToImageRemoteDataSource {
         e,
         stackTrace: stackTrace,
         withScope: (scope) async {
-          await scope.setTag('feature', 'image_generation');
+          await scope.setTag('feature', 'submitTextToImageTask');
           scope.contexts['input'] = {'prompt': prompt};
         },
       );

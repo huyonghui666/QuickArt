@@ -24,7 +24,7 @@ final appConfigProvider = Provider<AppConfig>((ref) {
   };
 });
 
-// 派生Provider：方便直接获取特定配置，减少样板代码
+/// 派生Provider：方便直接获取特定配置，减少样板代码
 /// API 基础地址 Provider
 final apiBaseUrlProvider = Provider<String>((ref) {
   return ref.watch(appConfigProvider).apiBaseUrl;

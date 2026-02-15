@@ -21,7 +21,7 @@ enum AppEnvironment {
   static AppEnvironment fromString(String value) {
     return switch (value) {
       'staging' => AppEnvironment.staging,
-      'production' => AppEnvironment.production,
+      'prod' => AppEnvironment.production,
       _ => AppEnvironment.development,
     };
   }

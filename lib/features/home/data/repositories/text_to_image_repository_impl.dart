@@ -12,9 +12,9 @@ class TextToImageRepositoryImpl implements TextToImageRepository {
   final ITextToImageRemoteDataSource _remoteDataSource;
 
   @override
-  Future<ImageGenerationTask> submitTask(String prompt) async {
+  Future<ImageGenerationTask> submitTextToImageTask(String prompt) async {
     try {
-      final model = await _remoteDataSource.submitTask(prompt);
+      final model = await _remoteDataSource.submitTextToImageTask(prompt);
       return model.toEntity();
     } catch (e) {
       rethrow;

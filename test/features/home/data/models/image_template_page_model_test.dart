@@ -8,7 +8,7 @@ void main() {
   const tId = '1';
   const tName = {'en': 'Test Template'};
   const tImageUrl = 'http://test.com/image.jpg';
-  
+
   const tImageTemplateModel = ImageTemplateModel(
     id: tId,
     name: tName,
@@ -38,13 +38,13 @@ void main() {
   group('ImageTemplatePageModel', () {
     test('should return a valid model from JSON', () {
       // Arrange
-      final Map<String, dynamic> jsonMap = {
+      final jsonMap = <String, dynamic>{
         'content': [
           {
             'id': tId,
             'name': tName,
             'imageUrl': tImageUrl,
-          }
+          },
         ],
         'number': 0,
         'totalPages': 1,

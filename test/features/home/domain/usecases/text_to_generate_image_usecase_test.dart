@@ -21,7 +21,7 @@ void main() {
   test('should submit task to the repository', () async {
     // Arrange
     when(
-      () => mockRepository.submitTask(any()),
+      () => mockRepository.submitTextToImageTask(any()),
     ).thenAnswer((_) async => tImageGenerationTask);
 
     // Act
@@ -29,7 +29,7 @@ void main() {
 
     // Assert
     expect(result, tImageGenerationTask);
-    verify(() => mockRepository.submitTask(tPrompt)).called(1);
+    verify(() => mockRepository.submitTextToImageTask(tPrompt)).called(1);
     verifyNoMoreInteractions(mockRepository);
   });
 }

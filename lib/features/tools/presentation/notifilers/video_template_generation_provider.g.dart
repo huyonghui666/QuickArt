@@ -9,7 +9,9 @@ part of 'video_template_generation_provider.dart';
 String _$videoTemplateInputHash() =>
     r'ac444c2a8858e864f7dba47133ca549736953324';
 
-/// See also [VideoTemplateInput].
+///
+///
+/// Copied from [VideoTemplateInput].
 @ProviderFor(VideoTemplateInput)
 final videoTemplateInputProvider =
     NotifierProvider<VideoTemplateInput, VideoTemplateGenerationInput>.internal(
@@ -24,7 +26,7 @@ final videoTemplateInputProvider =
 
 typedef _$VideoTemplateInput = Notifier<VideoTemplateGenerationInput>;
 String _$videoTemplateGenerationNotifierHash() =>
-    r'6bae0294d45dd54aecede61c373372a716846f1f';
+    r'cb9b88f1c41340f92e820703711046f3cc5629bf';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -54,18 +56,26 @@ abstract class _$VideoTemplateGenerationNotifier
   AsyncValue<VideoGenerationTask> build(String prompt);
 }
 
-/// See also [VideoTemplateGenerationNotifier].
+/// 视频模板生成Notifier
+///
+/// Copied from [VideoTemplateGenerationNotifier].
 @ProviderFor(VideoTemplateGenerationNotifier)
 const videoTemplateGenerationNotifierProvider =
     VideoTemplateGenerationNotifierFamily();
 
-/// See also [VideoTemplateGenerationNotifier].
+/// 视频模板生成Notifier
+///
+/// Copied from [VideoTemplateGenerationNotifier].
 class VideoTemplateGenerationNotifierFamily
     extends Family<AsyncValue<VideoGenerationTask>> {
-  /// See also [VideoTemplateGenerationNotifier].
+  /// 视频模板生成Notifier
+  ///
+  /// Copied from [VideoTemplateGenerationNotifier].
   const VideoTemplateGenerationNotifierFamily();
 
-  /// See also [VideoTemplateGenerationNotifier].
+  /// 视频模板生成Notifier
+  ///
+  /// Copied from [VideoTemplateGenerationNotifier].
   VideoTemplateGenerationNotifierProvider call(String prompt) {
     return VideoTemplateGenerationNotifierProvider(prompt);
   }
@@ -92,14 +102,18 @@ class VideoTemplateGenerationNotifierFamily
   String? get name => r'videoTemplateGenerationNotifierProvider';
 }
 
-/// See also [VideoTemplateGenerationNotifier].
+/// 视频模板生成Notifier
+///
+/// Copied from [VideoTemplateGenerationNotifier].
 class VideoTemplateGenerationNotifierProvider
     extends
         AutoDisposeNotifierProviderImpl<
           VideoTemplateGenerationNotifier,
           AsyncValue<VideoGenerationTask>
         > {
-  /// See also [VideoTemplateGenerationNotifier].
+  /// 视频模板生成Notifier
+  ///
+  /// Copied from [VideoTemplateGenerationNotifier].
   VideoTemplateGenerationNotifierProvider(String prompt)
     : this._internal(
         () => VideoTemplateGenerationNotifier()..prompt = prompt,

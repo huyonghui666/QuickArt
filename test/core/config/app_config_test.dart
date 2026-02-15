@@ -51,18 +51,22 @@ void main() {
         expect(config.environment, AppEnvironment.staging);
         expect(config.apiBaseUrl, isNotEmpty);
         expect(config.webSocketUrl, isNotEmpty);
-        // Staging might or might not enable debug tools, check specific requirement or just boolean
+        // Staging might or might not enable debug tools,
+        // check specific requirement or just boolean
         expect(config.enableDebugTools, isA<bool>());
       });
 
       test('ProductionConfig 应具有正确的值', () {
         final config = ProductionConfig();
         expect(config.environment, AppEnvironment.production);
-        expect(config.apiBaseUrl, allOf([
-          isNotEmpty,
-          contains('https://'), // 必须使用HTTPS
-          //startsWith('https://api.'), // 特定前缀
-        ]));
+        expect(
+          config.apiBaseUrl,
+          allOf([
+            isNotEmpty,
+            contains('https://'), // 必须使用HTTPS
+            //startsWith('https://api.'), // 特定前缀
+          ]),
+        );
         // expect(config.apiBaseUrl, isNotEmpty);
         expect(config.webSocketUrl, isNotEmpty);
         expect(config.enableDebugTools, isFalse);

@@ -22,32 +22,37 @@ void main() {
   final tImageGenerationTask = tImageGenerationTaskModel.toEntity();
 
   test(
-    'should return ImageGenerationTask when remote data source call is successful',
+    'should return ImageGenerationTask when remote data source call is '
+    'successful',
     () async {
       // Arrange
       when(
-        () => mockRemoteDataSource.submitTask(any()),
+        () => mockRemoteDataSource.submitTextToImageTask(any()),
       ).thenAnswer((_) async => tImageGenerationTaskModel);
 
       // Act
-      final result = await repository.submitTask(tPrompt);
+      final result = await repository.submitTextToImageTask(tPrompt);
 
       // Assert
       expect(result, tImageGenerationTask);
-      verify(() => mockRemoteDataSource.submitTask(tPrompt)).called(1);
+      verify(
+        () => mockRemoteDataSource.submitTextToImageTask(tPrompt),
+      ).called(1);
     },
   );
 
   test('should rethrow exception when remote data source call fails', () async {
     // Arrange
     final exception = NetworkException('Error');
-    when(() => mockRemoteDataSource.submitTask(any())).thenThrow(exception);
+    when(
+      () => mockRemoteDataSource.submitTextToImageTask(any()),
+    ).thenThrow(exception);
 
     // Act & Assert
     expect(
-      () => repository.submitTask(tPrompt),
+      () => repository.submitTextToImageTask(tPrompt),
       throwsA(isA<NetworkException>()),
     );
-    verify(() => mockRemoteDataSource.submitTask(tPrompt)).called(1);
+    verify(() => mockRemoteDataSource.submitTextToImageTask(tPrompt)).called(1);
   });
 }

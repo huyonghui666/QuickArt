@@ -54,7 +54,7 @@ class _VideoTemplateDetailScreenState
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: IconButton(
-          icon: SvgPicture.asset(AppIcons.settingNavBack),
+          icon: SvgPicture.asset(AppIcons.backPreviousPage),
           onPressed: () => context.pop(),
         ),
         title: Text(

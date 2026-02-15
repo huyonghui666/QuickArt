@@ -1,34 +1,56 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-/// 粒子类
+/// 粒子数据模型
 class Particle {
-
+  /// 构造函数
   Particle({
     required this.x,
     required this.y,
-    this.z = 0,
     required this.vx,
     required this.vy,
-    this.vz = 0,
     required this.color,
     required this.baseColor,
     required this.baseSize,
     required this.size,
+    this.z = 0,
+    this.vz = 0,
   });
+
+  /// X 坐标
   double x;
+
+  /// Y 坐标
   double y;
-  double z; // 模拟深度
+
+  /// Z 坐标（模拟深度）
+  double z;
+
+  /// X 轴速度
   double vx;
+
+  /// Y 轴速度
   double vy;
+
+  /// Z 轴速度
   double vz;
+
+  /// 当前颜色
   Color color;
-  Color baseColor; // 预计算的基础颜色
+
+  /// 基础颜色
+  Color baseColor;
+
+  /// 基础大小
   double baseSize;
+
+  /// 当前大小
   double size;
 }
 
+/// 粒子加载动画组件
 class ParticleAnimation extends StatefulWidget {
+  /// 构造函数
   const ParticleAnimation({super.key});
 
   @override
@@ -53,27 +75,26 @@ class _ParticleAnimationState extends State<ParticleAnimation>
     )..repeat();
 
     // 初始化粒子
-    for (int i = 0; i < _particleCount; i++) {
+    for (var i = 0; i < _particleCount; i++) {
       // 预计算颜色
-      double hue = 340 + (i % 60).toDouble(); // 偏红/紫
+      var hue = 340 + (i % 60).toDouble(); // 偏红/紫
       if (i % 3 == 0) hue = 45; // 金色点缀
-      final Color particleBaseColor = HSVColor.fromAHSV(
+      final particleBaseColor = HSVColor.fromAHSV(
         0.8,
         hue % 360,
-        1.0,
-        1.0,
+        1,
+        1,
       ).toColor();
 
       _particles.add(
         Particle(
           x: 0,
           y: 0,
-          z: 0,
           vx: 0,
           vy: 0,
           color: Colors.white,
           baseColor: particleBaseColor,
-          baseSize: 1.5 + _random.nextDouble() * 2.0, // 基础大小
+          baseSize: 1.5 + _random.nextDouble() * 2, // 基础大小
           size: 0,
         ),
       );
@@ -89,21 +110,22 @@ class _ParticleAnimationState extends State<ParticleAnimation>
   void _updateParticles(Size size, double t) {
     if (size.isEmpty) return;
 
-    final double centerX = size.width / 2;
-    final double centerY = size.height / 2;
-    final double minDim = min(size.width, size.height);
-    final double baseRadius = minDim * 0.25;
+    final centerX = size.width / 2;
+    final centerY = size.height / 2;
+    final minDim = min(size.width, size.height);
+    final baseRadius = minDim * 0.25;
 
     // 初始化位置到中心（如果尚未初始化）
     if (_particles.isNotEmpty && _particles[0].x == 0 && _particles[0].y == 0) {
-      for (var p in _particles) {
-        p.x = centerX;
-        p.y = centerY;
+      for (final p in _particles) {
+        p
+          ..x = centerX
+          ..y = centerY;
       }
     }
 
-    for (int i = 0; i < _particles.length; i++) {
-      final Particle p = _particles[i];
+    for (var i = 0; i < _particles.length; i++) {
+      final p = _particles[i];
 
       // === 目标计算 ===
       // 使用球坐标系或加厚圆环来模拟“球体”或“厚圆”效果
@@ -113,15 +135,15 @@ class _ParticleAnimationState extends State<ParticleAnimation>
       final angleRandom = (i * 345.0) % 1.0;
 
       // 角度分布：均匀分布
-      final double angle = (i / _particleCount) * 2 * pi + (angleRandom * 0.2);
+      final angle = (i / _particleCount) * 2 * pi + (angleRandom * 0.2);
 
       // 半径分布：高斯分布感觉的厚度
       // 这里的厚度设为半径的 30% 左右，形成一个环带
-      final double thickness = (rRandom - 0.5) * baseRadius * 0.6;
-      final double targetRadius = baseRadius + thickness;
+      final thickness = (rRandom - 0.5) * baseRadius * 0.6;
+      final targetRadius = baseRadius + thickness;
 
-      double targetX = centerX + targetRadius * cos(angle);
-      double targetY = centerY + targetRadius * sin(angle);
+      var targetX = centerX + targetRadius * cos(angle);
+      var targetY = centerY + targetRadius * sin(angle);
 
       // 阶段划分
       // 0.0 - 0.4: 聚拢/维持形态 (Form)
@@ -132,7 +154,7 @@ class _ParticleAnimationState extends State<ParticleAnimation>
       if (t < 0.4) {
         // === 阶段1：形态维持 (Form) ===
         // 添加一点旋转效果
-        const double rotSpeed = 0.5;
+        const rotSpeed = 0.5;
         // 让粒子绕圆心微转
         // double pdx = p.x - centerX;
         // double pdy = p.y - centerY;
@@ -141,85 +163,92 @@ class _ParticleAnimationState extends State<ParticleAnimation>
         // 如果距离非常小，不处理也没关系，或者直接用 squared distance 判断
 
         // 目标位置加上旋转偏移
-        final double rotAngle = angle + t * rotSpeed;
+        final rotAngle = angle + t * rotSpeed;
         targetX = centerX + targetRadius * cos(rotAngle);
         targetY = centerY + targetRadius * sin(rotAngle);
 
-        final double dx = targetX - p.x;
-        final double dy = targetY - p.y;
+        final dx = targetX - p.x;
+        final dy = targetY - p.y;
 
-        p.vx += dx * 0.02;
-        p.vy += dy * 0.02;
-        p.vx *= 0.85; // 强阻尼
-        p.vy *= 0.85;
-
-        // 颜色：直接使用预计算的颜色，避免每帧 HSV 转换
-        p.color = p.baseColor;
+        p
+          ..vx += dx * 0.02
+          ..vy += dy * 0.02
+          ..vx *=
+              0.85 // 强阻尼
+          ..vy *= 0.85
+          // 颜色：直接使用预计算的颜色，避免每帧 HSV 转换
+          ..color = p.baseColor;
       } else if (t < 0.45) {
         // === 阶段2：蓄力 (Shrink) ===
         // 快速向圆心塌陷
-        final double dx = centerX - p.x;
-        final double dy = centerY - p.y;
-        p.vx += dx * 0.08;
-        p.vy += dy * 0.08;
-        p.vx *= 0.9;
-        p.vy *= 0.9;
-
-        // 变亮变白
-        p.color = Color.lerp(p.color, Colors.white, 0.2)!;
+        final dx = centerX - p.x;
+        final dy = centerY - p.y;
+        p
+          ..vx += dx * 0.08
+          ..vy += dy * 0.08
+          ..vx *= 0.9
+          ..vy *= 0.9
+          // 变亮变白
+          ..color = Color.lerp(p.color, Colors.white, 0.2)!;
       } else if (t < 0.8) {
         // === 阶段3：爆炸 (Explode) ===
         // 计算离圆心的方向
-        final double dx = p.x - centerX;
-        final double dy = p.y - centerY;
-        double dist = sqrt(dx * dx + dy * dy);
+        final dx = p.x - centerX;
+        final dy = p.y - centerY;
+        var dist = sqrt(dx * dx + dy * dy);
         if (dist < 0.1) dist = 0.1;
 
         // 爆炸瞬间 (0.45 - 0.50) 施加较短且分散的斥力
         // 缩短加速时间，防止飞出屏幕
         if (t < 0.50) {
           // 混合模式：70% 沿径向散开，30% 完全随机方向，确保填满屏幕中心和四周
-          final bool isRandomDirection = _random.nextDouble() < 0.3;
+          final isRandomDirection = _random.nextDouble() < 0.3;
           double explodeAngle;
 
           if (isRandomDirection) {
             explodeAngle = _random.nextDouble() * 2 * pi;
           } else {
             // 径向散开，带较大的随机偏移
-            final double randomAngleOffset = (_random.nextDouble() - 0.5) * 2.5;
+            final randomAngleOffset = (_random.nextDouble() - 0.5) * 2.5;
             explodeAngle = atan2(dy, dx) + randomAngleOffset;
           }
 
           // 力度差异化：扩大范围，让有的粒子留在中心，有的飞向边缘
-          final double randomForceFactor = _random.nextDouble();
+          final randomForceFactor = _random.nextDouble();
           // 5.0 - 120.0 的力度范围
-          final double force = 5.0 + randomForceFactor * 115.0;
+          final force = 5.0 + randomForceFactor * 115.0;
 
-          p.vx += cos(explodeAngle) * force * 0.1;
-          p.vy += sin(explodeAngle) * force * 0.1;
+          p
+            ..vx += cos(explodeAngle) * force * 0.1
+            ..vy += sin(explodeAngle) * force * 0.1;
         }
 
         // 增加阻尼，让粒子快速停留在屏幕内漂浮
         // 稍微降低阻尼 (0.92 -> 0.94) 让它们飘得更久一点
-        p.vx *= 0.94;
-        p.vy *= 0.94;
+        p
+          ..vx *= 0.94
+          ..vy *= 0.94;
 
         // 边界处理：碰到屏幕边缘反弹
         // 提高反弹系数 (0.5 -> 0.8) 避免吸附在边缘
         if (p.x < 0) {
-          p.x = 0;
-          p.vx = -p.vx * 0.8;
+          p
+            ..x = 0
+            ..vx = -p.vx * 0.8;
         } else if (p.x > size.width) {
-          p.x = size.width;
-          p.vx = -p.vx * 0.8;
+          p
+            ..x = size.width
+            ..vx = -p.vx * 0.8;
         }
 
         if (p.y < 0) {
-          p.y = 0;
-          p.vy = -p.vy * 0.8;
+          p
+            ..y = 0
+            ..vy = -p.vy * 0.8;
         } else if (p.y > size.height) {
-          p.y = size.height;
-          p.vy = -p.vy * 0.8;
+          p
+            ..y = size.height
+            ..vy = -p.vy * 0.8;
         }
 
         // 颜色：金色、紫色粒子散开
@@ -228,20 +257,23 @@ class _ParticleAnimationState extends State<ParticleAnimation>
       } else {
         // === 阶段4：回归 (Return) ===
         // 重新计算目标位置（无旋转，快速归位）
-        final double dx = targetX - p.x;
-        final double dy = targetY - p.y;
+        final dx = targetX - p.x;
+        final dy = targetY - p.y;
 
-        p..vx += dx * 0.03
-        ..vy += dy * 0.03
-        ..vx *= 0.82
-        ..vy *= 0.82
-
-        ..color = Colors.white.withValues(alpha: 0.5);
+        p
+          ..vx += dx * 0.03
+          ..vy += dy * 0.03
+          ..vx *= 0.82
+          ..vy *= 0.82
+          ..color = Colors.white.withValues(alpha: 0.5);
       }
 
       // 更新位置
-      p..x += p.vx * 0.6 // 时间步长缩放
-      ..y += p.vy * 0.6;
+      p
+        ..x +=
+            p.vx *
+            0.6 // 时间步长缩放
+        ..y += p.vy * 0.6;
 
       // 简单模拟 3D 尺寸变化 (根据 y 轴或假想 z 轴)
       // 这里简单用随机闪烁或距离中心的距离来调整大小
@@ -270,7 +302,7 @@ class _ParticleAnimationState extends State<ParticleAnimation>
   }
 }
 
-
+/// 粒子画笔
 class ParticlePainter extends CustomPainter {
   /// 构造
   ParticlePainter({
@@ -278,9 +310,15 @@ class ParticlePainter extends CustomPainter {
     required this.controllerValue,
     required this.onUpdate,
   });
+
+  /// 粒子列表
   final List<Particle> particles;
+
+  /// 动画控制器值
   final double controllerValue;
-  final Function(Size, double) onUpdate;
+
+  /// 更新回调
+  final void Function(Size, double) onUpdate;
 
   @override
   void paint(Canvas canvas, Size size) {

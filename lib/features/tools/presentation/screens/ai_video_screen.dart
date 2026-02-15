@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
+import 'package:quick_art/core/theme/app_icons.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/ai_video_tab_bar_provider.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/video_template_notifier.dart';
 import 'package:quick_art/features/tools/presentation/widgets/ai_video_action_card.dart';
@@ -115,7 +116,7 @@ class _AiVideoScreenState extends ConsumerState<AiVideoScreen>
               pinned: true,
               leading: IconButton(
                 icon: SvgPicture.asset(
-                  'assets/icons/svg/Setting/btn_nav_back.svg',
+                  AppIcons.backPreviousPage,
                   width: 24,
                   height: 24,
                 ),

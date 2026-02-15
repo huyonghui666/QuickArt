@@ -11,6 +11,6 @@ class TextToGenerateImageUseCase {
   /// 执行任务提交
   /// [prompt] 提示词
   Future<ImageGenerationTask> execute(String prompt) {
-    return _textToImageRepository.submitTask(prompt);
+    return _textToImageRepository.submitTextToImageTask(prompt);
   }
 }

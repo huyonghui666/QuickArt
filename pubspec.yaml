@@ -8,68 +8,46 @@ environment:
   sdk: ^3.9.2
 
 dependencies:
+  cached_network_image: 3.4.1
+  cupertino_icons: 1.0.8
+  device_info_plus: 12.3.0
+  dio: 5.9.0
+  equatable: 2.0.8
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: 1.0.8
-  
-  # State management
   flutter_riverpod: 2.6.1
-  riverpod_annotation: 2.6.1
-
-  # HTTP client
-  dio: 5.9.0
-
-  # svg
   flutter_svg: 1.1.6
-
-  #router
-  go_router: 17.0.0
-  #language_localizations
-  intl: 0.20.2
-
-  #freezed
   freezed_annotation: 3.1.0
-  #log
+  go_router: 17.0.0
+  image_picker: 1.2.1
+  intl: 0.20.2
   logger: 2.6.2
-
-  #websocket
-  web_socket_channel: 3.0.3
-
-  video_player: 2.10.1
-  cached_network_image: 3.4.1
+  path: 1.9.1
+  permission_handler: 12.0.1
+  riverpod_annotation: 2.6.1
+  sentry_flutter: 9.10.0
   shared_preferences: 2.5.4
   sqflite: 2.4.2
-  path: 1.9.1
-  image_picker: 1.2.1
-  permission_handler: 12.0.1
-  device_info_plus: 12.3.0
-
-  #错误上报
-  sentry_flutter: 9.10.0
-
+  video_player: 2.10.1
   visibility_detector: 0.4.0+2
-  equatable: 2.0.8
+  web_socket_channel: 3.0.3
 
 dev_dependencies:
+  build_runner: 2.5.4
+  custom_lint: 0.7.6
   flutter_test:
     sdk: flutter
-
-  very_good_analysis: 10.0.0
-  build_runner: 2.5.4
-  riverpod_generator: 2.6.5
   freezed: 3.1.0
-  json_serializable: 6.9.5
-  riverpod_lint: 2.6.5
-  custom_lint: 0.7.6
   go_router_builder: 3.0.0
+  json_serializable: 6.9.5
   mocktail: 1.0.4
+  riverpod_generator: 2.6.5
+  riverpod_lint: 2.6.5
+  very_good_analysis: 10.0.0
 
-  # For information on the generic Dart part of this file, see the
+# For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
@@ -82,10 +60,13 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/icons/svg/Home/
+    - assets/icons/svg/home/
+    - assets/icons/svg/setting/
+    - assets/icons/svg/bottom_navigation/
+    - assets/icons/svg/core/
+
     - assets/images/art_styles/
     - assets/images/bg/
     - assets/images/tools/
-    - assets/icons/svg/Setting/
     - assets/rive_animation/
     - assets/videos/

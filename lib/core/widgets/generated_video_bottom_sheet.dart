@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
+import 'package:quick_art/core/theme/app_icons.dart';
 import 'package:quick_art/features/tools/presentation/widgets/tools_video_card.dart';
 
 /// 生成视频底部弹出框
@@ -48,19 +49,19 @@ class GeneratedVideoBottomSheet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildSocialButton(
-                'assets/icons/svg/Home/home_ic_history.svg',
+                AppIcons.homeHistory,
                 l10n.tools_save,
               ),
               _buildSocialButton(
-                'assets/icons/svg/Setting/setting_ic_tt.svg',
+                AppIcons.tikTok,
                 l10n.tools_tiktok,
               ),
               _buildSocialButton(
-                'assets/icons/svg/Setting/setting_ic_ins.svg',
+                AppIcons.instagram,
                 l10n.tools_instagram,
               ),
               _buildSocialButton(
-                'assets/icons/svg/Setting/setting_ic_fb.svg',
+                AppIcons.facebook,
                 l10n.tools_facebook,
               ),
             ],

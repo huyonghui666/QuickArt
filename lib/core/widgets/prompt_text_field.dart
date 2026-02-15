@@ -69,7 +69,7 @@ class PromptTextField extends ConsumerWidget {
                     ),
                     const SizedBox(width: 15),
                     SvgPicture.asset(
-                      AppIcons.promptNextUnable,
+                      AppIcons.promptRestoreUnable,
                       width: 20,
                       height: 20,
                     ),

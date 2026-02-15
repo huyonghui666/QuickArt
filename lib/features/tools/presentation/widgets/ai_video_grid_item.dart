@@ -12,19 +12,26 @@ import 'package:visibility_detector/visibility_detector.dart';
 class AiVideoGridItem extends ConsumerStatefulWidget {
   /// 构造
   const AiVideoGridItem({
-    required this.videoUrl, required this.index, super.key,
+    required this.videoUrl,
+    required this.index,
+    super.key,
     this.coverUrl,
     this.name,
     this.template,
   });
+
   /// 视频url
   final String videoUrl;
+
   /// 占位图url
   final String? coverUrl;
+
   /// 索引用于唯一
   final int index;
+
   /// 标题
   final String? name;
+
   /// 视频模板
   final VideoTemplate? template;
 
@@ -102,18 +109,20 @@ class _AiVideoGridItemState extends ConsumerState<AiVideoGridItem> {
               // 1. 底层：始终显示封面图 (性能保底)
               if (widget.coverUrl != null && widget.coverUrl!.isNotEmpty)
                 CachedNetworkImage(
-                      imageUrl: widget.coverUrl!,
-                      fit: BoxFit.cover,
-                      // 内存优化：限制图片解码大小
-                      memCacheWidth: 300,
-                      placeholder: (context, url) =>
-                          Container(color: Colors.grey[900]),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error, color: Colors.white),
-                      fadeInDuration: const Duration(milliseconds: 200),
-                ) else Image.network(
-                      'https://picsum.photos/seed/video_template_${widget.index}/400/600',
-                      fit: BoxFit.cover,
+                  imageUrl: widget.coverUrl!,
+                  fit: BoxFit.cover,
+                  // 内存优化：限制图片解码大小
+                  memCacheWidth: 300,
+                  placeholder: (context, url) =>
+                      Container(color: Colors.grey[900]),
+                  errorWidget: (context, url, error) =>
+                      const Icon(Icons.error, color: Colors.white),
+                  fadeInDuration: const Duration(milliseconds: 200),
+                )
+              else
+                Image.network(
+                  'https://picsum.photos/seed/video_template_${widget.index}/400/600',
+                  fit: BoxFit.cover,
                 ),
 
               // 2. 上层：如果可见，则请求 Provider 加载视频
@@ -164,7 +173,6 @@ class _AiVideoGridItemState extends ConsumerState<AiVideoGridItem> {
 
 // 抽离视频播放层，为了让 Riverpod 正确监听
 class _VideoPlayerLayer extends ConsumerWidget {
-
   const _VideoPlayerLayer({required this.videoUrl, required this.index});
   final String videoUrl;
   final int index;

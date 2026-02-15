@@ -18,13 +18,17 @@ void main() {
     expect(state, ArtStyle.noStyle);
   });
 
-  test('setStyle should update state', () {
-    final notifier = container.read(artStyleNotifierProvider.notifier);
-    
-    notifier.setStyle(ArtStyle.cuteCartoon);
+  test('setStyle should update state to cuteCartoon', () {
+    container
+        .read(artStyleNotifierProvider.notifier)
+        .setStyle(ArtStyle.cuteCartoon);
     expect(container.read(artStyleNotifierProvider), ArtStyle.cuteCartoon);
+  });
 
-    notifier.setStyle(ArtStyle.cyberpunk);
+  test('setStyle should update state to cyberpunk', () {
+    container
+        .read(artStyleNotifierProvider.notifier)
+        .setStyle(ArtStyle.cyberpunk);
     expect(container.read(artStyleNotifierProvider), ArtStyle.cyberpunk);
   });
 }

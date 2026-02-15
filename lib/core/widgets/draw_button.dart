@@ -46,7 +46,7 @@ class DrawButton extends ConsumerWidget {
           alignment: Alignment.center,
           children: [
             SvgPicture.asset(
-              active ? AppIcons.homeBtnStart : AppIcons.homeBtnStartUnable,
+              active ? AppIcons.draw : AppIcons.drawUnable,
               fit: BoxFit.cover,
             ),
             Text(

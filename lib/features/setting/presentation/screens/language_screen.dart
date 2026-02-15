@@ -22,7 +22,7 @@ class _LanguageScreenState extends ConsumerState<LanguageScreen> {
     '简体中文': 'zh',
     '繁體中文':
         'zh', // Note: GoRouter does not distinguish between zh-CN and zh-TW, so
-              // we use 'zh' for both
+    // we use 'zh' for both
     'English': 'en',
     '日本語': 'ja',
     '한국어': 'ko',
@@ -63,7 +63,7 @@ class _LanguageScreenState extends ConsumerState<LanguageScreen> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: IconButton(
-          icon: SvgPicture.asset(AppIcons.settingNavBack),
+          icon: SvgPicture.asset(AppIcons.backPreviousPage),
           onPressed: () => context.pop(),
         ),
         title: Text(l10n.language, style: const TextStyle(color: Colors.white)),
@@ -85,16 +85,15 @@ class _LanguageScreenState extends ConsumerState<LanguageScreen> {
                   style: const TextStyle(color: Colors.white),
                 ),
                 value: language,
-                // ignore: deprecated_member_use
+                // ignore: deprecated_member_use, because RadioGroup is causing crashes
                 groupValue: selectedLanguage,
-                // ignore: deprecated_member_use
+                // ignore: deprecated_member_use, because RadioGroup is causing crashes
                 onChanged: (String? value) {
                   if (value != null) {
                     final localeCode = _languageMap[value];
                     if (localeCode != null &&
                         localeCode != selectedLocale.languageCode) {
                       // 立即更新全局状态会触发全量重建，导致卡顿
-                      // 让 Radio 的点击动画（波纹）先跑完一帧，再触发重建
                       _debounceTimer?.cancel();
                       _debounceTimer = Timer(
                         const Duration(milliseconds: 150),

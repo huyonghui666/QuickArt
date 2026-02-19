@@ -204,12 +204,12 @@ class WaitingScreen extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                l10n.waiting_creating,
+                l10n.widgets_waiting_screen_creating,
                 style: const TextStyle(color: Colors.white, fontSize: 24),
               ),
               const SizedBox(height: 10),
               Text(
-                l10n.waiting_generating_hint,
+                l10n.widgets_waiting_screen_generating_hint,
                 style: const TextStyle(color: Colors.white70, fontSize: 16),
               ),
               const SizedBox(height: 40),
@@ -234,7 +234,7 @@ class WaitingScreen extends ConsumerWidget {
                     ),
                   ),
                   child: Text(
-                    l10n.waiting_run_in_background,
+                    l10n.widgets_waiting_screen_run_in_background,
                     style: const TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ),

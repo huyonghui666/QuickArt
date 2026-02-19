@@ -36,7 +36,7 @@ class GeneratedVideoBottomSheet extends StatelessWidget {
                   const SizedBox(height: 42),
                   // 提示文本
                   Text(
-                    l10n.tools_social_hint,
+                    l10n.bottom_sheet_social_hint,
                     style: const TextStyle(color: Colors.white70),
                   ),
                 ],
@@ -50,19 +50,19 @@ class GeneratedVideoBottomSheet extends StatelessWidget {
             children: [
               _buildSocialButton(
                 AppIcons.homeHistory,
-                l10n.tools_save,
+                l10n.bottom_sheet_save,
               ),
               _buildSocialButton(
                 AppIcons.tikTok,
-                l10n.tools_tiktok,
+                l10n.bottom_sheet_tiktok,
               ),
               _buildSocialButton(
                 AppIcons.instagram,
-                l10n.tools_instagram,
+                l10n.bottom_sheet_instagram,
               ),
               _buildSocialButton(
                 AppIcons.facebook,
-                l10n.tools_facebook,
+                l10n.bottom_sheet_facebook,
               ),
             ],
           ),

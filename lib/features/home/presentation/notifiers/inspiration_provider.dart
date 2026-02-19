@@ -29,15 +29,15 @@ enum InspirationCategoryType {
   /// 获取本地化标签
   String getLabel(AppLocalizations l10n) {
     return switch (this) {
-      InspirationCategoryType.newest => l10n.inspiration_new,
-      InspirationCategoryType.manga => l10n.inspiration_manga,
-      InspirationCategoryType.photography => l10n.inspiration_photography,
-      InspirationCategoryType.watercolor => l10n.inspiration_watercolor,
-      InspirationCategoryType.funny => l10n.inspiration_funny,
-      InspirationCategoryType.tattoo => l10n.inspiration_tattoo,
-      InspirationCategoryType.cyberpunk => l10n.inspiration_cyberpunk,
-      InspirationCategoryType.surrealism => l10n.inspiration_surrealism,
-      InspirationCategoryType.christmas => l10n.inspiration_christmas,
+      InspirationCategoryType.newest => l10n.home_inspiration_new,
+      InspirationCategoryType.manga => l10n.home_inspiration_manga,
+      InspirationCategoryType.photography => l10n.home_inspiration_photography,
+      InspirationCategoryType.watercolor => l10n.home_inspiration_watercolor,
+      InspirationCategoryType.funny => l10n.home_inspiration_funny,
+      InspirationCategoryType.tattoo => l10n.home_inspiration_tattoo,
+      InspirationCategoryType.cyberpunk => l10n.home_inspiration_cyberpunk,
+      InspirationCategoryType.surrealism => l10n.home_inspiration_surrealism,
+      InspirationCategoryType.christmas => l10n.home_inspiration_christmas,
     };
   }
 }

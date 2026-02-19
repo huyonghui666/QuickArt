@@ -12,6 +12,7 @@ import 'package:quick_art/features/home/domain/entities/image_template.dart';
 class TemplateDetailShowModalBottomSheet extends ConsumerWidget {
   /// 构造
   const TemplateDetailShowModalBottomSheet({required this.template, super.key});
+
   /// 图片模板数据
   final ImageTemplate template;
 
@@ -124,7 +125,7 @@ class TemplateDetailShowModalBottomSheet extends ConsumerWidget {
                             ),
                           ),
                           Text(
-                            AppLocalizations.of(context)!.try_prompt,
+                            AppLocalizations.of(context)!.home_try_prompt,
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 18,

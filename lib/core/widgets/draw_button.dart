@@ -36,7 +36,8 @@ class DrawButton extends ConsumerWidget {
           // 如果没有启用，提示用户
           ScaffoldMessenger.of(
             context,
-          ).showSnackBar(SnackBar(content: Text(l10n.common_enter_prompt)));
+          ).showSnackBar(SnackBar(content:
+          Text(l10n.widgets_prompt_text_field_enter_prompt)));
         }
       },
       child: SizedBox(
@@ -50,7 +51,7 @@ class DrawButton extends ConsumerWidget {
               fit: BoxFit.cover,
             ),
             Text(
-              l10n.common_draw,
+              l10n.widgets_draw_button_draw,
               style: TextStyle(
                 color: active ? Colors.white : Colors.grey,
                 fontSize: 18,

@@ -54,7 +54,7 @@ class SettingScreen extends ConsumerWidget {
                 ),
                 _buildSettingItem(
                   icon: AppIcons.settingLanguage,
-                  text: l10n.language,
+                  text: l10n.setting_language,
                   onTap: () => context.push('/setting/language'),
                 ),
                 _buildSettingItem(
@@ -118,9 +118,7 @@ class SettingScreen extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
-            icon: SvgPicture.asset(
-                AppIcons.tikTok,
-                width: 20, height: 20),
+            icon: SvgPicture.asset(AppIcons.tikTok, width: 20, height: 20),
             onPressed: () {},
             padding: const EdgeInsets.symmetric(horizontal: 4),
             constraints: const BoxConstraints(),

@@ -41,7 +41,7 @@ class GeneratedImageBottomSheet extends StatelessWidget {
             ),
             const SizedBox(height: 42),
           Text(
-            l10n.share_social_hint,
+            l10n.bottom_sheet_social_hint,
             style: const TextStyle(color: Colors.white70),
           ),
           const Spacer(),
@@ -50,19 +50,19 @@ class GeneratedImageBottomSheet extends StatelessWidget {
             children: [
               _buildSocialButton(
                 AppIcons.homeHistory,
-                l10n.share_save,
+                l10n.bottom_sheet_save,
               ),
               _buildSocialButton(
                 AppIcons.tikTok,
-                l10n.share_tiktok,
+                l10n.bottom_sheet_tiktok,
               ),
               _buildSocialButton(
                 AppIcons.instagram,
-                l10n.share_instagram,
+                l10n.bottom_sheet_instagram,
               ),
               _buildSocialButton(
                 AppIcons.facebook,
-                l10n.share_facebook,
+                l10n.bottom_sheet_facebook,
               ),
             ],
           ),

@@ -66,7 +66,10 @@ class _LanguageScreenState extends ConsumerState<LanguageScreen> {
           icon: SvgPicture.asset(AppIcons.backPreviousPage),
           onPressed: () => context.pop(),
         ),
-        title: Text(l10n.language, style: const TextStyle(color: Colors.white)),
+        title: Text(
+          l10n.setting_language,
+          style: const TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
       ),
       body: Padding(

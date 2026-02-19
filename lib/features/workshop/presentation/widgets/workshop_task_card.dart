@@ -139,7 +139,7 @@ class WorkshopTaskCard extends StatelessWidget {
             ),
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           ),
-          child: Text(l10n.workshop_retry),
+          child: Text(l10n.common_retry),
         ),
       ],
     );

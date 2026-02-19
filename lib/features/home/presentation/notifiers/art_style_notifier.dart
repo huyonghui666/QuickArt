@@ -130,43 +130,43 @@ enum ArtStyle {
   String getLabel(AppLocalizations l10n) {
     switch (this) {
       case ArtStyle.noStyle:
-        return l10n.style_no_style;
+        return l10n.home_style_no_style;
       case ArtStyle.cuteCartoon:
-        return l10n.style_cute_cartoon;
+        return l10n.home_style_cute_cartoon;
       case ArtStyle.ancientStyle:
-        return l10n.style_ancient_style;
+        return l10n.home_style_ancient_style;
       case ArtStyle.graffiti:
-        return l10n.style_graffiti;
+        return l10n.home_style_graffiti;
       case ArtStyle.popArt:
-        return l10n.style_pop_art;
+        return l10n.home_style_pop_art;
       case ArtStyle.vividRealism:
-        return l10n.style_vivid_realism;
+        return l10n.home_style_vivid_realism;
       case ArtStyle.color:
-        return l10n.style_color;
+        return l10n.home_style_color;
       case ArtStyle.eighties:
-        return l10n.style_eighties;
+        return l10n.home_style_eighties;
       case ArtStyle.showa:
-        return l10n.style_showa;
+        return l10n.home_style_showa;
       case ArtStyle.model3D:
-        return l10n.style_model_3d;
+        return l10n.home_style_model_3d;
       case ArtStyle.photoPhotography:
-        return l10n.style_photography;
+        return l10n.home_style_photography;
       case ArtStyle.japaneseAnime:
-        return l10n.style_japanese_anime;
+        return l10n.home_style_japanese_anime;
       case ArtStyle.tattoo:
-        return l10n.style_tattoo;
+        return l10n.home_style_tattoo;
       case ArtStyle.retroArcade:
-        return l10n.style_retro_arcade;
+        return l10n.home_style_retro_arcade;
       case ArtStyle.blackWhite:
-        return l10n.style_black_white;
+        return l10n.home_style_black_white;
       case ArtStyle.pixar:
-        return l10n.style_pixar;
+        return l10n.home_style_pixar;
       case ArtStyle.cyberpunk:
-        return l10n.style_cyberpunk;
+        return l10n.home_style_cyberpunk;
       case ArtStyle.lineArt:
-        return l10n.style_line_art;
+        return l10n.home_style_line_art;
       case ArtStyle.watercolor:
-        return l10n.style_watercolor;
+        return l10n.home_style_watercolor;
     }
   }
 }

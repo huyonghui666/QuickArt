@@ -41,7 +41,7 @@ class PromptTextField extends ConsumerWidget {
               decoration: InputDecoration(
                 filled: true,
                 fillColor: const Color(0xFF1A1A1A),
-                hintText: l10n.common_prompt_hint,
+                hintText: l10n.widgets_prompt_text_field_prompt_hint,
                 hintStyle: TextStyle(color: Colors.grey[500], fontSize: 13),
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.fromLTRB(16, 16, 16, 40),

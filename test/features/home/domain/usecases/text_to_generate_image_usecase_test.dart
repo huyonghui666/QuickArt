@@ -4,7 +4,8 @@ import 'package:quick_art/features/home/domain/entities/image_generation_task.da
 import 'package:quick_art/features/home/domain/repositories/text_to_image_repository.dart';
 import 'package:quick_art/features/home/domain/usecases/text_to_generate_image_usecase.dart';
 
-class MockTextToImageRepository extends Mock implements TextToImageRepository {}
+class MockTextToImageRepository extends Mock
+    implements ITextToImageRepository {}
 
 void main() {
   late TextToGenerateImageUseCase useCase;

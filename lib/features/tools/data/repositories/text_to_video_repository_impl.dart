@@ -3,7 +3,7 @@ import 'package:quick_art/features/tools/domain/entities/video_generation_task.d
 import 'package:quick_art/features/tools/domain/repositories/text_to_video_repository.dart';
 
 /// 生成视频仓库实现
-class GenerateVideoRepositoryImpl implements TextToVideoRepository {
+class GenerateVideoRepositoryImpl implements ITextToVideoRepository {
   /// 构造
   GenerateVideoRepositoryImpl(this._remoteDataSource);
 

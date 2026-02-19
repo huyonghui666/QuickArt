@@ -5,7 +5,7 @@ import 'package:quick_art/features/tools/domain/repositories/text_to_video_repos
 class TextToGenerateVideoUseCase {
   /// 构造
   TextToGenerateVideoUseCase(this._repository);
-  final TextToVideoRepository _repository;
+  final ITextToVideoRepository _repository;
   /// 执行用例
   Future<VideoGenerationTask> execute(String prompt) {
     return _repository.generateVideo(prompt);

@@ -1,7 +1,7 @@
 import 'package:quick_art/features/workshop/domain/entities/workshop_task.dart';
 
 /// 工作室仓库抽象
-abstract class WorkshopRepository {
+abstract class IWorkshopRepository {
   /// 获取工作室生成的所有任务
   Future<List<WorkshopTask>> getTasks();
   /// 通过id获取

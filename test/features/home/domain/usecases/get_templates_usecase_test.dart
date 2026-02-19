@@ -4,7 +4,7 @@ import 'package:quick_art/features/home/domain/entities/image_template_page.dart
 import 'package:quick_art/features/home/domain/repositories/template_repository.dart';
 import 'package:quick_art/features/home/domain/usecases/get_templates_usecase.dart';
 
-class MockTemplateRepository extends Mock implements TemplateRepository {}
+class MockTemplateRepository extends Mock implements ITemplateRepository {}
 
 void main() {
   late GetTemplatesUseCase useCase;

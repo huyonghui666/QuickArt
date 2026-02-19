@@ -6,7 +6,7 @@ class GenerateVideoFromImageUseCase {
   /// 构造
   GenerateVideoFromImageUseCase(this._repository);
 
-  final TextToVideoRepository _repository;
+  final ITextToVideoRepository _repository;
   /// 执行用例
   Future<VideoGenerationTask> execute(
     String prompt,

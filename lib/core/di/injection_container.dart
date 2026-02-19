@@ -59,7 +59,7 @@ ITextToImageRemoteDataSource textToImageRemoteDataSource(Ref ref) {
 
 /// 文生图仓库
 @riverpod
-TextToImageRepository textToImageRepository(Ref ref) {
+ITextToImageRepository textToImageRepository(Ref ref) {
   final remoteDataSource = ref.watch(textToImageRemoteDataSourceProvider);
   return TextToImageRepositoryImpl(remoteDataSource);
 }
@@ -81,7 +81,7 @@ IGenerateVideoRemoteDataSource textToVideoRemoteDataSource(Ref ref) {
 
 /// 视频生成仓库
 @riverpod
-TextToVideoRepository textToVideoRepository(Ref ref) {
+ITextToVideoRepository textToVideoRepository(Ref ref) {
   final remoteDataSource = ref.watch(textToVideoRemoteDataSourceProvider);
   return GenerateVideoRepositoryImpl(remoteDataSource);
 }
@@ -116,7 +116,7 @@ DatabaseHelper databaseHelper(Ref ref) {
 
 /// 工作坊仓库
 @riverpod
-WorkshopRepository workshopRepository(Ref ref) {
+IWorkshopRepository workshopRepository(Ref ref) {
   final databaseHelper = ref.watch(databaseHelperProvider);
   return WorkshopRepositoryImpl(databaseHelper);
 }
@@ -137,7 +137,7 @@ ITemplateRemoteDataSource templateRemoteDataSource(Ref ref) {
 
 /// 图片模板仓库
 @riverpod
-TemplateRepository templateRepository(Ref ref) {
+ITemplateRepository templateRepository(Ref ref) {
   return TemplateRepositoryImpl(ref.watch(templateRemoteDataSourceProvider));
 }
 
@@ -157,7 +157,7 @@ IVideoTemplateRemoteDataSource videoTemplateRemoteDataSource(Ref ref) {
 
 /// 视频模板仓库
 @riverpod
-VideoTemplateRepository videoTemplateRepository(Ref ref) {
+IVideoTemplateRepository videoTemplateRepository(Ref ref) {
   final remoteDataSource = ref.watch(videoTemplateRemoteDataSourceProvider);
   return VideoTemplateRepositoryImpl(remoteDataSource);
 }

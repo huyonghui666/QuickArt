@@ -6,7 +6,7 @@ class TextToGenerateImageUseCase {
   /// 构造函数
   TextToGenerateImageUseCase(this._textToImageRepository);
 
-  final TextToImageRepository _textToImageRepository;
+  final ITextToImageRepository _textToImageRepository;
 
   /// 执行任务提交
   /// [prompt] 提示词

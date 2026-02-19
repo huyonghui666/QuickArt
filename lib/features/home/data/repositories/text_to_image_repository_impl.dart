@@ -5,7 +5,7 @@ import 'package:quick_art/features/home/domain/entities/image_generation_task.da
 import 'package:quick_art/features/home/domain/repositories/text_to_image_repository.dart';
 
 /// 文生图 Repository 实现
-class TextToImageRepositoryImpl implements TextToImageRepository {
+class TextToImageRepositoryImpl implements ITextToImageRepository {
 
   /// 构造函数
   TextToImageRepositoryImpl(this._remoteDataSource);

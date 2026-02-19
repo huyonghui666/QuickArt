@@ -3,7 +3,7 @@ import 'package:quick_art/features/home/domain/entities/image_template_page.dart
 import 'package:quick_art/features/home/domain/repositories/template_repository.dart';
 
 /// 图片模板 Repository 实现
-class TemplateRepositoryImpl implements TemplateRepository {
+class TemplateRepositoryImpl implements ITemplateRepository {
   /// 构造函数
   TemplateRepositoryImpl(this._dataSource);
   final ITemplateRemoteDataSource _dataSource;

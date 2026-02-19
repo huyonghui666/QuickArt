@@ -1,7 +1,7 @@
 import 'package:quick_art/features/tools/domain/entities/video_generation_task.dart';
 
 /// 文生视频仓库抽象
-abstract class TextToVideoRepository {
+abstract class ITextToVideoRepository {
   /// 文生图视频生成
   Future<VideoGenerationTask> generateVideo(String prompt);
   /// 首尾帧

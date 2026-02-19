@@ -48,14 +48,14 @@ final textToImageRemoteDataSourceProvider =
 typedef TextToImageRemoteDataSourceRef =
     AutoDisposeProviderRef<ITextToImageRemoteDataSource>;
 String _$textToImageRepositoryHash() =>
-    r'36872ee54b9cb250bc0ebad5c0de79a113f34fd2';
+    r'ae715e6daf35e555f1b5fb187b6a5fbd28fedb56';
 
 /// 文生图仓库
 ///
 /// Copied from [textToImageRepository].
 @ProviderFor(textToImageRepository)
 final textToImageRepositoryProvider =
-    AutoDisposeProvider<TextToImageRepository>.internal(
+    AutoDisposeProvider<ITextToImageRepository>.internal(
       textToImageRepository,
       name: r'textToImageRepositoryProvider',
       debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -68,7 +68,7 @@ final textToImageRepositoryProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef TextToImageRepositoryRef =
-    AutoDisposeProviderRef<TextToImageRepository>;
+    AutoDisposeProviderRef<ITextToImageRepository>;
 String _$textToGenerateImageUseCaseHash() =>
     r'32dc099d58dfc2a676cd3b564b556afd58d6605e';
 
@@ -114,14 +114,14 @@ final textToVideoRemoteDataSourceProvider =
 typedef TextToVideoRemoteDataSourceRef =
     AutoDisposeProviderRef<IGenerateVideoRemoteDataSource>;
 String _$textToVideoRepositoryHash() =>
-    r'6f2344fa516b3a4da8aaab8bcf6f18c283673f54';
+    r'1775ad0d27296c4fb5ac8f590a8065acba12b60a';
 
 /// 视频生成仓库
 ///
 /// Copied from [textToVideoRepository].
 @ProviderFor(textToVideoRepository)
 final textToVideoRepositoryProvider =
-    AutoDisposeProvider<TextToVideoRepository>.internal(
+    AutoDisposeProvider<ITextToVideoRepository>.internal(
       textToVideoRepository,
       name: r'textToVideoRepositoryProvider',
       debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -134,7 +134,7 @@ final textToVideoRepositoryProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef TextToVideoRepositoryRef =
-    AutoDisposeProviderRef<TextToVideoRepository>;
+    AutoDisposeProviderRef<ITextToVideoRepository>;
 String _$textToGenerateVideoUseCaseHash() =>
     r'ed29f04324270fc75d89b3a8da9ed5a9ae1bb4b7';
 
@@ -221,14 +221,14 @@ final databaseHelperProvider = AutoDisposeProvider<DatabaseHelper>.internal(
 // ignore: unused_element
 typedef DatabaseHelperRef = AutoDisposeProviderRef<DatabaseHelper>;
 String _$workshopRepositoryHash() =>
-    r'e55a612e4a198db9d4031b243adc01ff53f3df1e';
+    r'96ecab35c53586f20523abb835a492115697f05b';
 
 /// 工作坊仓库
 ///
 /// Copied from [workshopRepository].
 @ProviderFor(workshopRepository)
 final workshopRepositoryProvider =
-    AutoDisposeProvider<WorkshopRepository>.internal(
+    AutoDisposeProvider<IWorkshopRepository>.internal(
       workshopRepository,
       name: r'workshopRepositoryProvider',
       debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -240,7 +240,7 @@ final workshopRepositoryProvider =
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef WorkshopRepositoryRef = AutoDisposeProviderRef<WorkshopRepository>;
+typedef WorkshopRepositoryRef = AutoDisposeProviderRef<IWorkshopRepository>;
 String _$getWorkshopTasksUseCaseHash() =>
     r'079c3c56bf7b9865ddb51c6f72f60c08c13201ef';
 
@@ -286,14 +286,14 @@ final templateRemoteDataSourceProvider =
 typedef TemplateRemoteDataSourceRef =
     AutoDisposeProviderRef<ITemplateRemoteDataSource>;
 String _$templateRepositoryHash() =>
-    r'b75c1cec8d6045014d32da9d7d8ee32e5ef5b549';
+    r'64e3392471abfc6e86e37ca303dbcd19ad655c0d';
 
 /// 图片模板仓库
 ///
 /// Copied from [templateRepository].
 @ProviderFor(templateRepository)
 final templateRepositoryProvider =
-    AutoDisposeProvider<TemplateRepository>.internal(
+    AutoDisposeProvider<ITemplateRepository>.internal(
       templateRepository,
       name: r'templateRepositoryProvider',
       debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -305,7 +305,7 @@ final templateRepositoryProvider =
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef TemplateRepositoryRef = AutoDisposeProviderRef<TemplateRepository>;
+typedef TemplateRepositoryRef = AutoDisposeProviderRef<ITemplateRepository>;
 String _$getTemplatesUseCaseHash() =>
     r'ef04dfdb077b93f6ec17d5566aaa98d75abc0885';
 
@@ -350,14 +350,14 @@ final videoTemplateRemoteDataSourceProvider =
 typedef VideoTemplateRemoteDataSourceRef =
     AutoDisposeProviderRef<IVideoTemplateRemoteDataSource>;
 String _$videoTemplateRepositoryHash() =>
-    r'3fbad67d0ead30a3699d5a550b3f3370a82d02cb';
+    r'4bb469f3ebb396484c843d0bb681216e0f53d37f';
 
 /// 视频模板仓库
 ///
 /// Copied from [videoTemplateRepository].
 @ProviderFor(videoTemplateRepository)
 final videoTemplateRepositoryProvider =
-    AutoDisposeProvider<VideoTemplateRepository>.internal(
+    AutoDisposeProvider<IVideoTemplateRepository>.internal(
       videoTemplateRepository,
       name: r'videoTemplateRepositoryProvider',
       debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -370,7 +370,7 @@ final videoTemplateRepositoryProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef VideoTemplateRepositoryRef =
-    AutoDisposeProviderRef<VideoTemplateRepository>;
+    AutoDisposeProviderRef<IVideoTemplateRepository>;
 String _$getVideoTemplatesUseCaseHash() =>
     r'c87de6ef7b5560eb7e676bd92eb2a2795ac6aa9b';
 

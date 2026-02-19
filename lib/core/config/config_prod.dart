@@ -1,10 +1,8 @@
 import 'package:quick_art/core/config/app_config.dart';
-import 'package:quick_art/core/config/environment.dart';
-
 /// 生产环境配置实现
 class ProductionConfig implements AppConfig {
   @override
-  AppEnvironment get environment => AppEnvironment.production;
+  String get environment => 'prod';
 
   @override
   String get appName => 'QuickArt';

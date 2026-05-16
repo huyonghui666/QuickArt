@@ -32,10 +32,11 @@ class ArtStylesLocalDataSource implements IArtStylesLocalDataSource {
     try {
       // Lazy open box
       final box = await Hive.openBox(_hiveBoxName);
-      final stylesJsonString = box.get(_hiveKeyStyles);
+      final stylesJsonString = box.get(_hiveKeyStyles) as String?;
 
       if (stylesJsonString != null) {
-        final List<dynamic> stylesList = jsonDecode(stylesJsonString);
+        final stylesList =
+            jsonDecode(stylesJsonString) as List<dynamic>;
         final styles = stylesList
             .map((e) => ArtStyleModel.fromJson(e as Map<String, dynamic>))
             .toList();

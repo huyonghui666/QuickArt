@@ -23,7 +23,7 @@ The app opens on the Home tab. You'll see:
 - A grid of inspiration templates
 - A floating "Draw" button at the bottom
 
-The background image comes from `ArtStyleNotifier` in [lib/features/home/presentation/notifiers/art_style_notifier.dart](../lib/features/home/presentation/notifiers/art_style_notifier.dart). The default style is `ArtStyle.noStyle`, which loads `CdnAssets.bgNoStyle`.
+The background image comes from `ArtStyleNotifier` in [lib/features/home/presentation/notifiers/art_style_notifier.dart](../../lib/features/home/presentation/notifiers/art_style_notifier.dart). The default style is `ArtStyle.noStyle`, which loads `CdnAssets.bgNoStyle`.
 
 ## Step 2: Type a prompt and tap Draw
 
@@ -33,7 +33,7 @@ What just happened:
 
 1. `HomeScreen` reads `promptProvider('textToImage').text` — the current text field value.
 2. It calls `context.pushNamed('Wait', pathParameters: {'taskType': 'image'}, queryParameters: {'prompt': prompt})`.
-3. The router in [lib/core/router/router.dart](../lib/core/router/router.dart) matches `/wait/image` and builds `WaitingScreen(taskType: 'image', prompt: 'a watercolor painting...')`.
+3. The router in [lib/core/router/router.dart](../../lib/core/router/router.dart) matches `/wait/image` and builds `WaitingScreen(taskType: 'image', prompt: 'a watercolor painting...')`.
 
 You're now on the waiting screen. The particle animation is playing.
 
@@ -47,7 +47,7 @@ Body: {"prompt":"a watercolor painting of a mountain lake"}
 Response: {"taskId":"abc-123-xyz"}
 ```
 
-This happens inside `ImageGenerationNotifier._startGeneration` in [lib/features/home/presentation/notifiers/image_generation_provider.dart](../lib/features/home/presentation/notifiers/image_generation_provider.dart). The notifier calls `TextToGenerateImageUseCase.execute(prompt)`, which calls the repository, which calls the data source.
+This happens inside `ImageGenerationNotifier._startGeneration` in [lib/features/home/presentation/notifiers/image_generation_provider.dart](../../lib/features/home/presentation/notifiers/image_generation_provider.dart). The notifier calls `TextToGenerateImageUseCase.execute(prompt)`, which calls the repository, which calls the data source.
 
 The backend returns a `taskId`. The notifier stores it as `AsyncData(ImageGenerationTask(taskId: 'abc-123-xyz'))`.
 
@@ -60,7 +60,7 @@ ref.read(webSocketNotifierProvider.notifier)
    .subscribeTask(task.taskId, type: GenerateTaskType.image);
 ```
 
-`WebSocketNotifier` in [lib/core/websocket/websocket_provider.dart](../lib/core/websocket/websocket_provider.dart) sends:
+`WebSocketNotifier` in [lib/core/websocket/websocket_provider.dart](../../lib/core/websocket/websocket_provider.dart) sends:
 
 ```json
 {"event": "subscribe", "taskId": "abc-123-xyz"}

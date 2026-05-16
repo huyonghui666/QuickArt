@@ -77,10 +77,10 @@ Full documentation for the image generation feature.
 
 | Document | Quadrant | Description |
 |----------|----------|-------------|
-| [docs/tutorial-first-image.md](docs/tutorial-first-image.md) | Tutorial | Trace a prompt from text field to generated image — understand the full flow |
-| [docs/howto-generate-image.md](docs/howto-generate-image.md) | How-to | Step-by-step guide to generating an image in the running app |
-| [docs/reference-image-generation.md](docs/reference-image-generation.md) | Reference | Complete API surface: providers, notifiers, entities, data sources |
-| [docs/explanation-async-task-architecture.md](docs/explanation-async-task-architecture.md) | Explanation | Why the app uses submit-then-subscribe instead of synchronous HTTP |
+| [docs/tutorial-first-image.md](docs/en/tutorial-first-image.md) | Tutorial | Trace a prompt from text field to generated image — understand the full flow |
+| [docs/howto-generate-image.md](docs/en/howto-generate-image.md) | How-to | Step-by-step guide to generating an image in the running app |
+| [docs/reference-image-generation.md](docs/en/reference-image-generation.md) | Reference | Complete API surface: providers, notifiers, entities, data sources |
+| [docs/explanation-async-task-architecture.md](docs/en/explanation-async-task-architecture.md) | Explanation | Why the app uses submit-then-subscribe instead of synchronous HTTP |
 
 **中文** ([docs/zh/](docs/zh/)):
 

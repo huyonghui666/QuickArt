@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:quick_art/core/di/config/config_provider.dart';
 import 'package:quick_art/core/di/localization/locale_provider.dart';
 import 'package:quick_art/core/error/setup_error_handling.dart';
@@ -12,6 +13,9 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 Future<void> main() async {
   // 必须先初始化 Flutter 绑定，才能读取 ProviderContainer
   WidgetsFlutterBinding.ensureInitialized();
+
+  // 初始化 Hive
+  await Hive.initFlutter();
 
   // 创建一个 ProviderContainer 来读取配置
   // ProviderContainer 是 Riverpod 状态管理的"仓库"，通常由 ProviderScope 自动管理。

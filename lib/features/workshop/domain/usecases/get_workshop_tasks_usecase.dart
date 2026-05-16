@@ -6,6 +6,7 @@ class GetWorkshopTasksUseCase {
   /// 构造
   GetWorkshopTasksUseCase(this._repository);
   final IWorkshopRepository _repository;
+
   /// 执行
   Future<List<WorkshopTask>> execute() {
     return _repository.getTasks();

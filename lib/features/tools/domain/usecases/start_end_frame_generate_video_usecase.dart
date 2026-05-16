@@ -6,6 +6,7 @@ class StartEndFrameGenerateVideoUseCase {
   /// 构造
   StartEndFrameGenerateVideoUseCase(this._repository);
   final ITextToVideoRepository _repository;
+
   /// 执行用例
   Future<VideoGenerationTask> execute(
     String prompt,

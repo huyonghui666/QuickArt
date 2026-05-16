@@ -1,10 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/core/di/config/config_provider.dart';
+import 'package:quick_art/features/home/data/datasources/Remote_data_source/art_styles_remote_data_source.dart';
+import 'package:quick_art/features/home/data/datasources/local_data_source/art_styles_local_data_source.dart';
 import 'package:quick_art/features/home/data/datasources/template_remote_data_source.dart';
 import 'package:quick_art/features/home/data/datasources/text_to_image_remote_data_source.dart';
+import 'package:quick_art/features/home/data/repositories/remote_config_repository.dart';
 import 'package:quick_art/features/home/data/repositories/template_repository_impl.dart';
 import 'package:quick_art/features/home/data/repositories/text_to_image_repository_impl.dart';
+import 'package:quick_art/features/home/domain/repositories/remote_config_repository.dart';
 import 'package:quick_art/features/home/domain/repositories/template_repository.dart';
 import 'package:quick_art/features/home/domain/repositories/text_to_image_repository.dart';
 import 'package:quick_art/features/home/domain/usecases/get_templates_usecase.dart';
@@ -167,4 +171,26 @@ IVideoTemplateRepository videoTemplateRepository(Ref ref) {
 GetVideoTemplatesUseCase getVideoTemplatesUseCase(Ref ref) {
   final repository = ref.watch(videoTemplateRepositoryProvider);
   return GetVideoTemplatesUseCase(repository);
+}
+
+//--------------------------------艺术风格----------------------------------
+/// 艺术风格本地数据源
+@riverpod
+IArtStylesLocalDataSource artStylesLocalDataSource(Ref ref) {
+  return ArtStylesLocalDataSource();
+}
+
+/// 远程配置远程数据源
+@riverpod
+IArtStylesRemoteDataSource artStylesRemoteDataSource(Ref ref) {
+  final dio = ref.watch(dioProvider);
+  return ArtStylesRemoteDataSource(dio);
+}
+
+/// 远程配置仓库
+@riverpod
+RemoteConfigRepository remoteConfigRepository(Ref ref) {
+  final localDataSource = ref.watch(artStylesLocalDataSourceProvider);
+  final remoteDataSource = ref.watch(artStylesRemoteDataSourceProvider);
+  return RemoteConfigRepositoryImpl(localDataSource, remoteDataSource);
 }

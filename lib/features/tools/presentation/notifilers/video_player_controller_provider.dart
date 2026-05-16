@@ -8,7 +8,6 @@ import 'package:video_player/video_player.dart';
 // 建议使用 cached_video_player 或 flutter_cache_manager 来缓存视频文件
 // 这里暂时保留网络播放逻辑，后续需结合 flutter_cache_manager 实现先下载后播放
 
-
 /// 定义一个参数模型，确保唯一性
 @immutable
 class VideoParams {

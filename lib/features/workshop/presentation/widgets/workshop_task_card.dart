@@ -8,14 +8,18 @@ import 'package:quick_art/features/workshop/domain/entities/workshop_task.dart';
 class WorkshopTaskCard extends StatelessWidget {
   /// 构造
   const WorkshopTaskCard({
-    required this.task, super.key,
+    required this.task,
+    super.key,
     this.onRetry,
     this.onTap,
   });
+
   /// 生成的数据库一个任务数据
   final WorkshopTask task;
+
   /// 重试回调
   final VoidCallback? onRetry;
+
   /// 点击回调
   final VoidCallback? onTap;
 

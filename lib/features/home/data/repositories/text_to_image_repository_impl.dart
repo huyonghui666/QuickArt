@@ -6,7 +6,6 @@ import 'package:quick_art/features/home/domain/repositories/text_to_image_reposi
 
 /// 文生图 Repository 实现
 class TextToImageRepositoryImpl implements ITextToImageRepository {
-
   /// 构造函数
   TextToImageRepositoryImpl(this._remoteDataSource);
   final ITextToImageRemoteDataSource _remoteDataSource;

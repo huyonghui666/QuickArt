@@ -1,3 +1,4 @@
+import 'package:quick_art/core/resource_management/cdn_assets.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -8,121 +9,122 @@ enum ArtStyle {
   /// 无风格
   noStyle(
     thumbnailAsset: '',
-    backgroundAsset: 'assets/images/bg/no_style.webp',
+    backgroundAsset: CdnAssets.bgNoStyle,
   ),
 
   /// 可爱卡通
   cuteCartoon(
-    thumbnailAsset: 'assets/images/art_styles/cute_cartoon.webp',
-    backgroundAsset: 'assets/images/bg/cute_cartoon.webp',
+    thumbnailAsset: CdnAssets.styleCuteCartoon,
+    backgroundAsset: CdnAssets.bgCuteCartoon,
   ),
 
   /// 古风
   ancientStyle(
-    thumbnailAsset: 'assets/images/art_styles/antique.webp',
-    backgroundAsset: 'assets/images/bg/antique.webp',
+    thumbnailAsset: CdnAssets.styleAntique,
+    backgroundAsset: CdnAssets.bgAntique,
   ),
 
   /// 涂鸦
   graffiti(
-    thumbnailAsset: 'assets/images/art_styles/graffiti.webp',
-    backgroundAsset: 'assets/images/bg/graffiti.webp',
+    thumbnailAsset: CdnAssets.styleGraffiti,
+    backgroundAsset: CdnAssets.bgGraffiti,
   ),
 
   /// 波普艺术
   popArt(
-    thumbnailAsset: 'assets/images/art_styles/pop.webp',
-    backgroundAsset: 'assets/images/bg/pop.webp',
+    thumbnailAsset: CdnAssets.stylePop,
+    backgroundAsset: CdnAssets.bgPop,
   ),
 
   /// 唯美写实
   vividRealism(
-    thumbnailAsset: 'assets/images/art_styles/gorgeous_realism.webp',
-    backgroundAsset: 'assets/images/bg/gorgeous_realism.webp',
+    thumbnailAsset: CdnAssets.styleGorgeousRealism,
+    backgroundAsset: CdnAssets.bgGorgeousRealism,
   ),
 
   /// 色彩
   color(
-    thumbnailAsset: 'assets/images/art_styles/color.webp',
-    backgroundAsset: 'assets/images/bg/color.webp',
+    thumbnailAsset: CdnAssets.styleColor,
+    backgroundAsset: CdnAssets.bgColor,
   ),
 
   /// 80年代
   eighties(
-    thumbnailAsset: 'assets/images/art_styles/80s.webp',
-    backgroundAsset: 'assets/images/bg/80s.webp',
+    thumbnailAsset: CdnAssets.style80s,
+    backgroundAsset: CdnAssets.bg80s,
   ),
 
   /// 昭和
   showa(
-    thumbnailAsset: 'assets/images/art_styles/showa_style.webp',
-    backgroundAsset: 'assets/images/bg/showa_style.webp',
+    thumbnailAsset: CdnAssets.styleShowa,
+    backgroundAsset: CdnAssets.bgShowa,
   ),
 
   /// 3D模型
   model3D(
-    thumbnailAsset: 'assets/images/art_styles/3d_model.webp',
-    backgroundAsset: 'assets/images/bg/3d_model.webp',
+    thumbnailAsset: CdnAssets.style3dModel,
+    backgroundAsset: CdnAssets.bg3dModel,
   ),
 
   /// 摄影
   photoPhotography(
-    thumbnailAsset: 'assets/images/art_styles/photography.webp',
-    backgroundAsset: 'assets/images/bg/photography.webp',
+    thumbnailAsset: CdnAssets.stylePhotography,
+    backgroundAsset: CdnAssets.bgPhotography,
   ),
 
   /// 日系动漫
   japaneseAnime(
-    thumbnailAsset: 'assets/images/art_styles/japanese_anime.webp',
-    backgroundAsset: 'assets/images/bg/japanese_anime.webp',
+    thumbnailAsset: CdnAssets.styleJapaneseAnime,
+    backgroundAsset: CdnAssets.bgJapaneseAnime,
   ),
 
   /// 纹身
   tattoo(
-    thumbnailAsset: 'assets/images/art_styles/tattoo.webp',
-    backgroundAsset: 'assets/images/bg/tattoo.webp',
+    thumbnailAsset: CdnAssets.styleTattoo,
+    backgroundAsset: CdnAssets.bgTattoo,
   ),
 
   /// 复古街机
   retroArcade(
-    thumbnailAsset: 'assets/images/art_styles/retro_arcade.webp',
-    backgroundAsset: 'assets/images/bg/retro_arcade.webp',
+    thumbnailAsset: CdnAssets.styleRetroArcade,
+    backgroundAsset: CdnAssets.bgRetroArcade,
   ),
 
   /// 黑白
   blackWhite(
-    thumbnailAsset: 'assets/images/art_styles/black_white.webp',
-    backgroundAsset: 'assets/images/bg/black_white.webp',
+    thumbnailAsset: CdnAssets.styleBlackWhite,
+    backgroundAsset: CdnAssets.bgBlackWhite,
   ),
 
   /// 皮克斯
   pixar(
-    thumbnailAsset: 'assets/images/art_styles/pixar.webp',
-    backgroundAsset: 'assets/images/bg/pixar.webp',
+    thumbnailAsset: CdnAssets.stylePixar,
+    backgroundAsset: CdnAssets.bgPixar,
   ),
 
   /// 赛博朋克
   cyberpunk(
-    thumbnailAsset: 'assets/images/art_styles/cyberpunk.webp',
-    backgroundAsset: 'assets/images/bg/cyberpunk.webp',
+    thumbnailAsset: CdnAssets.styleCyberpunk,
+    backgroundAsset: CdnAssets.bgCyberpunk,
   ),
 
   /// 线条艺术
   lineArt(
-    thumbnailAsset: 'assets/images/art_styles/line.webp',
-    backgroundAsset: 'assets/images/bg/line.webp',
+    thumbnailAsset: CdnAssets.styleLine,
+    backgroundAsset: CdnAssets.bgLine,
   ),
 
   /// 水彩
   watercolor(
-    thumbnailAsset: 'assets/images/art_styles/watercolor.webp',
-    backgroundAsset: 'assets/images/bg/watercolor.webp',
+    thumbnailAsset: CdnAssets.styleWatercolor,
+    backgroundAsset: CdnAssets.bgWatercolor,
   );
 
   const ArtStyle({required this.thumbnailAsset, required this.backgroundAsset});
 
   /// 本地asset中的缩略图
   final String thumbnailAsset;
+
   /// 本地asset中的背景图
   final String backgroundAsset;
 

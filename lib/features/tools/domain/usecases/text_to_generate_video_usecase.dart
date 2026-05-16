@@ -6,6 +6,7 @@ class TextToGenerateVideoUseCase {
   /// 构造
   TextToGenerateVideoUseCase(this._repository);
   final ITextToVideoRepository _repository;
+
   /// 执行用例
   Future<VideoGenerationTask> execute(String prompt) {
     return _repository.generateVideo(prompt);

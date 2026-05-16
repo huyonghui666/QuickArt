@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quick_art/core/resource_management/cdn_assets.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/features/tools/presentation/widgets/tools_image_card.dart';
 import 'package:quick_art/features/tools/presentation/widgets/tools_video_card.dart';
@@ -35,7 +36,7 @@ class ToolsScreen extends StatelessWidget {
             SizedBox(
               height: 150,
               child: VideoCard(
-                videoPath: 'assets/videos/ai_video.mp4',
+                videoPath: CdnAssets.aiVideo,
                 title: l10n.tools_ai_video,
                 onTap: () => context.push('/tools/ai-video'),
               ),
@@ -45,7 +46,7 @@ class ToolsScreen extends StatelessWidget {
             SizedBox(
               height: 150,
               child: VideoCard(
-                videoPath: 'assets/videos/artisticPhoto_video.mp4',
+                videoPath: CdnAssets.artisticPhotoVideo,
                 title: l10n.tools_artistic_photo,
                 onTap: () {
                   // TODO(user): 实现导航到艺术照页面
@@ -57,7 +58,7 @@ class ToolsScreen extends StatelessWidget {
             SizedBox(
               height: 150,
               child: ImageCard(
-                imageUrl: 'assets/images/tools/AIFaceSwapping.webp',
+                imageUrl: CdnAssets.aiFaceSwapping,
                 title: l10n.tools_ai_face_swap,
                 onTap: () {
                   // TODO(user): 实现导航到 AI 换脸页面

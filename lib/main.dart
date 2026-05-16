@@ -22,13 +22,13 @@ Future<void> main() async {
 
   await SentryFlutter.init(
     (options) {
-      options..dsn = config.sentryDsn
-      ..tracesSampleRate = config.tracesSampleRate
-      ..environment = config.environment
-
-      // 可选：崩溃附截图、自动面包屑等
-      ..attachScreenshot = true
-      ..enableAutoNativeBreadcrumbs = true;
+      options
+        ..dsn = config.sentryDsn
+        ..tracesSampleRate = config.tracesSampleRate
+        ..environment = config.environment
+        // 可选：崩溃附截图、自动面包屑等
+        ..attachScreenshot = true
+        ..enableAutoNativeBreadcrumbs = true;
     },
 
     appRunner: () async {

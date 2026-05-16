@@ -8,16 +8,18 @@ part 'generation_result_model.g.dart';
 /// @property event 事件类型 (success, failed, processing)
 /// @property taskId 任务ID
 /// @property type 任务类型 (IMAGE, VIDEO)
+/// @property url 统一存储 imageUrl 或 videoUrl
+/// @property thumbnailUrl 视频尾帧图或其他缩略图
 /// @property error 错误信息 (如果失败)
 @freezed
 abstract class GenerationResultModel with _$GenerationResultModel {
   /// 构造
   const factory GenerationResultModel({
     required String taskId,
-    required String event, // success, failed, processing
-    String? type, // IMAGE, VIDEO
-    String? url, // 统一存储 imageUrl 或 videoUrl
-    String? thumbnailUrl, // 视频尾帧图或其他缩略图
+    required String event,
+    String? type,
+    String? url,
+    String? thumbnailUrl,
     String? error,
   }) = _GenerationResultModel;
 

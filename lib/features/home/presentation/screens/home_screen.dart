@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -143,6 +144,16 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
           child: Consumer(
             builder: (context, ref, child) {
               final selectedStyle = ref.watch(artStyleNotifierProvider);
+              if (selectedStyle.backgroundAsset.startsWith('http')) {
+                return CachedNetworkImage(
+                  imageUrl: selectedStyle.backgroundAsset,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
+                  placeholder: (context, url) => Container(color: Colors.black),
+                  errorWidget: (context, url, error) =>
+                      Container(color: Colors.black),
+                );
+              }
               return Image.asset(
                 selectedStyle.backgroundAsset,
                 fit: BoxFit.cover,
@@ -175,7 +186,7 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
                   //提示词文本域
                   const PromptTextField(family: 'textToImage'),
                   const SizedBox(height: 12),
-                  //可选区域，例如图生文
+                  //可选区域，例如图生文、参考图片、数量、比例
                   _buildOptionsSection(context),
                   const SizedBox(height: 12),
                   //艺术风格

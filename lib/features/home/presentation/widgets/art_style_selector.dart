@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -100,6 +101,14 @@ class _StyleCard extends StatelessWidget {
     if (style == ArtStyle.noStyle) {
       return Center(
         child: SvgPicture.asset(AppIcons.homeBgStyleNo, width: 84, height: 74),
+      );
+    }
+    if (style.thumbnailAsset.startsWith('http')) {
+      return CachedNetworkImage(
+        imageUrl: style.thumbnailAsset,
+        fit: BoxFit.cover,
+        placeholder: (context, url) => Container(color: Colors.grey[900]),
+        errorWidget: (context, url, error) => const Icon(Icons.error),
       );
     }
     return Image.asset(style.thumbnailAsset, fit: BoxFit.cover);

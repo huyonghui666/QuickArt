@@ -71,7 +71,9 @@ Error monitoring: **Sentry** (configured per environment).
 
 ## Documentation
 
-Full documentation for the image generation feature:
+Full documentation for the image generation feature.
+
+**English** ([docs/](docs/)):
 
 | Document | Quadrant | Description |
 |----------|----------|-------------|
@@ -79,6 +81,15 @@ Full documentation for the image generation feature:
 | [docs/howto-generate-image.md](docs/howto-generate-image.md) | How-to | Step-by-step guide to generating an image in the running app |
 | [docs/reference-image-generation.md](docs/reference-image-generation.md) | Reference | Complete API surface: providers, notifiers, entities, data sources |
 | [docs/explanation-async-task-architecture.md](docs/explanation-async-task-architecture.md) | Explanation | Why the app uses submit-then-subscribe instead of synchronous HTTP |
+
+**中文** ([docs/zh/](docs/zh/)):
+
+| 文档 | 类型 | 说明 |
+|------|------|------|
+| [docs/zh/tutorial-first-image.md](docs/zh/tutorial-first-image.md) | 教程 | 追踪提示词从输入框到图片显示的完整流程 |
+| [docs/zh/howto-generate-image.md](docs/zh/howto-generate-image.md) | 操作指南 | 在运行中的 App 里生成图片的分步指南 |
+| [docs/zh/reference-image-generation.md](docs/zh/reference-image-generation.md) | 参考文档 | 完整 API 接口：Provider、通知器、实体、数据源 |
+| [docs/zh/explanation-async-task-architecture.md](docs/zh/explanation-async-task-architecture.md) | 原理说明 | 为什么采用提交后订阅而非同步 HTTP |
 
 ## Key dependencies
 

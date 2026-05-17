@@ -67,7 +67,5 @@ flutter:
     - assets/icons/svg/bottom_navigation/
     - assets/icons/svg/core/
 
-    - assets/images/art_styles/
-    - assets/images/bg/
     - assets/images/tools/
     - assets/videos/

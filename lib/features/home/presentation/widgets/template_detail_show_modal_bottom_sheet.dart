@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/core/di/prompt_provider.dart';
+import 'package:quick_art/core/di/widgets/prompt_provider.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
-import 'package:quick_art/core/theme/app_icons.dart';
+import 'package:quick_art/core/resource_management/app_icons.dart';
 import 'package:quick_art/features/home/domain/entities/image_template.dart';
 
 /// 模板详情底部弹窗
 class TemplateDetailShowModalBottomSheet extends ConsumerWidget {
   /// 构造
   const TemplateDetailShowModalBottomSheet({required this.template, super.key});
+
   /// 图片模板数据
   final ImageTemplate template;
 
@@ -124,7 +125,7 @@ class TemplateDetailShowModalBottomSheet extends ConsumerWidget {
                             ),
                           ),
                           Text(
-                            AppLocalizations.of(context)!.try_prompt,
+                            AppLocalizations.of(context)!.home_try_prompt,
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 18,

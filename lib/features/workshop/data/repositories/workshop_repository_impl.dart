@@ -3,7 +3,7 @@ import 'package:quick_art/features/workshop/domain/entities/workshop_task.dart';
 import 'package:quick_art/features/workshop/domain/repositories/workshop_repository.dart';
 
 /// 工作室仓库实现
-class WorkshopRepositoryImpl implements WorkshopRepository {
+class WorkshopRepositoryImpl implements IWorkshopRepository {
   /// 构造
   WorkshopRepositoryImpl(this._databaseHelper);
 

@@ -1,16 +1,22 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 /// tools页面的图片Card
 class ImageCard extends StatelessWidget {
   /// 构造
   const ImageCard({
-    required this.imageUrl, required this.title, super.key,
+    required this.imageUrl,
+    required this.title,
+    super.key,
     this.onTap,
   });
+
   /// 图片url
   final String imageUrl;
+
   /// 标题
   final String title;
+
   /// 点击回调
   final VoidCallback? onTap;
 
@@ -24,18 +30,37 @@ class ImageCard extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             // 背景图片
-            Image.asset(
-              imageUrl,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                // 本地资源加载失败时的占位符
-                return const Center(
+            if (imageUrl.startsWith('http'))
+              CachedNetworkImage(
+                imageUrl: imageUrl,
+                fit: BoxFit.cover,
+                placeholder: (context, url) => const Center(
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: Colors.white,
+                  ),
+                ),
+                errorWidget: (context, url, error) => const Center(
                   child: Icon(
+                    Icons.broken_image_outlined,
+                    color: Colors.white70,
+                  ),
+                ),
+              )
+            else
+              Image.asset(
+                imageUrl,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  // 本地资源加载失败时的占位符
+                  return const Center(
+                    child: Icon(
                       Icons.broken_image_outlined,
-                      color: Colors.white70)
-                );
-              },
-            ),
+                      color: Colors.white70,
+                    ),
+                  );
+                },
+              ),
 
             // 底部渐变
             Container(

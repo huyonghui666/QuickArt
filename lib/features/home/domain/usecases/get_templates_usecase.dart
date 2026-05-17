@@ -6,7 +6,7 @@ class GetTemplatesUseCase {
   /// 构造函数
   GetTemplatesUseCase(this._repository);
 
-  final TemplateRepository _repository;
+  final ITemplateRepository _repository;
 
   /// 执行用例
   /// [category] 分类

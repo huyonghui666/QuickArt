@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:quick_art/core/error/exception.dart';
-import 'package:quick_art/features/home/data/datasources/text_to_image_remote_data_source.dart';
+import 'package:quick_art/features/home/data/datasources/Remote_data_source/text_to_image_remote_data_source.dart';
 import 'package:quick_art/features/home/data/models/image_generation_task_model.dart';
 import 'package:quick_art/features/home/data/repositories/text_to_image_repository_impl.dart';
 

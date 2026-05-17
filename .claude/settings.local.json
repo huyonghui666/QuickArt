@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start index.html)",
+      "Bash(flutter create *)",
+      "Bash(mkdir -p assets/video)",
+      "Bash(cp \"D:/wuyong/video/\"*.mp4 assets/video/)",
+      "Bash(flutter pub *)",
+      "Bash(flutter analyze *)"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash 'd:/flutter Project/QuickArt/.claude/statusline-command.sh'"
+  }
+}

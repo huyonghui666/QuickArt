@@ -1,10 +1,9 @@
 import 'package:quick_art/core/config/app_config.dart';
-import 'package:quick_art/core/config/environment.dart';
 
 /// 预发布环境配置实现
 class StagingConfig implements AppConfig {
   @override
-  AppEnvironment get environment => AppEnvironment.staging;
+  String get environment => 'staging';
 
   @override
   String get appName => 'QuickArt (Staging)';

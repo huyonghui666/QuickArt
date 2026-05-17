@@ -5,7 +5,7 @@ import 'package:quick_art/features/tools/domain/repositories/video_template_repo
 class GetVideoTemplatesUseCase {
   /// 构造
   GetVideoTemplatesUseCase(this._repository);
-  final VideoTemplateRepository _repository;
+  final IVideoTemplateRepository _repository;
 
   /// 执行用例
   Future<VideoTemplatePage> call({

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:quick_art/core/di/prompt_provider.dart';
+import 'package:quick_art/core/di/widgets/prompt_provider.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
-import 'package:quick_art/core/theme/app_icons.dart';
+import 'package:quick_art/core/resource_management/app_icons.dart';
 
 /// 绘制按钮
 class DrawButton extends ConsumerWidget {
@@ -36,7 +36,8 @@ class DrawButton extends ConsumerWidget {
           // 如果没有启用，提示用户
           ScaffoldMessenger.of(
             context,
-          ).showSnackBar(SnackBar(content: Text(l10n.common_enter_prompt)));
+          ).showSnackBar(SnackBar(content:
+          Text(l10n.widgets_prompt_text_field_enter_prompt)));
         }
       },
       child: SizedBox(
@@ -50,7 +51,7 @@ class DrawButton extends ConsumerWidget {
               fit: BoxFit.cover,
             ),
             Text(
-              l10n.common_draw,
+              l10n.widgets_draw_button_draw,
               style: TextStyle(
                 color: active ? Colors.white : Colors.grey,
                 fontSize: 18,

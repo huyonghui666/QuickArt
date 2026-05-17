@@ -1,13 +1,18 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/core/di/config/config_provider.dart';
-import 'package:quick_art/features/home/data/datasources/template_remote_data_source.dart';
-import 'package:quick_art/features/home/data/datasources/text_to_image_remote_data_source.dart';
+import 'package:quick_art/features/home/data/datasources/Remote_data_source/art_styles_remote_data_source.dart';
+import 'package:quick_art/features/home/data/datasources/local_data_source/art_styles_local_data_source.dart';
+import 'package:quick_art/features/home/data/datasources/Remote_data_source/template_remote_data_source.dart';
+import 'package:quick_art/features/home/data/datasources/Remote_data_source/text_to_image_remote_data_source.dart';
+import 'package:quick_art/features/home/data/repositories/remote_art_style_config_repository_impl.dart';
 import 'package:quick_art/features/home/data/repositories/template_repository_impl.dart';
 import 'package:quick_art/features/home/data/repositories/text_to_image_repository_impl.dart';
+import 'package:quick_art/features/home/domain/repositories/remote_config_repository.dart';
 import 'package:quick_art/features/home/domain/repositories/template_repository.dart';
 import 'package:quick_art/features/home/domain/repositories/text_to_image_repository.dart';
 import 'package:quick_art/features/home/domain/usecases/get_templates_usecase.dart';
+import 'package:quick_art/features/home/domain/usecases/remote_config_usecase.dart';
 import 'package:quick_art/features/home/domain/usecases/text_to_generate_image_usecase.dart';
 import 'package:quick_art/features/tools/data/datasources/generate_video_remote_data_source.dart';
 import 'package:quick_art/features/tools/data/datasources/video_template_remote_data_source.dart';
@@ -59,7 +64,7 @@ ITextToImageRemoteDataSource textToImageRemoteDataSource(Ref ref) {
 
 /// 文生图仓库
 @riverpod
-TextToImageRepository textToImageRepository(Ref ref) {
+ITextToImageRepository textToImageRepository(Ref ref) {
   final remoteDataSource = ref.watch(textToImageRemoteDataSourceProvider);
   return TextToImageRepositoryImpl(remoteDataSource);
 }
@@ -81,7 +86,7 @@ IGenerateVideoRemoteDataSource textToVideoRemoteDataSource(Ref ref) {
 
 /// 视频生成仓库
 @riverpod
-TextToVideoRepository textToVideoRepository(Ref ref) {
+ITextToVideoRepository textToVideoRepository(Ref ref) {
   final remoteDataSource = ref.watch(textToVideoRemoteDataSourceProvider);
   return GenerateVideoRepositoryImpl(remoteDataSource);
 }
@@ -116,7 +121,7 @@ DatabaseHelper databaseHelper(Ref ref) {
 
 /// 工作坊仓库
 @riverpod
-WorkshopRepository workshopRepository(Ref ref) {
+IWorkshopRepository workshopRepository(Ref ref) {
   final databaseHelper = ref.watch(databaseHelperProvider);
   return WorkshopRepositoryImpl(databaseHelper);
 }
@@ -137,7 +142,7 @@ ITemplateRemoteDataSource templateRemoteDataSource(Ref ref) {
 
 /// 图片模板仓库
 @riverpod
-TemplateRepository templateRepository(Ref ref) {
+ITemplateRepository templateRepository(Ref ref) {
   return TemplateRepositoryImpl(ref.watch(templateRemoteDataSourceProvider));
 }
 
@@ -157,7 +162,7 @@ IVideoTemplateRemoteDataSource videoTemplateRemoteDataSource(Ref ref) {
 
 /// 视频模板仓库
 @riverpod
-VideoTemplateRepository videoTemplateRepository(Ref ref) {
+IVideoTemplateRepository videoTemplateRepository(Ref ref) {
   final remoteDataSource = ref.watch(videoTemplateRemoteDataSourceProvider);
   return VideoTemplateRepositoryImpl(remoteDataSource);
 }
@@ -167,4 +172,37 @@ VideoTemplateRepository videoTemplateRepository(Ref ref) {
 GetVideoTemplatesUseCase getVideoTemplatesUseCase(Ref ref) {
   final repository = ref.watch(videoTemplateRepositoryProvider);
   return GetVideoTemplatesUseCase(repository);
+}
+
+//--------------------------------艺术风格----------------------------------
+/// 艺术风格本地数据源
+@riverpod
+IArtStylesLocalDataSource artStylesLocalDataSource(Ref ref) {
+  return ArtStylesLocalDataSource();
+}
+
+/// 艺术风格配置远程数据源
+@riverpod
+IArtStylesRemoteDataSource artStylesRemoteDataSource(Ref ref) {
+  final dio = ref.watch(dioProvider);
+  return ArtStylesRemoteDataSource(dio);
+}
+
+/// 远程配置仓库
+@riverpod
+RemoteArtStyleConfigRepository remoteArtStyleConfigRepository(Ref ref) {
+  final localArtStyleDataSource = ref.watch(artStylesLocalDataSourceProvider);
+  final remoteArtStyleDataSource = ref.watch(artStylesRemoteDataSourceProvider);
+  return RemoteArtStyleConfigRepositoryImpl(
+    localArtStyleDataSource,
+    remoteArtStyleDataSource,
+  );
+}
+
+/// 远程配置聚合用例
+@riverpod
+RemoteArtStyleConfigUseCase remoteArtStyleConfigUseCase(Ref ref) {
+  return RemoteArtStyleConfigUseCase(
+    ref.watch(remoteArtStyleConfigRepositoryProvider),
+  );
 }

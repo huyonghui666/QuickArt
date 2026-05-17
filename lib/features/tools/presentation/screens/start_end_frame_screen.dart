@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:quick_art/core/di/prompt_provider.dart';
+import 'package:quick_art/core/di/widgets/prompt_provider.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/permission/permission_manager.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
@@ -90,8 +90,9 @@ class _StartEndFrameScreenState extends ConsumerState<StartEndFrameScreen> {
                             title: l10n.tools_upload_start_frame,
                             imagePath: startEndFrameState.startFramePath,
                             onTap: () async {
-                              final hasPermission = await
-                                  PermissionManager.requestPhotosPermission();
+                              final hasPermission =
+                                  await PermissionManager
+                                      .requestPhotosPermission();
                               if (!hasPermission) return;
 
                               final picker = ImagePicker();
@@ -111,8 +112,9 @@ class _StartEndFrameScreenState extends ConsumerState<StartEndFrameScreen> {
                             // title: '上传尾帧图片',
                             imagePath: startEndFrameState.endFramePath,
                             onTap: () async {
-                              final hasPermission = await
-                                  PermissionManager.requestPhotosPermission();
+                              final hasPermission =
+                                  await PermissionManager
+                                      .requestPhotosPermission();
                               if (!hasPermission) return;
 
                               final picker = ImagePicker();

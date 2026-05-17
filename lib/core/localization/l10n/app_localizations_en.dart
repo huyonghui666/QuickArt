@@ -9,13 +9,42 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get widgets_prompt_text_field_enter_prompt => 'Please enter prompt!';
+
+  @override
+  String get widgets_prompt_text_field_prompt_hint =>
+      'Enter your prompt, it can be anything you want to create';
+
+  @override
+  String get widgets_draw_button_draw => 'Draw';
+
+  @override
+  String get widgets_waiting_screen_creating => 'Creating...';
+
+  @override
+  String get widgets_waiting_screen_generating_hint =>
+      'The masterpiece is being generated';
+
+  @override
+  String get widgets_waiting_screen_run_in_background => 'Run in Background';
+
+  @override
+  String get common_retry => 'Retry';
+
+  @override
+  String get common_unknown_error => 'Unknown error';
+
+  @override
+  String get common_error_prefix => 'Error: ';
+
+  @override
   String get setting => 'Setting';
 
   @override
   String get setting_discord => 'Join Discord';
 
   @override
-  String get language => 'Language';
+  String get setting_language => 'Language';
 
   @override
   String get setting_rate_us => 'Rate Us';
@@ -57,143 +86,113 @@ class AppLocalizationsEn extends AppLocalizations {
   String get home_history => 'History';
 
   @override
-  String get inspiration_try => 'Try';
+  String get home_inspiration_new => 'New';
 
   @override
-  String get inspiration_new => 'New';
+  String get home_inspiration_manga => 'Manga';
 
   @override
-  String get inspiration_manga => 'Manga';
+  String get home_inspiration_photography => 'Photography';
 
   @override
-  String get inspiration_photography => 'Photography';
+  String get home_inspiration_watercolor => 'Watercolor';
 
   @override
-  String get inspiration_watercolor => 'Watercolor';
+  String get home_inspiration_funny => 'Funny';
 
   @override
-  String get inspiration_funny => 'Funny';
+  String get home_inspiration_tattoo => 'Tattoo';
 
   @override
-  String get inspiration_tattoo => 'Tattoo';
+  String get home_inspiration_cyberpunk => 'Cyberpunk';
 
   @override
-  String get inspiration_cyberpunk => 'Cyberpunk';
+  String get home_inspiration_surrealism => 'Surrealism';
 
   @override
-  String get inspiration_surrealism => 'Surrealism';
+  String get home_inspiration_christmas => 'Christmas';
 
   @override
-  String get inspiration_christmas => 'Christmas';
+  String get home_try_it => 'Try';
 
   @override
-  String get try_it => 'Try';
-
-  @override
-  String get try_prompt => 'Try Prompt';
+  String get home_try_prompt => 'Try Prompt';
 
   @override
   String get home_art_style => 'Art Style';
 
   @override
-  String get style_no_style => 'No Style';
+  String get home_style_no_style => 'No Style';
 
   @override
-  String get style_cute_cartoon => 'Cute Cartoon';
+  String get home_style_cute_cartoon => 'Cute Cartoon';
 
   @override
-  String get style_ancient_style => 'Ancient Style';
+  String get home_style_ancient_style => 'Ancient Style';
 
   @override
-  String get style_graffiti => 'Graffiti';
+  String get home_style_graffiti => 'Graffiti';
 
   @override
-  String get style_pop_art => 'Pop Art';
+  String get home_style_pop_art => 'Pop Art';
 
   @override
-  String get style_vivid_realism => 'Vivid Realism';
+  String get home_style_vivid_realism => 'Vivid Realism';
 
   @override
-  String get style_color => 'Color';
+  String get home_style_color => 'Color';
 
   @override
-  String get style_eighties => '80s';
+  String get home_style_eighties => '80s';
 
   @override
-  String get style_showa => 'Showa';
+  String get home_style_showa => 'Showa';
 
   @override
-  String get style_model_3d => '3D Model';
+  String get home_style_model_3d => '3D Model';
 
   @override
-  String get style_photography => 'Photography';
+  String get home_style_photography => 'Photography';
 
   @override
-  String get style_japanese_anime => 'Japanese Anime';
+  String get home_style_japanese_anime => 'Japanese Anime';
 
   @override
-  String get style_tattoo => 'Tattoo';
+  String get home_style_tattoo => 'Tattoo';
 
   @override
-  String get style_retro_arcade => 'Retro Arcade';
+  String get home_style_retro_arcade => 'Retro Arcade';
 
   @override
-  String get style_black_white => 'Black & White';
+  String get home_style_black_white => 'Black & White';
 
   @override
-  String get style_pixar => 'Pixar';
+  String get home_style_pixar => 'Pixar';
 
   @override
-  String get style_cyberpunk => 'Cyberpunk';
+  String get home_style_cyberpunk => 'Cyberpunk';
 
   @override
-  String get style_line_art => 'Line Art';
+  String get home_style_line_art => 'Line Art';
 
   @override
-  String get style_watercolor => 'Watercolor';
+  String get home_style_watercolor => 'Watercolor';
 
   @override
-  String get share_social_hint => 'Tag our official social media @quickartai';
+  String get bottom_sheet_social_hint =>
+      'Tag our official social media @quickartai';
 
   @override
-  String get share_save => 'Save';
+  String get bottom_sheet_save => 'Save';
 
   @override
-  String get share_tiktok => 'TikTok';
+  String get bottom_sheet_tiktok => 'TikTok';
 
   @override
-  String get share_instagram => 'Instagram';
+  String get bottom_sheet_instagram => 'Instagram';
 
   @override
-  String get share_facebook => 'Facebook';
-
-  @override
-  String get common_enter_prompt => 'Please enter prompt!';
-
-  @override
-  String get common_draw => 'Draw';
-
-  @override
-  String get common_prompt_hint =>
-      'Enter your prompt, it can be anything you want to create';
-
-  @override
-  String get common_unknown_error => 'Unknown error';
-
-  @override
-  String get waiting_creating => 'Creating...';
-
-  @override
-  String get waiting_generating_hint => 'The masterpiece is being generated';
-
-  @override
-  String get waiting_run_in_background => 'Run in Background';
-
-  @override
-  String get common_retry => 'Retry';
-
-  @override
-  String get common_error_prefix => 'Error: ';
+  String get bottom_sheet_facebook => 'Facebook';
 
   @override
   String get tools_title => 'AI Tools';
@@ -234,21 +233,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tools_ratio_1_1 => '1:1';
-
-  @override
-  String get tools_social_hint => 'Tag our official social media @quickartai';
-
-  @override
-  String get tools_save => 'Save';
-
-  @override
-  String get tools_tiktok => 'TikTok';
-
-  @override
-  String get tools_instagram => 'Instagram';
-
-  @override
-  String get tools_facebook => 'Facebook';
 
   @override
   String get tools_new_badge => 'NEW';
@@ -323,20 +307,14 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get pro_badge => 'PRO';
+  String get workshop_pro_banner_description => 'Unlock more unique effects';
 
   @override
-  String get pro_banner_description => 'Unlock more unique effects';
-
-  @override
-  String get pro_banner_action => 'Get';
+  String get workshop_pro_banner_action => 'Get';
 
   @override
   String get workshop_task_processing => 'Drawing in progress, please wait';
 
   @override
   String get workshop_task_failed => 'Generation failed, please retry!';
-
-  @override
-  String get workshop_retry => 'Retry';
 }

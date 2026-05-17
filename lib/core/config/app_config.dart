@@ -1,10 +1,8 @@
-import 'package:quick_art/core/config/environment.dart';
-
 /// 应用配置抽象基类
 /// 定义所有环境必须实现的配置项
 abstract class AppConfig {
   /// 当前环境
-  AppEnvironment get environment;
+  String get environment;
 
   /// 应用名称
   String get appName;

@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/di/localization/locale_provider.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
-import 'package:quick_art/core/theme/app_icons.dart';
+import 'package:quick_art/core/resource_management/app_icons.dart';
 
 /// 语言页面
 class LanguageScreen extends ConsumerStatefulWidget {
@@ -66,7 +66,10 @@ class _LanguageScreenState extends ConsumerState<LanguageScreen> {
           icon: SvgPicture.asset(AppIcons.backPreviousPage),
           onPressed: () => context.pop(),
         ),
-        title: Text(l10n.language, style: const TextStyle(color: Colors.white)),
+        title: Text(
+          l10n.setting_language,
+          style: const TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
       ),
       body: Padding(

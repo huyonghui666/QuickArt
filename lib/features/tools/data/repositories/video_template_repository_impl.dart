@@ -3,7 +3,7 @@ import 'package:quick_art/features/tools/domain/entities/video_template_page.dar
 import 'package:quick_art/features/tools/domain/repositories/video_template_repository.dart';
 
 /// 视频模板仓库实现类
-class VideoTemplateRepositoryImpl implements VideoTemplateRepository {
+class VideoTemplateRepositoryImpl implements IVideoTemplateRepository {
   /// 构造
   VideoTemplateRepositoryImpl(this._remoteDataSource);
 

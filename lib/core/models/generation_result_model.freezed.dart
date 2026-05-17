@@ -15,11 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$GenerationResultModel {
 
- String get taskId; String get event;// success, failed, processing
- String? get type;// IMAGE, VIDEO
- String? get url;// 统一存储 imageUrl 或 videoUrl
- String? get thumbnailUrl;// 视频尾帧图或其他缩略图
- String? get error;
+ String get taskId; String get event; String? get type; String? get url; String? get thumbnailUrl; String? get error;
 /// Create a copy of GenerationResultModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -223,13 +219,9 @@ class _GenerationResultModel implements GenerationResultModel {
 
 @override final  String taskId;
 @override final  String event;
-// success, failed, processing
 @override final  String? type;
-// IMAGE, VIDEO
 @override final  String? url;
-// 统一存储 imageUrl 或 videoUrl
 @override final  String? thumbnailUrl;
-// 视频尾帧图或其他缩略图
 @override final  String? error;
 
 /// Create a copy of GenerationResultModel

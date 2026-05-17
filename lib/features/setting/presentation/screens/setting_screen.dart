@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/di/config/config_provider.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
-import 'package:quick_art/core/theme/app_icons.dart';
+import 'package:quick_art/core/resource_management/app_icons.dart';
 
 /// 设置页面
 class SettingScreen extends ConsumerWidget {
@@ -54,7 +54,7 @@ class SettingScreen extends ConsumerWidget {
                 ),
                 _buildSettingItem(
                   icon: AppIcons.settingLanguage,
-                  text: l10n.language,
+                  text: l10n.setting_language,
                   onTap: () => context.push('/setting/language'),
                 ),
                 _buildSettingItem(
@@ -118,9 +118,7 @@ class SettingScreen extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
-            icon: SvgPicture.asset(
-                AppIcons.tikTok,
-                width: 20, height: 20),
+            icon: SvgPicture.asset(AppIcons.tikTok, width: 20, height: 20),
             onPressed: () {},
             padding: const EdgeInsets.symmetric(horizontal: 4),
             constraints: const BoxConstraints(),

@@ -1,12 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quick_art/core/di/prompt_provider.dart';
+import 'package:quick_art/core/di/widgets/prompt_provider.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
-import 'package:quick_art/core/theme/app_icons.dart';
+import 'package:quick_art/core/resource_management/app_icons.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/core/widgets/prompt_text_field.dart';
+import 'package:quick_art/features/home/domain/entities/art_style.dart';
 import 'package:quick_art/features/home/presentation/notifiers/art_style_notifier.dart';
 import 'package:quick_art/features/home/presentation/notifiers/inspiration_provider.dart';
 import 'package:quick_art/features/home/presentation/notifiers/template_notifier.dart';
@@ -143,10 +145,17 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
           child: Consumer(
             builder: (context, ref, child) {
               final selectedStyle = ref.watch(artStyleNotifierProvider);
-              return Image.asset(
-                selectedStyle.backgroundAsset,
+              // 无风格时显示纯黑背景，有风格时加载服务端返回的背景大图 URL
+              if (selectedStyle.isNoStyle || selectedStyle.url.isEmpty) {
+                return Container(color: Colors.black);
+              }
+              return CachedNetworkImage(
+                imageUrl: selectedStyle.url,
                 fit: BoxFit.cover,
                 alignment: Alignment.topCenter,
+                placeholder: (context, url) => Container(color: Colors.black),
+                errorWidget: (context, url, error) =>
+                    Container(color: Colors.black),
               );
             },
           ),
@@ -175,7 +184,7 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
                   //提示词文本域
                   const PromptTextField(family: 'textToImage'),
                   const SizedBox(height: 12),
-                  //可选区域，例如图生文
+                  //可选区域，例如图生文、参考图片、数量、比例
                   _buildOptionsSection(context),
                   const SizedBox(height: 12),
                   //艺术风格

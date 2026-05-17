@@ -5,7 +5,8 @@ import 'package:quick_art/features/workshop/domain/repositories/workshop_reposit
 class GetWorkshopTasksUseCase {
   /// 构造
   GetWorkshopTasksUseCase(this._repository);
-  final WorkshopRepository _repository;
+  final IWorkshopRepository _repository;
+
   /// 执行
   Future<List<WorkshopTask>> execute() {
     return _repository.getTasks();

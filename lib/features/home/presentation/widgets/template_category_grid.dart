@@ -102,7 +102,7 @@ class TemplateCategoryGrid extends ConsumerWidget {
                           ),
                         ),
                         child: Text(
-                          AppLocalizations.of(context)!.try_it,
+                          AppLocalizations.of(context)!.home_try_it,
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 12,

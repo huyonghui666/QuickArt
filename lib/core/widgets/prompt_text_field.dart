@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:quick_art/core/di/prompt_provider.dart';
+import 'package:quick_art/core/di/widgets/prompt_provider.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
-import 'package:quick_art/core/theme/app_icons.dart';
+import 'package:quick_art/core/resource_management/app_icons.dart';
+
 /// 提示词文本域
 class PromptTextField extends ConsumerWidget {
   /// 构造
@@ -40,7 +41,7 @@ class PromptTextField extends ConsumerWidget {
               decoration: InputDecoration(
                 filled: true,
                 fillColor: const Color(0xFF1A1A1A),
-                hintText: l10n.common_prompt_hint,
+                hintText: l10n.widgets_prompt_text_field_prompt_hint,
                 hintStyle: TextStyle(color: Colors.grey[500], fontSize: 13),
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.fromLTRB(16, 16, 16, 40),

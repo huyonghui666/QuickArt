@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
-import 'package:quick_art/core/theme/app_icons.dart';
+import 'package:quick_art/core/resource_management/app_icons.dart';
 
 /// Pro组件
 class ProBanner extends StatelessWidget {
@@ -44,7 +44,7 @@ class ProBanner extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                l10n.pro_banner_description,
+                l10n.workshop_pro_banner_description,
                 style: const TextStyle(fontSize: 14, color: Colors.white70),
               ),
             ],
@@ -59,7 +59,7 @@ class ProBanner extends StatelessWidget {
               ),
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
             ),
-            child: Text(l10n.pro_banner_action),
+            child: Text(l10n.workshop_pro_banner_action),
           ),
         ],
       ),

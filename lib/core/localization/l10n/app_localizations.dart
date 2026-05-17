@@ -98,659 +98,611 @@ abstract class AppLocalizations {
     Locale('zh'),
   ];
 
-  /// Label for the settings screen or button
-  ///
-  /// In en, this message translates to:
-  /// **'Setting'**
-  String get setting;
-
-  /// Label for Join Discord button
-  ///
-  /// In en, this message translates to:
-  /// **'Join Discord'**
-  String get setting_discord;
-
-  /// No description provided for @language.
-  ///
-  /// In en, this message translates to:
-  /// **'Language'**
-  String get language;
-
-  /// Label for Rate Us button
-  ///
-  /// In en, this message translates to:
-  /// **'Rate Us'**
-  String get setting_rate_us;
-
-  /// Label for Privacy Policy button
-  ///
-  /// In en, this message translates to:
-  /// **'Privacy Policy'**
-  String get setting_privacy_policy;
-
-  /// Label for Terms of Service button
-  ///
-  /// In en, this message translates to:
-  /// **'Terms of Service'**
-  String get setting_terms_of_service;
-
-  /// Label for Member Center button
-  ///
-  /// In en, this message translates to:
-  /// **'Member Center'**
-  String get setting_member_center;
-
-  /// Label for Social Media section
-  ///
-  /// In en, this message translates to:
-  /// **'Social Media'**
-  String get setting_social_media;
-
-  /// Label for Version
-  ///
-  /// In en, this message translates to:
-  /// **'Version:'**
-  String get setting_version;
-
-  /// Label for QUICKART tab
-  ///
-  /// In en, this message translates to:
-  /// **'QUICKART'**
-  String get nav_quickart;
-
-  /// Label for Explore tab
-  ///
-  /// In en, this message translates to:
-  /// **'Explore'**
-  String get nav_explore;
-
-  /// Label for Tools tab
-  ///
-  /// In en, this message translates to:
-  /// **'Tools'**
-  String get nav_tools;
-
-  /// Label for Studio tab
-  ///
-  /// In en, this message translates to:
-  /// **'Studio'**
-  String get nav_studio;
-
-  /// Label for the text-to-image feature button on the home screen
-  ///
-  /// In en, this message translates to:
-  /// **'Describe'**
-  String get home_describe;
-
-  /// Label for the image-to-image feature button on the home screen
-  ///
-  /// In en, this message translates to:
-  /// **'Add Photo'**
-  String get home_add_photo;
-
-  /// Label for the history button on the home screen
-  ///
-  /// In en, this message translates to:
-  /// **'History'**
-  String get home_history;
-
-  /// Button label to try a specific inspiration style
-  ///
-  /// In en, this message translates to:
-  /// **'Try'**
-  String get inspiration_try;
-
-  /// Inspiration: New
-  ///
-  /// In en, this message translates to:
-  /// **'New'**
-  String get inspiration_new;
-
-  /// Inspiration: Manga
-  ///
-  /// In en, this message translates to:
-  /// **'Manga'**
-  String get inspiration_manga;
-
-  /// Inspiration: Photography
-  ///
-  /// In en, this message translates to:
-  /// **'Photography'**
-  String get inspiration_photography;
-
-  /// Inspiration: Watercolor
-  ///
-  /// In en, this message translates to:
-  /// **'Watercolor'**
-  String get inspiration_watercolor;
-
-  /// Inspiration: Funny
-  ///
-  /// In en, this message translates to:
-  /// **'Funny'**
-  String get inspiration_funny;
-
-  /// Inspiration: Tattoo
-  ///
-  /// In en, this message translates to:
-  /// **'Tattoo'**
-  String get inspiration_tattoo;
-
-  /// Inspiration: Cyberpunk
-  ///
-  /// In en, this message translates to:
-  /// **'Cyberpunk'**
-  String get inspiration_cyberpunk;
-
-  /// Inspiration: Surrealism
-  ///
-  /// In en, this message translates to:
-  /// **'Surrealism'**
-  String get inspiration_surrealism;
-
-  /// Inspiration: Christmas
-  ///
-  /// In en, this message translates to:
-  /// **'Christmas'**
-  String get inspiration_christmas;
-
-  /// Button label to try a template
-  ///
-  /// In en, this message translates to:
-  /// **'Try'**
-  String get try_it;
-
-  /// Button label to try prompt
-  ///
-  /// In en, this message translates to:
-  /// **'Try Prompt'**
-  String get try_prompt;
-
-  /// Label for Art Style section
-  ///
-  /// In en, this message translates to:
-  /// **'Art Style'**
-  String get home_art_style;
-
-  /// Art Style: No Style
-  ///
-  /// In en, this message translates to:
-  /// **'No Style'**
-  String get style_no_style;
-
-  /// Art Style: Cute Cartoon
-  ///
-  /// In en, this message translates to:
-  /// **'Cute Cartoon'**
-  String get style_cute_cartoon;
-
-  /// Art Style: Ancient Style
-  ///
-  /// In en, this message translates to:
-  /// **'Ancient Style'**
-  String get style_ancient_style;
-
-  /// Art Style: Graffiti
-  ///
-  /// In en, this message translates to:
-  /// **'Graffiti'**
-  String get style_graffiti;
-
-  /// Art Style: Pop Art
-  ///
-  /// In en, this message translates to:
-  /// **'Pop Art'**
-  String get style_pop_art;
-
-  /// Art Style: Vivid Realism
-  ///
-  /// In en, this message translates to:
-  /// **'Vivid Realism'**
-  String get style_vivid_realism;
-
-  /// Art Style: Color
-  ///
-  /// In en, this message translates to:
-  /// **'Color'**
-  String get style_color;
-
-  /// Art Style: 80s
-  ///
-  /// In en, this message translates to:
-  /// **'80s'**
-  String get style_eighties;
-
-  /// Art Style: Showa
-  ///
-  /// In en, this message translates to:
-  /// **'Showa'**
-  String get style_showa;
-
-  /// Art Style: 3D Model
-  ///
-  /// In en, this message translates to:
-  /// **'3D Model'**
-  String get style_model_3d;
-
-  /// Art Style: Photography
-  ///
-  /// In en, this message translates to:
-  /// **'Photography'**
-  String get style_photography;
-
-  /// Art Style: Japanese Anime
-  ///
-  /// In en, this message translates to:
-  /// **'Japanese Anime'**
-  String get style_japanese_anime;
-
-  /// Art Style: Tattoo
-  ///
-  /// In en, this message translates to:
-  /// **'Tattoo'**
-  String get style_tattoo;
-
-  /// Art Style: Retro Arcade
-  ///
-  /// In en, this message translates to:
-  /// **'Retro Arcade'**
-  String get style_retro_arcade;
-
-  /// Art Style: Black & White
-  ///
-  /// In en, this message translates to:
-  /// **'Black & White'**
-  String get style_black_white;
-
-  /// Art Style: Pixar
-  ///
-  /// In en, this message translates to:
-  /// **'Pixar'**
-  String get style_pixar;
-
-  /// Art Style: Cyberpunk
-  ///
-  /// In en, this message translates to:
-  /// **'Cyberpunk'**
-  String get style_cyberpunk;
-
-  /// Art Style: Line Art
-  ///
-  /// In en, this message translates to:
-  /// **'Line Art'**
-  String get style_line_art;
-
-  /// Art Style: Watercolor
-  ///
-  /// In en, this message translates to:
-  /// **'Watercolor'**
-  String get style_watercolor;
-
-  /// Hint text for social sharing
-  ///
-  /// In en, this message translates to:
-  /// **'Tag our official social media @quickartai'**
-  String get share_social_hint;
-
-  /// Label for Save button
-  ///
-  /// In en, this message translates to:
-  /// **'Save'**
-  String get share_save;
-
-  /// Label for TikTok button
-  ///
-  /// In en, this message translates to:
-  /// **'TikTok'**
-  String get share_tiktok;
-
-  /// Label for Instagram button
-  ///
-  /// In en, this message translates to:
-  /// **'Instagram'**
-  String get share_instagram;
-
-  /// Label for Facebook button
-  ///
-  /// In en, this message translates to:
-  /// **'Facebook'**
-  String get share_facebook;
-
-  /// Error message when prompt is empty
+  /// No description provided for @widgets_prompt_text_field_enter_prompt.
   ///
   /// In en, this message translates to:
   /// **'Please enter prompt!'**
-  String get common_enter_prompt;
+  String get widgets_prompt_text_field_enter_prompt;
 
-  /// Label for draw button
-  ///
-  /// In en, this message translates to:
-  /// **'Draw'**
-  String get common_draw;
-
-  /// Hint text for prompt input
+  /// No description provided for @widgets_prompt_text_field_prompt_hint.
   ///
   /// In en, this message translates to:
   /// **'Enter your prompt, it can be anything you want to create'**
-  String get common_prompt_hint;
+  String get widgets_prompt_text_field_prompt_hint;
 
-  /// Generic error message
+  /// No description provided for @widgets_draw_button_draw.
   ///
   /// In en, this message translates to:
-  /// **'Unknown error'**
-  String get common_unknown_error;
+  /// **'Draw'**
+  String get widgets_draw_button_draw;
 
-  /// Status text on waiting screen
+  /// No description provided for @widgets_waiting_screen_creating.
   ///
   /// In en, this message translates to:
   /// **'Creating...'**
-  String get waiting_creating;
+  String get widgets_waiting_screen_creating;
 
-  /// Hint text on waiting screen
+  /// No description provided for @widgets_waiting_screen_generating_hint.
   ///
   /// In en, this message translates to:
   /// **'The masterpiece is being generated'**
-  String get waiting_generating_hint;
+  String get widgets_waiting_screen_generating_hint;
 
-  /// Button label to run task in background
+  /// No description provided for @widgets_waiting_screen_run_in_background.
   ///
   /// In en, this message translates to:
   /// **'Run in Background'**
-  String get waiting_run_in_background;
+  String get widgets_waiting_screen_run_in_background;
 
-  /// Label for retry button
+  /// No description provided for @common_retry.
   ///
   /// In en, this message translates to:
   /// **'Retry'**
   String get common_retry;
 
-  /// Prefix for error messages
+  /// No description provided for @common_unknown_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown error'**
+  String get common_unknown_error;
+
+  /// No description provided for @common_error_prefix.
   ///
   /// In en, this message translates to:
   /// **'Error: '**
   String get common_error_prefix;
 
-  /// Title for Tools screen
+  /// No description provided for @setting.
+  ///
+  /// In en, this message translates to:
+  /// **'Setting'**
+  String get setting;
+
+  /// No description provided for @setting_discord.
+  ///
+  /// In en, this message translates to:
+  /// **'Join Discord'**
+  String get setting_discord;
+
+  /// No description provided for @setting_language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get setting_language;
+
+  /// No description provided for @setting_rate_us.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate Us'**
+  String get setting_rate_us;
+
+  /// No description provided for @setting_privacy_policy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get setting_privacy_policy;
+
+  /// No description provided for @setting_terms_of_service.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get setting_terms_of_service;
+
+  /// No description provided for @setting_member_center.
+  ///
+  /// In en, this message translates to:
+  /// **'Member Center'**
+  String get setting_member_center;
+
+  /// No description provided for @setting_social_media.
+  ///
+  /// In en, this message translates to:
+  /// **'Social Media'**
+  String get setting_social_media;
+
+  /// No description provided for @setting_version.
+  ///
+  /// In en, this message translates to:
+  /// **'Version:'**
+  String get setting_version;
+
+  /// No description provided for @nav_quickart.
+  ///
+  /// In en, this message translates to:
+  /// **'QUICKART'**
+  String get nav_quickart;
+
+  /// No description provided for @nav_explore.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore'**
+  String get nav_explore;
+
+  /// No description provided for @nav_tools.
+  ///
+  /// In en, this message translates to:
+  /// **'Tools'**
+  String get nav_tools;
+
+  /// No description provided for @nav_studio.
+  ///
+  /// In en, this message translates to:
+  /// **'Studio'**
+  String get nav_studio;
+
+  /// No description provided for @home_describe.
+  ///
+  /// In en, this message translates to:
+  /// **'Describe'**
+  String get home_describe;
+
+  /// No description provided for @home_add_photo.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Photo'**
+  String get home_add_photo;
+
+  /// No description provided for @home_history.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get home_history;
+
+  /// No description provided for @home_inspiration_new.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get home_inspiration_new;
+
+  /// No description provided for @home_inspiration_manga.
+  ///
+  /// In en, this message translates to:
+  /// **'Manga'**
+  String get home_inspiration_manga;
+
+  /// No description provided for @home_inspiration_photography.
+  ///
+  /// In en, this message translates to:
+  /// **'Photography'**
+  String get home_inspiration_photography;
+
+  /// No description provided for @home_inspiration_watercolor.
+  ///
+  /// In en, this message translates to:
+  /// **'Watercolor'**
+  String get home_inspiration_watercolor;
+
+  /// No description provided for @home_inspiration_funny.
+  ///
+  /// In en, this message translates to:
+  /// **'Funny'**
+  String get home_inspiration_funny;
+
+  /// No description provided for @home_inspiration_tattoo.
+  ///
+  /// In en, this message translates to:
+  /// **'Tattoo'**
+  String get home_inspiration_tattoo;
+
+  /// No description provided for @home_inspiration_cyberpunk.
+  ///
+  /// In en, this message translates to:
+  /// **'Cyberpunk'**
+  String get home_inspiration_cyberpunk;
+
+  /// No description provided for @home_inspiration_surrealism.
+  ///
+  /// In en, this message translates to:
+  /// **'Surrealism'**
+  String get home_inspiration_surrealism;
+
+  /// No description provided for @home_inspiration_christmas.
+  ///
+  /// In en, this message translates to:
+  /// **'Christmas'**
+  String get home_inspiration_christmas;
+
+  /// No description provided for @home_try_it.
+  ///
+  /// In en, this message translates to:
+  /// **'Try'**
+  String get home_try_it;
+
+  /// No description provided for @home_try_prompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Try Prompt'**
+  String get home_try_prompt;
+
+  /// No description provided for @home_art_style.
+  ///
+  /// In en, this message translates to:
+  /// **'Art Style'**
+  String get home_art_style;
+
+  /// No description provided for @home_style_no_style.
+  ///
+  /// In en, this message translates to:
+  /// **'No Style'**
+  String get home_style_no_style;
+
+  /// No description provided for @home_style_cute_cartoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Cute Cartoon'**
+  String get home_style_cute_cartoon;
+
+  /// No description provided for @home_style_ancient_style.
+  ///
+  /// In en, this message translates to:
+  /// **'Ancient Style'**
+  String get home_style_ancient_style;
+
+  /// No description provided for @home_style_graffiti.
+  ///
+  /// In en, this message translates to:
+  /// **'Graffiti'**
+  String get home_style_graffiti;
+
+  /// No description provided for @home_style_pop_art.
+  ///
+  /// In en, this message translates to:
+  /// **'Pop Art'**
+  String get home_style_pop_art;
+
+  /// No description provided for @home_style_vivid_realism.
+  ///
+  /// In en, this message translates to:
+  /// **'Vivid Realism'**
+  String get home_style_vivid_realism;
+
+  /// No description provided for @home_style_color.
+  ///
+  /// In en, this message translates to:
+  /// **'Color'**
+  String get home_style_color;
+
+  /// No description provided for @home_style_eighties.
+  ///
+  /// In en, this message translates to:
+  /// **'80s'**
+  String get home_style_eighties;
+
+  /// No description provided for @home_style_showa.
+  ///
+  /// In en, this message translates to:
+  /// **'Showa'**
+  String get home_style_showa;
+
+  /// No description provided for @home_style_model_3d.
+  ///
+  /// In en, this message translates to:
+  /// **'3D Model'**
+  String get home_style_model_3d;
+
+  /// No description provided for @home_style_photography.
+  ///
+  /// In en, this message translates to:
+  /// **'Photography'**
+  String get home_style_photography;
+
+  /// No description provided for @home_style_japanese_anime.
+  ///
+  /// In en, this message translates to:
+  /// **'Japanese Anime'**
+  String get home_style_japanese_anime;
+
+  /// No description provided for @home_style_tattoo.
+  ///
+  /// In en, this message translates to:
+  /// **'Tattoo'**
+  String get home_style_tattoo;
+
+  /// No description provided for @home_style_retro_arcade.
+  ///
+  /// In en, this message translates to:
+  /// **'Retro Arcade'**
+  String get home_style_retro_arcade;
+
+  /// No description provided for @home_style_black_white.
+  ///
+  /// In en, this message translates to:
+  /// **'Black & White'**
+  String get home_style_black_white;
+
+  /// No description provided for @home_style_pixar.
+  ///
+  /// In en, this message translates to:
+  /// **'Pixar'**
+  String get home_style_pixar;
+
+  /// No description provided for @home_style_cyberpunk.
+  ///
+  /// In en, this message translates to:
+  /// **'Cyberpunk'**
+  String get home_style_cyberpunk;
+
+  /// No description provided for @home_style_line_art.
+  ///
+  /// In en, this message translates to:
+  /// **'Line Art'**
+  String get home_style_line_art;
+
+  /// No description provided for @home_style_watercolor.
+  ///
+  /// In en, this message translates to:
+  /// **'Watercolor'**
+  String get home_style_watercolor;
+
+  /// No description provided for @bottom_sheet_social_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tag our official social media @quickartai'**
+  String get bottom_sheet_social_hint;
+
+  /// No description provided for @bottom_sheet_save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get bottom_sheet_save;
+
+  /// No description provided for @bottom_sheet_tiktok.
+  ///
+  /// In en, this message translates to:
+  /// **'TikTok'**
+  String get bottom_sheet_tiktok;
+
+  /// No description provided for @bottom_sheet_instagram.
+  ///
+  /// In en, this message translates to:
+  /// **'Instagram'**
+  String get bottom_sheet_instagram;
+
+  /// No description provided for @bottom_sheet_facebook.
+  ///
+  /// In en, this message translates to:
+  /// **'Facebook'**
+  String get bottom_sheet_facebook;
+
+  /// No description provided for @tools_title.
   ///
   /// In en, this message translates to:
   /// **'AI Tools'**
   String get tools_title;
 
-  /// Title for AI Video feature
+  /// No description provided for @tools_ai_video.
   ///
   /// In en, this message translates to:
   /// **'AI Video'**
   String get tools_ai_video;
 
-  /// Title for Artistic Photo feature
+  /// No description provided for @tools_artistic_photo.
   ///
   /// In en, this message translates to:
   /// **'Artistic Photo'**
   String get tools_artistic_photo;
 
-  /// Title for AI Face Swap feature
+  /// No description provided for @tools_ai_face_swap.
   ///
   /// In en, this message translates to:
   /// **'AI Face Swap'**
   String get tools_ai_face_swap;
 
-  /// Title for Text to Video feature
+  /// No description provided for @tools_text_to_video.
   ///
   /// In en, this message translates to:
   /// **'Text to Video'**
   String get tools_text_to_video;
 
-  /// Title for Start & End Frame feature
+  /// No description provided for @tools_start_end_frame.
   ///
   /// In en, this message translates to:
   /// **'Start & End Frame'**
   String get tools_start_end_frame;
 
-  /// Title for Multi-Subject feature
+  /// No description provided for @tools_multi_subject.
   ///
   /// In en, this message translates to:
   /// **'Multi-Subject'**
   String get tools_multi_subject;
 
-  /// Label for start frame upload
+  /// No description provided for @tools_upload_start_frame.
   ///
   /// In en, this message translates to:
   /// **'Upload Start Frame'**
   String get tools_upload_start_frame;
 
-  /// Label for end frame upload
+  /// No description provided for @tools_upload_end_frame.
   ///
   /// In en, this message translates to:
   /// **'Upload End Frame'**
   String get tools_upload_end_frame;
 
-  /// Title for prompt section
+  /// No description provided for @tools_prompt_title.
   ///
   /// In en, this message translates to:
   /// **'Prompt'**
   String get tools_prompt_title;
 
-  /// Error message when frames are missing
+  /// No description provided for @tools_upload_both_frames_error.
   ///
   /// In en, this message translates to:
   /// **'Please upload both start and end frames'**
   String get tools_upload_both_frames_error;
 
-  /// Label for random option
+  /// No description provided for @tools_random.
   ///
   /// In en, this message translates to:
   /// **'Random'**
   String get tools_random;
 
-  /// Label for 1:1 ratio
+  /// No description provided for @tools_ratio_1_1.
   ///
   /// In en, this message translates to:
   /// **'1:1'**
   String get tools_ratio_1_1;
 
-  /// Hint text for social sharing in tools
-  ///
-  /// In en, this message translates to:
-  /// **'Tag our official social media @quickartai'**
-  String get tools_social_hint;
-
-  /// Label for Save button
-  ///
-  /// In en, this message translates to:
-  /// **'Save'**
-  String get tools_save;
-
-  /// Label for TikTok button
-  ///
-  /// In en, this message translates to:
-  /// **'TikTok'**
-  String get tools_tiktok;
-
-  /// Label for Instagram button
-  ///
-  /// In en, this message translates to:
-  /// **'Instagram'**
-  String get tools_instagram;
-
-  /// Label for Facebook button
-  ///
-  /// In en, this message translates to:
-  /// **'Facebook'**
-  String get tools_facebook;
-
-  /// Badge text for new items
+  /// No description provided for @tools_new_badge.
   ///
   /// In en, this message translates to:
   /// **'NEW'**
   String get tools_new_badge;
 
-  /// Tab: Popular
+  /// No description provided for @tools_tab_popular.
   ///
   /// In en, this message translates to:
   /// **'Popular!'**
   String get tools_tab_popular;
 
-  /// Tab: Kiss
+  /// No description provided for @tools_tab_kiss.
   ///
   /// In en, this message translates to:
   /// **'Kiss'**
   String get tools_tab_kiss;
 
-  /// Tab: Hug
+  /// No description provided for @tools_tab_hug.
   ///
   /// In en, this message translates to:
   /// **'Hug'**
   String get tools_tab_hug;
 
-  /// Tab: AI Effects
+  /// No description provided for @tools_tab_ai_effects.
   ///
   /// In en, this message translates to:
   /// **'AI Effects'**
   String get tools_tab_ai_effects;
 
-  /// Tab: Style Transfer
+  /// No description provided for @tools_tab_style_transfer.
   ///
   /// In en, this message translates to:
   /// **'Style Transfer'**
   String get tools_tab_style_transfer;
 
-  /// Tab: My Rich Life
+  /// No description provided for @tools_tab_rich_life.
   ///
   /// In en, this message translates to:
   /// **'My Rich Life'**
   String get tools_tab_rich_life;
 
-  /// Tab: Cross-Dimension Love
+  /// No description provided for @tools_tab_cross_dimension.
   ///
   /// In en, this message translates to:
   /// **'Cross-Dimension Love'**
   String get tools_tab_cross_dimension;
 
-  /// Tab: Animal Effects
+  /// No description provided for @tools_tab_animal_effects.
   ///
   /// In en, this message translates to:
   /// **'Animal Effects'**
   String get tools_tab_animal_effects;
 
-  /// Tab: Romantic Day
+  /// No description provided for @tools_tab_romantic_day.
   ///
   /// In en, this message translates to:
   /// **'Romantic Day'**
   String get tools_tab_romantic_day;
 
-  /// Tab: Movie Life
+  /// No description provided for @tools_tab_movie_life.
   ///
   /// In en, this message translates to:
   /// **'Movie Life'**
   String get tools_tab_movie_life;
 
-  /// Tab: Cross-Dressing
+  /// No description provided for @tools_tab_cross_dressing.
   ///
   /// In en, this message translates to:
   /// **'Cross-Dressing'**
   String get tools_tab_cross_dressing;
 
-  /// Tab: Let's Dance!
+  /// No description provided for @tools_tab_dance.
   ///
   /// In en, this message translates to:
   /// **'Let\'s Dance!'**
   String get tools_tab_dance;
 
-  /// Tab: Micro World
+  /// No description provided for @tools_tab_micro_world.
   ///
   /// In en, this message translates to:
   /// **'Micro World'**
   String get tools_tab_micro_world;
 
-  /// Template: French Kiss Pro
+  /// No description provided for @tools_template_kiss_pro.
   ///
   /// In en, this message translates to:
   /// **'French Kiss Pro'**
   String get tools_template_kiss_pro;
 
-  /// Template: Turn into Cat
+  /// No description provided for @tools_template_cat.
   ///
   /// In en, this message translates to:
   /// **'Turn into Cat'**
   String get tools_template_cat;
 
-  /// Template: Heartbeat 404
+  /// No description provided for @tools_template_heartbeat_404.
   ///
   /// In en, this message translates to:
   /// **'Heartbeat 404'**
   String get tools_template_heartbeat_404;
 
-  /// Template: Skull Universe
+  /// No description provided for @tools_template_skull_universe.
   ///
   /// In en, this message translates to:
   /// **'Skull Universe'**
   String get tools_template_skull_universe;
 
-  /// Template: Koi Fortune
+  /// No description provided for @tools_template_koi.
   ///
   /// In en, this message translates to:
   /// **'Koi Fortune'**
   String get tools_template_koi;
 
-  /// Template: Redemption Rain
+  /// No description provided for @tools_template_redemption_rain.
   ///
   /// In en, this message translates to:
   /// **'Redemption Rain'**
   String get tools_template_redemption_rain;
 
-  /// Default prompt for start-end frame task
+  /// No description provided for @tools_start_end_frame_default_prompt.
   ///
   /// In en, this message translates to:
   /// **'The first photo slowly fades into the second photo.'**
   String get tools_start_end_frame_default_prompt;
 
-  /// Title for Workshop screen
+  /// No description provided for @workshop_title.
   ///
   /// In en, this message translates to:
   /// **'Workshop'**
   String get workshop_title;
 
-  /// Error message when tasks fail to load
+  /// No description provided for @workshop_load_failed.
   ///
   /// In en, this message translates to:
   /// **'Failed to load: {error}'**
   String workshop_load_failed(Object error);
 
-  /// Badge text for PRO features
-  ///
-  /// In en, this message translates to:
-  /// **'PRO'**
-  String get pro_badge;
-
-  /// Description for Pro banner
+  /// No description provided for @workshop_pro_banner_description.
   ///
   /// In en, this message translates to:
   /// **'Unlock more unique effects'**
-  String get pro_banner_description;
+  String get workshop_pro_banner_description;
 
-  /// Button label for Pro banner
+  /// No description provided for @workshop_pro_banner_action.
   ///
   /// In en, this message translates to:
   /// **'Get'**
-  String get pro_banner_action;
+  String get workshop_pro_banner_action;
 
-  /// Status text for processing tasks
+  /// No description provided for @workshop_task_processing.
   ///
   /// In en, this message translates to:
   /// **'Drawing in progress, please wait'**
   String get workshop_task_processing;
 
-  /// Status text for failed tasks
+  /// No description provided for @workshop_task_failed.
   ///
   /// In en, this message translates to:
   /// **'Generation failed, please retry!'**
   String get workshop_task_failed;
-
-  /// Label for retry button in workshop
-  ///
-  /// In en, this message translates to:
-  /// **'Retry'**
-  String get workshop_retry;
 }
 
 class _AppLocalizationsDelegate

@@ -3,15 +3,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/core/di/config/config_provider.dart';
 import 'package:quick_art/features/home/data/datasources/Remote_data_source/art_styles_remote_data_source.dart';
 import 'package:quick_art/features/home/data/datasources/local_data_source/art_styles_local_data_source.dart';
-import 'package:quick_art/features/home/data/datasources/template_remote_data_source.dart';
-import 'package:quick_art/features/home/data/datasources/text_to_image_remote_data_source.dart';
-import 'package:quick_art/features/home/data/repositories/remote_config_repository.dart';
+import 'package:quick_art/features/home/data/datasources/Remote_data_source/template_remote_data_source.dart';
+import 'package:quick_art/features/home/data/datasources/Remote_data_source/text_to_image_remote_data_source.dart';
+import 'package:quick_art/features/home/data/repositories/remote_art_style_config_repository_impl.dart';
 import 'package:quick_art/features/home/data/repositories/template_repository_impl.dart';
 import 'package:quick_art/features/home/data/repositories/text_to_image_repository_impl.dart';
 import 'package:quick_art/features/home/domain/repositories/remote_config_repository.dart';
 import 'package:quick_art/features/home/domain/repositories/template_repository.dart';
 import 'package:quick_art/features/home/domain/repositories/text_to_image_repository.dart';
 import 'package:quick_art/features/home/domain/usecases/get_templates_usecase.dart';
+import 'package:quick_art/features/home/domain/usecases/remote_config_usecase.dart';
 import 'package:quick_art/features/home/domain/usecases/text_to_generate_image_usecase.dart';
 import 'package:quick_art/features/tools/data/datasources/generate_video_remote_data_source.dart';
 import 'package:quick_art/features/tools/data/datasources/video_template_remote_data_source.dart';
@@ -180,7 +181,7 @@ IArtStylesLocalDataSource artStylesLocalDataSource(Ref ref) {
   return ArtStylesLocalDataSource();
 }
 
-/// 远程配置远程数据源
+/// 艺术风格配置远程数据源
 @riverpod
 IArtStylesRemoteDataSource artStylesRemoteDataSource(Ref ref) {
   final dio = ref.watch(dioProvider);
@@ -189,8 +190,19 @@ IArtStylesRemoteDataSource artStylesRemoteDataSource(Ref ref) {
 
 /// 远程配置仓库
 @riverpod
-RemoteConfigRepository remoteConfigRepository(Ref ref) {
-  final localDataSource = ref.watch(artStylesLocalDataSourceProvider);
-  final remoteDataSource = ref.watch(artStylesRemoteDataSourceProvider);
-  return RemoteConfigRepositoryImpl(localDataSource, remoteDataSource);
+RemoteArtStyleConfigRepository remoteArtStyleConfigRepository(Ref ref) {
+  final localArtStyleDataSource = ref.watch(artStylesLocalDataSourceProvider);
+  final remoteArtStyleDataSource = ref.watch(artStylesRemoteDataSourceProvider);
+  return RemoteArtStyleConfigRepositoryImpl(
+    localArtStyleDataSource,
+    remoteArtStyleDataSource,
+  );
+}
+
+/// 远程配置聚合用例
+@riverpod
+RemoteArtStyleConfigUseCase remoteArtStyleConfigUseCase(Ref ref) {
+  return RemoteArtStyleConfigUseCase(
+    ref.watch(remoteArtStyleConfigRepositoryProvider),
+  );
 }

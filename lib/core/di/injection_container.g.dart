@@ -418,7 +418,7 @@ typedef ArtStylesLocalDataSourceRef =
 String _$artStylesRemoteDataSourceHash() =>
     r'6b2c52b754ab21036cec91ab174750e4a0d7bb3b';
 
-/// 远程配置远程数据源
+/// 艺术风格配置远程数据源
 ///
 /// Copied from [artStylesRemoteDataSource].
 @ProviderFor(artStylesRemoteDataSource)
@@ -437,27 +437,49 @@ final artStylesRemoteDataSourceProvider =
 // ignore: unused_element
 typedef ArtStylesRemoteDataSourceRef =
     AutoDisposeProviderRef<IArtStylesRemoteDataSource>;
-String _$remoteConfigRepositoryHash() =>
-    r'f64fdb09c9f78a70855fa3b8c9d808627dbe8132';
+String _$remoteArtStyleConfigRepositoryHash() =>
+    r'25de2da99a23ae1041ecbb2b0ee6a61d349b2935';
 
 /// 远程配置仓库
 ///
-/// Copied from [remoteConfigRepository].
-@ProviderFor(remoteConfigRepository)
-final remoteConfigRepositoryProvider =
-    AutoDisposeProvider<RemoteConfigRepository>.internal(
-      remoteConfigRepository,
-      name: r'remoteConfigRepositoryProvider',
+/// Copied from [remoteArtStyleConfigRepository].
+@ProviderFor(remoteArtStyleConfigRepository)
+final remoteArtStyleConfigRepositoryProvider =
+    AutoDisposeProvider<RemoteArtStyleConfigRepository>.internal(
+      remoteArtStyleConfigRepository,
+      name: r'remoteArtStyleConfigRepositoryProvider',
       debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
-          : _$remoteConfigRepositoryHash,
+          : _$remoteArtStyleConfigRepositoryHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef RemoteConfigRepositoryRef =
-    AutoDisposeProviderRef<RemoteConfigRepository>;
+typedef RemoteArtStyleConfigRepositoryRef =
+    AutoDisposeProviderRef<RemoteArtStyleConfigRepository>;
+String _$remoteArtStyleConfigUseCaseHash() =>
+    r'0dd59cd972c20e0c83a4d11702f5f67a190adcb9';
+
+/// 远程配置聚合用例
+///
+/// Copied from [remoteArtStyleConfigUseCase].
+@ProviderFor(remoteArtStyleConfigUseCase)
+final remoteArtStyleConfigUseCaseProvider =
+    AutoDisposeProvider<RemoteArtStyleConfigUseCase>.internal(
+      remoteArtStyleConfigUseCase,
+      name: r'remoteArtStyleConfigUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$remoteArtStyleConfigUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef RemoteArtStyleConfigUseCaseRef =
+    AutoDisposeProviderRef<RemoteArtStyleConfigUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

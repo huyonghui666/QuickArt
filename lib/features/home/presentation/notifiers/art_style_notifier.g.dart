@@ -6,9 +6,13 @@ part of 'art_style_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$artStyleNotifierHash() => r'2407676e581d489c06eb60444ddbb7879f08a6b8';
+String _$artStyleNotifierHash() => r'1d053b649c8257a7235d8a7e6669673b774cb617';
 
-/// 艺术风格选择状态管理
+/// 当前选中的艺术风格状态管理
+///
+/// 方案 B：风格列表完全由服务端驱动，不再使用本地枚举。
+/// 默认值为 [ArtStyle.noStyle]（id 为空字符串），表示未选中任何风格。
+/// 通过 [ArtStyleX.isNoStyle] 判断是否处于无风格状态。
 ///
 /// Copied from [ArtStyleNotifier].
 @ProviderFor(ArtStyleNotifier)

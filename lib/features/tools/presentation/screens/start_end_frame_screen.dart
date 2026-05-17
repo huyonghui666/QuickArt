@@ -91,7 +91,8 @@ class _StartEndFrameScreenState extends ConsumerState<StartEndFrameScreen> {
                             imagePath: startEndFrameState.startFramePath,
                             onTap: () async {
                               final hasPermission =
-                                  await PermissionManager.requestPhotosPermission();
+                                  await PermissionManager
+                                      .requestPhotosPermission();
                               if (!hasPermission) return;
 
                               final picker = ImagePicker();
@@ -112,7 +113,8 @@ class _StartEndFrameScreenState extends ConsumerState<StartEndFrameScreen> {
                             imagePath: startEndFrameState.endFramePath,
                             onTap: () async {
                               final hasPermission =
-                                  await PermissionManager.requestPhotosPermission();
+                                  await PermissionManager
+                                      .requestPhotosPermission();
                               if (!hasPermission) return;
 
                               final picker = ImagePicker();

@@ -1,20 +1,27 @@
-import 'package:quick_art/features/home/data/datasources/local_data_source/art_styles_local_data_source.dart';
 import 'package:quick_art/features/home/data/datasources/Remote_data_source/art_styles_remote_data_source.dart';
+import 'package:quick_art/features/home/data/datasources/local_data_source/art_styles_local_data_source.dart';
 import 'package:quick_art/features/home/data/models/art_style_model.dart';
-import 'package:quick_art/features/home/data/models/remote_config_model.dart';
+import 'package:quick_art/features/home/data/models/remote_art_style_config_model.dart';
 import 'package:quick_art/features/home/domain/entities/art_style.dart';
-import 'package:quick_art/features/home/domain/entities/remote_config.dart';
+import 'package:quick_art/features/home/domain/entities/remote_art_style_config.dart';
 import 'package:quick_art/features/home/domain/repositories/remote_config_repository.dart';
 
-class RemoteConfigRepositoryImpl implements RemoteConfigRepository {
+/// 艺术风格配置仓库实现
+class RemoteArtStyleConfigRepositoryImpl
+    implements RemoteArtStyleConfigRepository {
+  /// 构造
+  RemoteArtStyleConfigRepositoryImpl(
+    this._localDataSource,
+    this._remoteDataSource,
+  );
   final IArtStylesLocalDataSource _localDataSource;
   final IArtStylesRemoteDataSource _remoteDataSource;
 
-  RemoteConfigRepositoryImpl(this._localDataSource, this._remoteDataSource);
-
   @override
-  Future<RemoteConfig?> fetchConfig({String? currentVersion}) async {
-    final remoteModel = await _remoteDataSource.fetchArtStyles(
+  Future<RemoteArtStyleConfig?> fetchArtStyleConfig({
+    String? currentVersion,
+  }) async {
+    final remoteModel = await _remoteDataSource.fetchArtStyleConfig(
       currentVersion: currentVersion,
     );
     if (remoteModel != null) {
@@ -24,8 +31,8 @@ class RemoteConfigRepositoryImpl implements RemoteConfigRepository {
   }
 
   @override
-  Future<RemoteConfig?> loadFromCache() async {
-    final localModel = await _localDataSource.loadFromCache();
+  Future<RemoteArtStyleConfig?> loadFromArtStyleCache() async {
+    final localModel = await _localDataSource.loadFromArtStyleCache();
     if (localModel != null) {
       return _mapToEntity(localModel);
     }
@@ -33,23 +40,13 @@ class RemoteConfigRepositoryImpl implements RemoteConfigRepository {
   }
 
   @override
-  Future<void> saveConfig(RemoteConfig config) async {
-    await _localDataSource.saveConfig(_mapToModel(config));
+  Future<void> saveArtStyleConfig(RemoteArtStyleConfig config) async {
+    await _localDataSource.saveArtStyleConfig(_mapToModel(config));
   }
 
-  @override
-  Future<DateTime?> getLastCheckTime() async {
-    return _localDataSource.getLastCheckTime();
-  }
-
-  @override
-  Future<void> saveLastCheckTime(DateTime time) async {
-    return _localDataSource.saveLastCheckTime(time);
-  }
-
-  RemoteConfig _mapToEntity(RemoteConfigModel model) {
-    return RemoteConfig(
-      configVersion: model.configVersion,
+  RemoteArtStyleConfig _mapToEntity(RemoteArtStyleConfigModel model) {
+    return RemoteArtStyleConfig(
+      artStyleConfigVersion: model.artStyleConfigVersion,
       styles: model.styles
           .map(
             (e) => ArtStyle(
@@ -66,9 +63,9 @@ class RemoteConfigRepositoryImpl implements RemoteConfigRepository {
     );
   }
 
-  RemoteConfigModel _mapToModel(RemoteConfig entity) {
-    return RemoteConfigModel(
-      configVersion: entity.configVersion,
+  RemoteArtStyleConfigModel _mapToModel(RemoteArtStyleConfig entity) {
+    return RemoteArtStyleConfigModel(
+      artStyleConfigVersion: entity.artStyleConfigVersion,
       styles: entity.styles
           .map(
             (e) => ArtStyleModel(

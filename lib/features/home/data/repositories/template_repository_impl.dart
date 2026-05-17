@@ -1,4 +1,4 @@
-import 'package:quick_art/features/home/data/datasources/template_remote_data_source.dart';
+import 'package:quick_art/features/home/data/datasources/Remote_data_source/template_remote_data_source.dart';
 import 'package:quick_art/features/home/domain/entities/image_template_page.dart';
 import 'package:quick_art/features/home/domain/repositories/template_repository.dart';
 

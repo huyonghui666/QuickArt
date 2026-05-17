@@ -8,5 +8,9 @@
       "Bash(flutter pub *)",
       "Bash(flutter analyze *)"
     ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash 'd:/flutter Project/QuickArt/.claude/statusline-command.sh'"
   }
 }

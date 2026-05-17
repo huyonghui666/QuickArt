@@ -8,6 +8,7 @@ import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/resource_management/app_icons.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/core/widgets/prompt_text_field.dart';
+import 'package:quick_art/features/home/domain/entities/art_style.dart';
 import 'package:quick_art/features/home/presentation/notifiers/art_style_notifier.dart';
 import 'package:quick_art/features/home/presentation/notifiers/inspiration_provider.dart';
 import 'package:quick_art/features/home/presentation/notifiers/template_notifier.dart';
@@ -144,20 +145,17 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
           child: Consumer(
             builder: (context, ref, child) {
               final selectedStyle = ref.watch(artStyleNotifierProvider);
-              if (selectedStyle.backgroundAsset.startsWith('http')) {
-                return CachedNetworkImage(
-                  imageUrl: selectedStyle.backgroundAsset,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topCenter,
-                  placeholder: (context, url) => Container(color: Colors.black),
-                  errorWidget: (context, url, error) =>
-                      Container(color: Colors.black),
-                );
+              // 无风格时显示纯黑背景，有风格时加载服务端返回的背景大图 URL
+              if (selectedStyle.isNoStyle || selectedStyle.url.isEmpty) {
+                return Container(color: Colors.black);
               }
-              return Image.asset(
-                selectedStyle.backgroundAsset,
+              return CachedNetworkImage(
+                imageUrl: selectedStyle.url,
                 fit: BoxFit.cover,
                 alignment: Alignment.topCenter,
+                placeholder: (context, url) => Container(color: Colors.black),
+                errorWidget: (context, url, error) =>
+                    Container(color: Colors.black),
               );
             },
           ),

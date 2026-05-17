@@ -1,4 +1,5 @@
 import 'package:quick_art/core/config/app_config.dart';
+
 /// 预发布环境配置实现
 class StagingConfig implements AppConfig {
   @override

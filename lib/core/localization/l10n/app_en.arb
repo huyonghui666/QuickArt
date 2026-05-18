@@ -77,6 +77,8 @@
   "tools_ai_video": "AI Video",
   "tools_artistic_photo": "Artistic Photo",
   "tools_ai_face_swap": "AI Face Swap",
+  "tools_ai_face_swap_subtitle": "Let you become a character in anime",
+  "tools_ai_face_swap_custom_photo": "Custom Photo",
   "tools_text_to_video": "Text to Video",
   "tools_start_end_frame": "Start & End Frame",
   "tools_multi_subject": "Multi-Subject",

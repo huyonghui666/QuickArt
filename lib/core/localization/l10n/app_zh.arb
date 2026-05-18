@@ -77,6 +77,8 @@
   "tools_ai_video": "AI 视频",
   "tools_artistic_photo": "艺术照",
   "tools_ai_face_swap": "AI 换脸",
+  "tools_ai_face_swap_subtitle": "让你成为动漫中的角色",
+  "tools_ai_face_swap_custom_photo": "自定义照片",
   "tools_text_to_video": "文生视频",
   "tools_start_end_frame": "首尾帧",
   "tools_multi_subject": "多主体",

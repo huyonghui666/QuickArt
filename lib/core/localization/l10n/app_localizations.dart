@@ -488,6 +488,18 @@ abstract class AppLocalizations {
   /// **'AI Face Swap'**
   String get tools_ai_face_swap;
 
+  /// No description provided for @tools_ai_face_swap_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Let you become a character in anime'**
+  String get tools_ai_face_swap_subtitle;
+
+  /// No description provided for @tools_ai_face_swap_custom_photo.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Photo'**
+  String get tools_ai_face_swap_custom_photo;
+
   /// No description provided for @tools_text_to_video.
   ///
   /// In en, this message translates to:

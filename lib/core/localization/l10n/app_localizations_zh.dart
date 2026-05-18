@@ -204,6 +204,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get tools_ai_face_swap => 'AI 换脸';
 
   @override
+  String get tools_ai_face_swap_subtitle => '让你成为动漫中的角色';
+
+  @override
+  String get tools_ai_face_swap_custom_photo => '自定义照片';
+
+  @override
   String get tools_text_to_video => '文生视频';
 
   @override

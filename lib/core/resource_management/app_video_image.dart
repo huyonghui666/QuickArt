@@ -10,4 +10,7 @@ class AppVideoImage {
   /// AI 换脸工具封面图
   static const String aiFaceSwapping =
       'assets/images/tools/AIFaceSwapping.webp';
+
+  static const String customPhotoAsset =
+      'assets/images/tools/ai-face-swapping/custom_photo.webp';
 }

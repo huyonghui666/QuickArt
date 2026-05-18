@@ -207,6 +207,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tools_ai_face_swap => 'AI Face Swap';
 
   @override
+  String get tools_ai_face_swap_subtitle =>
+      'Let you become a character in anime';
+
+  @override
+  String get tools_ai_face_swap_custom_photo => 'Custom Photo';
+
+  @override
   String get tools_text_to_video => 'Text to Video';
 
   @override

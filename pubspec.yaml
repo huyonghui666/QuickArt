@@ -68,4 +68,5 @@ flutter:
     - assets/icons/svg/core/
 
     - assets/images/tools/
+    - assets/images/tools/ai-face-swapping/
     - assets/videos/

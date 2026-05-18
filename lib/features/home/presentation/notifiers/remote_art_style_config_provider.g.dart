@@ -7,9 +7,12 @@ part of 'remote_art_style_config_provider.dart';
 // **************************************************************************
 
 String _$remoteArtStyleConfigNotifierHash() =>
-    r'3260689f0799588e23c9f065b1d833f8adfbcbea';
+    r'85562a51065b54bcf51e36dab78764eddcddee42';
 
-/// 艺术风格配置provider
+/// 艺术风格配置 Provider
+///
+/// build() 只在冷启动（provider 首次创建）时执行一次，天然满足"只在冷启动检查版本"的需求。
+/// 热启动（App 从后台切回）不会重新执行 build()，无需额外节流逻辑。
 ///
 /// Copied from [RemoteArtStyleConfigNotifier].
 @ProviderFor(RemoteArtStyleConfigNotifier)

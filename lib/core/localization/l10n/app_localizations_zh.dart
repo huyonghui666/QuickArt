@@ -210,6 +210,24 @@ class AppLocalizationsZh extends AppLocalizations {
   String get tools_ai_face_swap_custom_photo => '自定义照片';
 
   @override
+  String get tools_ai_face_swap_loading => '正在加载，请稍后。';
+
+  @override
+  String get tools_ai_face_swap_guide_title => '请使用面部无遮挡的人物正面照';
+
+  @override
+  String get tools_ai_face_swap_guide_good => '适合的照片';
+
+  @override
+  String get tools_ai_face_swap_guide_bad => '不适当的照片';
+
+  @override
+  String get tools_ai_face_swap_guide_tip => '不要使用非正面、闭上眼睛、遮住脸部或过度夸大表情的照片。';
+
+  @override
+  String get tools_ai_face_swap_guide_got_it => '知道了';
+
+  @override
   String get tools_text_to_video => '文生视频';
 
   @override

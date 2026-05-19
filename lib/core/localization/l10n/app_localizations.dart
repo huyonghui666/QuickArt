@@ -500,6 +500,42 @@ abstract class AppLocalizations {
   /// **'Custom Photo'**
   String get tools_ai_face_swap_custom_photo;
 
+  /// No description provided for @tools_ai_face_swap_loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading, please wait.'**
+  String get tools_ai_face_swap_loading;
+
+  /// No description provided for @tools_ai_face_swap_guide_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Please use a front-facing photo with no obstructions'**
+  String get tools_ai_face_swap_guide_title;
+
+  /// No description provided for @tools_ai_face_swap_guide_good.
+  ///
+  /// In en, this message translates to:
+  /// **'Suitable photos'**
+  String get tools_ai_face_swap_guide_good;
+
+  /// No description provided for @tools_ai_face_swap_guide_bad.
+  ///
+  /// In en, this message translates to:
+  /// **'Unsuitable photos'**
+  String get tools_ai_face_swap_guide_bad;
+
+  /// No description provided for @tools_ai_face_swap_guide_tip.
+  ///
+  /// In en, this message translates to:
+  /// **'Do not use non-frontal, eyes-closed, face-obscured, or overly exaggerated expression photos.'**
+  String get tools_ai_face_swap_guide_tip;
+
+  /// No description provided for @tools_ai_face_swap_guide_got_it.
+  ///
+  /// In en, this message translates to:
+  /// **'Got it'**
+  String get tools_ai_face_swap_guide_got_it;
+
   /// No description provided for @tools_text_to_video.
   ///
   /// In en, this message translates to:

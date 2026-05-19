@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/core/di/config/config_provider.dart';
 import 'package:quick_art/features/home/data/datasources/Remote_data_source/art_styles_remote_data_source.dart';
-import 'package:quick_art/features/home/data/datasources/local_data_source/art_styles_local_data_source.dart';
 import 'package:quick_art/features/home/data/datasources/Remote_data_source/template_remote_data_source.dart';
 import 'package:quick_art/features/home/data/datasources/Remote_data_source/text_to_image_remote_data_source.dart';
+import 'package:quick_art/features/home/data/datasources/local_data_source/art_styles_local_data_source.dart';
 import 'package:quick_art/features/home/data/repositories/remote_art_style_config_repository_impl.dart';
 import 'package:quick_art/features/home/data/repositories/template_repository_impl.dart';
 import 'package:quick_art/features/home/data/repositories/text_to_image_repository_impl.dart';
@@ -14,12 +14,16 @@ import 'package:quick_art/features/home/domain/repositories/text_to_image_reposi
 import 'package:quick_art/features/home/domain/usecases/get_templates_usecase.dart';
 import 'package:quick_art/features/home/domain/usecases/remote_config_usecase.dart';
 import 'package:quick_art/features/home/domain/usecases/text_to_generate_image_usecase.dart';
+import 'package:quick_art/features/tools/data/datasources/face_swap_remote_data_source.dart';
 import 'package:quick_art/features/tools/data/datasources/generate_video_remote_data_source.dart';
 import 'package:quick_art/features/tools/data/datasources/video_template_remote_data_source.dart';
+import 'package:quick_art/features/tools/data/repositories/face_swap_repository_impl.dart';
 import 'package:quick_art/features/tools/data/repositories/text_to_video_repository_impl.dart';
 import 'package:quick_art/features/tools/data/repositories/video_template_repository_impl.dart';
+import 'package:quick_art/features/tools/domain/repositories/face_swap_repository.dart';
 import 'package:quick_art/features/tools/domain/repositories/text_to_video_repository.dart';
 import 'package:quick_art/features/tools/domain/repositories/video_template_repository.dart';
+import 'package:quick_art/features/tools/domain/usecases/detect_faces_usecase.dart';
 import 'package:quick_art/features/tools/domain/usecases/generate_video_from_image_usecase.dart';
 import 'package:quick_art/features/tools/domain/usecases/get_video_templates_usecase.dart';
 import 'package:quick_art/features/tools/domain/usecases/start_end_frame_generate_video_usecase.dart';
@@ -205,4 +209,23 @@ RemoteArtStyleConfigUseCase remoteArtStyleConfigUseCase(Ref ref) {
   return RemoteArtStyleConfigUseCase(
     ref.watch(remoteArtStyleConfigRepositoryProvider),
   );
+}
+
+//------------------------------AI 换脸------------------------------------------
+/// 换脸远程数据源
+@riverpod
+IFaceSwapRemoteDataSource faceSwapRemoteDataSource(Ref ref) {
+  return FaceSwapRemoteDataSource(ref.watch(dioProvider));
+}
+
+/// 换脸仓库
+@riverpod
+IFaceSwapRepository faceSwapRepository(Ref ref) {
+  return FaceSwapRepositoryImpl(ref.watch(faceSwapRemoteDataSourceProvider));
+}
+
+/// 人脸检测用例
+@riverpod
+DetectFacesUseCase detectFacesUseCase(Ref ref) {
+  return DetectFacesUseCase(ref.watch(faceSwapRepositoryProvider));
 }

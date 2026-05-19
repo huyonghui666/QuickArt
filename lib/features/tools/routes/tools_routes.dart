@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/features/tools/domain/entities/video_template.dart';
+import 'package:quick_art/features/tools/presentation/screens/ai_face_swapping_loading_screen.dart';
 import 'package:quick_art/features/tools/presentation/screens/ai_face_swapping_screen.dart';
 import 'package:quick_art/features/tools/presentation/screens/ai_video_screen.dart';
 import 'package:quick_art/features/tools/presentation/screens/start_end_frame_screen.dart';
@@ -36,5 +37,12 @@ List<GoRoute> get toolsStandaloneRoutes => [
   GoRoute(
     path: '/tools/ai-face-swapping',
     builder: (context, state) => const AiFaceSwappingScreen(),
+  ),
+  GoRoute(
+    path: '/tools/ai-face-swapping/loading',
+    builder: (context, state) {
+      final imagePath = state.extra! as String;
+      return AiFaceSwappingLoadingScreen(imagePath: imagePath);
+    },
   ),
 ];

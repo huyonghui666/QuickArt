@@ -481,5 +481,69 @@ final remoteArtStyleConfigUseCaseProvider =
 // ignore: unused_element
 typedef RemoteArtStyleConfigUseCaseRef =
     AutoDisposeProviderRef<RemoteArtStyleConfigUseCase>;
+String _$faceSwapRemoteDataSourceHash() =>
+    r'1f72bce8e3e2a23c9fe7f005af99ba1551dbfab9';
+
+/// 换脸远程数据源
+///
+/// Copied from [faceSwapRemoteDataSource].
+@ProviderFor(faceSwapRemoteDataSource)
+final faceSwapRemoteDataSourceProvider =
+    AutoDisposeProvider<IFaceSwapRemoteDataSource>.internal(
+      faceSwapRemoteDataSource,
+      name: r'faceSwapRemoteDataSourceProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$faceSwapRemoteDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef FaceSwapRemoteDataSourceRef =
+    AutoDisposeProviderRef<IFaceSwapRemoteDataSource>;
+String _$faceSwapRepositoryHash() =>
+    r'463a7faf91764b628d5e9c07018a3a7e1c10eb7a';
+
+/// 换脸仓库
+///
+/// Copied from [faceSwapRepository].
+@ProviderFor(faceSwapRepository)
+final faceSwapRepositoryProvider =
+    AutoDisposeProvider<IFaceSwapRepository>.internal(
+      faceSwapRepository,
+      name: r'faceSwapRepositoryProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$faceSwapRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef FaceSwapRepositoryRef = AutoDisposeProviderRef<IFaceSwapRepository>;
+String _$detectFacesUseCaseHash() =>
+    r'84995bb8035e0d9fda783fd672c89b17114d2612';
+
+/// 人脸检测用例
+///
+/// Copied from [detectFacesUseCase].
+@ProviderFor(detectFacesUseCase)
+final detectFacesUseCaseProvider =
+    AutoDisposeProvider<DetectFacesUseCase>.internal(
+      detectFacesUseCase,
+      name: r'detectFacesUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$detectFacesUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef DetectFacesUseCaseRef = AutoDisposeProviderRef<DetectFacesUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

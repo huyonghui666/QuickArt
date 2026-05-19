@@ -214,6 +214,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tools_ai_face_swap_custom_photo => 'Custom Photo';
 
   @override
+  String get tools_ai_face_swap_loading => 'Loading, please wait.';
+
+  @override
+  String get tools_ai_face_swap_guide_title =>
+      'Please use a front-facing photo with no obstructions';
+
+  @override
+  String get tools_ai_face_swap_guide_good => 'Suitable photos';
+
+  @override
+  String get tools_ai_face_swap_guide_bad => 'Unsuitable photos';
+
+  @override
+  String get tools_ai_face_swap_guide_tip =>
+      'Do not use non-frontal, eyes-closed, face-obscured, or overly exaggerated expression photos.';
+
+  @override
+  String get tools_ai_face_swap_guide_got_it => 'Got it';
+
+  @override
   String get tools_text_to_video => 'Text to Video';
 
   @override

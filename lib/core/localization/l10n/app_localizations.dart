@@ -554,6 +554,18 @@ abstract class AppLocalizations {
   /// **'Try using a front-facing photo'**
   String get tools_ai_face_swap_no_face_hint;
 
+  /// No description provided for @tools_ai_face_swap_select_which_face.
+  ///
+  /// In en, this message translates to:
+  /// **'Which face do you want to swap?'**
+  String get tools_ai_face_swap_select_which_face;
+
+  /// No description provided for @tools_ai_face_swap_confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get tools_ai_face_swap_confirm;
+
   /// No description provided for @tools_text_to_video.
   ///
   /// In en, this message translates to:

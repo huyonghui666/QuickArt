@@ -28,6 +28,7 @@ dependencies:
   logger: 2.6.2
   path: 1.9.1
   permission_handler: 12.0.1
+  photo_manager: 3.6.3
   riverpod_annotation: 2.6.1
   sentry_flutter: 9.10.0
   shared_preferences: 2.5.4

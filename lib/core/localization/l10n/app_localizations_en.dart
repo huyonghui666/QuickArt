@@ -244,6 +244,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'Try using a front-facing photo';
 
   @override
+  String get tools_ai_face_swap_select_which_face =>
+      'Which face do you want to swap?';
+
+  @override
+  String get tools_ai_face_swap_confirm => 'Confirm';
+
+  @override
   String get tools_text_to_video => 'Text to Video';
 
   @override

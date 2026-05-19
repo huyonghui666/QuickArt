@@ -88,6 +88,8 @@
   "tools_ai_face_swap_select_face": "选择要交换的面孔",
   "tools_ai_face_swap_all": "ALL",
   "tools_ai_face_swap_no_face_hint": "尝试使用正面照片",
+  "tools_ai_face_swap_select_which_face": "您选择哪张面孔？",
+  "tools_ai_face_swap_confirm": "确认",
   "tools_text_to_video": "文生视频",
   "tools_start_end_frame": "首尾帧",
   "tools_multi_subject": "多主体",

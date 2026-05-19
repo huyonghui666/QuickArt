@@ -10,6 +10,7 @@ import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/resource_management/app_icons.dart';
 import 'package:quick_art/features/tools/domain/entities/face_detect_result.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/face_detect_notifier.dart';
+import 'package:quick_art/features/tools/presentation/notifilers/face_swap_generation_notifier.dart';
 
 /// AI 换脸 — 人脸选择页面
 ///
@@ -36,7 +37,6 @@ class _AiFaceSelectScreenState extends ConsumerState<AiFaceSelectScreen> {
 
   /// 检测中的临时照片，仅用于相册网格高亮
   AssetEntity? _pendingPhoto;
-
   /// 正在等待检测结果的顶部人脸槽索引
   int? _pendingFaceIndex;
 
@@ -127,7 +127,6 @@ class _AiFaceSelectScreenState extends ConsumerState<AiFaceSelectScreen> {
   Future<void> _onPhotoSelected(AssetEntity asset) async {
     setState(() {
       _detecting = true;
-      // 记录本次检测对应的顶部槽，确认时写入正确的槽
       _pendingFaceIndex = _activeFaceIndex;
     });
 
@@ -148,6 +147,40 @@ class _AiFaceSelectScreenState extends ConsumerState<AiFaceSelectScreen> {
     setState(() {
       _confirmedFaces[_pendingFaceIndex!] = face;
     });
+  }
+
+  /// 点击绘制按钮：校验参数 → 设置输入 → 跳转等待页
+  ///
+  /// originalFacePaths: 目标照片里要被替换的脸（第二次检测结果的 path）
+  /// faceImageUrls:     用来替换的自拍脸 CDN URL（第一次检测结果的 url），
+  ///                    顺序与 originalFacePaths 一一对应
+  void _onDraw() {
+    if (_confirmedFaces.isEmpty) return;
+
+    final originalFacePaths = <String>[];
+    final faceImageUrls = <String>[];
+
+    final orderedEntries = _confirmedFaces.entries.toList()
+      ..sort((a, b) => a.key.compareTo(b.key));
+
+    for (final entry in orderedEntries) {
+      final slotIndex = entry.key;
+      if (slotIndex >= widget.result.faces.length) continue;
+      originalFacePaths.add(widget.result.faces[slotIndex].path);
+      faceImageUrls.add(entry.value.url);
+    }
+
+    if (originalFacePaths.isEmpty) return;
+
+    ref.read(faceSwapInputHolderProvider.notifier).set(
+          FaceSwapInput(
+            targetOssUrl: widget.result.targetOssUrl,
+            originalFacePaths: originalFacePaths,
+            faceImageUrls: faceImageUrls,
+          ),
+        );
+
+    context.push('/wait/face_swap?prompt=face_swap');
   }
 
   @override
@@ -253,9 +286,7 @@ class _AiFaceSelectScreenState extends ConsumerState<AiFaceSelectScreen> {
             child: SafeArea(
               top: false,
               child: GestureDetector(
-                onTap: () {
-                  // TODO(dev): 触发换脸生成
-                },
+                onTap: _onDraw,
                 child: SizedBox(
                   height: 56,
                   child: Stack(

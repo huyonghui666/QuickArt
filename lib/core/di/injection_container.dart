@@ -27,6 +27,7 @@ import 'package:quick_art/features/tools/domain/usecases/detect_faces_usecase.da
 import 'package:quick_art/features/tools/domain/usecases/generate_video_from_image_usecase.dart';
 import 'package:quick_art/features/tools/domain/usecases/get_video_templates_usecase.dart';
 import 'package:quick_art/features/tools/domain/usecases/start_end_frame_generate_video_usecase.dart';
+import 'package:quick_art/features/tools/domain/usecases/swap_faces_usecase.dart';
 import 'package:quick_art/features/tools/domain/usecases/text_to_generate_video_usecase.dart';
 import 'package:quick_art/features/workshop/data/datasources/local_data_source/database_helper.dart';
 import 'package:quick_art/features/workshop/data/repositories/workshop_repository_impl.dart';
@@ -228,4 +229,10 @@ IFaceSwapRepository faceSwapRepository(Ref ref) {
 @riverpod
 DetectFacesUseCase detectFacesUseCase(Ref ref) {
   return DetectFacesUseCase(ref.watch(faceSwapRepositoryProvider));
+}
+
+/// 换脸任务提交用例
+@riverpod
+SwapFacesUseCase swapFacesUseCase(Ref ref) {
+  return SwapFacesUseCase(ref.watch(faceSwapRepositoryProvider));
 }

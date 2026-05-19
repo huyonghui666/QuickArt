@@ -228,6 +228,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get tools_ai_face_swap_guide_got_it => '知道了';
 
   @override
+  String get tools_ai_face_swap_select_face => '选择要交换的面孔';
+
+  @override
+  String get tools_ai_face_swap_all => 'ALL';
+
+  @override
+  String get tools_ai_face_swap_no_face_hint => '尝试使用正面照片';
+
+  @override
   String get tools_text_to_video => '文生视频';
 
   @override

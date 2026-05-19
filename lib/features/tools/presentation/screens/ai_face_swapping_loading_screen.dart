@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/resource_management/app_icons.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/face_detect_notifier.dart';
+import 'package:quick_art/features/tools/presentation/screens/ai_face_swapping_screen.dart';
 
 /// AI 换脸加载页面（人脸检测中）
 class AiFaceSwappingLoadingScreen extends ConsumerStatefulWidget {
@@ -38,8 +39,29 @@ class _AiFaceSwappingLoadingScreenState
     ref.listen(faceDetectProvider, (_, next) {
       next.whenOrNull(
         data: (result) {
-          if (result != null) {
-            // TODO(user): 导航到人脸选择页面，传入 result
+          if (!context.mounted) return;
+          if (result == null) return;
+          if (result.faces.isEmpty) {
+            context.pop();
+            Future.delayed(const Duration(milliseconds: 300), () {
+              if (!context.mounted) return;
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(l10n.tools_ai_face_swap_no_face_hint),
+                ),
+              );
+              showModalBottomSheet<void>(
+                context: context,
+                backgroundColor: Colors.transparent,
+                isScrollControlled: true,
+                builder: (_) => const FaceSwapGuideBottomSheet(),
+              );
+            });
+          } else {
+            context.pushReplacement(
+              '/tools/ai-face-swapping/select',
+              extra: result,
+            );
           }
         },
       );

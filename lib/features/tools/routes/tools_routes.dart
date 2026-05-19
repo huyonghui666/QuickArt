@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
+import 'package:quick_art/features/tools/domain/entities/face_detect_result.dart';
 import 'package:quick_art/features/tools/domain/entities/video_template.dart';
+import 'package:quick_art/features/tools/presentation/screens/ai_face_select_screen.dart';
 import 'package:quick_art/features/tools/presentation/screens/ai_face_swapping_loading_screen.dart';
 import 'package:quick_art/features/tools/presentation/screens/ai_face_swapping_screen.dart';
 import 'package:quick_art/features/tools/presentation/screens/ai_video_screen.dart';
@@ -43,6 +45,13 @@ List<GoRoute> get toolsStandaloneRoutes => [
     builder: (context, state) {
       final imagePath = state.extra! as String;
       return AiFaceSwappingLoadingScreen(imagePath: imagePath);
+    },
+  ),
+  GoRoute(
+    path: '/tools/ai-face-swapping/select',
+    builder: (context, state) {
+      final result = state.extra! as FaceDetectResult;
+      return AiFaceSelectScreen(result: result);
     },
   ),
 ];

@@ -42,6 +42,15 @@ class AppIcons {
 
 
 
+  /// ----------------AI 换脸icon-----------------------------------------------
+  /// 已选中换脸切换图标
+  static const String faceSwapAvatarChange =
+      '$_svgBasePath/ai_face_swapping/avatar_ablum_change.svg';
+
+  /// 未选中换脸切换图标
+  static const String faceSwapAvatarChangeUn =
+      '$_svgBasePath/ai_face_swapping/avatar_ablum_change_un.svg';
+
   /// ----------------首页的icon-----------------------------------------------
   /// ----------------首页顶部的icon----------------
   static const String homeSettings = '$_svgBasePath/home/home_settings.svg';

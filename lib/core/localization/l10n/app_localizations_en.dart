@@ -234,6 +234,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tools_ai_face_swap_guide_got_it => 'Got it';
 
   @override
+  String get tools_ai_face_swap_select_face => 'Select the face to swap';
+
+  @override
+  String get tools_ai_face_swap_all => 'ALL';
+
+  @override
+  String get tools_ai_face_swap_no_face_hint =>
+      'Try using a front-facing photo';
+
+  @override
   String get tools_text_to_video => 'Text to Video';
 
   @override

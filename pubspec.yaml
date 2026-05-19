@@ -66,6 +66,7 @@ flutter:
     - assets/icons/svg/setting/
     - assets/icons/svg/bottom_navigation/
     - assets/icons/svg/core/
+    - assets/icons/svg/ai_face_swapping/
 
     - assets/images/tools/
     - assets/images/tools/ai-face-swapping/

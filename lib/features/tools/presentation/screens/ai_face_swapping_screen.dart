@@ -36,13 +36,14 @@ class _AiFaceSwappingScreenState extends State<AiFaceSwappingScreen> {
       context: context,
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
-      builder: (_) => const _FaceSwapGuideBottomSheet(),
+      builder: (_) => const FaceSwapGuideBottomSheet(),
     );
   }
 
   Future<void> _pickPhoto() async {
     final hasPermission = await PermissionManager.requestPhotosPermission();
     if (!hasPermission) return;
+    /// 相册拾取
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image != null && mounted) {
       context.push('/tools/ai-face-swapping/loading', extra: image.path);
@@ -161,8 +162,10 @@ class _CustomPhotoCard extends StatelessWidget {
   }
 }
 
-class _FaceSwapGuideBottomSheet extends StatelessWidget {
-  const _FaceSwapGuideBottomSheet();
+/// 换脸引导底部弹窗
+class FaceSwapGuideBottomSheet extends StatelessWidget {
+  /// 构造
+  const FaceSwapGuideBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {

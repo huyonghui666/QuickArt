@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,12 +9,25 @@ import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/resource_management/app_icons.dart';
 
 /// 设置页面
-class SettingScreen extends ConsumerWidget {
+class SettingScreen extends ConsumerStatefulWidget {
   /// 构造
   const SettingScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SettingScreen> createState() => _SettingScreenState();
+}
+
+class _SettingScreenState extends ConsumerState<SettingScreen> {
+  late final String _defaultUserName;
+
+  @override
+  void initState() {
+    super.initState();
+    _defaultUserName = '用户${100 + Random().nextInt(999999999)}';
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final config = ref.watch(appConfigProvider);
 
@@ -30,7 +45,7 @@ class SettingScreen extends ConsumerWidget {
           onPressed: () => context.pop(),
         ),
         title: Text(
-          l10n.setting, // This will be 'Language' or '语言'
+          l10n.setting,
           style: const TextStyle(
             color: Colors.white,
             fontSize: 18,
@@ -42,6 +57,8 @@ class SettingScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
+          _buildUserInfoCard(),
+          const SizedBox(height: 20),
           Material(
             color: const Color(0xFF1C1C1E),
             borderRadius: BorderRadius.circular(16),
@@ -76,6 +93,35 @@ class SettingScreen extends ConsumerWidget {
                 _buildSocialMediaItem(l10n),
                 _buildVersionItem(l10n, config.version),
               ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildUserInfoCard() {
+    return Container(
+      height: 110,
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      decoration: BoxDecoration(
+        color: const Color(0xFF1C1C1E),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        children: [
+          SvgPicture.asset(
+            AppIcons.settingNoAvatar,
+            width: 48,
+            height: 48,
+          ),
+          const SizedBox(width: 16),
+          Text(
+            _defaultUserName,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],

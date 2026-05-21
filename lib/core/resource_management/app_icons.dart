@@ -114,4 +114,6 @@ class AppIcons {
   static const String settingFollowUs = '$_svgBasePath/setting/setting_followUs.svg';
   /// 版本号
   static const String settingVersion = '$_svgBasePath/setting/setting_version.svg';
+  /// 默认头像
+  static const String settingNoAvatar = '$_svgBasePath/setting/no_avatar.svg';
 }

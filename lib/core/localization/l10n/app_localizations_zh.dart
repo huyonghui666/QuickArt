@@ -372,4 +372,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get auth_login_agreement_privacy => '隐私政策';
+
+  @override
+  String get auth_login_agreement_required => '请先阅读并同意用户协议和隐私政策';
+
+  @override
+  String get auth_login_error_cannot_open_url => '无法打开授权页面，请检查是否安装了浏览器';
+
+  @override
+  String get auth_login_error_generic => '登录失败，请重试';
 }

@@ -135,5 +135,8 @@
   "auth_login_agreement_prefix": "I have read and agree to ",
   "auth_login_agreement_user": "User Agreement",
   "auth_login_agreement_and": " and ",
-  "auth_login_agreement_privacy": "Privacy Policy"
+  "auth_login_agreement_privacy": "Privacy Policy",
+  "auth_login_agreement_required": "Please read and agree to the User Agreement and Privacy Policy",
+  "auth_login_error_cannot_open_url": "Cannot open authorization page, please check if a browser is installed",
+  "auth_login_error_generic": "Login failed, please try again"
 }

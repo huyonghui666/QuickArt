@@ -823,6 +823,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Privacy Policy'**
   String get auth_login_agreement_privacy;
+
+  /// No description provided for @auth_login_agreement_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Please read and agree to the User Agreement and Privacy Policy'**
+  String get auth_login_agreement_required;
+
+  /// No description provided for @auth_login_error_cannot_open_url.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot open authorization page, please check if a browser is installed'**
+  String get auth_login_error_cannot_open_url;
+
+  /// No description provided for @auth_login_error_generic.
+  ///
+  /// In en, this message translates to:
+  /// **'Login failed, please try again'**
+  String get auth_login_error_generic;
 }
 
 class _AppLocalizationsDelegate

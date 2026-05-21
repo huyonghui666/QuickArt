@@ -1,6 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/core/di/config/config_provider.dart';
+import 'package:quick_art/features/auth_login/data/datasources/auth_login_local_data_source.dart';
+import 'package:quick_art/features/auth_login/data/datasources/auth_login_remote_data_source.dart';
+import 'package:quick_art/features/auth_login/data/repositories/auth_login_repository_impl.dart';
+import 'package:quick_art/features/auth_login/domain/repositories/auth_login_repository.dart';
+import 'package:quick_art/features/auth_login/domain/usecases/clear_auth_jwt_token_usecase.dart';
+import 'package:quick_art/features/auth_login/domain/usecases/get_auth_jwt_token_usecase.dart';
+import 'package:quick_art/features/auth_login/domain/usecases/get_auth_login_url_usecase.dart';
+import 'package:quick_art/features/auth_login/domain/usecases/save_auth_jwt_token_usecase.dart';
 import 'package:quick_art/features/home/data/datasources/Remote_data_source/art_styles_remote_data_source.dart';
 import 'package:quick_art/features/home/data/datasources/Remote_data_source/template_remote_data_source.dart';
 import 'package:quick_art/features/home/data/datasources/Remote_data_source/text_to_image_remote_data_source.dart';
@@ -235,4 +243,50 @@ DetectFacesUseCase detectFacesUseCase(Ref ref) {
 @riverpod
 SwapFacesUseCase swapFacesUseCase(Ref ref) {
   return SwapFacesUseCase(ref.watch(faceSwapRepositoryProvider));
+}
+
+//------------------------------认证登录------------------------------------------
+/// 认证登录远程数据源
+@riverpod
+IAuthLoginRemoteDataSource authLoginRemoteDataSource(Ref ref) {
+  return AuthLoginRemoteDataSource(ref.watch(dioProvider));
+}
+
+/// 认证登录本地数据源
+@riverpod
+IAuthLoginLocalDataSource authLoginLocalDataSource(Ref ref) {
+  return AuthLoginLocalDataSource();
+}
+
+/// 认证登录仓库
+@riverpod
+IAuthLoginRepository authLoginRepository(Ref ref) {
+  return AuthLoginRepositoryImpl(
+    ref.watch(authLoginRemoteDataSourceProvider),
+    ref.watch(authLoginLocalDataSourceProvider),
+  );
+}
+
+/// 获取登录跳转链接用例
+@riverpod
+GetAuthLoginUrlUseCase getAuthLoginUrlUseCase(Ref ref) {
+  return GetAuthLoginUrlUseCase(ref.watch(authLoginRepositoryProvider));
+}
+
+/// 保存 JWT 用例
+@riverpod
+SaveAuthJwtTokenUseCase saveAuthJwtTokenUseCase(Ref ref) {
+  return SaveAuthJwtTokenUseCase(ref.watch(authLoginRepositoryProvider));
+}
+
+/// 读取 JWT 用例
+@riverpod
+GetAuthJwtTokenUseCase getAuthJwtTokenUseCase(Ref ref) {
+  return GetAuthJwtTokenUseCase(ref.watch(authLoginRepositoryProvider));
+}
+
+/// 清除 JWT 用例
+@riverpod
+ClearAuthJwtTokenUseCase clearAuthJwtTokenUseCase(Ref ref) {
+  return ClearAuthJwtTokenUseCase(ref.watch(authLoginRepositoryProvider));
 }

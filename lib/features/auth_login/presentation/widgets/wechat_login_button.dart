@@ -5,13 +5,21 @@ import 'package:quick_art/core/resource_management/app_icons.dart';
 /// 微信登录按钮
 class WechatLoginButton extends StatelessWidget {
   /// 构造
-  const WechatLoginButton({required this.text, super.key, this.onTap});
-
-  /// 点击回调
-  final VoidCallback? onTap;
+  const WechatLoginButton({
+    required this.text,
+    super.key,
+    this.onTap,
+    this.isLoading = false,
+  });
 
   /// 按钮文案
   final String text;
+
+  /// 点击回调；为 null 时按钮不可交互
+  final VoidCallback? onTap;
+
+  /// 是否显示加载状态
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +48,26 @@ class WechatLoginButton extends StatelessWidget {
                   ),
                 ),
               ),
-              Text(
-                text,
-                style: const TextStyle(
-                  color: Color(0xFF1A1A1A),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
+              if (isLoading)
+                const SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Color(0xFF1A1A1A),
+                    ),
+                  ),
+                )
+              else
+                Text(
+                  text,
+                  style: const TextStyle(
+                    color: Color(0xFF1A1A1A),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
             ],
           ),
         ),

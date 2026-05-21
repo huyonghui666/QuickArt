@@ -135,5 +135,8 @@
   "auth_login_agreement_prefix": "已阅读并同意 ",
   "auth_login_agreement_user": "用户协议",
   "auth_login_agreement_and": " 和 ",
-  "auth_login_agreement_privacy": "隐私政策"
+  "auth_login_agreement_privacy": "隐私政策",
+  "auth_login_agreement_required": "请先阅读并同意用户协议和隐私政策",
+  "auth_login_error_cannot_open_url": "无法打开授权页面，请检查是否安装了浏览器",
+  "auth_login_error_generic": "登录失败，请重试"
 }

@@ -26,7 +26,7 @@ final faceSwapInputHolderProvider =
 
 typedef _$FaceSwapInputHolder = Notifier<FaceSwapInput?>;
 String _$faceSwapGenerationNotifierHash() =>
-    r'997ccbf3558f85339dcc79c6984e84b35c7b068b';
+    r'cd5e086ff20c225ed557fbacae2f6bcead82fe01';
 
 /// Copied from Dart SDK
 class _SystemHash {

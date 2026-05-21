@@ -383,4 +383,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get auth_login_agreement_privacy => 'Privacy Policy';
+
+  @override
+  String get auth_login_agreement_required =>
+      'Please read and agree to the User Agreement and Privacy Policy';
+
+  @override
+  String get auth_login_error_cannot_open_url =>
+      'Cannot open authorization page, please check if a browser is installed';
+
+  @override
+  String get auth_login_error_generic => 'Login failed, please try again';
 }

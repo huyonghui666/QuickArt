@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/resource_management/app_video_image.dart';
+import 'package:quick_art/features/auth_login/presentation/notifiers/auth_login_notifier.dart';
 import 'package:quick_art/features/auth_login/presentation/widgets/login_agreement_bar.dart';
 import 'package:quick_art/features/auth_login/presentation/widgets/wechat_login_button.dart';
 
 /// 登录页面
-class AuthLoginScreen extends StatefulWidget {
+class AuthLoginScreen extends ConsumerStatefulWidget {
   /// 构造
   const AuthLoginScreen({
     super.key,
-    this.onWechatLogin,
-    this.onAgreementChanged,
     this.onUserAgreementTap,
     this.onPrivacyPolicyTap,
   });
-
-  /// 微信登录点击回调
-  final VoidCallback? onWechatLogin;
-
-  /// 协议勾选状态变化回调
-  final ValueChanged<bool>? onAgreementChanged;
 
   /// 用户协议点击回调
   final VoidCallback? onUserAgreementTap;
@@ -28,30 +23,46 @@ class AuthLoginScreen extends StatefulWidget {
   final VoidCallback? onPrivacyPolicyTap;
 
   @override
-  State<AuthLoginScreen> createState() => _AuthLoginScreenState();
+  ConsumerState<AuthLoginScreen> createState() => _AuthLoginScreenState();
 }
 
-class _AuthLoginScreenState extends State<AuthLoginScreen> {
+class _AuthLoginScreenState extends ConsumerState<AuthLoginScreen> {
   bool _isAgreementChecked = false;
 
   void _toggleAgreement() {
-    setState(() {
-      _isAgreementChecked = !_isAgreementChecked;
-    });
-    widget.onAgreementChanged?.call(_isAgreementChecked);
+    setState(() => _isAgreementChecked = !_isAgreementChecked);
   }
 
-  void _handleWechatLogin() {
+  void _handleWechatLogin(AppLocalizations l10n) {
     if (!_isAgreementChecked) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n.auth_login_agreement_required)),
+      );
       return;
     }
-    widget.onWechatLogin?.call();
+    ref.read(authLoginNotifierProvider.notifier).startWechatLogin();
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final screenHeight = MediaQuery.sizeOf(context).height;
+    final notifierState = ref.watch(authLoginNotifierProvider);
+
+    // 监听状态变化做副作用
+    ref.listen<AuthLoginState>(authLoginNotifierProvider, (previous, next) {
+      if (next.errorMessage != null &&
+          next.errorMessage != previous?.errorMessage) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(next.errorMessage!)),
+        );
+        ref.read(authLoginNotifierProvider.notifier).clearError();
+      }
+
+      if (next.isLoginSuccess && previous?.isLoginSuccess != true) {
+        context.go('/');
+      }
+    });
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -88,7 +99,11 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
             child: SafeArea(
               top: false,
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 50, left: 24, right: 24),
+                padding: const EdgeInsets.only(
+                  bottom: 50,
+                  left: 24,
+                  right: 24,
+                ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -114,7 +129,10 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
                     const SizedBox(height: 40),
                     WechatLoginButton(
                       text: l10n.auth_login_wechat_button,
-                      onTap: _handleWechatLogin,
+                      onTap: notifierState.isLoading
+                          ? null
+                          : () => _handleWechatLogin(l10n),
+                      isLoading: notifierState.isLoading,
                     ),
                     const SizedBox(height: 32),
                     LoginAgreementBar(

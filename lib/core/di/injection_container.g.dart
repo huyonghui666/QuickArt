@@ -564,5 +564,158 @@ final swapFacesUseCaseProvider = AutoDisposeProvider<SwapFacesUseCase>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef SwapFacesUseCaseRef = AutoDisposeProviderRef<SwapFacesUseCase>;
+String _$authLoginRemoteDataSourceHash() =>
+    r'c084da7c78a89a1a2bf7be7c033c415d9e1daf20';
+
+/// 认证登录远程数据源
+///
+/// Copied from [authLoginRemoteDataSource].
+@ProviderFor(authLoginRemoteDataSource)
+final authLoginRemoteDataSourceProvider =
+    AutoDisposeProvider<IAuthLoginRemoteDataSource>.internal(
+      authLoginRemoteDataSource,
+      name: r'authLoginRemoteDataSourceProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$authLoginRemoteDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef AuthLoginRemoteDataSourceRef =
+    AutoDisposeProviderRef<IAuthLoginRemoteDataSource>;
+String _$authLoginLocalDataSourceHash() =>
+    r'0bc26c1a5f15ca1465da899ba1d5b3fa064c3fe8';
+
+/// 认证登录本地数据源
+///
+/// Copied from [authLoginLocalDataSource].
+@ProviderFor(authLoginLocalDataSource)
+final authLoginLocalDataSourceProvider =
+    AutoDisposeProvider<IAuthLoginLocalDataSource>.internal(
+      authLoginLocalDataSource,
+      name: r'authLoginLocalDataSourceProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$authLoginLocalDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef AuthLoginLocalDataSourceRef =
+    AutoDisposeProviderRef<IAuthLoginLocalDataSource>;
+String _$authLoginRepositoryHash() =>
+    r'e3729fef7868559a4d0e7503f0208cd87a7fe476';
+
+/// 认证登录仓库
+///
+/// Copied from [authLoginRepository].
+@ProviderFor(authLoginRepository)
+final authLoginRepositoryProvider =
+    AutoDisposeProvider<IAuthLoginRepository>.internal(
+      authLoginRepository,
+      name: r'authLoginRepositoryProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$authLoginRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef AuthLoginRepositoryRef = AutoDisposeProviderRef<IAuthLoginRepository>;
+String _$getAuthLoginUrlUseCaseHash() =>
+    r'82f8af47b93b0aef43c958239e9f401c09b8a3bf';
+
+/// 获取登录跳转链接用例
+///
+/// Copied from [getAuthLoginUrlUseCase].
+@ProviderFor(getAuthLoginUrlUseCase)
+final getAuthLoginUrlUseCaseProvider =
+    AutoDisposeProvider<GetAuthLoginUrlUseCase>.internal(
+      getAuthLoginUrlUseCase,
+      name: r'getAuthLoginUrlUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$getAuthLoginUrlUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetAuthLoginUrlUseCaseRef =
+    AutoDisposeProviderRef<GetAuthLoginUrlUseCase>;
+String _$saveAuthJwtTokenUseCaseHash() =>
+    r'2014892ccfe51d7bd0dac83f74168aae01571461';
+
+/// 保存 JWT 用例
+///
+/// Copied from [saveAuthJwtTokenUseCase].
+@ProviderFor(saveAuthJwtTokenUseCase)
+final saveAuthJwtTokenUseCaseProvider =
+    AutoDisposeProvider<SaveAuthJwtTokenUseCase>.internal(
+      saveAuthJwtTokenUseCase,
+      name: r'saveAuthJwtTokenUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$saveAuthJwtTokenUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef SaveAuthJwtTokenUseCaseRef =
+    AutoDisposeProviderRef<SaveAuthJwtTokenUseCase>;
+String _$getAuthJwtTokenUseCaseHash() =>
+    r'dbdbdd85d1d2903ff3d519ee4b77af6c59d369c0';
+
+/// 读取 JWT 用例
+///
+/// Copied from [getAuthJwtTokenUseCase].
+@ProviderFor(getAuthJwtTokenUseCase)
+final getAuthJwtTokenUseCaseProvider =
+    AutoDisposeProvider<GetAuthJwtTokenUseCase>.internal(
+      getAuthJwtTokenUseCase,
+      name: r'getAuthJwtTokenUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$getAuthJwtTokenUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetAuthJwtTokenUseCaseRef =
+    AutoDisposeProviderRef<GetAuthJwtTokenUseCase>;
+String _$clearAuthJwtTokenUseCaseHash() =>
+    r'b160deed7bac2d5a29bf04fab46fd6dbb21baa52';
+
+/// 清除 JWT 用例
+///
+/// Copied from [clearAuthJwtTokenUseCase].
+@ProviderFor(clearAuthJwtTokenUseCase)
+final clearAuthJwtTokenUseCaseProvider =
+    AutoDisposeProvider<ClearAuthJwtTokenUseCase>.internal(
+      clearAuthJwtTokenUseCase,
+      name: r'clearAuthJwtTokenUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$clearAuthJwtTokenUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef ClearAuthJwtTokenUseCaseRef =
+    AutoDisposeProviderRef<ClearAuthJwtTokenUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

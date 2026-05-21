@@ -361,4 +361,26 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get workshop_task_failed => 'Generation failed, please retry!';
+
+  @override
+  String get auth_login_title => 'Login to QuickArt, imagine instantly';
+
+  @override
+  String get auth_login_subtitle =>
+      'Built by 50+ AI experts with world-leading image processing technology';
+
+  @override
+  String get auth_login_wechat_button => 'Continue with WeChat';
+
+  @override
+  String get auth_login_agreement_prefix => 'I have read and agree to ';
+
+  @override
+  String get auth_login_agreement_user => 'User Agreement';
+
+  @override
+  String get auth_login_agreement_and => ' and ';
+
+  @override
+  String get auth_login_agreement_privacy => 'Privacy Policy';
 }

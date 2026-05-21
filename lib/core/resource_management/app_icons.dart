@@ -32,6 +32,9 @@ class AppIcons {
   /// 返回上一页
   static const String backPreviousPage = '$_svgBasePath/core/back_previous_page.svg';
 
+  /// 微信登录图标
+  static const String authLoginWeChat = '$_svgBasePath/auth_login/wx.svg';
+
   /// facebook
   static const String facebook = '$_svgBasePath/core/facebook.svg';
   /// Instagram

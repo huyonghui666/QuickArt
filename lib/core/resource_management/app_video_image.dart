@@ -11,6 +11,10 @@ class AppVideoImage {
   static const String aiFaceSwapping =
       'assets/images/tools/AIFaceSwapping.webp';
 
+  /// 登录背景图
+  static const String authLoginBackground =
+      'assets/images/auth_login/auth_login.webp';
+
   /// 换脸功能自定义照片背景图
   static const String customPhotoAsset =
       'assets/images/tools/ai-face-swapping/custom_photo.webp';

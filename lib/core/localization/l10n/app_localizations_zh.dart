@@ -351,4 +351,25 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get workshop_task_failed => '生成失败，请重试！';
+
+  @override
+  String get auth_login_title => '登录QuickArt，即可想象';
+
+  @override
+  String get auth_login_subtitle => '由50多位AI专家开发，世界领先的图像处理技术';
+
+  @override
+  String get auth_login_wechat_button => '通过微信登录';
+
+  @override
+  String get auth_login_agreement_prefix => '已阅读并同意 ';
+
+  @override
+  String get auth_login_agreement_user => '用户协议';
+
+  @override
+  String get auth_login_agreement_and => ' 和 ';
+
+  @override
+  String get auth_login_agreement_privacy => '隐私政策';
 }

@@ -127,5 +127,13 @@
   "workshop_pro_banner_description": "Unlock more unique effects",
   "workshop_pro_banner_action": "Get",
   "workshop_task_processing": "Drawing in progress, please wait",
-  "workshop_task_failed": "Generation failed, please retry!"
+  "workshop_task_failed": "Generation failed, please retry!",
+
+  "auth_login_title": "Login to QuickArt, imagine instantly",
+  "auth_login_subtitle": "Built by 50+ AI experts with world-leading image processing technology",
+  "auth_login_wechat_button": "Continue with WeChat",
+  "auth_login_agreement_prefix": "I have read and agree to ",
+  "auth_login_agreement_user": "User Agreement",
+  "auth_login_agreement_and": " and ",
+  "auth_login_agreement_privacy": "Privacy Policy"
 }

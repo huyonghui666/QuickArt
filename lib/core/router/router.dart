@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/router/bottom_navigation_screen.dart';
 import 'package:quick_art/core/widgets/waiting_screen.dart';
+import 'package:quick_art/features/auth_login/routes/auth_login_routes.dart';
 import 'package:quick_art/features/explore/routes/explore_routes.dart';
 import 'package:quick_art/features/home/routes/home_routes.dart';
 import 'package:quick_art/features/setting/routes/setting_routes.dart';
@@ -10,7 +11,8 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// 主路由
 final GoRouter router = GoRouter(
-  initialLocation: '/',
+  // initialLocation: '/',
+  initialLocation: '/auth/login',
   observers: [SentryNavigatorObserver()],  //sentry监听路由
   routes: [
     StatefulShellRoute.indexedStack(
@@ -29,6 +31,7 @@ final GoRouter router = GoRouter(
       ],
     ),
     // 其他独立于底部导航栏导航的页面
+    ...authLoginRoutes,
     ...settingRoutes,
 
     GoRoute(

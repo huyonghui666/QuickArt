@@ -781,6 +781,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Generation failed, please retry!'**
   String get workshop_task_failed;
+
+  /// No description provided for @auth_login_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Login to QuickArt, imagine instantly'**
+  String get auth_login_title;
+
+  /// No description provided for @auth_login_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Built by 50+ AI experts with world-leading image processing technology'**
+  String get auth_login_subtitle;
+
+  /// No description provided for @auth_login_wechat_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with WeChat'**
+  String get auth_login_wechat_button;
+
+  /// No description provided for @auth_login_agreement_prefix.
+  ///
+  /// In en, this message translates to:
+  /// **'I have read and agree to '**
+  String get auth_login_agreement_prefix;
+
+  /// No description provided for @auth_login_agreement_user.
+  ///
+  /// In en, this message translates to:
+  /// **'User Agreement'**
+  String get auth_login_agreement_user;
+
+  /// No description provided for @auth_login_agreement_and.
+  ///
+  /// In en, this message translates to:
+  /// **' and '**
+  String get auth_login_agreement_and;
+
+  /// No description provided for @auth_login_agreement_privacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get auth_login_agreement_privacy;
 }
 
 class _AppLocalizationsDelegate

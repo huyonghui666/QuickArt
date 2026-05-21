@@ -1,5 +1,4 @@
-import 'dart:math';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,29 +6,20 @@ import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/di/config/config_provider.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/resource_management/app_icons.dart';
+import 'package:quick_art/features/setting/domain/entities/user_profile.dart';
+import 'package:quick_art/features/setting/presentation/notifiers/user_profile_notifier.dart';
 
 /// 设置页面
-class SettingScreen extends ConsumerStatefulWidget {
+class SettingScreen extends ConsumerWidget {
   /// 构造
   const SettingScreen({super.key});
 
   @override
-  ConsumerState<SettingScreen> createState() => _SettingScreenState();
-}
-
-class _SettingScreenState extends ConsumerState<SettingScreen> {
-  late final String _defaultUserName;
-
-  @override
-  void initState() {
-    super.initState();
-    _defaultUserName = '用户${100 + Random().nextInt(999999999)}';
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     final config = ref.watch(appConfigProvider);
+    final profileState =
+        ref.watch<AsyncValue<UserProfile>>(userProfileNotifierProvider);
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -57,7 +47,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          _buildUserInfoCard(),
+          _UserInfoCard(profileState: profileState),
           const SizedBox(height: 20),
           Material(
             color: const Color(0xFF1C1C1E),
@@ -100,35 +90,6 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
     );
   }
 
-  Widget _buildUserInfoCard() {
-    return Container(
-      height: 110,
-      padding: const EdgeInsets.symmetric(horizontal: 24),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1C1C1E),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        children: [
-          SvgPicture.asset(
-            AppIcons.settingNoAvatar,
-            width: 48,
-            height: 48,
-          ),
-          const SizedBox(width: 16),
-          Text(
-            _defaultUserName,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildSettingItem({
     required String icon,
     required String text,
@@ -140,11 +101,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
         text,
         style: const TextStyle(color: Colors.white, fontSize: 14),
       ),
-      trailing: SvgPicture.asset(
-        AppIcons.ratioNext,
-        width: 20,
-        height: 20,
-      ),
+      trailing: SvgPicture.asset(AppIcons.ratioNext, width: 20, height: 20),
       onTap: onTap,
     );
   }
@@ -198,5 +155,83 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
         style: const TextStyle(color: Colors.grey, fontSize: 14),
       ),
     );
+  }
+}
+
+class _UserInfoCard extends StatelessWidget {
+  const _UserInfoCard({required this.profileState});
+
+  final AsyncValue<UserProfile> profileState;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 110,
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      decoration: BoxDecoration(
+        color: const Color(0xFF1C1C1E),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        children: [
+          _buildAvatar(),
+          const SizedBox(width: 16),
+          Expanded(child: _buildNickname()),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAvatar() {
+    return profileState.when(
+      data: (profile) {
+        final url = profile.avatarUrl;
+        if (url != null && url.isNotEmpty) {
+          return ClipOval(
+            child: CachedNetworkImage(
+              imageUrl: url,
+              width: 48,
+              height: 48,
+              fit: BoxFit.cover,
+              placeholder: (_, a) => _placeholderAvatar(),
+              errorWidget: (_, a, b) => _placeholderAvatar(),
+            ),
+          );
+        }
+        return _placeholderAvatar();
+      },
+      loading: _placeholderAvatar,
+      error: (_, e) => _placeholderAvatar(),
+    );
+  }
+
+  Widget _buildNickname() {
+    return profileState.when(
+      data: (profile) => Text(
+        profile.nickname,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+        ),
+        overflow: TextOverflow.ellipsis,
+      ),
+      loading: () => Container(
+        height: 20,
+        width: 120,
+        decoration: BoxDecoration(
+          color: Colors.white12,
+          borderRadius: BorderRadius.circular(4),
+        ),
+      ),
+      error: (_, e) => const Text(
+        '加载失败',
+        style: TextStyle(color: Colors.grey, fontSize: 16),
+      ),
+    );
+  }
+
+  Widget _placeholderAvatar() {
+    return SvgPicture.asset(AppIcons.settingNoAvatar, width: 48, height: 48);
   }
 }

@@ -717,5 +717,71 @@ final clearAuthJwtTokenUseCaseProvider =
 // ignore: unused_element
 typedef ClearAuthJwtTokenUseCaseRef =
     AutoDisposeProviderRef<ClearAuthJwtTokenUseCase>;
+String _$userProfileRemoteDataSourceHash() =>
+    r'9b7e2ec7dad83378ff51a61a0493e27cd4737afd';
+
+/// 用户资料远程数据源
+///
+/// Copied from [userProfileRemoteDataSource].
+@ProviderFor(userProfileRemoteDataSource)
+final userProfileRemoteDataSourceProvider =
+    AutoDisposeProvider<IUserProfileRemoteDataSource>.internal(
+      userProfileRemoteDataSource,
+      name: r'userProfileRemoteDataSourceProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$userProfileRemoteDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef UserProfileRemoteDataSourceRef =
+    AutoDisposeProviderRef<IUserProfileRemoteDataSource>;
+String _$userProfileRepositoryHash() =>
+    r'339b133a4ad4a290783a9436690a18fe6cb1e0b8';
+
+/// 用户资料仓库
+///
+/// Copied from [userProfileRepository].
+@ProviderFor(userProfileRepository)
+final userProfileRepositoryProvider =
+    AutoDisposeProvider<IUserProfileRepository>.internal(
+      userProfileRepository,
+      name: r'userProfileRepositoryProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$userProfileRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef UserProfileRepositoryRef =
+    AutoDisposeProviderRef<IUserProfileRepository>;
+String _$getUserProfileUseCaseHash() =>
+    r'cf982f6518f6afaacf6572efac8668b99ce2137b';
+
+/// 获取用户资料用例
+///
+/// Copied from [getUserProfileUseCase].
+@ProviderFor(getUserProfileUseCase)
+final getUserProfileUseCaseProvider =
+    AutoDisposeProvider<GetUserProfileUseCase>.internal(
+      getUserProfileUseCase,
+      name: r'getUserProfileUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$getUserProfileUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetUserProfileUseCaseRef =
+    AutoDisposeProviderRef<GetUserProfileUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

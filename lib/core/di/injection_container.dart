@@ -22,6 +22,10 @@ import 'package:quick_art/features/home/domain/repositories/text_to_image_reposi
 import 'package:quick_art/features/home/domain/usecases/get_templates_usecase.dart';
 import 'package:quick_art/features/home/domain/usecases/remote_config_usecase.dart';
 import 'package:quick_art/features/home/domain/usecases/text_to_generate_image_usecase.dart';
+import 'package:quick_art/features/setting/data/datasources/user_profile_remote_data_source.dart';
+import 'package:quick_art/features/setting/data/repositories/user_profile_repository_impl.dart';
+import 'package:quick_art/features/setting/domain/repositories/user_profile_repository.dart';
+import 'package:quick_art/features/setting/domain/usecases/get_user_profile_usecase.dart';
 import 'package:quick_art/features/tools/data/datasources/face_swap_remote_data_source.dart';
 import 'package:quick_art/features/tools/data/datasources/generate_video_remote_data_source.dart';
 import 'package:quick_art/features/tools/data/datasources/video_template_remote_data_source.dart';
@@ -289,4 +293,26 @@ GetAuthJwtTokenUseCase getAuthJwtTokenUseCase(Ref ref) {
 @riverpod
 ClearAuthJwtTokenUseCase clearAuthJwtTokenUseCase(Ref ref) {
   return ClearAuthJwtTokenUseCase(ref.watch(authLoginRepositoryProvider));
+}
+
+//------------------------------用户资料------------------------------------------
+/// 用户资料远程数据源
+@riverpod
+IUserProfileRemoteDataSource userProfileRemoteDataSource(Ref ref) {
+  return UserProfileRemoteDataSource(ref.watch(dioProvider));
+}
+
+/// 用户资料仓库
+@riverpod
+IUserProfileRepository userProfileRepository(Ref ref) {
+  return UserProfileRepositoryImpl(
+    ref.watch(userProfileRemoteDataSourceProvider),
+    ref.watch(authLoginLocalDataSourceProvider),
+  );
+}
+
+/// 获取用户资料用例
+@riverpod
+GetUserProfileUseCase getUserProfileUseCase(Ref ref) {
+  return GetUserProfileUseCase(ref.watch(userProfileRepositoryProvider));
 }

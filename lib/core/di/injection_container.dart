@@ -22,9 +22,11 @@ import 'package:quick_art/features/home/domain/repositories/text_to_image_reposi
 import 'package:quick_art/features/home/domain/usecases/get_templates_usecase.dart';
 import 'package:quick_art/features/home/domain/usecases/remote_config_usecase.dart';
 import 'package:quick_art/features/home/domain/usecases/text_to_generate_image_usecase.dart';
+import 'package:quick_art/features/setting/data/datasources/user_profile_local_data_source.dart';
 import 'package:quick_art/features/setting/data/datasources/user_profile_remote_data_source.dart';
 import 'package:quick_art/features/setting/data/repositories/user_profile_repository_impl.dart';
 import 'package:quick_art/features/setting/domain/repositories/user_profile_repository.dart';
+import 'package:quick_art/features/setting/domain/usecases/clear_user_profile_cache_usecase.dart';
 import 'package:quick_art/features/setting/domain/usecases/get_user_profile_usecase.dart';
 import 'package:quick_art/features/tools/data/datasources/face_swap_remote_data_source.dart';
 import 'package:quick_art/features/tools/data/datasources/generate_video_remote_data_source.dart';
@@ -302,12 +304,19 @@ IUserProfileRemoteDataSource userProfileRemoteDataSource(Ref ref) {
   return UserProfileRemoteDataSource(ref.watch(dioProvider));
 }
 
+/// 用户资料本地缓存数据源
+@riverpod
+IUserProfileLocalDataSource userProfileLocalDataSource(Ref ref) {
+  return UserProfileLocalDataSource();
+}
+
 /// 用户资料仓库
 @riverpod
 IUserProfileRepository userProfileRepository(Ref ref) {
   return UserProfileRepositoryImpl(
     ref.watch(userProfileRemoteDataSourceProvider),
     ref.watch(authLoginLocalDataSourceProvider),
+    ref.watch(userProfileLocalDataSourceProvider),
   );
 }
 
@@ -315,4 +324,10 @@ IUserProfileRepository userProfileRepository(Ref ref) {
 @riverpod
 GetUserProfileUseCase getUserProfileUseCase(Ref ref) {
   return GetUserProfileUseCase(ref.watch(userProfileRepositoryProvider));
+}
+
+/// 清除用户资料缓存用例
+@riverpod
+ClearUserProfileCacheUseCase clearUserProfileCacheUseCase(Ref ref) {
+  return ClearUserProfileCacheUseCase(ref.watch(userProfileRepositoryProvider));
 }

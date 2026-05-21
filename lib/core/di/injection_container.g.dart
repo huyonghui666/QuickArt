@@ -739,8 +739,30 @@ final userProfileRemoteDataSourceProvider =
 // ignore: unused_element
 typedef UserProfileRemoteDataSourceRef =
     AutoDisposeProviderRef<IUserProfileRemoteDataSource>;
+String _$userProfileLocalDataSourceHash() =>
+    r'bf2c52773a1f5cb03b84ce26b945e0fc6c19d1a8';
+
+/// 用户资料本地缓存数据源
+///
+/// Copied from [userProfileLocalDataSource].
+@ProviderFor(userProfileLocalDataSource)
+final userProfileLocalDataSourceProvider =
+    AutoDisposeProvider<IUserProfileLocalDataSource>.internal(
+      userProfileLocalDataSource,
+      name: r'userProfileLocalDataSourceProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$userProfileLocalDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef UserProfileLocalDataSourceRef =
+    AutoDisposeProviderRef<IUserProfileLocalDataSource>;
 String _$userProfileRepositoryHash() =>
-    r'339b133a4ad4a290783a9436690a18fe6cb1e0b8';
+    r'db5d941285caba1ad129d6349de757c4b5253a3a';
 
 /// 用户资料仓库
 ///
@@ -783,5 +805,27 @@ final getUserProfileUseCaseProvider =
 // ignore: unused_element
 typedef GetUserProfileUseCaseRef =
     AutoDisposeProviderRef<GetUserProfileUseCase>;
+String _$clearUserProfileCacheUseCaseHash() =>
+    r'ec8699358b53e655eacc158832d93c9633472519';
+
+/// 清除用户资料缓存用例
+///
+/// Copied from [clearUserProfileCacheUseCase].
+@ProviderFor(clearUserProfileCacheUseCase)
+final clearUserProfileCacheUseCaseProvider =
+    AutoDisposeProvider<ClearUserProfileCacheUseCase>.internal(
+      clearUserProfileCacheUseCase,
+      name: r'clearUserProfileCacheUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$clearUserProfileCacheUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef ClearUserProfileCacheUseCaseRef =
+    AutoDisposeProviderRef<ClearUserProfileCacheUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

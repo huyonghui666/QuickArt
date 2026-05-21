@@ -115,6 +115,7 @@ class AuthLoginNotifier extends _$AuthLoginNotifier {
 
     if (token != null && token.isNotEmpty) {
       await ref.read(saveAuthJwtTokenUseCaseProvider).call(token);
+      await ref.read(clearUserProfileCacheUseCaseProvider).call();
       state = state.copyWith(
         isLoading: false,
         isLoginSuccess: true,

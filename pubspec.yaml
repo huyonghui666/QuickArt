@@ -81,6 +81,7 @@ flutter:
     - assets/icons/svg/auth_login/
 
     - assets/images/auth_login/
+    - assets/images/payment/
     - assets/images/tools/
     - assets/images/tools/ai-face-swapping/
     - assets/images/tools/ai-face-swapping/guide/

@@ -381,4 +381,25 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get auth_login_error_generic => '登录失败，请重试';
+
+  @override
+  String get payment_title => 'QuickArt PRO';
+
+  @override
+  String get payment_subtitle => '由50多位AI专家开发,世界领先的图像处理技术';
+
+  @override
+  String get payment_benefit_weekly_points => '每周获得100积分';
+
+  @override
+  String get payment_benefit_fast => '快速处理';
+
+  @override
+  String get payment_benefit_no_watermark => '无水印';
+
+  @override
+  String get payment_save_badge => '省 50%';
+
+  @override
+  String get payment_continue => '继续';
 }

@@ -4,6 +4,7 @@ import 'package:quick_art/core/widgets/waiting_screen.dart';
 import 'package:quick_art/features/auth_login/routes/auth_login_routes.dart';
 import 'package:quick_art/features/explore/routes/explore_routes.dart';
 import 'package:quick_art/features/home/routes/home_routes.dart';
+import 'package:quick_art/features/payment/routes/payment_routes.dart';
 import 'package:quick_art/features/setting/routes/setting_routes.dart';
 import 'package:quick_art/features/tools/routes/tools_routes.dart';
 import 'package:quick_art/features/workshop/routes/workshop_routes.dart';
@@ -43,6 +44,7 @@ final GoRouter router = GoRouter(
         return WaitingScreen(taskType: taskType, prompt: prompt);
       },
     ),
+    ...paymentStandaloneRoutes,
     ...toolsStandaloneRoutes,
   ],
 );

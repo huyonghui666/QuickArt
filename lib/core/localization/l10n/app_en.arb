@@ -138,5 +138,13 @@
   "auth_login_agreement_privacy": "Privacy Policy",
   "auth_login_agreement_required": "Please read and agree to the User Agreement and Privacy Policy",
   "auth_login_error_cannot_open_url": "Cannot open authorization page, please check if a browser is installed",
-  "auth_login_error_generic": "Login failed, please try again"
+  "auth_login_error_generic": "Login failed, please try again",
+
+  "payment_title": "QuickArt PRO",
+  "payment_subtitle": "Built by 50+ AI experts with world-leading image processing technology",
+  "payment_benefit_weekly_points": "Get 100 points weekly",
+  "payment_benefit_fast": "Fast processing",
+  "payment_benefit_no_watermark": "No watermark",
+  "payment_save_badge": "Save 50%",
+  "payment_continue": "Continue"
 }

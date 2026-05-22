@@ -841,6 +841,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Login failed, please try again'**
   String get auth_login_error_generic;
+
+  /// No description provided for @payment_title.
+  ///
+  /// In en, this message translates to:
+  /// **'QuickArt PRO'**
+  String get payment_title;
+
+  /// No description provided for @payment_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Built by 50+ AI experts with world-leading image processing technology'**
+  String get payment_subtitle;
+
+  /// No description provided for @payment_benefit_weekly_points.
+  ///
+  /// In en, this message translates to:
+  /// **'Get 100 points weekly'**
+  String get payment_benefit_weekly_points;
+
+  /// No description provided for @payment_benefit_fast.
+  ///
+  /// In en, this message translates to:
+  /// **'Fast processing'**
+  String get payment_benefit_fast;
+
+  /// No description provided for @payment_benefit_no_watermark.
+  ///
+  /// In en, this message translates to:
+  /// **'No watermark'**
+  String get payment_benefit_no_watermark;
+
+  /// No description provided for @payment_save_badge.
+  ///
+  /// In en, this message translates to:
+  /// **'Save 50%'**
+  String get payment_save_badge;
+
+  /// No description provided for @payment_continue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get payment_continue;
 }
 
 class _AppLocalizationsDelegate

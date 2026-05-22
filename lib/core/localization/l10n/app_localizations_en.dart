@@ -394,4 +394,26 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get auth_login_error_generic => 'Login failed, please try again';
+
+  @override
+  String get payment_title => 'QuickArt PRO';
+
+  @override
+  String get payment_subtitle =>
+      'Built by 50+ AI experts with world-leading image processing technology';
+
+  @override
+  String get payment_benefit_weekly_points => 'Get 100 points weekly';
+
+  @override
+  String get payment_benefit_fast => 'Fast processing';
+
+  @override
+  String get payment_benefit_no_watermark => 'No watermark';
+
+  @override
+  String get payment_save_badge => 'Save 50%';
+
+  @override
+  String get payment_continue => 'Continue';
 }

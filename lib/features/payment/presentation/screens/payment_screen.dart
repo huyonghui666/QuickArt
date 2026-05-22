@@ -1,24 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/resource_management/app_icons.dart';
 import 'package:quick_art/core/resource_management/app_video_image.dart';
+import 'package:quick_art/features/payment/presentation/notifiers/payment_notifier.dart';
 
 /// 支付页面
-class PaymentScreen extends StatefulWidget {
+class PaymentScreen extends ConsumerStatefulWidget {
   /// 构造
   const PaymentScreen({super.key});
 
   @override
-  State<PaymentScreen> createState() => _PaymentScreenState();
+  ConsumerState<PaymentScreen> createState() => _PaymentScreenState();
 }
 
-class _PaymentScreenState extends State<PaymentScreen> {
+class _PaymentScreenState extends ConsumerState<PaymentScreen> {
   int _selectedPlan = 0;
+
+  Future<void> _handleContinue() {
+    final productCode = _selectedPlan == 0
+        ? 'pro_100_points'
+        : 'max_1000_points';
+    return ref
+        .read(paymentNotifierProvider.notifier)
+        .createOrderAndPay(productCode: productCode);
+  }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final paymentState = ref.watch(paymentNotifierProvider);
+
+    ref.listen<PaymentState>(paymentNotifierProvider, (previous, next) {
+      if (next.errorMessage != null &&
+          next.errorMessage != previous?.errorMessage) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(next.errorMessage!)),
+        );
+        ref.read(paymentNotifierProvider.notifier).clearError();
+      }
+
+      if (next.successMessage != null &&
+          next.successMessage != previous?.successMessage) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(next.successMessage!)),
+        );
+        ref.read(paymentNotifierProvider.notifier).clearSuccess();
+        context.pop();
+      }
+    });
 
     return Scaffold(
       backgroundColor: const Color(0xFF05062A),
@@ -122,21 +154,32 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               borderRadius: BorderRadius.circular(36),
                             ),
                             child: TextButton(
-                              onPressed: () {},
+                              onPressed: paymentState.isLoading
+                                  ? null
+                                  : _handleContinue,
                               style: TextButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(36),
                                 ),
                               ),
-                              child: Text(
-                                l10n.payment_continue,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w800,
-                                  height: 1,
-                                ),
-                              ),
+                              child: paymentState.isLoading
+                                  ? const SizedBox(
+                                      width: 24,
+                                      height: 24,
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  : Text(
+                                      l10n.payment_continue,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w800,
+                                        height: 1,
+                                      ),
+                                    ),
                             ),
                           ),
                         ),
@@ -158,7 +201,7 @@ class _BackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).pop(),
+      onTap: () => context.pop(),
       child: SizedBox(
         width: 36,
         height: 36,

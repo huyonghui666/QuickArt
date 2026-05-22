@@ -207,7 +207,38 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
           SvgPicture.asset(AppIcons.quickArtTitle, height: 50),
           Row(
             children: [
-              SvgPicture.asset(AppIcons.pro, width: 20, height: 20),
+              GestureDetector(
+                onTap: () => context.push('/payment'),
+                child: Container(
+                  height: 34,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 6,
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF222222),
+                    borderRadius: BorderRadius.circular(17),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SvgPicture.asset(AppIcons.points, width: 16, height: 16),
+                      const SizedBox(width: 4),
+                      const Text(
+                        '3',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          height: 1,
+                        ),
+                      ),
+                      const SizedBox(width: 6),
+                      SvgPicture.asset(AppIcons.vip, width: 20, height: 20),
+                    ],
+                  ),
+                ),
+              ),
               const SizedBox(width: 16),
               GestureDetector(
                 onTap: () => context.push('/setting'),

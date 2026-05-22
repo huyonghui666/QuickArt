@@ -16,6 +16,12 @@ class AppIcons {
   static const String quickArtTitle = '$_svgBasePath/core/quickArt_title.svg';
   /// Pro
   static const String pro = '$_svgBasePath/core/pro.svg';
+
+  /// 积分图标
+  static const String points = '$_svgBasePath/core/points.svg';
+
+  /// VIP 图标
+  static const String vip = '$_svgBasePath/core/VIP.svg';
   /// ----------------提示词输入框的icon-------------
   /// 撤销 (能)
   static const String promptBack = '$_svgBasePath/core/prompt_back.svg';

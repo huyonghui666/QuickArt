@@ -1,10 +1,18 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/core/di/config/config_provider.dart';
+import 'package:quick_art/features/auth_login/data/datasources/auth_login_local_data_source.dart';
+import 'package:quick_art/features/auth_login/data/datasources/auth_login_remote_data_source.dart';
+import 'package:quick_art/features/auth_login/data/repositories/auth_login_repository_impl.dart';
+import 'package:quick_art/features/auth_login/domain/repositories/auth_login_repository.dart';
+import 'package:quick_art/features/auth_login/domain/usecases/clear_auth_jwt_token_usecase.dart';
+import 'package:quick_art/features/auth_login/domain/usecases/get_auth_jwt_token_usecase.dart';
+import 'package:quick_art/features/auth_login/domain/usecases/get_auth_login_url_usecase.dart';
+import 'package:quick_art/features/auth_login/domain/usecases/save_auth_jwt_token_usecase.dart';
 import 'package:quick_art/features/home/data/datasources/Remote_data_source/art_styles_remote_data_source.dart';
-import 'package:quick_art/features/home/data/datasources/local_data_source/art_styles_local_data_source.dart';
 import 'package:quick_art/features/home/data/datasources/Remote_data_source/template_remote_data_source.dart';
 import 'package:quick_art/features/home/data/datasources/Remote_data_source/text_to_image_remote_data_source.dart';
+import 'package:quick_art/features/home/data/datasources/local_data_source/art_styles_local_data_source.dart';
 import 'package:quick_art/features/home/data/repositories/remote_art_style_config_repository_impl.dart';
 import 'package:quick_art/features/home/data/repositories/template_repository_impl.dart';
 import 'package:quick_art/features/home/data/repositories/text_to_image_repository_impl.dart';
@@ -14,15 +22,26 @@ import 'package:quick_art/features/home/domain/repositories/text_to_image_reposi
 import 'package:quick_art/features/home/domain/usecases/get_templates_usecase.dart';
 import 'package:quick_art/features/home/domain/usecases/remote_config_usecase.dart';
 import 'package:quick_art/features/home/domain/usecases/text_to_generate_image_usecase.dart';
+import 'package:quick_art/features/setting/data/datasources/user_profile_local_data_source.dart';
+import 'package:quick_art/features/setting/data/datasources/user_profile_remote_data_source.dart';
+import 'package:quick_art/features/setting/data/repositories/user_profile_repository_impl.dart';
+import 'package:quick_art/features/setting/domain/repositories/user_profile_repository.dart';
+import 'package:quick_art/features/setting/domain/usecases/clear_user_profile_cache_usecase.dart';
+import 'package:quick_art/features/setting/domain/usecases/get_user_profile_usecase.dart';
+import 'package:quick_art/features/tools/data/datasources/face_swap_remote_data_source.dart';
 import 'package:quick_art/features/tools/data/datasources/generate_video_remote_data_source.dart';
 import 'package:quick_art/features/tools/data/datasources/video_template_remote_data_source.dart';
+import 'package:quick_art/features/tools/data/repositories/face_swap_repository_impl.dart';
 import 'package:quick_art/features/tools/data/repositories/text_to_video_repository_impl.dart';
 import 'package:quick_art/features/tools/data/repositories/video_template_repository_impl.dart';
+import 'package:quick_art/features/tools/domain/repositories/face_swap_repository.dart';
 import 'package:quick_art/features/tools/domain/repositories/text_to_video_repository.dart';
 import 'package:quick_art/features/tools/domain/repositories/video_template_repository.dart';
+import 'package:quick_art/features/tools/domain/usecases/detect_faces_usecase.dart';
 import 'package:quick_art/features/tools/domain/usecases/generate_video_from_image_usecase.dart';
 import 'package:quick_art/features/tools/domain/usecases/get_video_templates_usecase.dart';
 import 'package:quick_art/features/tools/domain/usecases/start_end_frame_generate_video_usecase.dart';
+import 'package:quick_art/features/tools/domain/usecases/swap_faces_usecase.dart';
 import 'package:quick_art/features/tools/domain/usecases/text_to_generate_video_usecase.dart';
 import 'package:quick_art/features/workshop/data/datasources/local_data_source/database_helper.dart';
 import 'package:quick_art/features/workshop/data/repositories/workshop_repository_impl.dart';
@@ -205,4 +224,110 @@ RemoteArtStyleConfigUseCase remoteArtStyleConfigUseCase(Ref ref) {
   return RemoteArtStyleConfigUseCase(
     ref.watch(remoteArtStyleConfigRepositoryProvider),
   );
+}
+
+//------------------------------AI 换脸------------------------------------------
+/// 换脸远程数据源
+@riverpod
+IFaceSwapRemoteDataSource faceSwapRemoteDataSource(Ref ref) {
+  return FaceSwapRemoteDataSource(ref.watch(dioProvider));
+}
+
+/// 换脸仓库
+@riverpod
+IFaceSwapRepository faceSwapRepository(Ref ref) {
+  return FaceSwapRepositoryImpl(ref.watch(faceSwapRemoteDataSourceProvider));
+}
+
+/// 人脸检测用例
+@riverpod
+DetectFacesUseCase detectFacesUseCase(Ref ref) {
+  return DetectFacesUseCase(ref.watch(faceSwapRepositoryProvider));
+}
+
+/// 换脸任务提交用例
+@riverpod
+SwapFacesUseCase swapFacesUseCase(Ref ref) {
+  return SwapFacesUseCase(ref.watch(faceSwapRepositoryProvider));
+}
+
+//------------------------------认证登录------------------------------------------
+/// 认证登录远程数据源
+@riverpod
+IAuthLoginRemoteDataSource authLoginRemoteDataSource(Ref ref) {
+  return AuthLoginRemoteDataSource(ref.watch(dioProvider));
+}
+
+/// 认证登录本地数据源
+@riverpod
+IAuthLoginLocalDataSource authLoginLocalDataSource(Ref ref) {
+  return AuthLoginLocalDataSource();
+}
+
+/// 认证登录仓库
+@riverpod
+IAuthLoginRepository authLoginRepository(Ref ref) {
+  return AuthLoginRepositoryImpl(
+    ref.watch(authLoginRemoteDataSourceProvider),
+    ref.watch(authLoginLocalDataSourceProvider),
+  );
+}
+
+/// 获取登录跳转链接用例
+@riverpod
+GetAuthLoginUrlUseCase getAuthLoginUrlUseCase(Ref ref) {
+  return GetAuthLoginUrlUseCase(ref.watch(authLoginRepositoryProvider));
+}
+
+/// 保存 JWT 用例
+@riverpod
+SaveAuthJwtTokenUseCase saveAuthJwtTokenUseCase(Ref ref) {
+  return SaveAuthJwtTokenUseCase(ref.watch(authLoginRepositoryProvider));
+}
+
+/// 读取 JWT 用例
+@riverpod
+GetAuthJwtTokenUseCase getAuthJwtTokenUseCase(Ref ref) {
+  return GetAuthJwtTokenUseCase(ref.watch(authLoginRepositoryProvider));
+}
+
+/// 清除 JWT 用例
+@riverpod
+ClearAuthJwtTokenUseCase clearAuthJwtTokenUseCase(Ref ref) {
+  return ClearAuthJwtTokenUseCase(ref.watch(authLoginRepositoryProvider));
+}
+
+//------------------------------用户资料------------------------------------------
+/// 用户资料远程数据源
+@riverpod
+IUserProfileRemoteDataSource userProfileRemoteDataSource(Ref ref) {
+  return UserProfileRemoteDataSource(ref.watch(dioProvider));
+}
+
+/// 用户资料本地缓存数据源
+@riverpod
+IUserProfileLocalDataSource userProfileLocalDataSource(Ref ref) {
+  return UserProfileLocalDataSource();
+}
+
+/// 用户资料仓库
+@riverpod
+IUserProfileRepository userProfileRepository(Ref ref) {
+  return UserProfileRepositoryImpl(
+    ref.watch(userProfileRemoteDataSourceProvider),
+    ref.watch(authLoginLocalDataSourceProvider),
+    ref.watch(userProfileLocalDataSourceProvider),
+  );
+}
+
+/// 获取用户资料用例
+@riverpod
+GetUserProfileUseCase getUserProfileUseCase(Ref ref) {
+  return GetUserProfileUseCase(ref.watch(userProfileRepositoryProvider));
+}
+
+/// 清除用户资料缓存用例
+@riverpod
+ClearUserProfileCacheUseCase clearUserProfileCacheUseCase(Ref ref) {
+  return ClearUserProfileCacheUseCase(ref.watch(userProfileRepositoryProvider));
 }

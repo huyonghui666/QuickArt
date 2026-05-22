@@ -207,6 +207,50 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tools_ai_face_swap => 'AI Face Swap';
 
   @override
+  String get tools_ai_face_swap_subtitle =>
+      'Let you become a character in anime';
+
+  @override
+  String get tools_ai_face_swap_custom_photo => 'Custom Photo';
+
+  @override
+  String get tools_ai_face_swap_loading => 'Loading, please wait.';
+
+  @override
+  String get tools_ai_face_swap_guide_title =>
+      'Please use a front-facing photo with no obstructions';
+
+  @override
+  String get tools_ai_face_swap_guide_good => 'Suitable photos';
+
+  @override
+  String get tools_ai_face_swap_guide_bad => 'Unsuitable photos';
+
+  @override
+  String get tools_ai_face_swap_guide_tip =>
+      'Do not use non-frontal, eyes-closed, face-obscured, or overly exaggerated expression photos.';
+
+  @override
+  String get tools_ai_face_swap_guide_got_it => 'Got it';
+
+  @override
+  String get tools_ai_face_swap_select_face => 'Select the face to swap';
+
+  @override
+  String get tools_ai_face_swap_all => 'ALL';
+
+  @override
+  String get tools_ai_face_swap_no_face_hint =>
+      'Try using a front-facing photo';
+
+  @override
+  String get tools_ai_face_swap_select_which_face =>
+      'Which face do you want to swap?';
+
+  @override
+  String get tools_ai_face_swap_confirm => 'Confirm';
+
+  @override
   String get tools_text_to_video => 'Text to Video';
 
   @override
@@ -317,4 +361,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get workshop_task_failed => 'Generation failed, please retry!';
+
+  @override
+  String get auth_login_title => 'Login to QuickArt, imagine instantly';
+
+  @override
+  String get auth_login_subtitle =>
+      'Built by 50+ AI experts with world-leading image processing technology';
+
+  @override
+  String get auth_login_wechat_button => 'Continue with WeChat';
+
+  @override
+  String get auth_login_agreement_prefix => 'I have read and agree to ';
+
+  @override
+  String get auth_login_agreement_user => 'User Agreement';
+
+  @override
+  String get auth_login_agreement_and => ' and ';
+
+  @override
+  String get auth_login_agreement_privacy => 'Privacy Policy';
+
+  @override
+  String get auth_login_agreement_required =>
+      'Please read and agree to the User Agreement and Privacy Policy';
+
+  @override
+  String get auth_login_error_cannot_open_url =>
+      'Cannot open authorization page, please check if a browser is installed';
+
+  @override
+  String get auth_login_error_generic => 'Login failed, please try again';
 }

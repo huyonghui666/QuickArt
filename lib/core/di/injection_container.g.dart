@@ -481,5 +481,351 @@ final remoteArtStyleConfigUseCaseProvider =
 // ignore: unused_element
 typedef RemoteArtStyleConfigUseCaseRef =
     AutoDisposeProviderRef<RemoteArtStyleConfigUseCase>;
+String _$faceSwapRemoteDataSourceHash() =>
+    r'1f72bce8e3e2a23c9fe7f005af99ba1551dbfab9';
+
+/// 换脸远程数据源
+///
+/// Copied from [faceSwapRemoteDataSource].
+@ProviderFor(faceSwapRemoteDataSource)
+final faceSwapRemoteDataSourceProvider =
+    AutoDisposeProvider<IFaceSwapRemoteDataSource>.internal(
+      faceSwapRemoteDataSource,
+      name: r'faceSwapRemoteDataSourceProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$faceSwapRemoteDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef FaceSwapRemoteDataSourceRef =
+    AutoDisposeProviderRef<IFaceSwapRemoteDataSource>;
+String _$faceSwapRepositoryHash() =>
+    r'463a7faf91764b628d5e9c07018a3a7e1c10eb7a';
+
+/// 换脸仓库
+///
+/// Copied from [faceSwapRepository].
+@ProviderFor(faceSwapRepository)
+final faceSwapRepositoryProvider =
+    AutoDisposeProvider<IFaceSwapRepository>.internal(
+      faceSwapRepository,
+      name: r'faceSwapRepositoryProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$faceSwapRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef FaceSwapRepositoryRef = AutoDisposeProviderRef<IFaceSwapRepository>;
+String _$detectFacesUseCaseHash() =>
+    r'84995bb8035e0d9fda783fd672c89b17114d2612';
+
+/// 人脸检测用例
+///
+/// Copied from [detectFacesUseCase].
+@ProviderFor(detectFacesUseCase)
+final detectFacesUseCaseProvider =
+    AutoDisposeProvider<DetectFacesUseCase>.internal(
+      detectFacesUseCase,
+      name: r'detectFacesUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$detectFacesUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef DetectFacesUseCaseRef = AutoDisposeProviderRef<DetectFacesUseCase>;
+String _$swapFacesUseCaseHash() => r'a9a7bc2e2a701ab9330efaf74a6df0034c2af768';
+
+/// 换脸任务提交用例
+///
+/// Copied from [swapFacesUseCase].
+@ProviderFor(swapFacesUseCase)
+final swapFacesUseCaseProvider = AutoDisposeProvider<SwapFacesUseCase>.internal(
+  swapFacesUseCase,
+  name: r'swapFacesUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$swapFacesUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef SwapFacesUseCaseRef = AutoDisposeProviderRef<SwapFacesUseCase>;
+String _$authLoginRemoteDataSourceHash() =>
+    r'c084da7c78a89a1a2bf7be7c033c415d9e1daf20';
+
+/// 认证登录远程数据源
+///
+/// Copied from [authLoginRemoteDataSource].
+@ProviderFor(authLoginRemoteDataSource)
+final authLoginRemoteDataSourceProvider =
+    AutoDisposeProvider<IAuthLoginRemoteDataSource>.internal(
+      authLoginRemoteDataSource,
+      name: r'authLoginRemoteDataSourceProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$authLoginRemoteDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef AuthLoginRemoteDataSourceRef =
+    AutoDisposeProviderRef<IAuthLoginRemoteDataSource>;
+String _$authLoginLocalDataSourceHash() =>
+    r'0bc26c1a5f15ca1465da899ba1d5b3fa064c3fe8';
+
+/// 认证登录本地数据源
+///
+/// Copied from [authLoginLocalDataSource].
+@ProviderFor(authLoginLocalDataSource)
+final authLoginLocalDataSourceProvider =
+    AutoDisposeProvider<IAuthLoginLocalDataSource>.internal(
+      authLoginLocalDataSource,
+      name: r'authLoginLocalDataSourceProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$authLoginLocalDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef AuthLoginLocalDataSourceRef =
+    AutoDisposeProviderRef<IAuthLoginLocalDataSource>;
+String _$authLoginRepositoryHash() =>
+    r'e3729fef7868559a4d0e7503f0208cd87a7fe476';
+
+/// 认证登录仓库
+///
+/// Copied from [authLoginRepository].
+@ProviderFor(authLoginRepository)
+final authLoginRepositoryProvider =
+    AutoDisposeProvider<IAuthLoginRepository>.internal(
+      authLoginRepository,
+      name: r'authLoginRepositoryProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$authLoginRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef AuthLoginRepositoryRef = AutoDisposeProviderRef<IAuthLoginRepository>;
+String _$getAuthLoginUrlUseCaseHash() =>
+    r'82f8af47b93b0aef43c958239e9f401c09b8a3bf';
+
+/// 获取登录跳转链接用例
+///
+/// Copied from [getAuthLoginUrlUseCase].
+@ProviderFor(getAuthLoginUrlUseCase)
+final getAuthLoginUrlUseCaseProvider =
+    AutoDisposeProvider<GetAuthLoginUrlUseCase>.internal(
+      getAuthLoginUrlUseCase,
+      name: r'getAuthLoginUrlUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$getAuthLoginUrlUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetAuthLoginUrlUseCaseRef =
+    AutoDisposeProviderRef<GetAuthLoginUrlUseCase>;
+String _$saveAuthJwtTokenUseCaseHash() =>
+    r'2014892ccfe51d7bd0dac83f74168aae01571461';
+
+/// 保存 JWT 用例
+///
+/// Copied from [saveAuthJwtTokenUseCase].
+@ProviderFor(saveAuthJwtTokenUseCase)
+final saveAuthJwtTokenUseCaseProvider =
+    AutoDisposeProvider<SaveAuthJwtTokenUseCase>.internal(
+      saveAuthJwtTokenUseCase,
+      name: r'saveAuthJwtTokenUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$saveAuthJwtTokenUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef SaveAuthJwtTokenUseCaseRef =
+    AutoDisposeProviderRef<SaveAuthJwtTokenUseCase>;
+String _$getAuthJwtTokenUseCaseHash() =>
+    r'dbdbdd85d1d2903ff3d519ee4b77af6c59d369c0';
+
+/// 读取 JWT 用例
+///
+/// Copied from [getAuthJwtTokenUseCase].
+@ProviderFor(getAuthJwtTokenUseCase)
+final getAuthJwtTokenUseCaseProvider =
+    AutoDisposeProvider<GetAuthJwtTokenUseCase>.internal(
+      getAuthJwtTokenUseCase,
+      name: r'getAuthJwtTokenUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$getAuthJwtTokenUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetAuthJwtTokenUseCaseRef =
+    AutoDisposeProviderRef<GetAuthJwtTokenUseCase>;
+String _$clearAuthJwtTokenUseCaseHash() =>
+    r'b160deed7bac2d5a29bf04fab46fd6dbb21baa52';
+
+/// 清除 JWT 用例
+///
+/// Copied from [clearAuthJwtTokenUseCase].
+@ProviderFor(clearAuthJwtTokenUseCase)
+final clearAuthJwtTokenUseCaseProvider =
+    AutoDisposeProvider<ClearAuthJwtTokenUseCase>.internal(
+      clearAuthJwtTokenUseCase,
+      name: r'clearAuthJwtTokenUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$clearAuthJwtTokenUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef ClearAuthJwtTokenUseCaseRef =
+    AutoDisposeProviderRef<ClearAuthJwtTokenUseCase>;
+String _$userProfileRemoteDataSourceHash() =>
+    r'9b7e2ec7dad83378ff51a61a0493e27cd4737afd';
+
+/// 用户资料远程数据源
+///
+/// Copied from [userProfileRemoteDataSource].
+@ProviderFor(userProfileRemoteDataSource)
+final userProfileRemoteDataSourceProvider =
+    AutoDisposeProvider<IUserProfileRemoteDataSource>.internal(
+      userProfileRemoteDataSource,
+      name: r'userProfileRemoteDataSourceProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$userProfileRemoteDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef UserProfileRemoteDataSourceRef =
+    AutoDisposeProviderRef<IUserProfileRemoteDataSource>;
+String _$userProfileLocalDataSourceHash() =>
+    r'bf2c52773a1f5cb03b84ce26b945e0fc6c19d1a8';
+
+/// 用户资料本地缓存数据源
+///
+/// Copied from [userProfileLocalDataSource].
+@ProviderFor(userProfileLocalDataSource)
+final userProfileLocalDataSourceProvider =
+    AutoDisposeProvider<IUserProfileLocalDataSource>.internal(
+      userProfileLocalDataSource,
+      name: r'userProfileLocalDataSourceProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$userProfileLocalDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef UserProfileLocalDataSourceRef =
+    AutoDisposeProviderRef<IUserProfileLocalDataSource>;
+String _$userProfileRepositoryHash() =>
+    r'db5d941285caba1ad129d6349de757c4b5253a3a';
+
+/// 用户资料仓库
+///
+/// Copied from [userProfileRepository].
+@ProviderFor(userProfileRepository)
+final userProfileRepositoryProvider =
+    AutoDisposeProvider<IUserProfileRepository>.internal(
+      userProfileRepository,
+      name: r'userProfileRepositoryProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$userProfileRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef UserProfileRepositoryRef =
+    AutoDisposeProviderRef<IUserProfileRepository>;
+String _$getUserProfileUseCaseHash() =>
+    r'cf982f6518f6afaacf6572efac8668b99ce2137b';
+
+/// 获取用户资料用例
+///
+/// Copied from [getUserProfileUseCase].
+@ProviderFor(getUserProfileUseCase)
+final getUserProfileUseCaseProvider =
+    AutoDisposeProvider<GetUserProfileUseCase>.internal(
+      getUserProfileUseCase,
+      name: r'getUserProfileUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$getUserProfileUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GetUserProfileUseCaseRef =
+    AutoDisposeProviderRef<GetUserProfileUseCase>;
+String _$clearUserProfileCacheUseCaseHash() =>
+    r'ec8699358b53e655eacc158832d93c9633472519';
+
+/// 清除用户资料缓存用例
+///
+/// Copied from [clearUserProfileCacheUseCase].
+@ProviderFor(clearUserProfileCacheUseCase)
+final clearUserProfileCacheUseCaseProvider =
+    AutoDisposeProvider<ClearUserProfileCacheUseCase>.internal(
+      clearUserProfileCacheUseCase,
+      name: r'clearUserProfileCacheUseCaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$clearUserProfileCacheUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef ClearUserProfileCacheUseCaseRef =
+    AutoDisposeProviderRef<ClearUserProfileCacheUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

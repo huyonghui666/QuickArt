@@ -79,9 +79,14 @@ class WebSocketNotifier extends _$WebSocketNotifier {
           if (taskId == null) return;
 
           final type = payload['type'] as String?;
-          final error = payload['error'] as String?;
-          final url = (payload['imageUrl'] ?? payload['videoUrl']) as String?;
-          final lastFrameUrl = payload['lastFrameUrl'] as String?;
+          final data = payload['data'] as Map<String, dynamic>?;
+          final error = (data?['error'] ?? payload['error']) as String?;
+          final url = (data?['resultUrl'] ??
+              payload['resultUrl'] ??
+              payload['imageUrl'] ??
+              payload['videoUrl']) as String?;
+          final lastFrameUrl =
+              (data?['lastFrameUrl'] ?? payload['lastFrameUrl']) as String?;
 
           final result = GenerationResultModel(
             taskId: taskId,

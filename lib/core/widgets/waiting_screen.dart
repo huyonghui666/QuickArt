@@ -9,7 +9,9 @@ import 'package:quick_art/core/utils/log/logger.dart';
 import 'package:quick_art/core/widgets/loading_animation.dart';
 import 'package:quick_art/features/home/domain/entities/image_generation_task.dart';
 import 'package:quick_art/features/home/presentation/notifiers/image_generation_provider.dart';
+import 'package:quick_art/features/tools/domain/entities/face_swap_task.dart';
 import 'package:quick_art/features/tools/domain/entities/video_generation_task.dart';
+import 'package:quick_art/features/tools/presentation/notifilers/face_swap_generation_notifier.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/start_end_frame_generation_provider.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/video_generation_provider.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/video_template_generation_provider.dart';
@@ -51,6 +53,8 @@ class WaitingScreen extends ConsumerWidget {
               taskType == 'start_end_frame' ||
               taskType == 'template_video')
           ? _buildVideoBody(context, ref)
+          : taskType == 'face_swap'
+          ? _buildFaceSwapBody(context, ref)
           : _buildImageBody(context, ref),
     );
   }
@@ -78,6 +82,11 @@ class WaitingScreen extends ConsumerWidget {
         videoTemplateGenerationNotifierProvider(prompt),
       )
       .whenData((task) {
+        _processEvent(context, ref, result, task.taskId);
+      });
+    } else if (taskType == 'face_swap') {
+      ref.read(faceSwapGenerationNotifierProvider(prompt))
+      .whenData((FaceSwapTask task) {
         _processEvent(context, ref, result, task.taskId);
       });
     } else {
@@ -186,6 +195,31 @@ class WaitingScreen extends ConsumerWidget {
           return _buildErrorView(context, errorMessage, () {
             ref.read(_waitingScreenErrorProvider.notifier).state = null;
             ref.read(imageGenerationNotifierProvider(prompt).notifier).retry();
+          });
+        }
+        return _buildLoadingView(context);
+      },
+    );
+  }
+
+  Widget _buildFaceSwapBody(BuildContext context, WidgetRef ref) {
+    final asyncTask = ref.watch(faceSwapGenerationNotifierProvider(prompt));
+    final errorMessage = ref.watch(_waitingScreenErrorProvider);
+
+    return asyncTask.when(
+      loading: () => _buildLoadingView(context),
+      error: (e, _) => _buildErrorView(context, e.toString(), () {
+        ref
+            .read(faceSwapGenerationNotifierProvider(prompt).notifier)
+            .retry();
+      }),
+      data: (FaceSwapTask task) {
+        if (errorMessage != null) {
+          return _buildErrorView(context, errorMessage, () {
+            ref.read(_waitingScreenErrorProvider.notifier).state = null;
+            ref
+                .read(faceSwapGenerationNotifierProvider(prompt).notifier)
+                .retry();
           });
         }
         return _buildLoadingView(context);

@@ -15,8 +15,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ArtStyleModel {
 
- String get id; String get name; String get url;// Background image
- String get thumbnailUrl; String get md5; bool get isNew; String? get promptTemplate;
+ String get id; String get name;/// 背景大图 URL
+ String get url; String get thumbnailUrl; String get md5; bool get isNew; String? get promptTemplate;
 /// Create a copy of ArtStyleModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -221,8 +221,8 @@ class _ArtStyleModel implements ArtStyleModel {
 
 @override final  String id;
 @override final  String name;
+/// 背景大图 URL
 @override final  String url;
-// Background image
 @override final  String thumbnailUrl;
 @override final  String md5;
 @override@JsonKey() final  bool isNew;

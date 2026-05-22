@@ -204,6 +204,45 @@ class AppLocalizationsZh extends AppLocalizations {
   String get tools_ai_face_swap => 'AI 换脸';
 
   @override
+  String get tools_ai_face_swap_subtitle => '让你成为动漫中的角色';
+
+  @override
+  String get tools_ai_face_swap_custom_photo => '自定义照片';
+
+  @override
+  String get tools_ai_face_swap_loading => '正在加载，请稍后。';
+
+  @override
+  String get tools_ai_face_swap_guide_title => '请使用面部无遮挡的人物正面照';
+
+  @override
+  String get tools_ai_face_swap_guide_good => '适合的照片';
+
+  @override
+  String get tools_ai_face_swap_guide_bad => '不适当的照片';
+
+  @override
+  String get tools_ai_face_swap_guide_tip => '不要使用非正面、闭上眼睛、遮住脸部或过度夸大表情的照片。';
+
+  @override
+  String get tools_ai_face_swap_guide_got_it => '知道了';
+
+  @override
+  String get tools_ai_face_swap_select_face => '选择要交换的面孔';
+
+  @override
+  String get tools_ai_face_swap_all => 'ALL';
+
+  @override
+  String get tools_ai_face_swap_no_face_hint => '尝试使用正面照片';
+
+  @override
+  String get tools_ai_face_swap_select_which_face => '您选择哪张面孔？';
+
+  @override
+  String get tools_ai_face_swap_confirm => '确认';
+
+  @override
   String get tools_text_to_video => '文生视频';
 
   @override
@@ -312,4 +351,34 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get workshop_task_failed => '生成失败，请重试！';
+
+  @override
+  String get auth_login_title => '登录QuickArt，即可想象';
+
+  @override
+  String get auth_login_subtitle => '由50多位AI专家开发，世界领先的图像处理技术';
+
+  @override
+  String get auth_login_wechat_button => '通过微信登录';
+
+  @override
+  String get auth_login_agreement_prefix => '已阅读并同意 ';
+
+  @override
+  String get auth_login_agreement_user => '用户协议';
+
+  @override
+  String get auth_login_agreement_and => ' 和 ';
+
+  @override
+  String get auth_login_agreement_privacy => '隐私政策';
+
+  @override
+  String get auth_login_agreement_required => '请先阅读并同意用户协议和隐私政策';
+
+  @override
+  String get auth_login_error_cannot_open_url => '无法打开授权页面，请检查是否安装了浏览器';
+
+  @override
+  String get auth_login_error_generic => '登录失败，请重试';
 }

@@ -488,6 +488,84 @@ abstract class AppLocalizations {
   /// **'AI Face Swap'**
   String get tools_ai_face_swap;
 
+  /// No description provided for @tools_ai_face_swap_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Let you become a character in anime'**
+  String get tools_ai_face_swap_subtitle;
+
+  /// No description provided for @tools_ai_face_swap_custom_photo.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Photo'**
+  String get tools_ai_face_swap_custom_photo;
+
+  /// No description provided for @tools_ai_face_swap_loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading, please wait.'**
+  String get tools_ai_face_swap_loading;
+
+  /// No description provided for @tools_ai_face_swap_guide_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Please use a front-facing photo with no obstructions'**
+  String get tools_ai_face_swap_guide_title;
+
+  /// No description provided for @tools_ai_face_swap_guide_good.
+  ///
+  /// In en, this message translates to:
+  /// **'Suitable photos'**
+  String get tools_ai_face_swap_guide_good;
+
+  /// No description provided for @tools_ai_face_swap_guide_bad.
+  ///
+  /// In en, this message translates to:
+  /// **'Unsuitable photos'**
+  String get tools_ai_face_swap_guide_bad;
+
+  /// No description provided for @tools_ai_face_swap_guide_tip.
+  ///
+  /// In en, this message translates to:
+  /// **'Do not use non-frontal, eyes-closed, face-obscured, or overly exaggerated expression photos.'**
+  String get tools_ai_face_swap_guide_tip;
+
+  /// No description provided for @tools_ai_face_swap_guide_got_it.
+  ///
+  /// In en, this message translates to:
+  /// **'Got it'**
+  String get tools_ai_face_swap_guide_got_it;
+
+  /// No description provided for @tools_ai_face_swap_select_face.
+  ///
+  /// In en, this message translates to:
+  /// **'Select the face to swap'**
+  String get tools_ai_face_swap_select_face;
+
+  /// No description provided for @tools_ai_face_swap_all.
+  ///
+  /// In en, this message translates to:
+  /// **'ALL'**
+  String get tools_ai_face_swap_all;
+
+  /// No description provided for @tools_ai_face_swap_no_face_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Try using a front-facing photo'**
+  String get tools_ai_face_swap_no_face_hint;
+
+  /// No description provided for @tools_ai_face_swap_select_which_face.
+  ///
+  /// In en, this message translates to:
+  /// **'Which face do you want to swap?'**
+  String get tools_ai_face_swap_select_which_face;
+
+  /// No description provided for @tools_ai_face_swap_confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get tools_ai_face_swap_confirm;
+
   /// No description provided for @tools_text_to_video.
   ///
   /// In en, this message translates to:
@@ -703,6 +781,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Generation failed, please retry!'**
   String get workshop_task_failed;
+
+  /// No description provided for @auth_login_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Login to QuickArt, imagine instantly'**
+  String get auth_login_title;
+
+  /// No description provided for @auth_login_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Built by 50+ AI experts with world-leading image processing technology'**
+  String get auth_login_subtitle;
+
+  /// No description provided for @auth_login_wechat_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with WeChat'**
+  String get auth_login_wechat_button;
+
+  /// No description provided for @auth_login_agreement_prefix.
+  ///
+  /// In en, this message translates to:
+  /// **'I have read and agree to '**
+  String get auth_login_agreement_prefix;
+
+  /// No description provided for @auth_login_agreement_user.
+  ///
+  /// In en, this message translates to:
+  /// **'User Agreement'**
+  String get auth_login_agreement_user;
+
+  /// No description provided for @auth_login_agreement_and.
+  ///
+  /// In en, this message translates to:
+  /// **' and '**
+  String get auth_login_agreement_and;
+
+  /// No description provided for @auth_login_agreement_privacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get auth_login_agreement_privacy;
+
+  /// No description provided for @auth_login_agreement_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Please read and agree to the User Agreement and Privacy Policy'**
+  String get auth_login_agreement_required;
+
+  /// No description provided for @auth_login_error_cannot_open_url.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot open authorization page, please check if a browser is installed'**
+  String get auth_login_error_cannot_open_url;
+
+  /// No description provided for @auth_login_error_generic.
+  ///
+  /// In en, this message translates to:
+  /// **'Login failed, please try again'**
+  String get auth_login_error_generic;
 }
 
 class _AppLocalizationsDelegate

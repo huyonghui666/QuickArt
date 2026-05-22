@@ -10,4 +10,33 @@ class AppVideoImage {
   /// AI 换脸工具封面图
   static const String aiFaceSwapping =
       'assets/images/tools/AIFaceSwapping.webp';
+
+  /// 登录背景图
+  static const String authLoginBackground =
+      'assets/images/auth_login/auth_login.webp';
+
+  /// 换脸功能自定义照片背景图
+  static const String customPhotoAsset =
+      'assets/images/tools/ai-face-swapping/custom_photo.webp';
+
+  static const String _guidePath =
+      'assets/images/tools/ai-face-swapping/guide';
+
+  /// 换脸引导 - 适合的照片
+  static const String faceSwapGuideGood1 = '$_guidePath/good_1.webp';
+
+  /// 换脸引导 - 适合的照片
+  static const String faceSwapGuideGood2 = '$_guidePath/good_2.webp';
+
+  /// 换脸引导 - 适合的照片
+  static const String faceSwapGuideGood3 = '$_guidePath/good_3.webp';
+
+  /// 换脸引导 - 不适合的照片
+  static const String faceSwapGuideBad1 = '$_guidePath/bad_1.webp';
+
+  /// 换脸引导 - 不适合的照片
+  static const String faceSwapGuideBad2 = '$_guidePath/bad_2.webp';
+
+  /// 换脸引导 - 不适合的照片
+  static const String faceSwapGuideBad3 = '$_guidePath/bad_3.webp';
 }

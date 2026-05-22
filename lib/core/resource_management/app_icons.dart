@@ -32,6 +32,9 @@ class AppIcons {
   /// 返回上一页
   static const String backPreviousPage = '$_svgBasePath/core/back_previous_page.svg';
 
+  /// 微信登录图标
+  static const String authLoginWeChat = '$_svgBasePath/auth_login/wx.svg';
+
   /// facebook
   static const String facebook = '$_svgBasePath/core/facebook.svg';
   /// Instagram
@@ -41,6 +44,15 @@ class AppIcons {
 
 
 
+
+  /// ----------------AI 换脸icon-----------------------------------------------
+  /// 已选中换脸切换图标
+  static const String faceSwapAvatarChange =
+      '$_svgBasePath/ai_face_swapping/avatar_ablum_change.svg';
+
+  /// 未选中换脸切换图标
+  static const String faceSwapAvatarChangeUn =
+      '$_svgBasePath/ai_face_swapping/avatar_ablum_change_un.svg';
 
   /// ----------------首页的icon-----------------------------------------------
   /// ----------------首页顶部的icon----------------
@@ -102,4 +114,6 @@ class AppIcons {
   static const String settingFollowUs = '$_svgBasePath/setting/setting_followUs.svg';
   /// 版本号
   static const String settingVersion = '$_svgBasePath/setting/setting_version.svg';
+  /// 默认头像
+  static const String settingNoAvatar = '$_svgBasePath/setting/no_avatar.svg';
 }

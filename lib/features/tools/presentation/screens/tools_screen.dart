@@ -60,9 +60,7 @@ class ToolsScreen extends StatelessWidget {
               child: ImageCard(
                 imageUrl: AppVideoImage.aiFaceSwapping,
                 title: l10n.tools_ai_face_swap,
-                onTap: () {
-                  // TODO(user): 实现导航到 AI 换脸页面
-                },
+                onTap: () => context.push('/tools/ai-face-swapping'),
               ),
             ),
             const SizedBox(height: 24),

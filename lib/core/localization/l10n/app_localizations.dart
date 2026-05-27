@@ -860,6 +860,12 @@ abstract class AppLocalizations {
   /// **'Get 100 points weekly'**
   String get payment_benefit_weekly_points;
 
+  /// No description provided for @payment_benefit_points.
+  ///
+  /// In en, this message translates to:
+  /// **'Get {points} points'**
+  String payment_benefit_points(Object points);
+
   /// No description provided for @payment_benefit_fast.
   ///
   /// In en, this message translates to:

@@ -143,6 +143,12 @@
   "payment_title": "QuickArt PRO",
   "payment_subtitle": "Built by 50+ AI experts with world-leading image processing technology",
   "payment_benefit_weekly_points": "Get 100 points weekly",
+  "payment_benefit_points": "Get {points} points",
+  "@payment_benefit_points": {
+    "placeholders": {
+      "points": {}
+    }
+  },
   "payment_benefit_fast": "Fast processing",
   "payment_benefit_no_watermark": "No watermark",
   "payment_save_badge": "Save 50%",

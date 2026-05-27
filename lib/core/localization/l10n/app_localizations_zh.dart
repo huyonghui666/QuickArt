@@ -392,6 +392,11 @@ class AppLocalizationsZh extends AppLocalizations {
   String get payment_benefit_weekly_points => '每周获得100积分';
 
   @override
+  String payment_benefit_points(Object points) {
+    return '获得$points积分';
+  }
+
+  @override
   String get payment_benefit_fast => '快速处理';
 
   @override

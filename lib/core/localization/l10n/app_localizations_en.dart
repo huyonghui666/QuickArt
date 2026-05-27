@@ -406,6 +406,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get payment_benefit_weekly_points => 'Get 100 points weekly';
 
   @override
+  String payment_benefit_points(Object points) {
+    return 'Get $points points';
+  }
+
+  @override
   String get payment_benefit_fast => 'Fast processing';
 
   @override

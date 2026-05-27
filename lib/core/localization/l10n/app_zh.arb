@@ -143,6 +143,12 @@
   "payment_title": "QuickArt PRO",
   "payment_subtitle": "由50多位AI专家开发,世界领先的图像处理技术",
   "payment_benefit_weekly_points": "每周获得100积分",
+  "payment_benefit_points": "获得{points}积分",
+  "@payment_benefit_points": {
+    "placeholders": {
+      "points": {}
+    }
+  },
   "payment_benefit_fast": "快速处理",
   "payment_benefit_no_watermark": "无水印",
   "payment_save_badge": "省 50%",

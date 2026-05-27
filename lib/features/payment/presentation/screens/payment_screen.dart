@@ -107,7 +107,9 @@ class _PaymentScreenState extends ConsumerState<PaymentScreen> {
                         ),
                         const SizedBox(height: 20),
                         _BenefitItem(
-                          text: l10n.payment_benefit_weekly_points,
+                          text: l10n.payment_benefit_points(
+                            _selectedPlan == 0 ? 100 : 1000,
+                          ),
                         ),
                         const SizedBox(height: 10),
                         _BenefitItem(text: l10n.payment_benefit_fast),

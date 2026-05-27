@@ -12,8 +12,8 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// 主路由
 final GoRouter router = GoRouter(
-  // initialLocation: '/',
-  initialLocation: '/auth/login',
+  initialLocation: '/',
+  // initialLocation: '/auth/login',
   observers: [SentryNavigatorObserver()],  //sentry监听路由
   routes: [
     StatefulShellRoute.indexedStack(

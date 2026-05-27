@@ -6,6 +6,7 @@ class UserProfile {
     required this.nickname,
     required this.loginType,
     required this.createdAt,
+    required this.pointsBalance,
     this.avatarUrl,
   });
 
@@ -23,4 +24,7 @@ class UserProfile {
 
   /// 注册时间
   final String createdAt;
+
+  /// 积分余额
+  final int pointsBalance;
 }

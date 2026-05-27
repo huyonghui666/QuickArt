@@ -8,6 +8,7 @@ class UserProfileModel {
     required this.nickname,
     required this.loginType,
     required this.createdAt,
+    required this.pointsBalance,
     this.avatarUrl,
   });
 
@@ -19,6 +20,7 @@ class UserProfileModel {
       avatarUrl: json['avatarUrl'] as String?,
       loginType: json['loginType'] as String? ?? '',
       createdAt: json['createdAt'] as String? ?? '',
+      pointsBalance: json['pointsBalance'] as int? ?? 0,
     );
   }
 
@@ -37,6 +39,9 @@ class UserProfileModel {
   /// 注册时间
   final String createdAt;
 
+  /// 积分余额
+  final int pointsBalance;
+
   /// 转为领域实体
   UserProfile toEntity() {
     return UserProfile(
@@ -45,6 +50,7 @@ class UserProfileModel {
       avatarUrl: avatarUrl,
       loginType: loginType,
       createdAt: createdAt,
+      pointsBalance: pointsBalance,
     );
   }
 }

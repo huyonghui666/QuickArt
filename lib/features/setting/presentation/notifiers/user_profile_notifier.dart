@@ -29,6 +29,7 @@ class UserProfileNotifier extends _$UserProfileNotifier {
   Future<void> refresh() async {
     state = const AsyncLoading();
     try {
+      await ref.read(clearUserProfileCacheUseCaseProvider).call();
       final profile = await ref.read(getUserProfileUseCaseProvider).call();
       state = AsyncData(profile);
     } on Exception catch (e, stack) {

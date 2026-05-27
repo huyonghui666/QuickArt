@@ -6,6 +6,7 @@ import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/resource_management/app_icons.dart';
 import 'package:quick_art/core/resource_management/app_video_image.dart';
 import 'package:quick_art/features/payment/presentation/notifiers/payment_notifier.dart';
+import 'package:quick_art/features/setting/presentation/notifiers/user_profile_notifier.dart';
 
 /// 支付页面
 class PaymentScreen extends ConsumerStatefulWidget {
@@ -48,6 +49,7 @@ class _PaymentScreenState extends ConsumerState<PaymentScreen> {
           SnackBar(content: Text(next.successMessage!)),
         );
         ref.read(paymentNotifierProvider.notifier).clearSuccess();
+        ref.read(userProfileNotifierProvider.notifier).refresh();
         context.pop();
       }
     });

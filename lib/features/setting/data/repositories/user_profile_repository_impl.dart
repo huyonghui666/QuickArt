@@ -37,6 +37,7 @@ class UserProfileRepositoryImpl implements IUserProfileRepository {
       'avatarUrl': model.avatarUrl,
       'loginType': model.loginType,
       'createdAt': model.createdAt,
+      'pointsBalance': model.pointsBalance,
     });
     return model.toEntity();
   }

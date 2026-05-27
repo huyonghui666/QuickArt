@@ -15,6 +15,7 @@ import 'package:quick_art/features/home/presentation/notifiers/template_notifier
 import 'package:quick_art/features/home/presentation/widgets/art_style_selector.dart';
 import 'package:quick_art/features/home/presentation/widgets/inspiration_tab_header_delegate.dart';
 import 'package:quick_art/features/home/presentation/widgets/template_category_grid.dart';
+import 'package:quick_art/features/setting/presentation/notifiers/user_profile_notifier.dart';
 
 /// 首页
 class HomeScreen extends ConsumerStatefulWidget {
@@ -26,13 +27,14 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenTestState extends ConsumerState<HomeScreen>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   late final TabController _tabController;
   late final ScrollController _outerScrollController;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     final categories = ref.read(inspirationCategoriesProvider);
     _tabController = TabController(length: categories.length, vsync: this);
     _outerScrollController = ScrollController();
@@ -40,9 +42,17 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _tabController.dispose();
     _outerScrollController.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      ref.read(userProfileNotifierProvider.notifier).refresh();
+    }
   }
 
   @override
@@ -224,9 +234,14 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
                     children: [
                       SvgPicture.asset(AppIcons.points, width: 16, height: 16),
                       const SizedBox(width: 4),
-                      const Text(
-                        '3',
-                        style: TextStyle(
+                      Text(
+                        ref
+                            .watch(userProfileNotifierProvider)
+                            .whenData((p) => p.pointsBalance)
+                            .valueOrNull
+                            ?.toString() ??
+                            '-',
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.w600,

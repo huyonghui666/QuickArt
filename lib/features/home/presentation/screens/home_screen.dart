@@ -148,6 +148,7 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
             child: Center(
               child: DrawButton(
                 family: 'textToImage',
+                pointsCost: 5,
                 onTap: () {
                   final prompt = ref.read(promptProvider('textToImage')).text;
                   if (prompt.isEmpty) return;

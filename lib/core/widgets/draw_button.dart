@@ -9,17 +9,24 @@ import 'package:quick_art/core/resource_management/app_icons.dart';
 class DrawButton extends ConsumerWidget {
   /// 构造
   const DrawButton({
-    required this.family, required this.onTap, super.key,
+    required this.family,
+    required this.onTap,
+    super.key,
     this.isEnabled,
+    this.pointsCost,
   });
 
   /// 用于实现不同的家族provider
   final String family;
+
   /// 点击回调
   final VoidCallback onTap;
 
   /// 外部控制是否启用，如果为null则使用 prompt.isNotEmpty 判断
   final bool? isEnabled;
+
+  /// 消耗积分
+  final int? pointsCost;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -50,13 +57,35 @@ class DrawButton extends ConsumerWidget {
               active ? AppIcons.draw : AppIcons.drawUnable,
               fit: BoxFit.cover,
             ),
-            Text(
-              l10n.widgets_draw_button_draw,
-              style: TextStyle(
-                color: active ? Colors.white : Colors.grey,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  l10n.widgets_draw_button_draw,
+                  style: TextStyle(
+                    color: active ? Colors.white : Colors.grey,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                if (pointsCost != null) ...[
+                  const SizedBox(width: 16),
+                  SvgPicture.asset(
+                    AppIcons.points,
+                    width: 16,
+                    height: 16,
+                  ),
+                  const SizedBox(width: 4),
+                  Text(
+                    '$pointsCost',
+                    style: TextStyle(
+                      color: active ? Colors.white : Colors.grey,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ],
             ),
           ],
         ),

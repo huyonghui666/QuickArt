@@ -242,6 +242,24 @@ abstract class AppLocalizations {
   /// **'Add Photo'**
   String get home_add_photo;
 
+  /// No description provided for @home_remove_photo.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get home_remove_photo;
+
+  /// No description provided for @home_photo_source_camera.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get home_photo_source_camera;
+
+  /// No description provided for @home_photo_source_gallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get home_photo_source_gallery;
+
   /// No description provided for @home_history.
   ///
   /// In en, this message translates to:

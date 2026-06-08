@@ -32,6 +32,9 @@
 
   "home_describe": "Describe",
   "home_add_photo": "Add Photo",
+  "home_remove_photo": "Remove",
+  "home_photo_source_camera": "Camera",
+  "home_photo_source_gallery": "Gallery",
   "home_history": "History",
   "home_inspiration_new": "New",
   "home_inspiration_manga": "Manga",

@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:quick_art/core/di/widgets/prompt_provider.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
+import 'package:quick_art/core/permission/permission_manager.dart';
 import 'package:quick_art/core/resource_management/app_icons.dart';
 import 'package:quick_art/core/widgets/draw_button.dart';
 import 'package:quick_art/core/widgets/prompt_text_field.dart';
@@ -30,6 +34,8 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
     with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   late final TabController _tabController;
   late final ScrollController _outerScrollController;
+  XFile? _selectedImage;
+  final _picker = ImagePicker();
 
   @override
   void initState() {
@@ -133,11 +139,22 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
                   final prompt = ref.read(promptProvider('textToImage')).text;
                   if (prompt.isEmpty) return;
 
-                  context.pushNamed(
-                    'Wait',
-                    pathParameters: {'taskType': 'image'},
-                    queryParameters: {'prompt': prompt},
-                  );
+                  if (_selectedImage != null) {
+                    context.pushNamed(
+                      'Wait',
+                      pathParameters: {'taskType': 'image_edit'},
+                      queryParameters: {
+                        'prompt': prompt,
+                        'imagePath': _selectedImage!.path,
+                      },
+                    );
+                  } else {
+                    context.pushNamed(
+                      'Wait',
+                      pathParameters: {'taskType': 'image'},
+                      queryParameters: {'prompt': prompt},
+                    );
+                  }
                 },
               ),
             ),
@@ -145,6 +162,16 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
         ],
       ),
     );
+  }
+
+  Future<void> _pickPhotoFromGallery() async {
+    final hasPermission = await PermissionManager.requestPhotosPermission();
+    if (!hasPermission) return;
+
+    final file = await _picker.pickImage(source: ImageSource.gallery);
+    if (file != null) {
+      setState(() => _selectedImage = file);
+    }
   }
 
   /// 构建顶部区域（背景图 + 标题 + 输入框）
@@ -271,17 +298,15 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
   }
 
   Widget _buildOptionsSection(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         _buildActionItem(
           AppIcons.homeImageToText,
-          AppLocalizations.of(context)!.home_describe,
+          l10n.home_describe,
         ),
-        _buildActionItem(
-          AppIcons.homePhoto,
-          AppLocalizations.of(context)!.home_add_photo,
-        ),
+        _buildPhotoButton(context, l10n),
         _buildActionItem(
           AppIcons.homeRatio11,
           '1:1',
@@ -289,9 +314,54 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
         ),
         _buildActionItem(
           AppIcons.homeHistory,
-          AppLocalizations.of(context)!.home_history,
+          l10n.home_history,
         ),
       ],
+    );
+  }
+
+  Widget _buildPhotoButton(BuildContext context, AppLocalizations l10n) {
+    if (_selectedImage != null) {
+      return GestureDetector(
+        onTap: () => setState(() => _selectedImage = null),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+          decoration: BoxDecoration(
+            color: const Color(0xFF2A2A2A),
+            borderRadius: BorderRadius.circular(6),
+            border: Border.all(color: const Color(0xFF4A4A4A)),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(3),
+                child: Image.file(
+                  File(_selectedImage!.path),
+                  width: 20,
+                  height: 20,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(width: 4),
+              const Icon(Icons.close, color: Colors.white, size: 12),
+              const SizedBox(width: 2),
+              Text(
+                l10n.home_remove_photo,
+                style: const TextStyle(
+                  color: Color(0xFFCECECE),
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+    return GestureDetector(
+      onTap: _pickPhotoFromGallery,
+      child: _buildActionItem(AppIcons.homePhoto, l10n.home_add_photo),
     );
   }
 

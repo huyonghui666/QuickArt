@@ -46,7 +46,12 @@ final GoRouter router = GoRouter(
       builder: (context, state) {
         final taskType = state.pathParameters['taskType']!;
         final prompt = state.uri.queryParameters['prompt']!;
-        return WaitingScreen(taskType: taskType, prompt: prompt);
+        final imagePath = state.uri.queryParameters['imagePath'];
+        return WaitingScreen(
+          taskType: taskType,
+          prompt: prompt,
+          imagePath: imagePath,
+        );
       },
     ),
     ...paymentStandaloneRoutes,

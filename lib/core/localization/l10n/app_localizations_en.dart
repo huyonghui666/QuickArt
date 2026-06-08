@@ -83,6 +83,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get home_add_photo => 'Add Photo';
 
   @override
+  String get home_remove_photo => 'Remove';
+
+  @override
+  String get home_photo_source_camera => 'Camera';
+
+  @override
+  String get home_photo_source_gallery => 'Gallery';
+
+  @override
   String get home_history => 'History';
 
   @override

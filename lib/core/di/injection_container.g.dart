@@ -48,7 +48,7 @@ final textToImageRemoteDataSourceProvider =
 typedef TextToImageRemoteDataSourceRef =
     AutoDisposeProviderRef<ITextToImageRemoteDataSource>;
 String _$textToImageRepositoryHash() =>
-    r'ae715e6daf35e555f1b5fb187b6a5fbd28fedb56';
+    r'2e3fb6cc58ff232e4b378a49e8e0c52c161590ad';
 
 /// 文生图仓库
 ///
@@ -91,6 +91,25 @@ final textToGenerateImageUseCaseProvider =
 // ignore: unused_element
 typedef TextToGenerateImageUseCaseRef =
     AutoDisposeProviderRef<TextToGenerateImageUseCase>;
+String _$imageEditUseCaseHash() => r'7c7fd94946f70fef148b27ee1d998deeb89b22dc';
+
+/// 图生图用例
+///
+/// Copied from [imageEditUseCase].
+@ProviderFor(imageEditUseCase)
+final imageEditUseCaseProvider = AutoDisposeProvider<ImageEditUseCase>.internal(
+  imageEditUseCase,
+  name: r'imageEditUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$imageEditUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef ImageEditUseCaseRef = AutoDisposeProviderRef<ImageEditUseCase>;
 String _$textToVideoRemoteDataSourceHash() =>
     r'5d6430e3a4f341644ca1d8e48df4ed64ee6a70c4';
 

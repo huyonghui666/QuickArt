@@ -32,6 +32,9 @@
 
   "home_describe": "图生文",
   "home_add_photo": "添加照片",
+  "home_remove_photo": "移除",
+  "home_photo_source_camera": "相机",
+  "home_photo_source_gallery": "相册",
   "home_history": "历史",
   "home_inspiration_new": "新",
   "home_inspiration_manga": "漫画",

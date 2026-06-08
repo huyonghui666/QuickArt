@@ -20,6 +20,7 @@ import 'package:quick_art/features/home/domain/repositories/remote_config_reposi
 import 'package:quick_art/features/home/domain/repositories/template_repository.dart';
 import 'package:quick_art/features/home/domain/repositories/text_to_image_repository.dart';
 import 'package:quick_art/features/home/domain/usecases/get_templates_usecase.dart';
+import 'package:quick_art/features/home/domain/usecases/image_edit_usecase.dart';
 import 'package:quick_art/features/home/domain/usecases/remote_config_usecase.dart';
 import 'package:quick_art/features/home/domain/usecases/text_to_generate_image_usecase.dart';
 import 'package:quick_art/features/setting/data/datasources/user_profile_local_data_source.dart';
@@ -85,7 +86,8 @@ ITextToImageRemoteDataSource textToImageRemoteDataSource(Ref ref) {
 @riverpod
 ITextToImageRepository textToImageRepository(Ref ref) {
   final remoteDataSource = ref.watch(textToImageRemoteDataSourceProvider);
-  return TextToImageRepositoryImpl(remoteDataSource);
+  final localDataSource = ref.watch(authLoginLocalDataSourceProvider);
+  return TextToImageRepositoryImpl(remoteDataSource, localDataSource);
 }
 
 /// 文生图用例
@@ -93,6 +95,13 @@ ITextToImageRepository textToImageRepository(Ref ref) {
 TextToGenerateImageUseCase textToGenerateImageUseCase(Ref ref) {
   final repository = ref.watch(textToImageRepositoryProvider);
   return TextToGenerateImageUseCase(repository);
+}
+
+/// 图生图用例
+@riverpod
+ImageEditUseCase imageEditUseCase(Ref ref) {
+  final repository = ref.watch(textToImageRepositoryProvider);
+  return ImageEditUseCase(repository);
 }
 
 //-----------------------------------生视频--------------------------------------

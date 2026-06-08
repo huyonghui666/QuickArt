@@ -7,4 +7,10 @@ abstract class ITextToImageRepository {
   /// 提交生成任务
   /// [prompt] 提示词
   Future<ImageGenerationTask> submitTextToImageTask(String prompt);
+
+  /// 提交图生图任务
+  Future<ImageGenerationTask> submitImageEditTask(
+    String prompt,
+    String imagePath,
+  );
 }

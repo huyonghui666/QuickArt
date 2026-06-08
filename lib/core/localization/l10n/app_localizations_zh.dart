@@ -81,6 +81,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get home_add_photo => '添加照片';
 
   @override
+  String get home_remove_photo => '移除';
+
+  @override
+  String get home_photo_source_camera => '相机';
+
+  @override
+  String get home_photo_source_gallery => '相册';
+
+  @override
   String get home_history => '历史';
 
   @override

@@ -1,0 +1,44 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="topBarGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#00A8A8"/>
+    </linearGradient>
+  </defs>
+
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F7F9FC"/>
+    <rect x="0" y="0" width="1280" height="6" fill="url(#topBarGradient)"/>
+    <circle cx="1100" cy="160" r="165" fill="#1565C0" fill-opacity="0.05"/>
+    <circle cx="180" cy="580" r="150" fill="#00A8A8" fill-opacity="0.05"/>
+  </g>
+
+  <g id="header">
+    <text x="48" y="56" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="36" font-weight="700" fill="#1F2937">移动端 AIGC 需要从“能力分散”走向“系统化落地”</text>
+    <rect x="48" y="78" width="1184" height="44" rx="10" fill="#1565C0"/>
+    <text x="68" y="106" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="20" fill="#FFFFFF">当前 AIGC 在移动端场景存在模型分散、流程割裂、工程协同复杂等问题，因此需要一个完整的跨平台系统方案。</text>
+  </g>
+
+  <g id="body-core">
+    <rect x="92" y="175" width="1096" height="395" rx="24" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <text x="140" y="255" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="24" fill="#1F2937">
+      生成式 AI 正在从文本扩展到图像、视频等多模态创作，
+      <tspan x="140" dy="42">用户对<tspan fill="#1565C0" font-weight="700">“随时创作、即时分享”</tspan>的移动端需求持续增长。</tspan>
+    </text>
+
+    <text x="140" y="368" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="24" fill="#1F2937">
+      但现有应用普遍存在<tspan fill="#C62828" font-weight="700">模型能力分散</tspan>、<tspan fill="#C62828" font-weight="700">创作流程割裂</tspan>、
+      <tspan x="140" dy="42">长耗时任务状态难管理</tspan>等问题，缺少真正的一体化创作体验。
+    </text>
+
+    <text x="140" y="482" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="24" fill="#1F2937">
+      因此，本课题尝试把<tspan fill="#00A8A8" font-weight="700">多模型能力</tspan>、<tspan fill="#00A8A8" font-weight="700">跨平台客户端</tspan>、
+      <tspan x="140" dy="42"><tspan fill="#00A8A8" font-weight="700">异步任务机制</tspan>与<tspan fill="#00A8A8" font-weight="700">业务闭环</tspan>统一到同一套系统中。</tspan>
+    </text>
+  </g>
+
+  <g id="footer">
+    <text x="58" y="690" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">背景部分简洁呈现，可在答辩现场快速带过</text>
+    <text x="1220" y="690" text-anchor="end" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">02</text>
+  </g>
+</svg>

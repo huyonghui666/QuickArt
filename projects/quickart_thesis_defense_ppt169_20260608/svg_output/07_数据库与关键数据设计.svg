@@ -1,0 +1,54 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="topBarGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#00A8A8"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F7F9FC"/>
+    <rect x="0" y="0" width="1280" height="6" fill="url(#topBarGradient)"/>
+  </g>
+  <g id="header">
+    <text x="40" y="54" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="36" font-weight="700" fill="#1F2937">数据层围绕“任务、订单、积分、恢复能力”进行建模</text>
+    <rect x="40" y="74" width="1200" height="44" rx="10" fill="#1565C0"/>
+    <text x="60" y="103" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="20" fill="#FFFFFF">数据库设计既要支撑核心业务一致性，也要兼顾长耗时任务的追踪与客户端恢复能力。</text>
+  </g>
+  <g id="left-summary">
+    <rect x="40" y="145" width="520" height="500" rx="18" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <use data-icon="chunk-filled/database" x="62" y="168" width="26" height="26" fill="#1565C0"/>
+    <text x="102" y="188" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="24" font-weight="700" fill="#1F2937">核心数据设计</text>
+
+    <text x="62" y="228" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="19" fill="#1F2937">
+      <tspan fill="#1565C0" font-weight="700">users</tspan>：保存第三方登录用户信息与当前积分余额。
+    </text>
+    <text x="62" y="278" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="19" fill="#1F2937">
+      <tspan fill="#1565C0" font-weight="700">generation_tasks</tspan>：统一记录图像、视频、换脸任务状态，
+      <tspan x="62" dy="28">是异步任务机制的核心载体。</tspan>
+    </text>
+    <text x="62" y="352" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="19" fill="#1F2937">
+      <tspan fill="#1565C0" font-weight="700">payment_orders</tspan>：记录支付订单全生命周期，
+      <tspan x="62" dy="28">支撑对账、状态更新与支付回调处理。</tspan>
+    </text>
+    <text x="62" y="426" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="19" fill="#1F2937">
+      <tspan fill="#1565C0" font-weight="700">points_ledger</tspan>：记录每一笔积分变动，
+      <tspan x="62" dy="28">配合业务主键实现幂等防重。</tspan>
+    </text>
+    <text x="62" y="500" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="19" fill="#1F2937">
+      <tspan fill="#00A8A8" font-weight="700">SQLite 本地表</tspan>：客户端保存工作室任务记录，
+      <tspan x="62" dy="28">支撑应用重启后的任务恢复与状态续订阅。</tspan>
+    </text>
+    <rect x="62" y="562" width="476" height="56" rx="12" fill="#EEF4FB"/>
+    <text x="82" y="596" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1565C0">关键点：服务端负责一致性，客户端本地表负责恢复能力。</text>
+  </g>
+  <g id="right-er">
+    <rect x="590" y="145" width="650" height="500" rx="18" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <image href="../images/thesis__image_013.png" x="620" y="180" width="590" height="380" preserveAspectRatio="xMidYMid meet"/>
+    <rect x="620" y="580" width="590" height="35" rx="8" fill="#EEF4FB"/>
+    <text x="915" y="603" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1565C0">论文图4-3：系统总体 E-R 图</text>
+  </g>
+  <g id="footer">
+    <text x="58" y="690" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">讲这一页时，重点说明 generation_tasks、points_ledger 和 SQLite 恢复机制</text>
+    <text x="1220" y="690" text-anchor="end" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">07</text>
+  </g>
+</svg>

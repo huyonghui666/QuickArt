@@ -1,0 +1,61 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="topBarGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#00A8A8"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F7F9FC"/>
+    <rect x="0" y="0" width="1280" height="6" fill="url(#topBarGradient)"/>
+  </g>
+  <g id="header">
+    <text x="40" y="54" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="36" font-weight="700" fill="#1F2937">关键模块测试均通过，系统在功能完整性与交互流畅性上达到预期</text>
+    <rect x="40" y="74" width="1200" height="44" rx="10" fill="#1565C0"/>
+    <text x="60" y="103" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="20" fill="#FFFFFF">测试结果表明，系统已具备较完整的业务功能和较稳定的交互表现。</text>
+  </g>
+  <g id="grid-1">
+    <rect x="40" y="150" width="580" height="220" rx="18" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <use data-icon="chunk-filled/checkmark" x="62" y="172" width="24" height="24" fill="#2E7D32"/>
+    <text x="98" y="191" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="24" font-weight="700" fill="#1F2937">认证登录 + 创作模块</text>
+    <text x="62" y="230" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">• 微信授权登录、JWT 签发、本地持久化链路验证通过</text>
+    <text x="62" y="262" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">• 文生图、图生图、图片模板功能均可正常完成生成</text>
+    <text x="62" y="294" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">• “异步提交 + WebSocket 推送”链路在创作场景下验证通过</text>
+    <rect x="62" y="320" width="220" height="30" rx="8" fill="#E9F6EE"/>
+    <text x="172" y="341" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="16" fill="#2E7D32">结果：通过</text>
+  </g>
+  <g id="grid-2">
+    <rect x="660" y="150" width="580" height="220" rx="18" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <use data-icon="chunk-filled/checkmark" x="682" y="172" width="24" height="24" fill="#2E7D32"/>
+    <text x="718" y="191" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="24" font-weight="700" fill="#1F2937">工具模块 + AI换脸</text>
+    <text x="682" y="230" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">• 文生视频、图生视频、视频模板功能验证通过</text>
+    <text x="682" y="262" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">• AI换脸功能覆盖人脸检测、换脸执行两阶段</text>
+    <text x="682" y="294" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">• 无人脸图片异常路径用例验证了系统容错能力</text>
+    <rect x="682" y="320" width="220" height="30" rx="8" fill="#E9F6EE"/>
+    <text x="792" y="341" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="16" fill="#2E7D32">结果：通过</text>
+  </g>
+  <g id="grid-3">
+    <rect x="40" y="395" width="580" height="220" rx="18" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <use data-icon="chunk-filled/checkmark" x="62" y="417" width="24" height="24" fill="#2E7D32"/>
+    <text x="98" y="436" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="24" font-weight="700" fill="#1F2937">工作室模块</text>
+    <text x="62" y="475" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">• 历史任务展示与排序逻辑验证通过</text>
+    <text x="62" y="507" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">• WebSocket 推送后的任务状态实时更新验证通过</text>
+    <text x="62" y="539" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">• 应用重启后依赖 SQLite 的任务恢复机制验证通过</text>
+    <rect x="62" y="565" width="220" height="30" rx="8" fill="#E9F6EE"/>
+    <text x="172" y="586" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="16" fill="#2E7D32">结果：通过</text>
+  </g>
+  <g id="grid-4">
+    <rect x="660" y="395" width="580" height="220" rx="18" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <use data-icon="chunk-filled/checkmark" x="682" y="417" width="24" height="24" fill="#2E7D32"/>
+    <text x="718" y="436" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="24" font-weight="700" fill="#1F2937">支付与积分模块</text>
+    <text x="682" y="475" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">• 套餐展示、支付宝下单、支付成功与取消支付均完成验证</text>
+    <text x="682" y="507" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">• 积分到账逻辑正确，能够形成支付闭环</text>
+    <text x="682" y="539" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">• 重复回调下幂等校验通过，是安全性验证重点</text>
+    <rect x="682" y="565" width="220" height="30" rx="8" fill="#E9F6EE"/>
+    <text x="792" y="586" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="16" fill="#2E7D32">结果：通过</text>
+  </g>
+  <g id="footer">
+    <text x="58" y="690" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">测试页重点强调“覆盖了正常路径与异常路径，结果整体通过”</text>
+    <text x="1220" y="690" text-anchor="end" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">09</text>
+  </g>
+</svg>

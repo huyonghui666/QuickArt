@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="titleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1565C0" />
+      <stop offset="100%" stop-color="#5C6BC0" />
+    </linearGradient>
+    <linearGradient id="topBarGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1565C0" />
+      <stop offset="100%" stop-color="#00A8A8" />
+    </linearGradient>
+  </defs>
+
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F7F9FC" />
+    <rect x="0" y="0" width="1280" height="8" fill="url(#topBarGradient)" />
+    <circle cx="1130" cy="105" r="150" fill="#1565C0" fill-opacity="0.06" />
+    <circle cx="1060" cy="620" r="180" fill="#00A8A8" fill-opacity="0.05" />
+    <circle cx="140" cy="120" r="100" fill="#5C6BC0" fill-opacity="0.05" />
+  </g>
+
+  <g id="cover-title">
+    <text font-weight="700" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" text-anchor="middle" font-size="56" fill="#1F2937" x="640" y="210">基于多模型融合与Flutter的</text><text font-weight="700" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" text-anchor="middle" font-size="56" fill="url(#titleGradient)" x="640" y="282">跨平台AI内容生成系统设计与实现</text></g>
+
+  <g id="cover-subtitle">
+    <path fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2" d="M374,360 H906 A14,14 0 0 1 920,374 V404 A14,14 0 0 1 906,418 H374 A14,14 0 0 1 360,404 V374 A14,14 0 0 1 374,360 Z" />
+    <text x="640" y="397" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="24" fill="#1565C0" font-weight="700">毕业设计答辩</text>
+  </g>
+
+  <g id="cover-info">
+    <path fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2" d="M273,470 H1007 A18,18 0 0 1 1025,488 V590 A18,18 0 0 1 1007,608 H273 A18,18 0 0 1 255,590 V488 A18,18 0 0 1 273,470 Z" />
+    <text x="320" y="523" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="22" fill="#1F2937">学生：胡勇辉</text>
+    <text x="590" y="523" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="22" fill="#1F2937">专业：计算机科学与技术</text>
+    <text x="320" y="570" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="22" fill="#1F2937">指导教师：桂彦</text>
+    <text x="590" y="570" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="22" fill="#1F2937">时间：2026年6月</text>
+  </g>
+
+  <g id="footer">
+    <text x="58" y="690" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">QuickArt 毕业设计答辩</text>
+    <text x="1220" y="690" text-anchor="end" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">01</text>
+  </g>
+</svg>

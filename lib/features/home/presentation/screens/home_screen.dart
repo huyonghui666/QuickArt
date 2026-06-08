@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:quick_art/core/di/generation_event_provider.dart';
 import 'package:quick_art/core/di/widgets/prompt_provider.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/permission/permission_manager.dart';
@@ -74,8 +76,22 @@ class _HomeScreenTestState extends ConsumerState<HomeScreen>
     }
   }
 
+  bool _isPointsAffectingTask(String? type) {
+    final normalized = type?.toLowerCase().replaceAll('_', '') ?? '';
+    return normalized == 'image' || normalized == 'imageedit';
+  }
+
   @override
   Widget build(BuildContext context) {
+    ref.listen(generationEventProvider, (previous, next) {
+      next.whenData((event) {
+        if ((event.event == 'success' || event.event == 'failed') &&
+            _isPointsAffectingTask(event.type)) {
+          unawaited(ref.read(userProfileNotifierProvider.notifier).refresh());
+        }
+      });
+    });
+
     final categories = ref.watch(inspirationCategoriesProvider);
     final statusBarHeight = MediaQuery.of(context).padding.top;
 

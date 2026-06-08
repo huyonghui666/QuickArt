@@ -17,6 +17,58 @@ class ArtStyleSelector extends ConsumerWidget {
   /// 构造
   const ArtStyleSelector({super.key});
 
+  String _styleLabel(AppLocalizations l10n, ArtStyle style) {
+    if (style.isNoStyle) {
+      return l10n.home_style_no_style;
+    }
+
+    switch (_normalizeStyleId(style.id)) {
+      case 'cutecartoon':
+        return l10n.home_style_cute_cartoon;
+      case 'ancientstyle':
+        return l10n.home_style_ancient_style;
+      case 'graffiti':
+        return l10n.home_style_graffiti;
+      case 'popart':
+        return l10n.home_style_pop_art;
+      case 'vividrealism':
+        return l10n.home_style_vivid_realism;
+      case 'color':
+        return l10n.home_style_color;
+      case 'eighties':
+        return l10n.home_style_eighties;
+      case 'showa':
+        return l10n.home_style_showa;
+      case 'model3d':
+        return l10n.home_style_model_3d;
+      case 'photography':
+      case 'photophotography':
+        return l10n.home_style_photography;
+      case 'japaneseanime':
+        return l10n.home_style_japanese_anime;
+      case 'tattoo':
+        return l10n.home_style_tattoo;
+      case 'retroarcade':
+        return l10n.home_style_retro_arcade;
+      case 'blackwhite':
+        return l10n.home_style_black_white;
+      case 'pixar':
+        return l10n.home_style_pixar;
+      case 'cyberpunk':
+        return l10n.home_style_cyberpunk;
+      case 'lineart':
+        return l10n.home_style_line_art;
+      case 'watercolor':
+        return l10n.home_style_watercolor;
+      default:
+        return style.name;
+    }
+  }
+
+  String _normalizeStyleId(String id) {
+    return id.toLowerCase().replaceAll(RegExp('[^a-z0-9]'), '');
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
@@ -58,8 +110,7 @@ class ArtStyleSelector extends ConsumerWidget {
                       _StyleCard(style: style, selected: isSelected),
                       const SizedBox(height: 6),
                       Text(
-                        // 无风格显示本地化文案，其余显示服务端 name 字段
-                        style.isNoStyle ? l10n.home_style_no_style : style.name,
+                        _styleLabel(l10n, style),
                         style: TextStyle(
                           color: isSelected
                               ? theme.colorScheme.primary

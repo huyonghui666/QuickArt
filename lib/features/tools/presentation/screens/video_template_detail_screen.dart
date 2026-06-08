@@ -108,6 +108,7 @@ class _VideoTemplateDetailScreenState
             padding: const EdgeInsets.only(bottom: 40),
             child: DrawButton(
               family: 'video_template_detail',
+              pointsCost: 10,
               onTap: () {
                 if (_selectedImage != null &&
                     widget.template.description != null) {

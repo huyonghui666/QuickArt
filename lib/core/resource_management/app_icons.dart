@@ -22,6 +22,10 @@ class AppIcons {
 
   /// VIP 图标
   static const String vip = '$_svgBasePath/core/VIP.svg';
+
+  ///下载
+  static const String download = '$_svgBasePath/core/download.svg';
+
   /// ----------------提示词输入框的icon-------------
   /// 撤销 (能)
   static const String promptBack = '$_svgBasePath/core/prompt_back.svg';

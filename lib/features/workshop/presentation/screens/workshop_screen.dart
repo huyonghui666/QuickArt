@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quick_art/core/di/show_bottom_sheet_notifier.dart';
 import 'package:quick_art/core/localization/l10n/app_localizations.dart';
 import 'package:quick_art/core/models/generate_task_type.dart';
+import 'package:quick_art/core/resource_management/app_video_image.dart';
 import 'package:quick_art/features/workshop/presentation/notifiers/workshop_tasks_provider.dart';
 import 'package:quick_art/features/workshop/presentation/widgets/pro_banner.dart';
 import 'package:quick_art/features/workshop/presentation/widgets/workshop_header.dart';
@@ -33,7 +34,7 @@ class WorkshopScreen extends ConsumerWidget {
                     if (tasks.isEmpty) {
                       return SizedBox.expand(
                         child: Image.asset(
-                          'assets/images/bg/workshop_bg.webp',
+                          AppVideoImage.workshopBackground,
                           fit: BoxFit.cover,
                         ),
                       );

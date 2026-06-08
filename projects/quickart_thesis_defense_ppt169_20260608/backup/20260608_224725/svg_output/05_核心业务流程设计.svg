@@ -1,0 +1,54 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="topBarGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#00A8A8"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F7F9FC"/>
+    <rect x="0" y="0" width="1280" height="6" fill="url(#topBarGradient)"/>
+  </g>
+  <g id="header">
+    <text x="40" y="54" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="36" font-weight="700" fill="#1F2937">主业务流程围绕“发起任务—异步执行—结果回传—工作室管理”展开</text>
+    <rect x="40" y="74" width="1200" height="44" rx="10" fill="#1565C0"/>
+    <text x="60" y="103" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="20" fill="#FFFFFF">用户视角下的核心体验是一次创作请求能够稳定进入后台处理，并实时回到客户端完成结果闭环。</text>
+  </g>
+  <g id="flow-image">
+    <rect x="40" y="145" width="360" height="500" rx="18" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <image href="../images/thesis__image_009.png" x="70" y="170" width="300" height="430" preserveAspectRatio="xMidYMid meet"/>
+    <text x="220" y="623" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="16" fill="#1565C0">论文图3-1：系统整体业务流程图</text>
+  </g>
+  <g id="step-1">
+    <rect x="430" y="150" width="780" height="88" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <rect x="452" y="171" width="54" height="46" rx="12" fill="#1565C0"/>
+    <text x="479" y="202" text-anchor="middle" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="28" font-weight="700" fill="#FFFFFF">1</text>
+    <text x="532" y="188" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="24" font-weight="700" fill="#1F2937">用户发起创作请求</text>
+    <text x="532" y="218" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">用户输入提示词或上传图片后，由客户端调用对应生成接口提交任务。</text>
+  </g>
+  <g id="step-2">
+    <rect x="430" y="254" width="780" height="88" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <rect x="452" y="275" width="54" height="46" rx="12" fill="#00A8A8"/>
+    <text x="479" y="306" text-anchor="middle" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="28" font-weight="700" fill="#FFFFFF">2</text>
+    <text x="532" y="292" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="24" font-weight="700" fill="#1F2937">服务端统一封装模型调用</text>
+    <text x="532" y="322" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">后端根据任务类型调度对应模型平台，并创建任务记录与 taskId。</text>
+  </g>
+  <g id="step-3">
+    <rect x="430" y="358" width="780" height="88" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <rect x="452" y="379" width="54" height="46" rx="12" fill="#5C6BC0"/>
+    <text x="479" y="410" text-anchor="middle" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="28" font-weight="700" fill="#FFFFFF">3</text>
+    <text x="532" y="396" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="24" font-weight="700" fill="#1F2937">后台异步执行长耗时生成</text>
+    <text x="532" y="426" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">生成任务在后台独立运行，避免阻塞 HTTP 响应，提高系统并发处理能力。</text>
+  </g>
+  <g id="step-4">
+    <rect x="430" y="462" width="780" height="88" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <rect x="452" y="483" width="54" height="46" rx="12" fill="#2E7D32"/>
+    <text x="479" y="514" text-anchor="middle" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="28" font-weight="700" fill="#FFFFFF">4</text>
+    <text x="532" y="500" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="24" font-weight="700" fill="#1F2937">结果通过 WebSocket 回传客户端</text>
+    <text x="532" y="530" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">任务状态变化后实时推送到客户端，工作室页面完成结果展示、更新与分享。</text>
+  </g>
+  <g id="footer">
+    <text x="58" y="690" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">这一页重点讲“系统主链路怎么跑通”</text>
+    <text x="1220" y="690" text-anchor="end" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">05</text>
+  </g>
+</svg>

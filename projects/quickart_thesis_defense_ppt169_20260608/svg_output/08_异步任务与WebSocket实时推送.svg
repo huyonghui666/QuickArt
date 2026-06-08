@@ -1,0 +1,54 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="topBarGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#00A8A8"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F7F9FC"/>
+    <rect x="0" y="0" width="1280" height="6" fill="url(#topBarGradient)"/>
+  </g>
+  <g id="header">
+    <text x="40" y="54" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="36" font-weight="700" fill="#1F2937">长耗时生成问题通过“立即返回 taskId + 后台异步执行 + WebSocket 主动推送”解决</text>
+    <rect x="40" y="74" width="1200" height="44" rx="10" fill="#1565C0"/>
+    <text x="60" y="103" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="20" fill="#FFFFFF">这一机制是系统能在移动端稳定承载 AIGC 长耗时任务的关键实现。</text>
+  </g>
+  <g id="flow-image">
+    <rect x="40" y="145" width="1200" height="240" rx="18" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <image href="../images/thesis__image_014.png" x="80" y="180" width="1120" height="160" preserveAspectRatio="xMidYMid meet"/>
+    <!-- chart-plot-area: x_min,y_min,x_max,y_max -->
+    <rect x="80" y="350" width="1120" height="18" rx="7" fill="#EEF4FB"/>
+    <text x="640" y="364" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#1565C0">论文图4-4：异步任务与 WebSocket 推送流程图</text>
+  </g>
+  <g id="points-row">
+    <g id="point-1">
+      <rect x="40" y="420" width="280" height="190" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+      <use data-icon="chunk-filled/bolt" x="62" y="442" width="24" height="24" fill="#1565C0"/>
+      <text x="98" y="462" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="22" font-weight="700" fill="#1F2937">立即返回</text>
+      <text x="62" y="500" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">服务端收到请求后，先创建任务并返回 <tspan fill="#1565C0" font-weight="700">taskId</tspan>，避免接口长时间阻塞。</text>
+    </g>
+    <g id="point-2">
+      <rect x="346" y="420" width="280" height="190" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+      <use data-icon="chunk-filled/arrows-left-right" x="368" y="442" width="24" height="24" fill="#00A8A8"/>
+      <text x="404" y="462" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="22" font-weight="700" fill="#1F2937">后台异步执行</text>
+      <text x="368" y="500" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">生成任务在后台独立运行，释放 HTTP 线程资源，提升并发场景下的稳定性。</text>
+    </g>
+    <g id="point-3">
+      <rect x="652" y="420" width="280" height="190" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+      <use data-icon="chunk-filled/checkmark" x="674" y="442" width="24" height="24" fill="#2E7D32"/>
+      <text x="710" y="462" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="22" font-weight="700" fill="#1F2937">实时状态同步</text>
+      <text x="674" y="500" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">结果生成后通过 <tspan fill="#1565C0" font-weight="700">WebSocket</tspan> 主动推送到客户端，任务状态实时刷新。</text>
+    </g>
+    <g id="point-4">
+      <rect x="958" y="420" width="282" height="190" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+      <use data-icon="chunk-filled/shield-check" x="980" y="442" width="24" height="24" fill="#C62828"/>
+      <text x="1016" y="462" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="22" font-weight="700" fill="#1F2937">恢复与幂等</text>
+      <text x="980" y="500" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="18" fill="#1F2937">工作室结合 SQLite 恢复任务，支付回调通过业务键保证积分到账不重复执行。</text>
+    </g>
+  </g>
+  <g id="footer">
+    <text x="58" y="690" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">这是整场答辩最关键的实现页之一，建议重点展开讲解</text>
+    <text x="1220" y="690" text-anchor="end" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">08</text>
+  </g>
+</svg>

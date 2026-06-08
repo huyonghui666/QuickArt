@@ -16,6 +16,16 @@ class AppIcons {
   static const String quickArtTitle = '$_svgBasePath/core/quickArt_title.svg';
   /// Pro
   static const String pro = '$_svgBasePath/core/pro.svg';
+
+  /// 积分图标
+  static const String points = '$_svgBasePath/core/points.svg';
+
+  /// VIP 图标
+  static const String vip = '$_svgBasePath/core/VIP.svg';
+
+  ///下载
+  static const String download = '$_svgBasePath/core/download.svg';
+
   /// ----------------提示词输入框的icon-------------
   /// 撤销 (能)
   static const String promptBack = '$_svgBasePath/core/prompt_back.svg';
@@ -67,6 +77,21 @@ class AppIcons {
   static const String homeRatio11 = '$_svgBasePath/home/home_ratio_11.svg';
   /// 历史
   static const String homeHistory = '$_svgBasePath/home/home_history.svg';
+
+  /// 比例icon 1:1
+  static const String ratioIc11 = '$_svgBasePath/core/ratio_ic_11.svg';
+  /// 比例icon 4:5
+  static const String ratioIc45 = '$_svgBasePath/core/ratio_ic_45.svg';
+  /// 比例icon 5:4
+  static const String ratioIc54 = '$_svgBasePath/core/ratio_ic_54.svg';
+  /// 比例icon 3:4
+  static const String ratioIc34 = '$_svgBasePath/core/ratio_ic_34.svg';
+  /// 比例icon 4:3
+  static const String ratioIc43 = '$_svgBasePath/core/ratio_ic_43.svg';
+  /// 比例icon 9:16
+  static const String ratioIc916 = '$_svgBasePath/core/ratio_ic_916.svg';
+  /// 比例icon 16:9
+  static const String ratioIc169 = '$_svgBasePath/core/ratio_ic_169.svg';
 
   /// 无风格icon
   static const String homeBgStyleNo = '$_svgBasePath/home/home_style_no.svg';

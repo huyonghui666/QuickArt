@@ -9,16 +9,12 @@ enum InspirationCategoryType {
   //由于使用new与关键字new冲突，所以使用newest然后转化为new即可
   /// 最新
   newest,
-  /// 漫画
-  manga,
   /// 摄影
   photography,
   /// 水彩
   watercolor,
   /// 有趣
   funny,
-  /// 纹身
-  tattoo,
   /// 赛博朋克
   cyberpunk,
   /// 超现实主义
@@ -30,11 +26,9 @@ enum InspirationCategoryType {
   String getLabel(AppLocalizations l10n) {
     return switch (this) {
       InspirationCategoryType.newest => l10n.home_inspiration_new,
-      InspirationCategoryType.manga => l10n.home_inspiration_manga,
       InspirationCategoryType.photography => l10n.home_inspiration_photography,
       InspirationCategoryType.watercolor => l10n.home_inspiration_watercolor,
       InspirationCategoryType.funny => l10n.home_inspiration_funny,
-      InspirationCategoryType.tattoo => l10n.home_inspiration_tattoo,
       InspirationCategoryType.cyberpunk => l10n.home_inspiration_cyberpunk,
       InspirationCategoryType.surrealism => l10n.home_inspiration_surrealism,
       InspirationCategoryType.christmas => l10n.home_inspiration_christmas,

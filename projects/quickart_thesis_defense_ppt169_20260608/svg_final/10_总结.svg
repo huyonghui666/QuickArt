@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="topBarGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1565C0" />
+      <stop offset="100%" stop-color="#00A8A8" />
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F7F9FC" />
+    <rect x="0" y="0" width="1280" height="6" fill="url(#topBarGradient)" />
+    <circle cx="1080" cy="145" r="170" fill="#1565C0" fill-opacity="0.05" />
+    <circle cx="170" cy="575" r="150" fill="#00A8A8" fill-opacity="0.05" />
+  </g>
+  <g id="header">
+    <text x="40" y="54" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="36" font-weight="700" fill="#1F2937">本课题完成了一个可运行、可扩展、具备业务闭环的跨平台 AI 内容生成系统</text>
+    <path fill="#1565C0" d="M50,74 H1230 A10,10 0 0 1 1240,84 V108 A10,10 0 0 1 1230,118 H50 A10,10 0 0 1 40,108 V84 A10,10 0 0 1 50,74 Z" />
+    <text x="60" y="103" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="20" fill="#FFFFFF">论文工作的核心价值不只是“做出几个功能”，而是完成了一套面向真实业务流程的工程化系统实现。</text>
+  </g>
+  <g id="summary-core">
+    <path fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2" d="M144,170 H1136 A24,24 0 0 1 1160,194 V546 A24,24 0 0 1 1136,570 H144 A24,24 0 0 1 120,546 V194 A24,24 0 0 1 144,170 Z" />
+    <text x="180" y="260" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="26" fill="#1F2937">
+      1）完成了<tspan fill="#1565C0" font-weight="700">跨平台客户端实现</tspan>，基于 Flutter 构建统一的移动端创作体验；
+    </text>
+    <text x="180" y="340" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="26" fill="#1F2937">
+      2）完成了<tspan fill="#00A8A8" font-weight="700">多模型能力整合</tspan>，把图像、视频、换脸等能力接入统一业务体系；
+    </text>
+    <text font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="26" fill="#1F2937" x="180" y="420">3）完成了<tspan fill="#5C6BC0" font-weight="700">关键工程问题落地</tspan>，解决了异步长任务、实时状态同步、
+      </text><text font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="26" fill="#1F2937" x="180" y="462">支付积分与本地恢复等问题。</text><path fill="#EEF4FB" d="M192,485 H728 A12,12 0 0 1 740,497 V521 A12,12 0 0 1 728,533 H192 A12,12 0 0 1 180,521 V497 A12,12 0 0 1 192,485 Z" />
+    <text x="460" y="517" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="21" fill="#1565C0">QuickArt 已具备较完整的移动端 AIGC 业务闭环能力</text>
+  </g>
+  <g id="footer">
+    <text x="58" y="690" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">总结页建议讲清“完成了什么”和“为什么这不只是功能演示”</text>
+    <text x="1220" y="690" text-anchor="end" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">10</text>
+  </g>
+</svg>

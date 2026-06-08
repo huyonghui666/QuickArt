@@ -15,6 +15,18 @@ class AppVideoImage {
   static const String authLoginBackground =
       'assets/images/auth_login/auth_login.webp';
 
+  /// 支付页面背景图
+  static const String paymentBackground =
+      'assets/images/payment/payment_pg.webp';
+
+  /// 工作室空状态背景图
+  static const String workshopBackground =
+      'assets/images/workshop/workshop_bg.webp';
+
+  /// 首页无风格背景图
+  static const String quickArtNoStyleBackground =
+      'assets/images/QuickArt/QuickArt_no_style_pg.webp';
+
   /// 换脸功能自定义照片背景图
   static const String customPhotoAsset =
       'assets/images/tools/ai-face-swapping/custom_photo.webp';

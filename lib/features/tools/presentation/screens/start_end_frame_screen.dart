@@ -158,6 +158,7 @@ class _StartEndFrameScreenState extends ConsumerState<StartEndFrameScreen> {
                   Center(
                     child: DrawButton(
                       family: 'start_end_frame',
+                      pointsCost: 10,
                       onTap: () {
                         if (startEndFrameState.startFramePath == null ||
                             startEndFrameState.endFramePath == null) {

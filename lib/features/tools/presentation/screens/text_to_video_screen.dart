@@ -96,6 +96,7 @@ class _TextToVideoScreenState extends ConsumerState<TextToVideoScreen> {
                     const Spacer(),
                     DrawButton(
                       family: 'textToVideo',
+                      pointsCost: 10,
                       onTap: () {
                         final prompt = ref
                             .read(promptProvider('textToVideo'))

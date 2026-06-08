@@ -1,0 +1,40 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="topBarGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#00A8A8"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F7F9FC"/>
+    <rect x="0" y="0" width="1280" height="6" fill="url(#topBarGradient)"/>
+    <circle cx="1080" cy="150" r="180" fill="#1565C0" fill-opacity="0.05"/>
+    <circle cx="150" cy="575" r="150" fill="#00A8A8" fill-opacity="0.05"/>
+  </g>
+  <g id="header">
+    <text x="40" y="54" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="36" font-weight="700" fill="#1F2937">后续可从模型能力、系统性能与治理机制三个方向持续完善</text>
+    <rect x="40" y="74" width="1200" height="44" rx="10" fill="#1565C0"/>
+    <text x="60" y="103" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="20" fill="#FFFFFF">当前系统已经完成基础落地，但在模型效果、平台能力和规范治理方面仍有继续拓展空间。</text>
+  </g>
+  <g id="future-cards">
+    <rect x="60" y="180" width="360" height="300" rx="20" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <text x="88" y="226" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="28" font-weight="700" fill="#1565C0">模型能力扩展</text>
+    <text x="88" y="278" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="20" fill="#1F2937">引入更多视频生成、风格编辑与多模态理解模型，进一步提升创作质量与场景覆盖度。</text>
+
+    <rect x="460" y="180" width="360" height="300" rx="20" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <text x="488" y="226" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="28" font-weight="700" fill="#00A8A8">系统能力优化</text>
+    <text x="488" y="278" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="20" fill="#1F2937">继续优化任务调度、并发处理、缓存与异常恢复机制，提高性能与稳定性。</text>
+
+    <rect x="860" y="180" width="360" height="300" rx="20" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <text x="888" y="226" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="28" font-weight="700" fill="#5C6BC0">治理与规范</text>
+    <text x="888" y="278" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="20" fill="#1F2937">加强内容审核、生成边界提示与使用日志管理，提高系统的合规性与可控性。</text>
+  </g>
+  <g id="closing-line">
+    <rect x="250" y="540" width="780" height="62" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <text x="640" y="580" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="28" fill="#1F2937">我的汇报完毕，<tspan fill="#1565C0" font-weight="700">恳请各位老师批评指正</tspan>。</text>
+  </g>
+  <g id="footer">
+    <text x="58" y="690" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">结束页用于自然收尾，并为答辩问答留出空间</text>
+    <text x="1220" y="690" text-anchor="end" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">11</text>
+  </g>
+</svg>

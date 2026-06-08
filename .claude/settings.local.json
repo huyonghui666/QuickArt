@@ -6,7 +6,8 @@
       "Bash(mkdir -p assets/video)",
       "Bash(cp \"D:/wuyong/video/\"*.mp4 assets/video/)",
       "Bash(flutter pub *)",
-      "Bash(flutter analyze *)"
+      "Bash(flutter analyze *)",
+      "Bash(\"/d/postgreSQL/pgAdmin 4/python/python.exe\" --version)"
     ]
   },
   "statusLine": {

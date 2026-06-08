@@ -1,0 +1,64 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="topBarGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#00A8A8"/>
+    </linearGradient>
+  </defs>
+
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F7F9FC"/>
+    <rect x="0" y="0" width="1280" height="6" fill="url(#topBarGradient)"/>
+  </g>
+
+  <g id="header">
+    <text x="40" y="54" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="36" font-weight="700" fill="#1F2937">系统采用“客户端—服务端—云端模型服务”的三层端云协同架构</text>
+    <rect x="40" y="74" width="1200" height="44" rx="10" fill="#1565C0"/>
+    <text x="60" y="103" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="20" fill="#FFFFFF">架构设计的关键在于明确三层职责边界，并通过统一接口与任务机制把多模型能力接入到移动端应用中。</text>
+  </g>
+
+  <g id="arch-image">
+    <rect x="40" y="145" width="1200" height="274" rx="18" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <image href="../images/thesis__image_011.png" x="70" y="176" width="1140" height="190" preserveAspectRatio="xMidYMid meet"/>
+    <rect x="70" y="380" width="1140" height="24" rx="8" fill="#EEF4FB"/>
+    <text x="640" y="397" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="16" fill="#1565C0">论文图4-1：系统总体架构图</text>
+  </g>
+
+  <g id="client-card">
+    <rect x="40" y="450" width="370" height="190" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <use data-icon="chunk-filled/mobile" x="66" y="476" width="26" height="26" fill="#1565C0"/>
+    <text x="106" y="496" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="24" font-weight="700" fill="#1F2937">客户端层</text>
+    <text x="66" y="535" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="19" fill="#1F2937">
+      Flutter 构建统一 UI，Riverpod 管理状态，
+      <tspan x="66" dy="30">GoRouter 处理路由协同，</tspan>
+      <tspan x="66" dy="30">SQLite / Hive 负责本地持久化。</tspan>
+    </text>
+  </g>
+
+  <g id="server-card">
+    <rect x="455" y="450" width="370" height="190" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <use data-icon="chunk-filled/server" x="481" y="476" width="26" height="26" fill="#00A8A8"/>
+    <text x="521" y="496" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="24" font-weight="700" fill="#1F2937">服务端层</text>
+    <text x="481" y="535" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="19" fill="#1F2937">
+      Spring Boot 3 + Kotlin 负责业务编排、
+      <tspan x="481" dy="30">统一模型接口封装、鉴权、订单、积分</tspan>
+      <tspan x="481" dy="30">与任务状态管理。</tspan>
+    </text>
+  </g>
+
+  <g id="cloud-card">
+    <rect x="870" y="450" width="370" height="190" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <use data-icon="chunk-filled/cloud" x="896" y="476" width="26" height="26" fill="#5C6BC0"/>
+    <text x="936" y="496" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="24" font-weight="700" fill="#1F2937">云端模型层</text>
+    <text x="896" y="535" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="19" fill="#1F2937">
+      火山方舟提供文生图/视频生成，
+      <tspan x="896" dy="30">Magic Hour 提供 AI 换脸，</tspan>
+      <tspan x="896" dy="30">阿里云 OSS 负责文件存储与分发。</tspan>
+    </text>
+  </g>
+
+  <g id="footer">
+    <text x="58" y="690" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">三层职责清晰，是系统后续可扩展与可维护的基础</text>
+    <text x="1220" y="690" text-anchor="end" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">04</text>
+  </g>
+</svg>

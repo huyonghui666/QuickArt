@@ -1,9 +1,11 @@
 import 'package:go_router/go_router.dart';
 import 'package:quick_art/core/router/bottom_navigation_screen.dart';
+import 'package:quick_art/core/router/startup_screen.dart';
 import 'package:quick_art/core/widgets/waiting_screen.dart';
 import 'package:quick_art/features/auth_login/routes/auth_login_routes.dart';
 import 'package:quick_art/features/explore/routes/explore_routes.dart';
 import 'package:quick_art/features/home/routes/home_routes.dart';
+import 'package:quick_art/features/payment/routes/payment_routes.dart';
 import 'package:quick_art/features/setting/routes/setting_routes.dart';
 import 'package:quick_art/features/tools/routes/tools_routes.dart';
 import 'package:quick_art/features/workshop/routes/workshop_routes.dart';
@@ -11,8 +13,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// 主路由
 final GoRouter router = GoRouter(
-  // initialLocation: '/',
-  initialLocation: '/auth/login',
+  initialLocation: '/startup',
   observers: [SentryNavigatorObserver()],  //sentry监听路由
   routes: [
     StatefulShellRoute.indexedStack(
@@ -31,6 +32,11 @@ final GoRouter router = GoRouter(
       ],
     ),
     // 其他独立于底部导航栏导航的页面
+    GoRoute(
+      path: '/startup',
+      name: 'Startup',
+      builder: (context, state) => const StartupScreen(),
+    ),
     ...authLoginRoutes,
     ...settingRoutes,
 
@@ -40,9 +46,15 @@ final GoRouter router = GoRouter(
       builder: (context, state) {
         final taskType = state.pathParameters['taskType']!;
         final prompt = state.uri.queryParameters['prompt']!;
-        return WaitingScreen(taskType: taskType, prompt: prompt);
+        final imagePath = state.uri.queryParameters['imagePath'];
+        return WaitingScreen(
+          taskType: taskType,
+          prompt: prompt,
+          imagePath: imagePath,
+        );
       },
     ),
+    ...paymentStandaloneRoutes,
     ...toolsStandaloneRoutes,
   ],
 );

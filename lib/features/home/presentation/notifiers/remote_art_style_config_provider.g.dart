@@ -7,7 +7,7 @@ part of 'remote_art_style_config_provider.dart';
 // **************************************************************************
 
 String _$remoteArtStyleConfigNotifierHash() =>
-    r'85562a51065b54bcf51e36dab78764eddcddee42';
+    r'507ad48c756fc24fb9f25271fabddcff76be4644';
 
 /// 艺术风格配置 Provider
 ///

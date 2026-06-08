@@ -104,9 +104,13 @@ class WorkshopTaskCard extends StatelessWidget {
 
     // 优先使用 thumbnailUrl (特别是视频任务)，如果为空则尝试使用 url (图片任务)
     // 如果是视频且没有缩略图，才使用占位符
+    final isImageTask =
+        task.type == GenerateTaskType.image ||
+        task.type == GenerateTaskType.imageEdit;
+
     final imageUrl =
         task.thumbnailUrl ??
-        (task.type == GenerateTaskType.image
+        (isImageTask
             ? task.url!
             : 'https://via.placeholder.com/300x300.png?text=Video');
 

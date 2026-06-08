@@ -1,0 +1,67 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="topBarGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#00A8A8"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F7F9FC"/>
+    <rect x="0" y="0" width="1280" height="6" fill="url(#topBarGradient)"/>
+  </g>
+  <g id="header">
+    <text x="40" y="54" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="36" font-weight="700" fill="#1F2937">五大模块共同支撑多模态创作与业务闭环</text>
+    <rect x="40" y="74" width="1200" height="44" rx="10" fill="#1565C0"/>
+    <text x="60" y="103" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="20" fill="#FFFFFF">系统实现不是分散功能堆砌，而是围绕用户创作主链路形成协同工作的模块化设计。</text>
+  </g>
+  <g id="cards-row1">
+    <g id="card-auth">
+      <rect x="40" y="150" width="228" height="208" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+      <use data-icon="chunk-filled/users" x="58" y="170" width="24" height="24" fill="#1565C0"/>
+      <text x="94" y="190" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="22" font-weight="700" fill="#1F2937">认证登录</text>
+      <text x="58" y="228" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="17" fill="#1F2937">接入微信扫码授权，完成 OAuth 回调、JWT 签发与登录态持久化。</text>
+    </g>
+    <g id="card-create">
+      <rect x="288" y="150" width="228" height="208" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+      <use data-icon="chunk-filled/image" x="306" y="170" width="24" height="24" fill="#00A8A8"/>
+      <text x="342" y="190" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="22" font-weight="700" fill="#1F2937">QuickArt 创作</text>
+      <text x="306" y="228" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="17" fill="#1F2937">实现文生图、图生图与模板化创作，是系统的核心入口。</text>
+    </g>
+    <g id="card-tools">
+      <rect x="536" y="150" width="228" height="208" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+      <use data-icon="chunk-filled/toolbox" x="554" y="170" width="24" height="24" fill="#5C6BC0"/>
+      <text x="590" y="190" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="22" font-weight="700" fill="#1F2937">工具模块</text>
+      <text x="554" y="228" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="17" fill="#1F2937">扩展文生视频、图生视频与 AI 换脸能力，提升多模态创作覆盖度。</text>
+    </g>
+    <g id="card-studio">
+      <rect x="784" y="150" width="228" height="208" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+      <use data-icon="chunk-filled/layers" x="802" y="170" width="24" height="24" fill="#2E7D32"/>
+      <text x="838" y="190" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="22" font-weight="700" fill="#1F2937">工作室模块</text>
+      <text x="802" y="228" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="17" fill="#1F2937">管理任务历史、状态更新、结果预览与分享，是任务闭环的承接端。</text>
+    </g>
+    <g id="card-pay">
+      <rect x="1032" y="150" width="208" height="208" rx="16" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+      <use data-icon="chunk-filled/coin" x="1050" y="170" width="24" height="24" fill="#C62828"/>
+      <text x="1086" y="190" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="22" font-weight="700" fill="#1F2937">支付与积分</text>
+      <text x="1050" y="228" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="17" fill="#1F2937">负责套餐展示、支付宝下单、支付回调与积分到账。</text>
+    </g>
+  </g>
+  <g id="screens-row2">
+    <rect x="40" y="390" width="1200" height="250" rx="18" fill="#FFFFFF" stroke="#D9E2F1" stroke-width="2"/>
+    <text x="62" y="418" font-family="Georgia, &quot;Microsoft YaHei&quot;, serif" font-size="22" font-weight="700" fill="#1F2937">界面落地效果</text>
+    <image href="../images/thesis__image_017.jpeg" x="62" y="440" width="116" height="175" preserveAspectRatio="xMidYMid meet"/>
+    <image href="../images/thesis__image_019.jpeg" x="290" y="440" width="116" height="175" preserveAspectRatio="xMidYMid meet"/>
+    <image href="../images/thesis__image_023.jpeg" x="518" y="440" width="116" height="175" preserveAspectRatio="xMidYMid meet"/>
+    <image href="../images/thesis__image_025.jpeg" x="746" y="440" width="116" height="175" preserveAspectRatio="xMidYMid meet"/>
+    <image href="../images/thesis__image_027.jpeg" x="974" y="440" width="116" height="175" preserveAspectRatio="xMidYMid meet"/>
+    <text x="120" y="630" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="16" fill="#6B7280">QuickArt 创作</text>
+    <text x="348" y="630" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="16" fill="#6B7280">工具模块</text>
+    <text x="576" y="630" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="16" fill="#6B7280">AI换脸流程</text>
+    <text x="804" y="630" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="16" fill="#6B7280">工作室</text>
+    <text x="1032" y="630" text-anchor="middle" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="16" fill="#6B7280">支付页面</text>
+  </g>
+  <g id="footer">
+    <text x="58" y="690" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">这一页重点体现“模块协同”与“界面已经真实落地”</text>
+    <text x="1220" y="690" text-anchor="end" font-family="&quot;Microsoft YaHei&quot;, Arial, sans-serif" font-size="15" fill="#94A3B8">06</text>
+  </g>
+</svg>

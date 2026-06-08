@@ -49,7 +49,7 @@ class GeneratedImageBottomSheet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildSocialButton(
-                AppIcons.homeHistory,
+                AppIcons.download,
                 l10n.bottom_sheet_save,
               ),
               _buildSocialButton(

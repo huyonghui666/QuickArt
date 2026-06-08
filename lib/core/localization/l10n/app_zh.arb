@@ -32,6 +32,9 @@
 
   "home_describe": "图生文",
   "home_add_photo": "添加照片",
+  "home_remove_photo": "移除",
+  "home_photo_source_camera": "相机",
+  "home_photo_source_gallery": "相册",
   "home_history": "历史",
   "home_inspiration_new": "新",
   "home_inspiration_manga": "漫画",
@@ -138,5 +141,19 @@
   "auth_login_agreement_privacy": "隐私政策",
   "auth_login_agreement_required": "请先阅读并同意用户协议和隐私政策",
   "auth_login_error_cannot_open_url": "无法打开授权页面，请检查是否安装了浏览器",
-  "auth_login_error_generic": "登录失败，请重试"
+  "auth_login_error_generic": "登录失败，请重试",
+
+  "payment_title": "QuickArt PRO",
+  "payment_subtitle": "由50多位AI专家开发,世界领先的图像处理技术",
+  "payment_benefit_weekly_points": "每周获得100积分",
+  "payment_benefit_points": "获得{points}积分",
+  "@payment_benefit_points": {
+    "placeholders": {
+      "points": {}
+    }
+  },
+  "payment_benefit_fast": "快速处理",
+  "payment_benefit_no_watermark": "无水印",
+  "payment_save_badge": "省 50%",
+  "payment_continue": "继续"
 }

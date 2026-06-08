@@ -8,6 +8,7 @@ import 'package:quick_art/core/models/generation_result_model.dart';
 import 'package:quick_art/core/utils/log/logger.dart';
 import 'package:quick_art/core/widgets/loading_animation.dart';
 import 'package:quick_art/features/home/domain/entities/image_generation_task.dart';
+import 'package:quick_art/features/home/presentation/notifiers/image_edit_generation_provider.dart';
 import 'package:quick_art/features/home/presentation/notifiers/image_generation_provider.dart';
 import 'package:quick_art/features/tools/domain/entities/face_swap_task.dart';
 import 'package:quick_art/features/tools/domain/entities/video_generation_task.dart';
@@ -16,25 +17,30 @@ import 'package:quick_art/features/tools/presentation/notifilers/start_end_frame
 import 'package:quick_art/features/tools/presentation/notifilers/video_generation_provider.dart';
 import 'package:quick_art/features/tools/presentation/notifilers/video_template_generation_provider.dart';
 
-final AutoDisposeStateProvider<String?> _waitingScreenErrorProvider
-= StateProvider.autoDispose<String?>(
-  (ref) => null,
-);
+final AutoDisposeStateProvider<String?> _waitingScreenErrorProvider =
+    StateProvider.autoDispose<String?>((ref) => null);
 
 /// 等待页面
 class WaitingScreen extends ConsumerWidget {
   /// 构造
   const WaitingScreen({
-    required this.taskType, required this.prompt, super.key,
+    required this.taskType,
+    required this.prompt,
+    super.key,
+    this.imagePath,
   });
+
   /// 任务类型
   final String taskType;
+
   /// 提示词
   final String prompt;
 
+  /// 图生图时的本地图片路径
+  final String? imagePath;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // 监听 WebSocket 结果事件
     ref.listen(generationEventProvider, (previous, next) {
       next.whenData((event) {
         _handleEvent(context, ref, event);
@@ -55,6 +61,8 @@ class WaitingScreen extends ConsumerWidget {
           ? _buildVideoBody(context, ref)
           : taskType == 'face_swap'
           ? _buildFaceSwapBody(context, ref)
+          : taskType == 'image_edit'
+          ? _buildImageEditBody(context, ref)
           : _buildImageBody(context, ref),
     );
   }
@@ -64,35 +72,35 @@ class WaitingScreen extends ConsumerWidget {
     WidgetRef ref,
     GenerationResultModel result,
   ) {
-    // 统一处理事件，根据 taskType 获取对应的 Provider
     if (taskType == 'video') {
-      ref.read(videoGenerationNotifierProvider(prompt))
-      .whenData((task) {
+      ref.read(videoGenerationNotifierProvider(prompt)).whenData((task) {
         _processEvent(context, ref, result, task.taskId);
       });
     } else if (taskType == 'start_end_frame') {
-      ref.read(
-        startEndFrameGenerationNotifierProvider(prompt),
-      )
-      .whenData((task) {
+      ref
+          .read(startEndFrameGenerationNotifierProvider(prompt))
+          .whenData((task) {
         _processEvent(context, ref, result, task.taskId);
       });
     } else if (taskType == 'template_video') {
-      ref.read(
-        videoTemplateGenerationNotifierProvider(prompt),
-      )
-      .whenData((task) {
+      ref
+          .read(videoTemplateGenerationNotifierProvider(prompt))
+          .whenData((task) {
         _processEvent(context, ref, result, task.taskId);
       });
     } else if (taskType == 'face_swap') {
-      ref.read(faceSwapGenerationNotifierProvider(prompt))
-      .whenData((FaceSwapTask task) {
+      ref.read(faceSwapGenerationNotifierProvider(prompt)).whenData((task) {
+        _processEvent(context, ref, result, task.taskId);
+      });
+    } else if (taskType == 'image_edit') {
+      ref
+          .read(imageEditGenerationNotifierProvider(prompt, imagePath ?? ''))
+          .whenData((task) {
         _processEvent(context, ref, result, task.taskId);
       });
     } else {
-      ref.read(imageGenerationNotifierProvider(prompt))
-      .whenData((taskModel) {
-        _processEvent(context, ref, result, taskModel.taskId);
+      ref.read(imageGenerationNotifierProvider(prompt)).whenData((task) {
+        _processEvent(context, ref, result, task.taskId);
       });
     }
   }
@@ -103,29 +111,26 @@ class WaitingScreen extends ConsumerWidget {
     GenerationResultModel result,
     String currentTaskId,
   ) {
-    if (currentTaskId == result.taskId) {
-      if (result.event == 'success' && result.url != null) {
-        logger.i('$taskType generation success: ${result.url}');
-        if (context.mounted) {
-          context.pop();
-        }
-        // 延迟触发底部弹窗，避免与路由退出动画冲突导致卡顿
-        Future.delayed(const Duration(milliseconds: 300), () {
-          ref
-              .read(showBottomSheetNotifierProvider.notifier)
-              .trigger(
-                result.url!,
-                (taskType == 'video' ||
-                        taskType == 'start_end_frame' ||
-                        taskType == 'template_video')
-                    ? BottomSheetType.video
-                    : BottomSheetType.image,
-              );
-        });
-      } else if (result.event == 'failed') {
-        ref.read(_waitingScreenErrorProvider.notifier).state =
-            result.error ?? 'Unknown error';
+    if (currentTaskId != result.taskId) return;
+
+    if (result.event == 'success' && result.url != null) {
+      logger.i('$taskType generation success: ${result.url}');
+      if (context.mounted) {
+        context.pop();
       }
+      Future.delayed(const Duration(milliseconds: 300), () {
+        ref.read(showBottomSheetNotifierProvider.notifier).trigger(
+          result.url!,
+          (taskType == 'video' ||
+                  taskType == 'start_end_frame' ||
+                  taskType == 'template_video')
+              ? BottomSheetType.video
+              : BottomSheetType.image,
+        );
+      });
+    } else if (result.event == 'failed') {
+      ref.read(_waitingScreenErrorProvider.notifier).state =
+          result.error ?? 'Unknown error';
     }
   }
 
@@ -190,11 +195,44 @@ class WaitingScreen extends ConsumerWidget {
       error: (e, _) => _buildErrorView(context, e.toString(), () {
         ref.read(imageGenerationNotifierProvider(prompt).notifier).retry();
       }),
-      data: (ImageGenerationTask taskModel) {
+      data: (ImageGenerationTask task) {
         if (errorMessage != null) {
           return _buildErrorView(context, errorMessage, () {
             ref.read(_waitingScreenErrorProvider.notifier).state = null;
             ref.read(imageGenerationNotifierProvider(prompt).notifier).retry();
+          });
+        }
+        return _buildLoadingView(context);
+      },
+    );
+  }
+
+  Widget _buildImageEditBody(BuildContext context, WidgetRef ref) {
+    final asyncTask = ref.watch(
+      imageEditGenerationNotifierProvider(prompt, imagePath ?? ''),
+    );
+    final errorMessage = ref.watch(_waitingScreenErrorProvider);
+
+    return asyncTask.when(
+      loading: () => _buildLoadingView(context),
+      error: (e, _) => _buildErrorView(context, e.toString(), () {
+        ref
+            .read(
+              imageEditGenerationNotifierProvider(prompt, imagePath ?? '')
+                  .notifier,
+            )
+            .retry();
+      }),
+      data: (ImageGenerationTask task) {
+        if (errorMessage != null) {
+          return _buildErrorView(context, errorMessage, () {
+            ref.read(_waitingScreenErrorProvider.notifier).state = null;
+            ref
+                .read(
+                  imageEditGenerationNotifierProvider(prompt, imagePath ?? '')
+                      .notifier,
+                )
+                .retry();
           });
         }
         return _buildLoadingView(context);
@@ -209,9 +247,7 @@ class WaitingScreen extends ConsumerWidget {
     return asyncTask.when(
       loading: () => _buildLoadingView(context),
       error: (e, _) => _buildErrorView(context, e.toString(), () {
-        ref
-            .read(faceSwapGenerationNotifierProvider(prompt).notifier)
-            .retry();
+        ref.read(faceSwapGenerationNotifierProvider(prompt).notifier).retry();
       }),
       data: (FaceSwapTask task) {
         if (errorMessage != null) {

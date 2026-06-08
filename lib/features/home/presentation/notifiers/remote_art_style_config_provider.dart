@@ -42,12 +42,10 @@ class RemoteArtStyleConfigNotifier extends _$RemoteArtStyleConfigNotifier {
       // 304 Not Modified：版本未变，无需更新状态
       if (remoteConfig == null) return;
 
-      // 200：版本有变化，更新本地缓存和状态
-      if (currentVersion == null ||
-          currentVersion != remoteConfig.artStyleConfigVersion) {
-        await _useCase.saveArtStyleConfig(remoteConfig);
-        state = AsyncData(remoteConfig);
-      }
+      // 200：服务端返回了完整配置（含签名 URL），无论版本号是否相同都更新。
+      // 避免签名 URL 过期后仍使用旧缓存导致缩略图/背景图加载失败。
+      await _useCase.saveArtStyleConfig(remoteConfig);
+      state = AsyncData(remoteConfig);
     } on Exception catch (e, st) {
       // 出错时保持现有缓存，仅在无缓存时才展示错误状态
       if (state.value == null) {

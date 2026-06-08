@@ -7,7 +7,7 @@ part of 'user_profile_notifier.dart';
 // **************************************************************************
 
 String _$userProfileNotifierHash() =>
-    r'12bd0839a0b185e3112ba97681038d31032469be';
+    r'6e792dcae123696c67baf43af5626b53f711790c';
 
 /// 用户资料状态管理
 ///

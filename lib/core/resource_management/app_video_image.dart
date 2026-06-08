@@ -23,6 +23,10 @@ class AppVideoImage {
   static const String workshopBackground =
       'assets/images/workshop/workshop_bg.webp';
 
+  /// 首页无风格背景图
+  static const String quickArtNoStyleBackground =
+      'assets/images/QuickArt/QuickArt_no_style_pg.webp';
+
   /// 换脸功能自定义照片背景图
   static const String customPhotoAsset =
       'assets/images/tools/ai-face-swapping/custom_photo.webp';

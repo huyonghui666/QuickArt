@@ -83,6 +83,7 @@ flutter:
 
     - assets/images/auth_login/
     - assets/images/payment/
+    - assets/images/QuickArt/
     - assets/images/tools/
     - assets/images/workshop/
     - assets/images/tools/ai-face-swapping/

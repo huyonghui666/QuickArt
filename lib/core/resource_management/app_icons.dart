@@ -74,6 +74,21 @@ class AppIcons {
   /// 历史
   static const String homeHistory = '$_svgBasePath/home/home_history.svg';
 
+  /// 比例icon 1:1
+  static const String ratioIc11 = '$_svgBasePath/core/ratio_ic_11.svg';
+  /// 比例icon 4:5
+  static const String ratioIc45 = '$_svgBasePath/core/ratio_ic_45.svg';
+  /// 比例icon 5:4
+  static const String ratioIc54 = '$_svgBasePath/core/ratio_ic_54.svg';
+  /// 比例icon 3:4
+  static const String ratioIc34 = '$_svgBasePath/core/ratio_ic_34.svg';
+  /// 比例icon 4:3
+  static const String ratioIc43 = '$_svgBasePath/core/ratio_ic_43.svg';
+  /// 比例icon 9:16
+  static const String ratioIc916 = '$_svgBasePath/core/ratio_ic_916.svg';
+  /// 比例icon 16:9
+  static const String ratioIc169 = '$_svgBasePath/core/ratio_ic_169.svg';
+
   /// 无风格icon
   static const String homeBgStyleNo = '$_svgBasePath/home/home_style_no.svg';
 
